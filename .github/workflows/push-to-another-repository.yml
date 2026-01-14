@@ -8,6 +8,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: pandoc/latex
+
+    strategy:
+      matrix:
+        repo:
+          - owner: SG-Develope
+            name: REPO_TEAM
+            token: TOKEN_HJA
+            email: EMAIL_HJA
+          - owner: hanon-a
+            name: REPO_TEAM
+            token: TOKEN_LSG
+            email: EMAIL_LSG
+          - owner: sohyerim
+            name: REPO_TEAM
+            token: TOKEN_SOHYERIM
+            email: EMAIL_SOHYERIM
+          - owner: kyk9412
+            name: REPO_TEAM
+            token: TOKEN_KYOUNG
+            email: EMAIL_KYOUNG                      
+            
     steps:
       - uses: actions/checkout@v2
       - name: Install mustache (to update the date)
@@ -18,12 +39,12 @@ jobs:
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.TOKEN_LSG }}
+          API_TOKEN_GITHUB: ${{ secrets[matrix.repo.token] }}
         with:
           source-directory: 'output'
-          destination-github-username: SG-Develope
-          destination-repository-name: final-08-You.us-release
-          user-email: ${{ secrets.EMAIL_LSG }}
+          destination-github-username: ${{ matrix.repo.owner }}
+          destination-repository-name: ${{ matrix.repo.name }}
+          user-email: ${{ secrets[matrix.repo.email] }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
       - name: Test get variable exported by push-to-another-repository
