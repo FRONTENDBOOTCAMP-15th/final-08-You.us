@@ -14,8 +14,8 @@ jobs:
         repo:
           - owner: SG-Develope
             name: REPO_TEAM
-            token: TOKEN_HJA
-            email: EMAIL_HJA
+            token: TOKEN_LSG
+            email: EMAIL_LSG
           - owner: hanon-a
             name: REPO_TEAM
             token: TOKEN_HJA
