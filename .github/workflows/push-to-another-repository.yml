@@ -21,7 +21,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.TOKEN_LSG }}
         with:
           source-directory: 'output'
-          destination-github-username: SG_Develope
+          destination-github-username: SG-Develope
           destination-repository-name: final-08-You.us-release
           user-email: ${{ secrets.EMAIL_LSG }}
           commit-message: ${{ github.event.commits[0].message }}
