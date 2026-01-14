@@ -18,8 +18,8 @@ jobs:
             email: EMAIL_HJA
           - owner: hanon-a
             name: REPO_TEAM
-            token: TOKEN_LSG
-            email: EMAIL_LSG
+            token: TOKEN_HJA
+            email: EMAIL_HJA
           - owner: sohyerim
             name: REPO_TEAM
             token: TOKEN_SOHYERIM
