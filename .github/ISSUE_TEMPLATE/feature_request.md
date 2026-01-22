@@ -4,12 +4,13 @@ about: Suggest an idea for this project
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ---
+
 name: 기능 요청
 title: '[기능 요청] 원하는 기능 설명'
+
 ---
 
 ## 기능 요청 사항

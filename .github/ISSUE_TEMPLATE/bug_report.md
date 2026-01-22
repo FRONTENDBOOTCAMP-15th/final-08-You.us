@@ -1,4 +1,5 @@
 ---
+<<<<<<< Updated upstream
 name: Bug report
 about: Describe this issue template's purpose here.
 title: ''
@@ -8,9 +9,13 @@ assignees: ''
 ---
 
 ---
-name: 버그 리포트
-title: '[버그] 문제 설명'
----
+
+=======
+
+> > > > > > > Stashed changes
+> > > > > > > name: 버그 리포트
+
+## title: '[버그] 문제 설명'
 
 ## 버그 설명
 
