@@ -1,4 +1,30 @@
+
+// import { cookies } from 'next/headers'
+// import { redirect } from 'next/navigation'
+'use client'
+import Button from "@/components/common/Button";
+
+
+
 export default function ThemeTestPage() {
+
+
+// const cookieStore = await cookies()
+// const hasVisited = cookieStore.get('hasVisited')
+
+// if (!hasVisited) {
+//   redirect('/intro')
+// }
+
+
+
+
+
+
+
+
+
+
   return (
     <main className="space-y-12 p-10">
       {/* =======================
@@ -58,6 +84,14 @@ export default function ThemeTestPage() {
         <p className="font-noto text-body-md">
           Noto Sans KR 폰트가 적용된 텍스트입니다.
         </p>
+        <p className="font-pretendard text-body-md">
+          pretendard 폰트가 적용된 텍스트입니다.
+        </p>
+        <Button onClick={() => console.log('test')} disabled={true} >
+          로그인
+        </Button>
+        <img src="/icons/LOGO.svg" alt="아이콘"></img>
+        <button className=""></button>
       </section>
     </main>
   )
