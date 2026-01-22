@@ -3,12 +3,12 @@
 /* 로고: 크게 시작 → 원래 크기 */
 .logo {
   animation: logoIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: transform;
+  will-change: transform opacity;
 }
 
 @keyframes logoIn {
   0% {
-    transform: scale(5);
+    transform: scale(3);
     opacity: 0;
   }
   60% {
@@ -23,13 +23,13 @@
 /* 나머지 컨텐츠: 로고 끝난 뒤 등장 */
 .content {
   opacity: 0;
-  animation: fadeIn 1s ease-out 0.95s both;
+  animation: fadeIn 1s ease-out 0.9s both;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
