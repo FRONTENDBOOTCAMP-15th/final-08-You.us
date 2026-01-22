@@ -8,6 +8,22 @@
   font-display: swap;
 }
 
+@layer utilities {
+  .text-title-lg, .text-title-md, .text-title-sm {
+    font-weight: 700; /* Bold까지 포함 */
+  }
+
+  .text-title-lg {
+    font-size: var(--text-title-lg);
+  }
+  .text-title-md {
+    font-size: var(--text-title-md);
+  }
+  .text-title-sm {
+    font-size: var(--text-title-sm);
+  }
+}
+
 @theme {
   /* Brand */
   --color-primary: #c93c4f; /* Main Red */
