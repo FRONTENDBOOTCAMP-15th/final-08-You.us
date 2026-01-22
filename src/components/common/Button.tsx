@@ -19,7 +19,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   // 기본 버튼 색상/크기 클래스
-  const baseClasses = ` px-[var(--spacing-button-x)] 
+  const baseStyles = ` px-[var(--spacing-button-x)] 
     py-[var(--spacing-button-y)] 
     font-pretendard rounded-lg 
     font-medium
@@ -41,7 +41,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variantStyle[appliedVariant]} ${className}`}
+      className={`${baseStyles} ${variantStyle[appliedVariant]} ${className}`}
       {...props}
     >
       {children}

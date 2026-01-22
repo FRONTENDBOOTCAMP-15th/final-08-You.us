@@ -2,6 +2,7 @@
 // import { redirect } from 'next/navigation'
 'use client'
 import Button from '@/components/common/Button'
+import Input from '@/components/common/Input';
 
 export default function ThemeTestPage() {
   // const cookieStore = await cookies()
@@ -78,6 +79,8 @@ export default function ThemeTestPage() {
         </Button>
         <img src="/icons/LOGO.svg" alt="아이콘"></img>
         <button className=""></button>
+        <Input type="text" placeholder="나는 지금 테스트 중이잖아"   />
+        <input type="text" placeholder="나는 지금 테스트 중이잖아" />
       </section>
     </main>
   )
