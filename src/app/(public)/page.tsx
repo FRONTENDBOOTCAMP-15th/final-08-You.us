@@ -3,6 +3,7 @@
 'use client'
 import Button from '@/components/common/Button'
 import Input from '@/components/common/Input';
+import Pagination from '@/components/common/Pagination';
 
 export default function ThemeTestPage() {
   // const cookieStore = await cookies()
@@ -74,13 +75,14 @@ export default function ThemeTestPage() {
         <p className="font-pretendard text-body-md">
           pretendard 폰트가 적용된 텍스트입니다.
         </p>
-        <Button onClick={() => console.log('test')} disabled={true}>
+        <Button onClick={() => console.log('test')} disabled={false} variant="primary">
           로그인
         </Button>
         <img src="/icons/LOGO.svg" alt="아이콘"></img>
-        <button className=""></button>
-        <Input type="text" placeholder="나는 지금 테스트 중이잖아"   />
+        <button className="radius-sm border">test</button>
+        <Input type="text" placeholder="나는 지금 테스트 중이잖아" />
         <input type="text" placeholder="나는 지금 테스트 중이잖아" />
+        <Pagination currentPage={3} totalPages={12} onPageChange={()=>{console.log("test")}}></Pagination>
       </section>
     </main>
   )

@@ -4,7 +4,7 @@ interface ButtonProps {
   children: ReactNode
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
-  variant?: 'primary' | 'disabled'
+  variant?: 'primary' | 'disabled' | 'update'
   className?: string
   disabled?: boolean
 }
@@ -22,18 +22,17 @@ export default function Button({
   const baseStyles = ` px-[var(--spacing-button-x)] 
     py-[var(--spacing-button-y)] 
     font-pretendard rounded-lg 
-    font-medium
-    text-body-md
+    font-bold
     transition-colors
-     disabled:opacity-50
-      disabled:cursor-not-allowed 
-      cursor-pointer`
+      `
 
   const appliedVariant = disabled ? 'disabled' : variant
 
   const variantStyle = {
-    primary: 'bg-primary  text-gray-50 hover:bg-primary-hover ',
-    disabled: 'bg-gray-300 text-gray-50 text-gray-50 ',
+    primary: 'cursor-pointer bg-primary  text-gray-50 hover:bg-primary-hover ',
+    disabled: ' opacity-50 cursor-not-allowed bg-gray-300 text-gray-50 ',
+    update:
+      'cursor-pointer border border-solid border-red-800 text-primary bg-gray-50 ',
   }
 
   return (
