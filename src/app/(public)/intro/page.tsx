@@ -9,7 +9,7 @@ export default function IntroPage() {
   }
 
   return (
-    <div className="flex h-screen w-full flex-col items-center bg-[#F3E7E9] pt-35 lg:justify-center lg:pt-0">
+    <div className="flex h-screen w-full flex-col items-center overflow-hidden bg-[#F3E7E9] pt-35 lg:justify-center lg:pt-0">
       <h1 className="sr-only">인트로 페이지</h1>
       <h2
         className={`color-gray-900 text-title-md lg:text-title-lg ${styles.content}`}
