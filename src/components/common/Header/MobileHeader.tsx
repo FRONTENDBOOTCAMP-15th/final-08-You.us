@@ -33,7 +33,13 @@ export default function MobileHeader({
       </button>
 
       <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-        <Image src="/icons/LOGO.svg" alt="You,Us 로고" className="h-8 w-auto" />
+        <Image
+          src="/icons/LOGO.svg"
+          alt="You,Us 로고"
+          width={120}
+          height={32}
+          className="h-8 w-auto"
+        />
       </Link>
 
       <nav aria-label="빠른 메뉴">
@@ -43,6 +49,8 @@ export default function MobileHeader({
               <Image
                 src="/icons/User.svg"
                 alt="마이페이지"
+                width={120}
+                height={32}
                 className="h-8 w-auto"
               />
             </Link>
@@ -52,6 +60,8 @@ export default function MobileHeader({
               <Image
                 src="/icons/Basket.svg"
                 alt="장바구니"
+                width={120}
+                height={32}
                 className="h-8 w-auto"
               />
             </Link>

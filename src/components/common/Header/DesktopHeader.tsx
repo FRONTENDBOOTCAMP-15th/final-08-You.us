@@ -18,6 +18,8 @@ export default function DesktopHeader() {
             <Image
               src="/icons/LOGO.svg"
               alt="You,Us 로고"
+              width={120}
+              height={32}
               className="h-10 w-auto"
             />
           </Link>
@@ -26,7 +28,7 @@ export default function DesktopHeader() {
             variant="primary"
             className="flex h-10 items-center gap-2 px-4 text-sm leading-none whitespace-nowrap"
           >
-            <Image src="/icons/AiButton.svg" alt="" />
+            <Image src="/icons/AiButton.svg" width={9} height={15} alt="" />
             AI 추천받기
           </Button>
 
