@@ -30,6 +30,8 @@ export default function DesktopCategoryDropdown() {
               <Image
                 src="/icons/User.svg"
                 alt="마이페이지"
+                width={120}
+                height={32}
                 className="h-10 w-auto"
               />
             </Link>
@@ -39,6 +41,8 @@ export default function DesktopCategoryDropdown() {
               <Image
                 src="/icons/Basket.svg"
                 alt="장바구니"
+                width={120}
+                height={32}
                 className="h-10 w-auto"
               />
             </Link>
