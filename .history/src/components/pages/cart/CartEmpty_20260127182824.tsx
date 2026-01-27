@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/common/Button'
@@ -13,7 +11,7 @@ export default function CartEmpty() {
       <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] ml-[25px] lg:mt-[105px] lg:ml-[225px]">
         장바구니
       </h1>
-      <div className="flex min-h-screen items-center justify-center py-16">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 py-16">
         <section
           className="flex flex-col items-center px-4 text-center"
           aria-labelledby="cart-empty-title"
