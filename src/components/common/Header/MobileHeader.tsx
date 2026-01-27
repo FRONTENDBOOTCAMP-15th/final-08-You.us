@@ -5,7 +5,10 @@ interface MobileHeaderProps {
   isOpen: boolean
 }
 
-export default function MobileHeader({ onMenuOpen, isOpen }: MobileHeaderProps) {
+export default function MobileHeader({
+  onMenuOpen,
+  isOpen,
+}: MobileHeaderProps) {
   return (
     <div className="relative flex h-20 min-w-[360px] items-center justify-between bg-gray-50 px-7">
       <button

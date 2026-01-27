@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import { extendTailwindMerge } from 'tailwind-merge'
 
-
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {

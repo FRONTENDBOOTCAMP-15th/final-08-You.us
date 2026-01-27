@@ -30,7 +30,7 @@
   /* Brand */
   --color-primary: #c93c4f; /* Main Red */
   --color-primary-hover: #9e3443; /* Hover Red */
-  --color-category: #FFF5F7;
+  --color-category: #fff5f7;
 
   /* State */
   --color-error: #dc2626;
@@ -99,8 +99,4 @@
   html {
     scroll-behavior: smooth;
   }
-
-
 }
-
-

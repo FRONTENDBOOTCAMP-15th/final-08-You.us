@@ -31,12 +31,15 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <header className="border-gray-200  pt-5">
+    <header className="border-gray-200 pt-5">
       <h1 className="sr-only">취향에 맞는 선물을 추천해주는 서비스</h1>
       <div className="w-full">
         {/* Mobile */}
         <div className="lg:hidden">
-          <MobileHeader onMenuOpen={() => setIsMobileMenuOpen(true)} isOpen={isMobileMenuOpen} />
+          <MobileHeader
+            onMenuOpen={() => setIsMobileMenuOpen(true)}
+            isOpen={isMobileMenuOpen}
+          />
           <MobileSidebar
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}

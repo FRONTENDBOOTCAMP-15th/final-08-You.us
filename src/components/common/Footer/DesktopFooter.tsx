@@ -59,7 +59,8 @@ export default function DesktopFooter() {
             <div className="mb-6 space-y-1 text-[10px] text-gray-500 lg:text-xs">
               <p>고객지원주소 : 서울특별시 마포구 일명플러스 2호</p>
               <p>
-                유어스(주) 사이트는 고객을 위한 정성을 다하며 응답하고있습니다 궁금한 사항은 고객지원센터에 연락주세요
+                유어스(주) 사이트는 고객을 위한 정성을 다하며 응답하고있습니다
+                궁금한 사항은 고객지원센터에 연락주세요
               </p>
             </div>
           </div>

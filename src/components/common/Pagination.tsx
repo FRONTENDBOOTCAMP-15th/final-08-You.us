@@ -7,15 +7,12 @@ interface paginationType {
   maxVisible?: number
 }
 
-
-
 const Pagination = ({
   currentPage = 1,
   totalPages = 10,
   onPageChange,
   maxVisible = 5, // 한번에 보여줄 페이지 수
 }: paginationType) => {
-  
   // 페이지 범위 계산
   const getPageNumbers = () => {
     const pages = []

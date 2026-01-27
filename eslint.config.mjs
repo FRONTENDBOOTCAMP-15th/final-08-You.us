@@ -1,19 +1,10 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import nextConfig from 'eslint-config-next'
 import prettierPlugin from 'eslint-plugin-prettier'
 import prettierConfig from 'eslint-config-prettier'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
-
-export default [
-  // 기본 Next.js + TypeScript 설정
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+const config = [
+  // Next.js 기본 설정 (flat config 형식)
+  ...nextConfig,
 
   // Prettier 연동
   {
@@ -29,3 +20,5 @@ export default [
   // Prettier 룰 무력화 (중복 방지)
   prettierConfig,
 ]
+
+export default config

@@ -29,8 +29,10 @@ export default function DesktopHeader() {
             AI 추천받기
           </Button>
 
-          <form className="relative mr-6 max-w-xl flex-1" role='search'>
-            <label htmlFor="desktop-search"className='sr-only'>상품목록 검색창</label>
+          <form className="relative mr-6 max-w-xl flex-1" role="search">
+            <label htmlFor="desktop-search" className="sr-only">
+              상품목록 검색창
+            </label>
             <input
               type="text"
               id="desktop-search"
@@ -66,15 +68,21 @@ export default function DesktopHeader() {
           </form>
         </div>
 
-       <nav aria-label="사용자 메뉴">
+        <nav aria-label="사용자 메뉴">
           <ul className="flex shrink-0 items-center gap-4 text-sm">
             <li>
-              <Link href="/login" className="text-gray-700 transition-colors hover:text-primary">
+              <Link
+                href="/login"
+                className="hover:text-primary text-gray-700 transition-colors"
+              >
                 로그인
               </Link>
             </li>
             <li>
-              <Link href="/signup" className="text-gray-700 transition-colors hover:text-primary">
+              <Link
+                href="/signup"
+                className="hover:text-primary text-gray-700 transition-colors"
+              >
                 회원가입
               </Link>
             </li>

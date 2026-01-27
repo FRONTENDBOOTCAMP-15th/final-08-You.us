@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
 
 // ProductCard.tsx
 interface ProductCardProps {
@@ -26,9 +26,7 @@ export default function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-2">
-        <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">
-          {name}
-        </h3>
+        <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">{name}</h3>
         <p className="text-body-md text-primary font-bold">{price}</p>
         <div className="flex shrink-0 items-center justify-between">
           <p className="text-gray-500">{rating}</p>
