@@ -11,7 +11,7 @@ export default function DesktopHeader() {
   return (
     <div className="px-10">
       {/* 상단 헤더 */}
-      <div className="flex h-20 items-center justify-between px-4">
+      <div className="flex h-32.5 items-center justify-between px-4">
         <div className="flex flex-1 items-center gap-6">
           <Link href="/" className="shrink-0">
             <img

@@ -39,28 +39,27 @@ export default function DesktopFooter() {
                 <span className="text-body-sm font-semibold text-gray-800">
                   COMPANY
                 </span>{' '}
-                (주)유앤어스 | 대표이사 : 소찬덕
+                COMPANY(주)유앤어스 | 대표이사 : 소혜림
               </div>
 
               <div>사업자등록번호: 105-813-5526</div>
 
-              <div>OWNER: 소찬덕 TEL: 070-4567-7868</div>
+              <div>OWNER: 소대표 TEL: 070-1234-5678</div>
 
-              <div>개인정보보호책임자 : 한철아</div>
+              <div>개인정보보호책임자 : 한정아</div>
 
               <div>
                 서울 마포구 강변북로 141 5층 5호 2동(목해동, 서울센터) |
-                고객센터번호 1577 분에
+                고객센터번호 1577 문의
               </div>
 
-              <div>통신판매 신고번호 - 김태경 (Vercell 해당자)</div>
+              <div>호스팅 사업자 - 김여경 (Vercell 책임자)</div>
             </div>
 
             <div className="mb-6 space-y-1 text-[10px] text-gray-500 lg:text-xs">
               <p>고객지원주소 : 서울특별시 마포구 일명플러스 2호</p>
               <p>
-                당일 공지사항에 있는 모 상품 정보는시간지역에 부 연절은 내외
-                적용하지만 보험다.
+                유어스(주) 사이트는 고객을 위한 정성을 다하며 응답하고있습니다 궁금한 사항은 고객지원센터에 연락주세요
               </p>
             </div>
           </div>
