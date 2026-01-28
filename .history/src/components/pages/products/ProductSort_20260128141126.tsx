@@ -2,7 +2,6 @@
 
 import Footer from '@/components/common/Footer/Footer'
 import Header from '@/components/common/Header/Header'
-import MoreButton from '@/components/common/MoreButton'
 import ProductCard from '@/components/common/ProductCard'
 import Link from 'next/link'
 
@@ -69,7 +68,7 @@ export default function ProductSort() {
   return (
     <>
       <Header />
-      <main className="w-full bg-gray-50 py-8">
+      <div className="w-full bg-gray-50 py-8">
         <div className="mx-auto max-w-[1500px] px-4">
           <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
             <ol className="text-body-sm flex items-center gap-1 text-gray-900">
@@ -117,13 +116,13 @@ export default function ProductSort() {
             <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
               평점많은순
             </button>
-            <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
+            <button className="text-body-md 0 cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
               리뷰많은순
             </button>
           </div>
 
           {/* 카테고리 제목 */}
-          <h1 className="text-title-sm font-pretendard mb-8 font-bold text-gray-900">
+          <h1 className="text-title-sm color-gray-900 font-pretendard mb-8 font-bold">
             화장품 카테고리
           </h1>
 
@@ -145,8 +144,7 @@ export default function ProductSort() {
             ))}
           </div>
         </div>
-        <MoreButton className="mx-auto mb-[150px]" />
-      </main>
+      </div>
       <Footer />
     </>
   )
