@@ -80,7 +80,7 @@ export default function ProductSort() {
               </Link>
             </li>
             <li aria-hidden="true">
-              <span className="text-gray-900">&gt;</span>
+              <span className="text-gray-400">&gt;</span>
             </li>
             <li>
               <Link
@@ -91,7 +91,7 @@ export default function ProductSort() {
               </Link>
             </li>
             <li aria-hidden="true">
-              <span className="text-gray-900">&gt;</span>
+              <span className="text-gray-300">&gt;</span>
             </li>
             <li>
               <span className="text-body-md text-gray-900" aria-current="page">
