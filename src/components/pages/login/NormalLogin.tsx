@@ -8,10 +8,16 @@ export default function NormalLogin({ handleLoginType }: LoginProps) {
   return (
     <div className="container mx-auto flex h-screen w-fit flex-col items-center justify-center">
       <h1 className="sr-only">로그인 페이지</h1>
-      <Image src="/icons/LOGO.svg" className="mb-15 w-70" alt="유어스" />
+      <Image
+        src="/icons/LOGO.svg"
+        className="mb-15 w-70"
+        alt="유어스"
+        width={250}
+        height={81}
+      />
 
-      <Input placeholder="아이디" className="mb-button-y w-82.5" />
-      <Input placeholder="패스워드" className="w-82.5" />
+      <Input placeholder="아이디" className="mb-button-y w-75 lg:w-82.5" />
+      <Input placeholder="패스워드" className="w-75 lg:w-82.5" />
       <div className="mt-2.5 flex w-full items-center justify-between">
         <div className="flex items-center">
           <input

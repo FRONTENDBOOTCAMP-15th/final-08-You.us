@@ -19,7 +19,7 @@ export default function Input({
         className={`rounded-[10px] border px-3 py-2 focus:outline-none ${
           error
             ? 'border-red-500 placeholder-red-500 focus:ring-red-500'
-            : 'border-gray-300 placeholder-gray-400 focus:border-blue-500 focus:placeholder-blue-500 focus:ring-2 focus:ring-blue-500'
+            : 'focus:ring-0.8 border-gray-300 placeholder-gray-400 focus:border-gray-900 focus:placeholder-gray-900 focus:ring-gray-900'
         } read-only:cursor-not-allowed read-only:bg-gray-200 read-only:text-gray-400 read-only:placeholder-gray-400 read-only:focus:border-gray-300 read-only:focus:ring-0 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-300 disabled:placeholder-gray-400 disabled:focus:border-gray-300 disabled:focus:ring-0 ${className} `}
         {...props}
       />
