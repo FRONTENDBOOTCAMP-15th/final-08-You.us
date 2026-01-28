@@ -20,6 +20,8 @@ export default function IntroPage() {
       <Image
         src="/icons/LOGO.svg"
         className={`w-72.5 lg:w-112.5 ${styles.logo}`}
+        width="450"
+        height="146"
         alt="유어스"
       />
       <div className={`mt-6 flex flex-col items-center ${styles.content}`}>
