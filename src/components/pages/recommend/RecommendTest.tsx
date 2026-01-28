@@ -19,8 +19,10 @@ export default function RecommendTest({ step, questions, onDone }: Props) {
 
   return (
     <>
-      <h2 className="text-title-lg mt-15 text-gray-900">
-        AI에게 선물에 대해 말해주세요!
+      <h2 className="lg:text-title-lg mt-[5vh] px-4 text-center text-[32px] leading-tight font-bold text-gray-900 sm:text-[36px]">
+        AI에게&nbsp;
+        <br className="lg:hidden" />
+        선물에 대해 말해주세요!
       </h2>
       <QuestionBox
         key={step}

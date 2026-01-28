@@ -40,7 +40,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   // 기본 버튼 색상/크기 클래스
-  const baseStyles = `px-[var(--spacing-button-x)] py-[0.1rem] font-pretendard rounded-lg font-bold transition-colors `
+  const baseStyles = `px-[var(--spacing-button-x)] py-[var(--spacing-button-y)] font-pretendard rounded-lg font-bold transition-colors `
 
   const appliedVariant = disabled ? 'disabled' : variant
 

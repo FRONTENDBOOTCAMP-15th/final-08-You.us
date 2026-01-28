@@ -32,7 +32,7 @@ export default function QuestionBox({
   return (
     <div
       className={[
-        'card border-primary mt-15 h-100 w-135 overflow-hidden rounded-[40px] border bg-gray-50',
+        'mt-[5vh] w-[calc(100%-2rem)] sm:w-[90%] md:w-[85%] lg:w-135 lg:max-w-135',
         'transition duration-800 ease-out',
         enter ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
       ].join(' ')}
@@ -41,19 +41,27 @@ export default function QuestionBox({
         onSubmit={(e) => {
           e.preventDefault()
           onDone(value)
-          setValue('') // 다음 step에서 key로 리셋되긴 하지만 안전하게
+          setValue('')
         }}
         autoComplete="off"
+        className="flex flex-col items-center gap-5 lg:gap-0"
       >
-        <fieldset className="flex flex-col items-center">
+        <fieldset className="lg:card lg:border-primary flex w-full flex-col items-center gap-5 lg:gap-0 lg:overflow-hidden lg:rounded-[40px] lg:border lg:bg-gray-50">
           <legend className="sr-only">선물 추천 질문</legend>
 
-          <h2 className="bg-primary text-body-lg flex h-32 w-full items-center justify-center font-bold text-gray-50">
-            {question}
-          </h2>
+          <div className="bg-primary flex w-full flex-col items-center justify-center rounded-2xl px-6 py-5 sm:rounded-3xl sm:px-8 sm:py-6 lg:h-32 lg:rounded-none lg:py-0">
+            <h2 className="text-body-lg text-center font-bold text-gray-50">
+              {question}
+            </h2>
+            {example && (
+              <h3 className="text-body-sm mt-2 text-center font-normal text-gray-50 lg:hidden">
+                {example}
+              </h3>
+            )}
+          </div>
 
           {example && (
-            <h3 className="text-body-md text-gray-90 my-8.75 font-bold">
+            <h3 className="text-body-md text-gray-90 hidden px-4 text-center font-bold lg:my-8.75 lg:block">
               {example}
             </h3>
           )}
@@ -68,11 +76,14 @@ export default function QuestionBox({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="질문에 대한 답을 적어주세요."
-            className="border-primary text-primary w-82.5 rounded-[10px] border-2 bg-gray-50 p-2.5 outline-0"
+            className="border-primary text-primary w-full rounded-xl border-2 bg-gray-50 p-4 outline-0 lg:w-82.5 lg:rounded-[10px] lg:p-2.5"
             autoComplete="off"
           />
 
-          <Button type="submit" className="mt-7.5 leading-4">
+          <Button
+            type="submit"
+            className="w-full leading-4 lg:mt-7.5 lg:mb-10 lg:w-auto"
+          >
             입력
           </Button>
         </fieldset>
