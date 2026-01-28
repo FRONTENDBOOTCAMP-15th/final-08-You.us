@@ -1,6 +1,9 @@
 'use client'
 
 import Button from '@/components/common/Button'
+import Footer from '@/components/common/Footer/Footer'
+import Header from '@/components/common/Header/Header'
+import MoreButton from '@/components/common/MoreButton'
 import ProductList from '@/components/pages/recommend/ProductList'
 // import Footer from '@/components/common/Footer'
 // import Header from '@/components/common/Header'
@@ -33,8 +36,8 @@ export default function RecommendResultView({
   console.log('반환', JSON.stringify(result, null, 2))
 
   return (
-    <div className="bg-gray-50">
-      {/* <Header /> */}
+    <div className="mx-auto max-w-375 min-w-5xl bg-gray-50">
+      <Header />
       <section className="mx-auto mt-15 flex max-w-375 min-w-256.25 flex-col items-center gap-4 px-2.5">
         <h2 className="text-title-md">AI가 추천한 선물은 바로!!</h2>
         <h3 className="text-title-sm text-gary-900 w-fit border-b-3 border-gray-900">
@@ -46,9 +49,9 @@ export default function RecommendResultView({
           다시 하기
         </Button>
         <ProductList />
-        <Button className="mt-15 mb-8.75 leading-4">더보기</Button>
+        <MoreButton className="mt-15 mb-8.75">더보기</MoreButton>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

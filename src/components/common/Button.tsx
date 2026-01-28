@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { extendTailwindMerge } from 'tailwind-merge'
 
 const twMerge = extendTailwindMerge({
@@ -21,13 +21,9 @@ const twMerge = extendTailwindMerge({
   },
 })
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
-  onClick?: () => void
-  type?: 'button' | 'submit' | 'reset'
   variant?: 'primary' | 'disabled' | 'update'
-  className?: string
-  disabled?: boolean
 }
 
 export default function Button({
