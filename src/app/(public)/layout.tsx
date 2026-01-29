@@ -5,7 +5,7 @@ export default function PublicLayout({
 }) {
   return (
     <div className="min-h-screen">
-      <main>{children}</main>
+      <div>{children}</div>
     </div>
   )
 }

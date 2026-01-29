@@ -179,7 +179,7 @@ export default function Main() {
   ]
 
   return (
-    <div className="">
+    <main className="">
       {/* 메인 배너 스와이퍼 */}
       <div className="relative my-[43px] h-[280px] w-full lg:h-[500px]">
         <Swiper
@@ -289,6 +289,6 @@ export default function Main() {
           </div>
         ))}
       </div>
-    </div>
+    </main>
   )
 }
