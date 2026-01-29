@@ -92,7 +92,7 @@ export default function OrderList() {
   }
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul>
       {order.map((item, id) => (
         <OrderItem key={id} {...item} />
       ))}

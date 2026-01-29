@@ -27,8 +27,8 @@ export default function ImageGallery() {
       <div className="mx-auto max-w-80 overflow-hidden rounded-3xl bg-white shadow-xl lg:max-w-none">
         <div className="relative aspect-square">
           <Image
-            width={500}
-            height={500}
+            width={600}
+            height={600}
             src={images[currentImage]}
             alt="상품 이미지"
             className="h-full w-full object-cover"

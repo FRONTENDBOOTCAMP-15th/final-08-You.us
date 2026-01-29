@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function QuickMenu() {
+interface QuickMenuProps {
+  className?: string
+}
+
+export default function QuickMenu({ className }: QuickMenuProps) {
   return (
-    <div>
+    <div className={className}>
       {/* 빠른 메뉴 - 주문내역, 찜목록, 리뷰 등 링크 */}
       <nav className="hidden lg:flex lg:flex-col" aria-label="마이페이지 메뉴">
         <figure className="flex flex-col items-center gap-5 bg-white p-10">

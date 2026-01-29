@@ -1,19 +1,27 @@
 import Button from '@/components/common/Button'
-import Link from 'next/dist/client/link'
+import Link from 'next/link'
+
+interface OrderButtonsProps {
+  deliveryStatus: 'SHIPPING' | 'DELIVERED'
+  reviewStatus: 'NONE' | 'WRITTEN'
+}
 
 export default function OrderButtons({
   deliveryStatus,
   reviewStatus,
-}: {
-  deliveryStatus: 'SHIPPING' | 'DELIVERED'
-  reviewStatus: 'NONE' | 'WRITTEN'
-}) {
-  if (deliveryStatus === 'SHIPPING') {
-    return (
-      <div className="flex flex-col gap-2 p-2">
-        <Button aria-label="주문 상세 보기" className="text-body-sm">
-          주문상세
-        </Button>
+}: OrderButtonsProps) {
+  const isShipping = deliveryStatus === 'SHIPPING'
+
+  return (
+    <div className="flex flex-col gap-2 p-2 *:w-full lg:*:w-[162px]">
+      <Button
+        aria-label="주문 상세 보기"
+        className="text-body-sm py shrink-0 px-2"
+      >
+        주문상세
+      </Button>
+
+      {isShipping ? (
         <Button
           aria-label="내 배송 조회하기"
           variant="update"
@@ -21,21 +29,11 @@ export default function OrderButtons({
         >
           배송현황
         </Button>
-      </div>
-    )
-  }
-
-  return (
-    <div className="flex flex-col gap-2 p-2">
-      <Button aria-label="주문 상세 보기" className="text-body-sm">
-        주문상세
-      </Button>
-
-      {reviewStatus === 'NONE' ? (
+      ) : reviewStatus === 'NONE' ? (
         <Link href="/mypage/reviews/create">
           <Button
             aria-label="내 후기 쓰기"
-            className="text-body-sm px-auto bg-primary-hover hover:bg-primary md:px-[var(--spacing-button-x)]"
+            className="text-body-sm bg-primary-hover w-full"
           >
             후기쓰기
           </Button>
@@ -45,7 +43,7 @@ export default function OrderButtons({
           <Button
             aria-label="내 후기 보기"
             variant="update"
-            className="text-body-sm px-1 py-3.5 hover:bg-gray-200"
+            className="text-body-sm w-full"
           >
             내 후기 보기
           </Button>

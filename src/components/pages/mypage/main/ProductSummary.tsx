@@ -29,7 +29,7 @@ export default function ProductSummary({
         height={100}
         className="border-primary m-5 h-25 w-25 shrink-0 rounded-lg border-2 object-cover"
       />
-      <div className="flex flex-col gap-1 *:line-clamp-1 *:shrink-0 lg:gap-2">
+      <div className="leading-8 *:line-clamp-1">
         <p className="text-body-md line-clamp-1">{name}</p>
         <p className="text-body-md">{price}</p>
         <ReviewInfo

@@ -32,7 +32,7 @@ export default function OrderItem({
   return (
     <li>
       <OrderStatusHeader status={status} date={date} />
-      <div className="border-primary ml-3 flex flex-col border-b bg-white sm:flex-row sm:justify-between">
+      <div className="border-primary ml-3 flex flex-col lg:flex-row lg:justify-between">
         <ProductSummary
           key={id}
           imageAlt={imageAlt}
