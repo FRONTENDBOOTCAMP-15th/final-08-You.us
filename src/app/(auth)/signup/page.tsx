@@ -8,7 +8,7 @@ export default function SignupPage() {
       <form>
         <div className="mt-10 flex flex-col items-start">
           <label htmlFor="id" className="text-caption mb-2.5">
-            아이디
+            아이디<span className="text-red-500">*</span>
           </label>
           <Input
             name="id"
@@ -20,7 +20,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-2.5 flex flex-col items-start">
           <label htmlFor="password" className="text-caption mb-2.5">
-            패스워드
+            패스워드<span className="text-red-500">*</span>
           </label>
           <Input
             name="password"
@@ -32,7 +32,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-5 flex flex-col items-start">
           <label htmlFor="name" className="text-caption mb-2.5">
-            이름
+            이름<span className="text-red-500">*</span>
           </label>
           <Input
             name="name"
@@ -44,7 +44,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-2.5 flex flex-col items-start">
           <label htmlFor="email" className="text-caption mb-2.5">
-            이메일
+            이메일<span className="text-red-500">*</span>
           </label>
           <Input
             name="email"
@@ -56,7 +56,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-5 flex flex-col items-start">
           <label htmlFor="postalCode" className="text-caption mb-2.5">
-            우편번호
+            우편번호<span className="text-red-500">*</span>
           </label>
           <div className="flex flex-row items-center">
             <Input
@@ -72,7 +72,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-2.5 flex flex-col items-start">
           <label htmlFor="address" className="text-caption mb-2.5">
-            주소
+            주소<span className="text-red-500">*</span>
           </label>
           <Input
             name="address"
@@ -85,7 +85,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-2.5 flex flex-col items-start">
           <label htmlFor="detail-address" className="text-caption mb-2.5">
-            상세주소
+            상세주소<span className="text-red-500">*</span>
           </label>
           <Input
             name="detail-address"
@@ -97,7 +97,7 @@ export default function SignupPage() {
         </div>
         <div className="mt-5 flex flex-col items-start">
           <label htmlFor="phone" className="text-caption mb-2.5">
-            연락처
+            연락처<span className="text-red-500">*</span>
           </label>
           <Input
             name="phone"

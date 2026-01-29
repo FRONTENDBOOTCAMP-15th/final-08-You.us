@@ -2,7 +2,7 @@ import DesktopFooter from './DesktopFooter'
 
 export default function Footer() {
   return (
-    <footer className="relative border-t">
+    <footer className="relative border-t border-gray-200">
       {/* DeskTop */}
       {/* <div className="hidden lg:block"> */}
       <DesktopFooter />
