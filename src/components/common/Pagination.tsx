@@ -1,6 +1,6 @@
 interface paginationType {
-  currentPage: number
-  totalPages: number
+  currentPage?: number
+  totalPages?: number
   onPageChange: (page: number) => void
   maxVisible?: number
 }
