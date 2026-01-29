@@ -9,7 +9,7 @@ export default function DesktopFooter() {
         <div className="flex items-center gap-10">
           <div className="hidden rounded-xl border-2 border-gray-200 bg-white p-3.5 shadow-sm lg:block">
             <Image
-              src="./icons/LOGO.svg"
+              src="/icons/LOGO.svg"
               alt="로고 사진"
               width={135}
               height={40}
