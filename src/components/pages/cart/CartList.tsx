@@ -229,7 +229,7 @@ export default function CartList() {
                   </div>
                 </dl>
 
-                <Link href="/" className="mb-17 block w-full">
+                <Link href="/checkout" className="mb-17 block w-full">
                   <Button
                     variant="primary"
                     className="w-full px-16 py-2 tracking-tighter lg:py-4"
