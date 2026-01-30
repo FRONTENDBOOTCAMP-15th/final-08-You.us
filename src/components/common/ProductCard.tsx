@@ -20,7 +20,7 @@ export default function ProductCard({
   detailLinkText = '상세보기',
 }: ProductCardProps) {
   return (
-    <div className="flex h-full cursor-pointer flex-col rounded border border-gray-200 bg-white p-4">
+    <div className="flex h-full flex-col rounded border border-gray-200 bg-white p-4">
       <div className="relative mb-4 aspect-square">
         <Image src={image} alt={name} fill className="object-contain" />
       </div>
@@ -31,8 +31,8 @@ export default function ProductCard({
         <div className="flex shrink-0 items-center justify-between">
           <p className="text-gray-500">{rating}</p>
           <Link
-            href={`/products/${id}`} // 동적 라우팅
-            className="text-body-md text-primary shrink-0 font-bold"
+            href={`/products/food/vegetable/${id}`} // 동적 라우팅
+            className="text-body-md text-primary shrink-0 cursor-pointer font-bold"
           >
             {detailLinkText}
           </Link>
