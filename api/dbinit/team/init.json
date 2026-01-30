@@ -15,66 +15,76 @@
     }
   ],
 
-    "product": [
-      {
-        "seller_id": 2,
-        "price": 22800,
-        "shippingFees": 0,
-        "show": true,
-        "active": true,
-        "name": "캥거루 스턴트 독 로봇완구",
-        "quantity": 320,
-        "buyQuantity": 310,
-        "mainImages": [
-          {
-            "path": "uploadFiles/sample-dog.jpg",
-            "name": "sample-dog.jpg"
-          }
-        ],
-        "content": "<div class=\"product-detail\"><p>캥거루 스턴트 독 로봇완구 상세 설명</p></div>",
-        "extra": {
-          "isNew": true,
-          "isBest": true,
-          "category": ["PC03", "PC0301"],
-          "sort": 5
-        }
-      }
-    ],
-
-    "order": [
-      {
-        "user_id": 4,
-        "state": "OS020",
-        "products": [
-          {
-            "_id": 2,
-            "seller_id": 2,
-            "state": "OS020",
-            "name": "헬로카봇 스톰다이버",
-            "image": {
-              "path": "uploadFiles/sample-diver.jpg",
-              "name": "sample-diver.jpg"
-            },
-            "quantity": 2,
-            "price": 34520,
-            "review_id": 3
-          }
-        ],
-        "cost": {
-          "products": 34520,
-          "shippingFees": 2500,
-          "discount": {
-            "products": 0,
-            "shippingFees": 0
-          },
-          "total": 37020
+  "product": [
+    {
+      "price": 22800,
+      "shippingFees": 3000,
+      "show": true,
+      "active": true,
+      "name": "캥거루 스턴트 독 로봇완구",
+      "quantity": 320,
+      "buyQuantity": 310,
+      "mainImages": [
+        {
+          "path": "/products/sample-dog.jpg",
+          "name": "sample-dog.jpg"
         },
-        "address": {
-          "name": "회사",
-          "value": "서울시 강남구 신사동 234"
+        {
+          "path": "/products/sample-dog.jpg",
+          "name": "sample-dog.jpg"
+        },
+        {
+          "path": "/products/sample-dog.jpg",
+          "name": "sample-dog.jpg"
         }
+      ],
+      "content": "<div class=\"product-detail\"><p>캥거루 스턴트 독 로봇완구 상세 설명</p></div>",
+      "extra": {
+        "category": ["PC03", "PC0301"],
+        "sort": 1,
+        "tags": [
+          "parent",
+          "teacher",
+          "40s",
+          "50s",
+          "60plus",
+          "thanks",
+          "premium"
+        ]
+      },
+      "options": []
+    }
+  ],
+
+  "order": [
+    {
+      "user_id": 4,
+      "state": "OS020",
+      "products": [
+        {
+          "_id": 2,
+          "seller_id": 1,
+          "name": "헬로카봇 스톰다이버",
+          "image": {
+            "path": "/products/sample-diver.jpg",
+            "name": "sample-diver.jpg"
+          },
+          "quantity": 2,
+          "price": 34520,
+          "review_id": 1
+        }
+      ],
+      "cost": {
+        "products": 34520,
+        "shippingFees": 2500,
+        "total": 37020
+      },
+      "address": {
+        "streetAddress": "서울 종로구 계동길 37, 1층",
+        "postalCode": "03059"
       }
-    ],
+    }
+  ],
 
   "review": [
     {

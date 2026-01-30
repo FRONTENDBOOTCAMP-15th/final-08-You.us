@@ -70,7 +70,7 @@ export default function ProductSort() {
     <>
       <Header />
       <main className="w-full bg-gray-50 py-8">
-        <div className="mx-auto max-w-[1500px] px-4">
+        <div className="px-4">
           <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
             <ol className="text-body-sm flex items-center gap-1 text-gray-900">
               <li>

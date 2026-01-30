@@ -71,10 +71,11 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               placeholder="상품 검색"
               className="focus:border-primary h-10 w-full rounded-lg border border-gray-300 pr-4 pl-10 text-sm placeholder:text-gray-400 focus:outline-none"
             />
-            <button
-              type="submit"
+            <Link
+              href="/products"
               className="absolute top-1/2 left-3 -translate-y-1/2"
               aria-label="검색하기"
+              onClick={onClose}
             >
               <svg
                 className="h-5 w-5"
@@ -96,7 +97,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                   strokeLinecap="round"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </form>
 
@@ -149,7 +150,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
                   {categoryData[category].map((subCategory) => (
                     <li key={subCategory}>
                       <Link
-                        href={`/category/${category}/${subCategory}`}
+                        href={`/products`}
                         className="hover:text-primary block px-8 py-2 text-sm text-gray-700"
                         onClick={onClose}
                       >

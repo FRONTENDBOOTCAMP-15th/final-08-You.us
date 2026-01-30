@@ -30,7 +30,7 @@ export default function SmallCategory({
                 {categoryData[category]?.map((subCategory) => (
                   <li key={subCategory}>
                     <Link
-                      href={`/category/${category}/${subCategory}`}
+                      href={`/products`}
                       className="hover:text-primary before:bg-primary text-body-sm relative inline-block text-gray-700 transition-colors before:absolute before:top-1/2 before:-left-4 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:opacity-0 before:transition-opacity before:content-[''] hover:before:opacity-100"
                     >
                       {subCategory}

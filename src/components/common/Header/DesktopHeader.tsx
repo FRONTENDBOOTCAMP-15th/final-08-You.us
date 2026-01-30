@@ -24,13 +24,15 @@ export default function DesktopHeader() {
             />
           </Link>
 
-          <Button
-            variant="primary"
-            className="flex h-10 items-center gap-2 px-4 text-sm leading-none whitespace-nowrap"
-          >
-            <Image src="/icons/AiButton.svg" width={9} height={15} alt="" />
-            AI 추천받기
-          </Button>
+          <Link href="/recommend" className="shrink-0">
+            <Button
+              variant="primary"
+              className="flex h-10 items-center gap-2 px-4 text-sm leading-none whitespace-nowrap"
+            >
+              <Image src="/icons/AiButton.svg" width={9} height={15} alt="" />
+              AI 추천받기
+            </Button>
+          </Link>
 
           <form className="relative mr-6 max-w-xl flex-1" role="search">
             <label htmlFor="desktop-search" className="sr-only">
