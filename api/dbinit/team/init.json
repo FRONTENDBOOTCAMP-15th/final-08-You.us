@@ -5,89 +5,76 @@
       "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
       "name": "무지",
       "phone": "01011112222",
-      "address": "서울시 강남구 역삼동 123",
+      "address": {
+        "streetAddress": "서울 종로구 계동길 37, 1층",
+        "postalCode": "03059"
+      },
       "type": "admin",
       "loginType": "email",
-      "image": "uploadFiles/user-muzi.png",
-      "extra": {
-        "birthday": "03-23",
-        "membershipClass": "MC03",
-        "addressBook": [
+      "image": "uploadFiles/user-muzi.png"
+    }
+  ],
+
+    "product": [
+      {
+        "seller_id": 2,
+        "price": 22800,
+        "shippingFees": 0,
+        "show": true,
+        "active": true,
+        "name": "캥거루 스턴트 독 로봇완구",
+        "quantity": 320,
+        "buyQuantity": 310,
+        "mainImages": [
           {
-            "id": 1,
-            "name": "집",
-            "value": "서울시 강남구 역삼동 123"
-          },
-          {
-            "id": 2,
-            "name": "회사",
-            "value": "서울시 강남구 신사동 234"
+            "path": "uploadFiles/sample-dog.jpg",
+            "name": "sample-dog.jpg"
           }
-        ]
-      }
-    }
-  ],
-
-  "product": [
-    {
-      "seller_id": 2,
-      "price": 22800,
-      "shippingFees": 0,
-      "show": true,
-      "active": true,
-      "name": "캥거루 스턴트 독 로봇완구",
-      "quantity": 320,
-      "buyQuantity": 310,
-      "mainImages": [
-        {
-          "path": "uploadFiles/sample-dog.jpg",
-          "name": "sample-dog.jpg"
+        ],
+        "content": "<div class=\"product-detail\"><p>캥거루 스턴트 독 로봇완구 상세 설명</p></div>",
+        "extra": {
+          "isNew": true,
+          "isBest": true,
+          "category": ["PC03", "PC0301"],
+          "sort": 5
         }
-      ],
-      "content": "<div class=\"product-detail\"><p>캥거루 스턴트 독 로봇완구 상세 설명</p></div>",
-      "extra": {
-        "isNew": true,
-        "isBest": true,
-        "category": ["PC03", "PC0301"],
-        "sort": 5
       }
-    }
-  ],
+    ],
 
-  "order": [
-    {
-      "user_id": 4,
-      "state": "OS020",
-      "products": [
-        {
-          "_id": 2,
-          "seller_id": 2,
-          "state": "OS020",
-          "name": "헬로카봇 스톰다이버",
-          "image": {
-            "path": "uploadFiles/sample-diver.jpg",
-            "name": "sample-diver.jpg"
+    "order": [
+      {
+        "user_id": 4,
+        "state": "OS020",
+        "products": [
+          {
+            "_id": 2,
+            "seller_id": 2,
+            "state": "OS020",
+            "name": "헬로카봇 스톰다이버",
+            "image": {
+              "path": "uploadFiles/sample-diver.jpg",
+              "name": "sample-diver.jpg"
+            },
+            "quantity": 2,
+            "price": 34520,
+            "review_id": 3
+          }
+        ],
+        "cost": {
+          "products": 34520,
+          "shippingFees": 2500,
+          "discount": {
+            "products": 0,
+            "shippingFees": 0
           },
-          "quantity": 2,
-          "price": 34520,
-          "review_id": 3
-        }
-      ],
-      "cost": {
-        "products": 34520,
-        "shippingFees": 2500,
-        "discount": {
-          "products": 0,
-          "shippingFees": 0
+          "total": 37020
         },
-        "total": 37020
-      },
-      "address": {
-        "name": "회사",
-        "value": "서울시 강남구 신사동 234"
+        "address": {
+          "name": "회사",
+          "value": "서울시 강남구 신사동 234"
+        }
       }
-    }
-  ],
+    ],
 
   "review": [
     {
