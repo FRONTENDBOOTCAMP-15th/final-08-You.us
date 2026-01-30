@@ -29,7 +29,7 @@ export default function ReviewForm({
 }: ReviewFormProps) {
   const [rating, setRating] = useState(initialData?.rating || 0)
   const [content, setContent] = useState(initialData?.content || '')
-  const [images, setImages] = useState<string[]>(initialData?.images || [])
+  const [images] = useState<string[]>(initialData?.images || [])
 
   const title = mode === 'create' ? '후기 작성' : '후기 수정'
   const submitText = mode === 'create' ? '등록하기' : '수정하기'

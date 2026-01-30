@@ -5,7 +5,7 @@ import CartList from '@/components/pages/cart/CartList'
 import CartEmpty from '@/components/pages/cart/CartEmpty'
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState([1, 2, 3])
+  const [cartItems] = useState([1, 2, 3])
 
   const hasCartItems = cartItems.length > 0
 
