@@ -1,9 +1,11 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function ProductCard() {
   return (
     <li className="product-card p-button-y flex h-auto w-full flex-col rounded-[3%] border-2 border-[#E8E8E8] bg-white">
-      <a href="#" className="product-link">
+      <Link href="/products/food/vegetable/2" className="product-link">
         <figure className="product-image aspect-square w-full bg-gray-400"></figure>
         <h4 className="product-title mt-button-y text-[0.875rem]">
           프리미엄 과일 세트
@@ -20,7 +22,7 @@ export default function ProductCard() {
           </div>
           <span className="product-cta text-primary font-bold">상세보기</span>
         </div>
-      </a>
+      </Link>
     </li>
   )
 }
