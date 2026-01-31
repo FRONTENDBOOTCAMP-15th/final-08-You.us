@@ -2389,5 +2389,219 @@
       ]
     },
     "options": []
+  },
+  {
+    "price": 119000,
+    "shippingFees": 3000,
+    "show": true,
+    "active": true,
+    "name": "MADELEINE ROUND BAG IN BLACK 라운드 백",
+    "quantity": 350,
+    "buyQuantity": 400,
+    "mainImages": [
+      {
+        "path": "/products/PC050301-IMAGE-01.png",
+        "name": "PC050301-IMAGE-01.png"
+      },
+      {
+        "path": "/products/PC050301-IMAGE-02.png",
+        "name": "PC050301-IMAGE-02.png"
+      },
+      {
+        "path": "/products/PC050301-IMAGE-03.png",
+        "name": "PC050301-IMAGE-03.png"
+      }
+    ],
+    "content": "<p><strong>마뗑킴 시그니처 메탈 로고 마들렌 라운드백</strong>은 브랜드를 상징하는 메탈 로고 디테일이 돋보이는 미니멀한 라운드 쉐입의 가방으로, 나일론 100% 겉감과 폴리에스터 100% 안감으로 가볍고 실용적인 착용감을 제공하며 스트랩 길이 조절이 가능해 데일리 룩부터 다양한 스타일에 자연스럽게 어우러지는 아이템입니다.</p>",
+    "extra": {
+      "category": ["PC05", "PC0503"],
+      "sort": 1,
+      "tags": [
+        "friend",
+        "sibling",
+        "coworker",
+        "lover",
+        "20s",
+        "30s",
+        "40s",
+        "celebration",
+        "thanks",
+        "premium",
+        "practical"
+      ]
+    },
+    "options": ["블랙", "라이트 베이지", "핑크"]
+  },
+  {
+    "price": 598000,
+    "shippingFees": 3000,
+    "show": true,
+    "active": true,
+    "name": "HALOS Small Trapezoid Shoulder Bag 숄더 백",
+    "quantity": 150,
+    "buyQuantity": 200,
+    "mainImages": [
+      {
+        "path": "/products/PC050302-IMAGE-01.png",
+        "name": "PC050302-IMAGE-01.png"
+      },
+      {
+        "path": "/products/PC050302-IMAGE-02.png",
+        "name": "PC050302-IMAGE-02.png"
+      },
+      {
+        "path": "/products/PC050302-IMAGE-03.png",
+        "name": "PC050302-IMAGE-03.png"
+      }
+    ],
+    "content": "<p><strong>HALOS Small Trapezoid Shoulder Bag</strong>은 소가죽 100%로 제작된 비대칭 실루엣의 숄더백으로, 구조적인 트라페조이드 형태와 배색 디테일이 어우러져 감각적인 인상을 줍니다.</p><p>스트랩에는 <strong>EENK 로고 장식</strong>이 더해져 미니멀한 디자인에 은은한 포인트를 주며, 컴팩트한 사이즈지만 일상 소지품을 수납하기에 충분한 실용성을 갖추고 있습니다.</p><p>겉감은 탄탄한 소가죽, 안감은 나일론 100%로 마감되어 내구성과 사용 편의성을 모두 고려했으며, <u>메이드 인 코리아</u> 제품으로 완성도 높은 마감을 자랑합니다.</p><p>블랙과 아이보리의 컬러 조합은 다양한 스타일에 자연스럽게 어우러져 데일리 룩부터 포멀한 연출까지 폭넓게 활용할 수 있습니다.</p><p>사이즈는 W 23 × H 12.5/17 × D 15cm이며, 로고 장식은 W 4 × L 4cm로 디자인의 균형을 더합니다. 측정 방법과 모니터 환경에 따라 약간의 오차 및 색상 차이가 있을 수 있습니다.</p>",
+    "extra": {
+      "category": ["PC05", "PC0503"],
+      "sort": 1,
+      "tags": [
+        "friend",
+        "sibling",
+        "coworker",
+        "lover",
+        "20s",
+        "30s",
+        "40s",
+        "celebration",
+        "thanks",
+        "premium",
+        "practical"
+      ]
+    },
+    "options": []
+  },
+  {
+    "price": 198000,
+    "shippingFees": 3000,
+    "show": true,
+    "active": true,
+    "name": "리제너레이티드 토트 백 이클립스 미니 에크루 백",
+    "quantity": 150,
+    "buyQuantity": 200,
+    "mainImages": [
+      {
+        "path": "/products/PC050303-IMAGE-01.png",
+        "name": "PC050302-IMAGE-01.png"
+      },
+      {
+        "path": "/products/PC050303-IMAGE-02.png",
+        "name": "PC050303-IMAGE-02.png"
+      },
+      {
+        "path": "/products/PC050303-IMAGE-03.png",
+        "name": "PC050303-IMAGE-03.png"
+      }
+    ],
+    "content": "<p><strong>리제너레이티드 토트 백 이클립스 미니 에크루</strong>는 2017년 LVMH 프라이즈 우승자 마린 세르의 브랜드 철학을 담은 아이템으로, 데드 스톡 패브릭을 재활용한 패치워크 디자인으로 제작되어 각 제품마다 컬러와 그래픽이 다른 <u>ONE OF A KIND</u> 디자인을 지니며 미래지향적이고 실험적인 감성을 일상에 더해주는 유니크한 미니 토트 백입니다.</p>",
+    "extra": {
+      "category": ["PC05", "PC0503"],
+      "sort": 1,
+      "tags": [
+        "friend",
+        "sibling",
+        "coworker",
+        "lover",
+        "20s",
+        "30s",
+        "40s",
+        "celebration",
+        "thanks",
+        "premium",
+        "practical"
+      ]
+    },
+    "options": []
+  },
+  {
+    "price": 90000,
+    "shippingFees": 3000,
+    "show": true,
+    "active": true,
+    "name": "프라이탁 파우치 F08 DAN_01064",
+    "quantity": 150,
+    "buyQuantity": 200,
+    "mainImages": [
+      {
+        "path": "/products/PC050304-IMAGE-01.png",
+        "name": "PC050304-IMAGE-01.png"
+      },
+      {
+        "path": "/products/PC050304-IMAGE-02.png",
+        "name": "PC050304-IMAGE-02.png"
+      },
+      {
+        "path": "/products/PC050304-IMAGE-03.png",
+        "name": "PC050304-IMAGE-03.png"
+      }
+    ],
+    "content": "<p><strong>블루 프라이탁 단 파우치</strong>는 서류는 물론 다양한 크기의 소지품을 넉넉하게 수납할 수 있는 A4 사이즈 파우치로, 프라이탁 특유의 견고한 소재와 심플한 디자인이 어우러져 데일리 클러치 백이나 정리용 파우치로 실용적으로 활용하기 좋은 아이템입니다.</p>",
+    "extra": {
+      "category": ["PC05", "PC0503"],
+      "sort": 1,
+      "tags": [
+        "friend",
+        "sibling",
+        "coworker",
+        "lover",
+        "teen",
+        "20s",
+        "30s",
+        "celebration",
+        "thanks",
+        "birthday",
+        "cute",
+        "light",
+        "practical"
+      ]
+    },
+    "options": []
+  },
+  {
+    "price": 74800,
+    "shippingFees": 3000,
+    "show": true,
+    "active": true,
+    "name": "Cosmetics Pouch 헬로우 키티 파우치 블루",
+    "quantity": 250,
+    "buyQuantity": 300,
+    "mainImages": [
+      {
+        "path": "/products/PC050305-IMAGE-01.png",
+        "name": "PC050305-IMAGE-01.png"
+      },
+      {
+        "path": "/products/PC050305-IMAGE-02.png",
+        "name": "PC050305-IMAGE-02.png"
+      },
+      {
+        "path": "/products/PC050305-IMAGE-03.png",
+        "name": "PC050305-IMAGE-03.png"
+      }
+    ],
+    "content": "<p><strong>Cosmetics Pouch Hello Kitty Blue</strong>는 산뜻한 블루 컬러에 헬로키티 모티브를 더한 파우치로, 메이크업 제품이나 작은 소지품을 깔끔하게 수납할 수 있으며 가볍고 컴팩트한 사이즈로 데일리 파우치부터 여행용 파우치까지 폭넓게 활용하기 좋은 아이템입니다.</p>",
+    "extra": {
+      "category": ["PC05", "PC0503"],
+      "sort": 1,
+      "tags": [
+        "friend",
+        "sibling",
+        "coworker",
+        "lover",
+        "teen",
+        "20s",
+        "30s",
+        "celebration",
+        "thanks",
+        "birthday",
+        "cute",
+        "light",
+        "practical"
+      ]
+    },
+    "options": []
   }
 ]
