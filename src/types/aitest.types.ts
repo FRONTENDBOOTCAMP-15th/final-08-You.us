@@ -13,7 +13,13 @@ export type Answer = {
 // AI Gift Recommend Types
 // =========================
 
-export type Recipient = 'parent' | 'teacher' | 'lover' | 'friend' | 'coworker'
+export type Recipient =
+  | 'parent'
+  | 'teacher'
+  | 'lover'
+  | 'friend'
+  | 'coworker'
+  | 'child'
 
 export type AgeGroup =
   | 'child'

@@ -14,7 +14,7 @@ ${joined}
 
 [출력 스키마]
 {
-  "recipient": "parent|teacher|lover|friend|coworker|sibling",
+  "recipient": "parent|teacher|lover|friend|coworker|sibling|child",
   "ageGroup": "child|teen|20s|30s|40s|50s|60plus",
   "occasion": "birthday|thanks|anniversary|holiday|housewarming|celebration",
   "priceRange": { "min": number, "max": number | null },
@@ -32,6 +32,8 @@ ${joined}
 - parent: 부모님/엄마/아빠/어머니/아버지/부모님 친구/친구 부모님/어른/어르신
 ※ 부모 세대 및 연장자만 해당. 형제자매·사촌은 포함하지 않음
 - sibling: 형/누나/오빠/언니/남동생/여동생/형제/자매/사촌/사촌형/사촌누나/사촌오빠/사촌언니/사촌동생/사촌형제
+- child: 자식/아들/딸/아이/어린이/유아/초등학생/조카
+※ 보호자 입장에서 선물을 주는 '어린 상대' 전용
 - teacher: 선생님/교수님/강사/튜터/코치
 - lover: 남친/여친/연인/남편/아내/배우자/커플/우리(연인 맥락), 화자 본인의 연인만 해당.
 (남친, 여친, 내 남자친구, 내 여자친구, 연인, 남편, 아내, 배우자, 커플)
@@ -89,7 +91,8 @@ ${joined}
 
 [style 매핑 규칙(우선순위)]
 1) light: 가벼운/부담 없는/간단한
-2) cute: 귀여운/아기자기/예쁜/디자인
+2) cute: 귀여운/아기자기/예쁜/디자인/힙한/힙함/트렌디/트렌디한/핫한/감각적인/유니크한
+※ '힙한'은 기본적으로 premium이 아니라 cute로 강제 매핑한다.
 3) emotional: 정성/감동/의미/마음
 4) premium: 고급/특별/좋은 걸로/브랜드/퀄리티
 5) 그 외 전부 practical(실용 포함)
@@ -100,9 +103,9 @@ ${joined}
 
 // 타입 체크용(선택)
 export const _promptContractExample: RecommendTags = {
-  recipient: 'parent',
-  ageGroup: '50s',
+  recipient: 'child',
+  ageGroup: 'teen',
   occasion: 'birthday',
   priceRange: { min: 30000, max: 39999 },
-  style: 'practical',
+  style: 'cute',
 }
