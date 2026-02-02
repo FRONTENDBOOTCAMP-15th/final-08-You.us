@@ -2,8 +2,10 @@ import Link from 'next/link'
 import { categories, categoryData } from './Header'
 import SmallCategory from './SmallCategory'
 import Image from 'next/image'
+import useUserStore from '@/lib/zustand/auth/userStore'
 
 export default function DesktopCategoryDropdown() {
+  const { user } = useUserStore()
   return (
     <nav aria-label="상품 카테고리" className="relative border-gray-200">
       <div className="flex justify-between px-4">
@@ -27,13 +29,23 @@ export default function DesktopCategoryDropdown() {
         <ul className="flex gap-6" aria-label="빠른 메뉴">
           <li>
             <Link href="/mypage" className="block">
-              <Image
-                src="/icons/User.svg"
-                alt="마이페이지"
-                width={120}
-                height={32}
-                className="h-10 w-auto"
-              />
+              {user ? (
+                <Image
+                  src="/icons/MyPage.svg"
+                  alt="마이페이지"
+                  width={120}
+                  height={32}
+                  className="h-10 w-auto"
+                />
+              ) : (
+                <Image
+                  src="/icons/User.svg"
+                  alt="마이페이지 비활성화"
+                  width={120}
+                  height={32}
+                  className="h-10 w-auto"
+                />
+              )}
             </Link>
           </li>
           <li>
