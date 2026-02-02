@@ -78,7 +78,7 @@ export async function login(
 
   try {
     // 로그인 API 호출
-    res = await fetch(`${API_URL}/users/login?expiresIn=30s`, {
+    res = await fetch(`${API_URL}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
