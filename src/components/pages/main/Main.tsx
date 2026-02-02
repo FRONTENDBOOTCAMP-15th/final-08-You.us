@@ -8,175 +8,11 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-fade' // Fade CSS 추가!
 import ProductCard from '@/components/common/ProductCard'
 import SectionHeader from '@/components/common/SectionHeaderProps'
+import getCategorySeller from '@/lib/api/main/main'
+import { ProductResponse } from '@/types/main/ProductType'
 
 export default function Main() {
-  const productCategories = [
-    {
-      id: 1,
-      title: '식품 카테고리 인기 상품',
-      products: [
-        {
-          id: 1,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=1',
-        },
-        {
-          id: 2,
-          name: '상품명: [에스티 로더] 갈색병 세럼 75ml(+디럭스 5종 증정)',
-          price: '188,800원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=2',
-        },
-        {
-          id: 3,
-          name: '[산타마리아노벨라] 프리지아 바디워시&바디로션 기프트 세트',
-          price: '139,650원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=3',
-        },
-        {
-          id: 4,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=4',
-        },
-        {
-          id: 5,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=4',
-        },
-        {
-          id: 6,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=4',
-        },
-        {
-          id: 7,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=9',
-        },
-        {
-          id: 8,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=9',
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: '뷰티 카테고리 인기 상품',
-      products: [
-        {
-          id: 5,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=5',
-        },
-        {
-          id: 6,
-          name: '상품명: [에스티 로더] 갈색병 세럼 75ml(+디럭스 5종 증정)',
-          price: '188,800원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=6',
-        },
-        {
-          id: 7,
-          name: '[산타마리아노벨라] 프리지아 바디워시&바디로션 기프트 세트',
-          price: '139,650원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=7',
-        },
-        {
-          id: 8,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=8',
-        },
-        {
-          id: 9,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=9',
-        },
-        {
-          id: 10,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=9',
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: '생활용품 카테고리 인기 상품',
-      products: [
-        {
-          id: 9,
-          name: '[설화수] New 자음 2종 세트 (자음수EX, 자음유액EX)',
-          price: '135,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=9',
-        },
-        {
-          id: 10,
-          name: '상품명: [에스티 로더] 갈색병 세럼 75ml(+디럭스 5종 증정)',
-          price: '188,800원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=10',
-        },
-        {
-          id: 11,
-          name: '[산타마리아노벨라] 프리지아 바디워시&바디로션 기프트 세트',
-          price: '139,650원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=11',
-        },
-        {
-          id: 12,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=12',
-        },
-        {
-          id: 13,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=12',
-        },
-        {
-          id: 14,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=12',
-        },
-        {
-          id: 15,
-          name: '[페라가모] 세뇨리나 미스테리오사 EDP 향수 30ml',
-          price: '51,000원',
-          rating: '★ 5.0 (10)',
-          image: 'https://picsum.photos/400/400?random=12',
-        },
-      ],
-    },
-  ]
+  const productCategories = getCategorySeller('식품')
 
   return (
     <main className="">
@@ -242,19 +78,19 @@ export default function Main() {
 
       <div className="mx-auto max-w-[1500px] px-4 py-8 lg:mb-[60px]">
         {/* 카테고리별 상품 섹션 반복 */}
-        {productCategories.map((category) => (
-          <div key={category.id} className="mb-12 lg:mb-16">
+        {productCategories.map((category: ProductResponse) => (
+          <div key={category._id} className="mb-12 lg:mb-16">
             <div className="mb-6 lg:mb-13">
               <SectionHeader title={category.title} id={category.id} />
             </div>
 
             {/* 모바일 */}
             <div className="grid grid-cols-2 grid-rows-2 gap-4 lg:hidden">
-              {category.products.slice(0, 4).map((product) => (
+              {category.products.slice(0, 4).map((product, index) => (
                 <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  image={product.image}
+                  key={product._id}
+                  id={product._id}
+                  image={product.mainImages[index]}
                   name={product.name}
                   price={product.price}
                   rating={product.rating}
