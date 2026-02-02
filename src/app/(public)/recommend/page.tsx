@@ -87,7 +87,7 @@ export default function RecommendPage() {
           throw new Error('API_ERROR')
         }
 
-        const data = (await res.json()) as unknown
+        const data = await res.json()
 
         // ✅ 결과 shape 방어: 반드시 { tags: ... } 이어야만 성공 처리
         if (!data || typeof data !== 'object' || !('tags' in data)) {
