@@ -1,3 +1,4 @@
+import useUserStore from '@/lib/zustand/auth/userStore'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,6 +11,7 @@ export default function MobileHeader({
   onMenuOpen,
   isOpen,
 }: MobileHeaderProps) {
+  const { user } = useUserStore()
   return (
     <div className="relative flex h-20 min-w-[360px] items-center justify-between bg-gray-50 px-7">
       <button
@@ -46,13 +48,23 @@ export default function MobileHeader({
         <ul className="flex gap-4">
           <li>
             <Link href="/mypage">
-              <Image
-                src="/icons/User.svg"
-                alt="마이페이지"
-                width={120}
-                height={32}
-                className="h-8 w-auto"
-              />
+              {user ? (
+                <Image
+                  src="/icons/MyPage.svg"
+                  alt="마이페이지"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+              ) : (
+                <Image
+                  src="/icons/User.svg"
+                  alt="마이페이지"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+              )}
             </Link>
           </li>
           <li>

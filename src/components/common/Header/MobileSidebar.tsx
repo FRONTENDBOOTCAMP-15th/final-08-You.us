@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { categories, categoryData } from './Header'
+import useUserStore from '@/lib/zustand/auth/userStore'
 
 interface MobileSidebarProps {
   isOpen: boolean
@@ -11,7 +12,21 @@ interface MobileSidebarProps {
 
 export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const [openCategory, setOpenCategory] = useState<string | null>(null)
+  const { user, resetUser } = useUserStore()
 
+  const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    // 1. Zustand store 초기화
+    resetUser()
+
+    // 2. localStorage 정리
+    localStorage.removeItem('refreshToken')
+
+    // 3. sessionStorage 정리 (네이버 state)
+    sessionStorage.removeItem('naver_state')
+
+    alert('로그아웃 되었습니다.')
+  }
   const toggleCategory = (category: string) => {
     setOpenCategory(openCategory === category ? null : category)
   }
@@ -165,20 +180,31 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         </nav>
 
         {/* 하단 링크 */}
-        <nav aria-label="사용자 메뉴" className="m-5.5">
-          <ul className="flex justify-end gap-5">
-            <li>
-              <Link href="/login" onClick={onClose}>
-                로그인
-              </Link>
-            </li>
-            <li>
-              <Link href="/signup" onClick={onClose}>
-                회원가입
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        {!user ? (
+          <nav aria-label="사용자 메뉴" className="m-5.5">
+            <ul className="flex justify-end gap-5">
+              <li>
+                <Link href="/login" onClick={onClose}>
+                  로그인
+                </Link>
+              </li>
+              <li>
+                <Link href="/signup" onClick={onClose}>
+                  회원가입
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        ) : (
+          <form onSubmit={handleLogout} className="flex justify-end gap-5">
+            <button
+              type="submit"
+              className="m-5.5 text-gray-700 transition-colors"
+            >
+              로그아웃
+            </button>
+          </form>
+        )}
       </aside>
     </>
   )

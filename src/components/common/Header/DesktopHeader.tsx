@@ -5,10 +5,25 @@ import Link from 'next/link'
 import Button from '../Button'
 import DesktopCategoryDropdown from './DesktopCategoryDropdown'
 import Image from 'next/image'
+import useUserStore from '@/lib/zustand/auth/userStore'
 
 export default function DesktopHeader() {
   const [searchQuery, setSearchQuery] = useState('')
+  const { user, resetUser } = useUserStore()
 
+  const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    // 1. Zustand store 초기화
+    resetUser()
+
+    // 2. localStorage 정리
+    localStorage.removeItem('refreshToken')
+
+    // 3. sessionStorage 정리 (네이버 state)
+    sessionStorage.removeItem('naver_state')
+
+    alert('로그아웃 되었습니다.')
+  }
   return (
     <div className="px-10">
       {/* 상단 헤더 */}
@@ -73,26 +88,37 @@ export default function DesktopHeader() {
           </form>
         </div>
 
-        <nav aria-label="사용자 메뉴">
-          <ul className="flex shrink-0 items-center gap-4 text-sm">
-            <li>
-              <Link
-                href="/login"
-                className="hover:text-primary text-gray-700 transition-colors"
-              >
-                로그인
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/signup"
-                className="hover:text-primary text-gray-700 transition-colors"
-              >
-                회원가입
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        {!user ? (
+          <nav aria-label="사용자 메뉴">
+            <ul className="flex shrink-0 items-center gap-4 text-sm">
+              <li>
+                <Link
+                  href="/login"
+                  className="hover:text-primary text-gray-700 transition-colors"
+                >
+                  로그인
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/signup"
+                  className="hover:text-primary text-gray-700 transition-colors"
+                >
+                  회원가입
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        ) : (
+          <form onSubmit={handleLogout}>
+            <button
+              type="submit"
+              className="hover:text-primary text-sm text-gray-700 transition-colors"
+            >
+              로그아웃
+            </button>
+          </form>
+        )}
       </div>
 
       {/* 카테고리 네비게이션 */}
