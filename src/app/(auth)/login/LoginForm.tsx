@@ -1,13 +1,13 @@
 import Button from '@/components/common/Button'
 import Input from '@/components/common/Input'
 import { login } from '@/lib/api/users'
+import { getNaverLoginUrl } from '@/lib/auth/naver'
 import useUserStore from '@/lib/zustand/auth/userStore'
-import { LoginProps } from '@/types/login.types'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useActionState, useEffect, useState } from 'react'
 
-export default function LoginForm({ handleLoginType }: LoginProps) {
+export default function LoginForm() {
   const [autoLogin, setAutoLogin] = useState(false)
   const setUser = useUserStore((state) => state.setUser)
   const setAutoLoginStore = useUserStore((state) => state.setAutoLogin)
@@ -43,6 +43,11 @@ export default function LoginForm({ handleLoginType }: LoginProps) {
     }
   }, [userState, router, redirect, setUser, setAutoLoginStore, autoLogin])
 
+  // 네이버 로그인 핸들러
+  const handleNaverLogin = () => {
+    const naverLoginUrl = getNaverLoginUrl()
+    window.location.href = naverLoginUrl
+  }
   return (
     <>
       {redirect && ( // 특정 페이지에서 끌려 왔을 경우
@@ -105,23 +110,20 @@ export default function LoginForm({ handleLoginType }: LoginProps) {
             </label>
           </div>
 
-          <button
-            type="button"
-            className="text-gray-900 underline"
-            onClick={handleLoginType}
-          >
-            소셜 로그인
-          </button>
+          <Link href="/signup" className="text-gray-900 underline">
+            회원가입
+          </Link>
         </div>
         <Button type="submit" className="mt-10 w-full" disabled={isPending}>
           로그인
         </Button>
-        <Link
-          className="bg-primary mt-button-y hover:bg-primary-hover px-button-x py-button-y w-full cursor-pointer rounded-lg text-center font-bold text-gray-50 transition-colors"
-          href="/signup"
+        <Button
+          onClick={handleNaverLogin}
+          disabled={isPending}
+          className="mt-button-y px-button-x py-button-y w-full cursor-pointer rounded-lg bg-[#03C75A] text-center font-bold text-gray-50 transition-colors hover:bg-[#02B350]"
         >
-          회원가입
-        </Link>
+          네이버 로그인
+        </Button>
       </form>
     </>
   )
