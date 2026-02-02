@@ -10,9 +10,19 @@ import useUserStore from '@/lib/zustand/auth/userStore'
 export default function DesktopHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const { user, resetUser } = useUserStore()
+
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    // 1. Zustand store 초기화
     resetUser()
+
+    // 2. localStorage 정리
+    localStorage.removeItem('refreshToken')
+
+    // 3. sessionStorage 정리 (네이버 state)
+    sessionStorage.removeItem('naver_state')
+
+    alert('로그아웃 되었습니다.')
   }
   return (
     <div className="px-10">

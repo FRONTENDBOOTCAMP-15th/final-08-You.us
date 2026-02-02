@@ -66,6 +66,7 @@ export default function LoginForm({ handleLoginType }: LoginProps) {
           type="email"
           autoComplete="email"
           name="email"
+          labelClassName="sr-only"
         />
         <p>{userState?.ok === 0 && userState.errors?.email?.msg}</p>
         <Input
@@ -75,6 +76,7 @@ export default function LoginForm({ handleLoginType }: LoginProps) {
           name="password"
           placeholder="패스워드"
           className="w-75 lg:w-82.5"
+          labelClassName="sr-only"
         />
         <div className="mt-2.5 flex w-full items-center justify-between">
           <div className="flex items-center">

@@ -16,7 +16,16 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
 
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    // 1. Zustand store 초기화
     resetUser()
+
+    // 2. localStorage 정리
+    localStorage.removeItem('refreshToken')
+
+    // 3. sessionStorage 정리 (네이버 state)
+    sessionStorage.removeItem('naver_state')
+
+    alert('로그아웃 되었습니다.')
   }
   const toggleCategory = (category: string) => {
     setOpenCategory(openCategory === category ? null : category)
