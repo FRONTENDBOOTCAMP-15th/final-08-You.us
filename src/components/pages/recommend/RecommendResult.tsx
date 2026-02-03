@@ -1,39 +1,40 @@
-'use client'
+'use client';
 
-import Button from '@/components/common/Button'
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
-import MoreButton from '@/components/common/MoreButton'
-import ProductList from '@/components/pages/recommend/ProductList'
+import Button from '@/components/common/Button';
+import Footer from '@/components/common/Footer/Footer';
+import Header from '@/components/common/Header/Header';
+import MoreButton from '@/components/common/MoreButton';
+import ProductList from '@/components/pages/recommend/ProductList';
 // import Footer from '@/components/common/Footer'
 // import Header from '@/components/common/Header'
 import type {
   Answer,
   RecommendResult as RecommendResultType,
-} from '@/types/aitest.types'
+} from '@/types/aitest.types';
 
 type Props = {
-  result: RecommendResultType
-  answers: Answer[]
-  onReset: () => void
-}
+  result: RecommendResultType;
+  answers: Answer[];
+  onReset: () => void;
+};
 
 export default function RecommendResultView({
   result,
   answers,
   onReset,
 }: Props) {
-  const a = (i: number) => answers[i]?.value?.trim() ?? ''
+  const a = (i: number) => answers[i]?.value?.trim() ?? '';
 
   // '선물' 단어 제거 + 공백 정리
-  const stripGiftWord = (text: string) => text.replace(/\s*선물\s*/g, '').trim()
+  const stripGiftWord = (text: string) =>
+    text.replace(/\s*선물\s*/g, '').trim();
 
   // 혹시라도 빈 값이면 렌더 자체를 안 하거나, 대체 문구
-  const isAllFilled = [0, 1, 2, 3, 4].every((i) => a(i))
-  if (!isAllFilled) return null
+  const isAllFilled = [0, 1, 2, 3, 4].every((i) => a(i));
+  if (!isAllFilled) return null;
 
-  console.log('대답', JSON.stringify(answers, null, 2))
-  console.log('반환', JSON.stringify(result, null, 2))
+  console.log('대답', JSON.stringify(answers, null, 2));
+  console.log('반환', JSON.stringify(result, null, 2));
 
   return (
     <div className="mx-auto max-w-375 min-w-5xl bg-gray-50">
@@ -53,5 +54,5 @@ export default function RecommendResultView({
       </section>
       <Footer />
     </div>
-  )
+  );
 }

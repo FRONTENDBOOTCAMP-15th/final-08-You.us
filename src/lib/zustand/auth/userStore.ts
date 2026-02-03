@@ -1,14 +1,14 @@
-import { User } from '@/types/user.types'
-import { create, StateCreator } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { User } from '@/types/user.types';
+import { create, StateCreator } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 // 로그인한 사용자 정보를 관리하는 스토어의 상태 인터페이스
 interface UserStoreState {
-  user: User | null
-  autoLogin: boolean
-  setUser: (user: User | null) => void
-  setAutoLogin: (autoLogin: boolean) => void
-  resetUser: () => void
+  user: User | null;
+  autoLogin: boolean;
+  setUser: (user: User | null) => void;
+  setAutoLogin: (autoLogin: boolean) => void;
+  resetUser: () => void;
 }
 
 // 로그인한 사용자 정보를 관리하는 스토어 생성
@@ -20,7 +20,7 @@ const UserStore: StateCreator<UserStoreState> = (set) => ({
   setUser: (user: User | null) => set({ user }),
   setAutoLogin: (autoLogin: boolean) => set({ autoLogin }),
   resetUser: () => set({ user: null, autoLogin: false }),
-})
+});
 
 // 스토리지를 사용하지 않을 경우
 // const useUserStore = create<UserStoreState>(UserStore);
@@ -31,5 +31,5 @@ const useUserStore = create<UserStoreState>()(
     name: 'user',
     storage: createJSONStorage(() => sessionStorage), // 기본은 localStorage
   }),
-)
-export default useUserStore
+);
+export default useUserStore;

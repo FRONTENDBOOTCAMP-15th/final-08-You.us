@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
@@ -13,10 +13,10 @@ import type {
 } from '@/types/aitest.types'
 
 export interface Product {
-  _id: string
-  name: string
-  price: number
-  mainImages: { path: string; name: string }[]
+  _id: string;
+  name: string;
+  price: number;
+  mainImages: { path: string; name: string }[];
   extra?: {
     tags?: string[]
     category?: string[]
@@ -77,10 +77,10 @@ export default function RecommendResultPage() {
       searchParams.ageGroup,
       searchParams.occasion,
       searchParams.style,
-    ].filter(Boolean)
+    ].filter(Boolean);
 
     const fetchProducts = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
 
       try {
         const productResult = await getRecommendProducts({
@@ -88,20 +88,20 @@ export default function RecommendResultPage() {
           minPrice: searchParams.minPrice,
           maxPrice: searchParams.maxPrice,
           limit: 100,
-        })
+        });
 
         if (productResult.ok) {
-          setProducts(productResult.items)
+          setProducts(productResult.items);
         } else {
-          alert(productResult.message)
+          alert(productResult.message);
         }
       } catch (error) {
-        console.error('상품 조회 오류:', error)
-        alert('상품을 불러오는데 실패했습니다.')
+        console.error('상품 조회 오류:', error);
+        alert('상품을 불러오는데 실패했습니다.');
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
     fetchProducts()
   }, [isAllFilled, searchParams])
@@ -119,7 +119,7 @@ export default function RecommendResultPage() {
     )
   }
 
-  if (!isAllFilled) return null
+  if (!isAllFilled) return null;
 
   const tags = [
     data.result.tags.target,
@@ -165,5 +165,5 @@ export default function RecommendResultPage() {
       </section>
       <Footer />
     </div>
-  )
+  );
 }

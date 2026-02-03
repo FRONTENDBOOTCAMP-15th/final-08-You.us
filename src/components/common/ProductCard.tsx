@@ -1,17 +1,17 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 // ProductCard.tsx
 interface ProductCardProps {
-  id: string | number
-  image: string
-  name: string
-  price: string
-  rating: number
-  replies: number
-  detailLinkText?: string
-  mainCategory: string
-  subCategory: string
+  id: string | number;
+  image: string;
+  name: string;
+  price: string;
+  rating: number;
+  replies: number;
+  detailLinkText?: string;
+  mainCategory: string;
+  subCategory: string;
 }
 
 export default function ProductCard({
@@ -47,5 +47,5 @@ export default function ProductCard({
         </div>
       </div>
     </div>
-  )
+  );
 }

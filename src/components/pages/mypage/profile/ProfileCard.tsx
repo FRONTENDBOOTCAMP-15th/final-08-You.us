@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export default function ProfileCard() {
   return (
@@ -28,5 +28,5 @@ export default function ProfileCard() {
         </p>
       </div>
     </div>
-  )
+  );
 }

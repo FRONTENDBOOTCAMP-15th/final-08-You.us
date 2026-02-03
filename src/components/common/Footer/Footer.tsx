@@ -1,6 +1,5 @@
-import Link from 'next/link'
-import Button from '../Button'
-import DesktopFooter from './DesktopFooter'
+import Link from 'next/link';
+import Button from '../Button';
 
 export default function Footer() {
   return (
@@ -110,7 +109,7 @@ export default function Footer() {
             <Button className="h-12.5">우체국 조회하기</Button>
           </Link>
         </div>
-        <div className="mb-6 border-t border-gray-200 pt-4 pb-1 text-center lg:mb-0">
+        <div className="mb-6 border-gray-200 pt-4 pb-1 text-center lg:mb-0">
           <p className="text-xs text-gray-500">
             Copyright © 2026{' '}
             <span className="font-semibold text-gray-700">you,Us</span> All
@@ -120,5 +119,5 @@ export default function Footer() {
       </div>
       <div className="bg-primary absolute right-0 bottom-0 left-0 h-6 lg:hidden"></div>
     </footer>
-  )
+  );
 }

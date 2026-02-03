@@ -1,5 +1,5 @@
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection'
-import OrderList from '@/components/pages/mypage/orders/OrderList'
+import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
+import OrderList from '@/components/pages/mypage/orders/OrderList';
 
 export default function OrdersPage() {
   return (
@@ -14,5 +14,5 @@ export default function OrdersPage() {
         </MyPageSection>
       </section>
     </main>
-  )
+  );
 }

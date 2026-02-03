@@ -1,8 +1,8 @@
-import { RecommendTags } from '@/types/aitest.types'
+import { RecommendTags } from '@/types/aitest.types';
 
 export function buildPrompt(answers: string[]) {
-  const safeAnswers = answers.map((a) => (a ?? '').toString().trim())
-  const joined = safeAnswers.map((a, i) => `${i + 1}. ${a}`).join('\n')
+  const safeAnswers = answers.map((a) => (a ?? '').toString().trim());
+  const joined = safeAnswers.map((a, i) => `${i + 1}. ${a}`).join('\n');
 
   return `
 너는 한국어 사용자 입력을 정해진 태그로 강제 매핑하는 분류기다.
@@ -98,7 +98,7 @@ ${joined}
 5) 그 외 전부 practical(실용 포함)
 
 이제 위 규칙에 따라 결과 JSON만 출력해라.
-`.trim()
+`.trim();
 }
 
 // 타입 체크용(선택)
@@ -108,4 +108,4 @@ export const _promptContractExample: RecommendTags = {
   occasion: 'birthday',
   priceRange: { min: 30000, max: 39999 },
   style: 'cute',
-}
+};

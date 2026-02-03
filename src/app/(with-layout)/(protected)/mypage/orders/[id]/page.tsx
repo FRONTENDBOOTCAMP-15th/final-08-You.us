@@ -1,14 +1,14 @@
-import Button from '@/components/common/Button'
-import Link from 'next/dist/client/link'
+import Button from '@/components/common/Button';
+import Link from 'next/dist/client/link';
 
 interface OrderDetailPageProps {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }
 
 export default async function OrderDetailPage({
   params,
 }: OrderDetailPageProps) {
-  const { id } = await params
+  const { id } = await params;
 
   return (
     <div className="min-h-[500px]">
@@ -25,5 +25,5 @@ export default async function OrderDetailPage({
         </Button>
       </Link>
     </div>
-  )
+  );
 }

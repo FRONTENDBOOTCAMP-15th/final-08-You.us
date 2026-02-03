@@ -1,33 +1,33 @@
-import Button from '@/components/common/Button'
-import Input from '@/components/common/Input'
-import { login } from '@/lib/api/users'
-import { getNaverLoginUrl } from '@/lib/auth/naver'
-import useUserStore from '@/lib/zustand/auth/userStore'
-import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useActionState, useEffect, useState } from 'react'
+import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
+import { login } from '@/lib/api/users';
+import { getNaverLoginUrl } from '@/lib/auth/naver';
+import useUserStore from '@/lib/zustand/auth/userStore';
+import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useActionState, useEffect, useState } from 'react';
 
 export default function LoginForm() {
-  const [autoLogin, setAutoLogin] = useState(false)
+  const [autoLogin, setAutoLogin] = useState(false);
   const [errors, setErrors] = useState<{
-    email?: string
-    password?: string
-  }>({})
+    email?: string;
+    password?: string;
+  }>({});
   const [touched, setTouched] = useState<{
-    email: boolean
-    password: boolean
+    email: boolean;
+    password: boolean;
   }>({
     email: false,
     password: false,
-  })
+  });
 
-  const setUser = useUserStore((state) => state.setUser)
-  const setAutoLoginStore = useUserStore((state) => state.setAutoLogin)
-  const [userState, formAction, isPending] = useActionState(login, null)
-  const router = useRouter()
-  const redirect = useSearchParams().get('redirect')
+  const setUser = useUserStore((state) => state.setUser);
+  const setAutoLoginStore = useUserStore((state) => state.setAutoLogin);
+  const [userState, formAction, isPending] = useActionState(login, null);
+  const router = useRouter();
+  const redirect = useSearchParams().get('redirect');
 
-  console.log(autoLogin)
+  console.log(autoLogin);
 
   useEffect(() => {
     if (userState?.ok) {
@@ -42,69 +42,69 @@ export default function LoginForm() {
           accessToken: userState.item.token?.accessToken || '',
           refreshToken: userState.item.token?.refreshToken || '',
         },
-      })
-      setAutoLoginStore(autoLogin)
+      });
+      setAutoLoginStore(autoLogin);
 
       if (autoLogin && userState.item.token?.refreshToken) {
-        localStorage.setItem('refreshToken', userState.item.token.refreshToken)
+        localStorage.setItem('refreshToken', userState.item.token.refreshToken);
       }
 
-      alert(`${userState.item.name}님 로그인이 완료되었습니다.`)
-      router.replace(redirect || '/')
+      alert(`${userState.item.name}님 로그인이 완료되었습니다.`);
+      router.replace(redirect || '/');
     }
-  }, [userState, router, redirect, setUser, setAutoLoginStore, autoLogin])
+  }, [userState, router, redirect, setUser, setAutoLoginStore, autoLogin]);
 
   const validateEmail = (email: string) => {
     if (!email) {
-      return '이메일을 입력해주세요.'
+      return '이메일을 입력해주세요.';
     }
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      return '올바른 이메일 형식이 아닙니다.'
+      return '올바른 이메일 형식이 아닙니다.';
     }
-    return ''
-  }
+    return '';
+  };
 
   const validatePassword = (password: string) => {
     if (!password) {
-      return '비밀번호를 입력해주세요.'
+      return '비밀번호를 입력해주세요.';
     }
     if (password.length < 6) {
-      return '비밀번호는 최소 6자 이상이어야 합니다.'
+      return '비밀번호는 최소 6자 이상이어야 합니다.';
     }
-    return ''
-  }
+    return '';
+  };
 
   const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setTouched((prev) => ({ ...prev, email: true }))
-    const error = validateEmail(e.target.value)
-    setErrors((prev) => ({ ...prev, email: error }))
-  }
+    setTouched((prev) => ({ ...prev, email: true }));
+    const error = validateEmail(e.target.value);
+    setErrors((prev) => ({ ...prev, email: error }));
+  };
 
   const handlePasswordBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setTouched((prev) => ({ ...prev, password: true }))
-    const error = validatePassword(e.target.value)
-    setErrors((prev) => ({ ...prev, password: error }))
-  }
+    setTouched((prev) => ({ ...prev, password: true }));
+    const error = validatePassword(e.target.value);
+    setErrors((prev) => ({ ...prev, password: error }));
+  };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (touched.email) {
-      const error = validateEmail(e.target.value)
-      setErrors((prev) => ({ ...prev, email: error }))
+      const error = validateEmail(e.target.value);
+      setErrors((prev) => ({ ...prev, email: error }));
     }
-  }
+  };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (touched.password) {
-      const error = validatePassword(e.target.value)
-      setErrors((prev) => ({ ...prev, password: error }))
+      const error = validatePassword(e.target.value);
+      setErrors((prev) => ({ ...prev, password: error }));
     }
-  }
+  };
 
   const handleNaverLogin = () => {
-    const naverLoginUrl = getNaverLoginUrl()
-    window.location.href = naverLoginUrl
-  }
+    const naverLoginUrl = getNaverLoginUrl();
+    window.location.href = naverLoginUrl;
+  };
 
   return (
     <form action={formAction} className="flex w-fit flex-col">
@@ -187,5 +187,5 @@ export default function LoginForm() {
         네이버 로그인
       </Button>
     </form>
-  )
+  );
 }

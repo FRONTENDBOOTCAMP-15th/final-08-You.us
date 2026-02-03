@@ -1,12 +1,12 @@
 import useUserStore from '@/lib/zustand/auth/userStore'
 import { ErrorRes } from '@/types/api.types'
 
-const API_SERVER = process.env.NEXT_PUBLIC_API_URL
-const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || ''
-const REFRESH_URL = '/auth/refresh'
+const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
+const REFRESH_URL = '/auth/refresh';
 
 interface FetchOptions extends RequestInit {
-  params?: Record<string, string>
+  params?: Record<string, string>;
 }
 
 export async function fetchClient<T>(
@@ -22,8 +22,8 @@ export async function fetchClient<T>(
   // URL 설정
   let fullUrl = isInternalApi ? url : `${API_SERVER}${url}`
   if (params) {
-    const searchParams = new URLSearchParams(params)
-    fullUrl += `?${searchParams.toString()}`
+    const searchParams = new URLSearchParams(params);
+    fullUrl += `?${searchParams.toString()}`;
   }
 
   // 기본 헤더 설정
@@ -38,7 +38,7 @@ export async function fetchClient<T>(
 
   // accessToken 추가 (refresh 요청이 아닐 때)
   if (user && url !== REFRESH_URL) {
-    headers.set('Authorization', `Bearer ${user.token?.accessToken}`)
+    headers.set('Authorization', `Bearer ${user.token?.accessToken}`);
   }
 
   let response: Response
@@ -58,24 +58,24 @@ export async function fetchClient<T>(
   if (response.status === 401 && !isInternalApi) {
     // refresh 요청 자체가 401이면 로그아웃
     if (url === REFRESH_URL) {
-      navigateLogin()
-      throw new Error('인증이 만료되었습니다.')
+      navigateLogin();
+      throw new Error('인증이 만료되었습니다.');
     }
 
     // 로그인 상태가 아니면 로그인 페이지로
     if (!user) {
-      navigateLogin()
-      throw new Error('로그인이 필요합니다.')
+      navigateLogin();
+      throw new Error('로그인이 필요합니다.');
     }
 
     try {
       // localStorage 또는 store의 refreshToken 사용
       const refreshToken =
-        localStorage.getItem('refreshToken') || user.token?.refreshToken
+        localStorage.getItem('refreshToken') || user.token?.refreshToken;
 
       if (!refreshToken) {
-        navigateLogin()
-        throw new Error('인증 정보가 없습니다.')
+        navigateLogin();
+        throw new Error('인증 정보가 없습니다.');
       }
 
       // 토큰 갱신 요청
@@ -87,10 +87,10 @@ export async function fetchClient<T>(
           'Client-Id': CLIENT_ID,
           Authorization: `Bearer ${refreshToken}`,
         },
-      })
+      });
 
       if (!refreshResponse.ok) {
-        throw new Error('토큰 갱신 실패')
+        throw new Error('토큰 갱신 실패');
       }
 
       const refreshData = await refreshResponse.json()
@@ -101,25 +101,25 @@ export async function fetchClient<T>(
       setUser({
         ...user,
         token: { accessToken, refreshToken: newRefreshToken },
-      })
+      });
 
       // 자동 로그인이었으면 localStorage도 업데이트
       if (localStorage.getItem('refreshToken')) {
-        localStorage.setItem('refreshToken', newRefreshToken)
+        localStorage.setItem('refreshToken', newRefreshToken);
       }
 
       // 새 accessToken으로 원래 요청 재시도
-      headers.set('Authorization', `Bearer ${accessToken}`)
+      headers.set('Authorization', `Bearer ${accessToken}`);
       response = await fetch(fullUrl, {
         ...fetchOptions,
         headers,
-      })
+      });
     } catch (refreshError) {
-      console.error('토큰 갱신 실패:', refreshError)
-      resetUser()
-      localStorage.removeItem('refreshToken')
-      navigateLogin()
-      throw refreshError
+      console.error('토큰 갱신 실패:', refreshError);
+      resetUser();
+      localStorage.removeItem('refreshToken');
+      navigateLogin();
+      throw refreshError;
     }
   }
 
@@ -133,11 +133,11 @@ function navigateLogin() {
 
   const gotoLogin = confirm(
     '로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?',
-  )
+  );
   if (gotoLogin) {
-    const currentPath = window.location.pathname
-    window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`
+    const currentPath = window.location.pathname;
+    window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;
   }
 }
 
-export default fetchClient
+export default fetchClient;

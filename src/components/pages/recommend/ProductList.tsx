@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import ProductCard from '@/components/pages/recommend/ProductCard'
+import ProductCard from '@/components/pages/recommend/ProductCard';
 
 interface Product {
   _id: string
@@ -35,5 +35,5 @@ export default function ProductList({ products }: ProductListProps) {
         />
       ))}
     </ul>
-  )
+  );
 }

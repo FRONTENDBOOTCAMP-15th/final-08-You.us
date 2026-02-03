@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
@@ -32,10 +32,10 @@ const QUESTIONS = [
     question: '어떤 선물을 하고 싶나요?',
     example: '(예시: 마음이 담긴 선물, 실용적인 선물, 가벼운 선물 등)',
   },
-] as const
+] as const;
 
 const GENERIC_ERROR_MESSAGE =
-  '추천 답변을 생성하던 중 오류가 발생했어요. 다시 시도해주세요.'
+  '추천 답변을 생성하던 중 오류가 발생했어요. 다시 시도해주세요.';
 
 export default function RecommendPage() {
   const router = useRouter()
@@ -48,7 +48,7 @@ export default function RecommendPage() {
   const [proceedAnyway, setProceedAnyway] = useState(false)
   const hasFetched = useRef(false)
 
-  const answerValues = answers.map((a) => a?.value ?? '')
+  const answerValues = answers.map((a) => a?.value ?? '');
 
   const warnings = step === null ? validateAnswers(answerValues) : []
 
@@ -79,10 +79,10 @@ export default function RecommendPage() {
         const data = await fetchClient('/api/recommend', {
           method: 'POST',
           body: JSON.stringify({ answers: answerValues }),
-        })
+        });
 
         if (!data || typeof data !== 'object' || !('tags' in data)) {
-          throw new Error('INVALID_RESULT')
+          throw new Error('INVALID_RESULT');
         }
 
         sessionStorage.setItem(
@@ -95,27 +95,27 @@ export default function RecommendPage() {
         setError(GENERIC_ERROR_MESSAGE)
         hasFetched.current = false
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
     run()
   }, [step, proceedAnyway, warnings.length, answers.length, isLoading])
 
   const handleDone = (value: string) => {
-    if (step === null) return
+    if (step === null) return;
 
-    const current = QUESTIONS[step]
-    if (!current) return
+    const current = QUESTIONS[step];
+    if (!current) return;
 
-    const trimmed = value.trim()
-    if (!trimmed) return
+    const trimmed = value.trim();
+    if (!trimmed) return;
 
     setAnswers((prev) => {
-      const next = [...prev]
-      next[step] = { question: current.question, value: trimmed }
-      return next
-    })
+      const next = [...prev];
+      next[step] = { question: current.question, value: trimmed };
+      return next;
+    });
 
     const isLast = step === QUESTIONS.length - 1
     setStep(isLast ? null : step + 1)
@@ -136,12 +136,12 @@ export default function RecommendPage() {
           <RecommendError message={GENERIC_ERROR_MESSAGE} onReset={resetAll} />
         )}
       </LogoLayout>
-    )
+    );
   }
 
   return (
     <LogoLayout>
       <RecommendTest step={step} questions={QUESTIONS} onDone={handleDone} />
     </LogoLayout>
-  )
+  );
 }

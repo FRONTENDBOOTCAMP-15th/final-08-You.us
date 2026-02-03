@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const LogoLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="flex min-h-screen w-full flex-col items-center bg-[#F3E7E9] px-4 pt-15 sm:px-6 sm:pt-10 lg:pt-[10vh]">
@@ -18,4 +18,4 @@ export const LogoLayout = ({ children }: { children: React.ReactNode }) => (
     </Link>
     {children}
   </div>
-)
+);

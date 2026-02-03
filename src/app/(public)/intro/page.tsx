@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import styles from '@/app/(public)/intro/page.module.css'
-import Image from 'next/image'
+import Link from 'next/link';
+import styles from '@/app/(public)/intro/page.module.css';
+import Image from 'next/image';
 
 export default function IntroPage() {
   const markVisited = () => {
-    document.cookie = 'hasVisited=true; path=/; max-age=31536000'
-  }
+    document.cookie = 'hasVisited=true; path=/; max-age=31536000';
+  };
 
   return (
     <div className="flex h-screen w-full flex-col items-center overflow-hidden bg-[#F3E7E9] pt-35 lg:justify-center lg:pt-0">
@@ -49,5 +49,5 @@ export default function IntroPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
