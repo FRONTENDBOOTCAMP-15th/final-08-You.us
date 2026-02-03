@@ -15,11 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="mx-auto max-w-[1500px] min-w-[360px]">
-        <Header />
-        <div>{children}</div>
-        <Footer />
-      </body>
+      <body className="mx-auto bg-gray-50">{children}</body>
     </html>
   )
 }
