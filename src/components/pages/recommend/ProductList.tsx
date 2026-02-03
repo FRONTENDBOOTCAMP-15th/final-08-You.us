@@ -3,24 +3,24 @@
 import ProductCard from '@/components/pages/recommend/ProductCard';
 
 interface Product {
-  _id: string
-  name: string
-  price: number
-  mainImages: { path: string; name: string }[]
+  _id: string;
+  name: string;
+  price: number;
+  mainImages: { path: string; name: string }[];
   extra?: {
-    tags?: string[]
-    category?: string[]
-  }
-  rating?: number
-  replies?: number
+    tags?: string[];
+    category?: string[];
+  };
+  rating?: number;
+  replies?: number;
 }
 
 interface ProductListProps {
-  products: Product[]
+  products: Product[];
 }
 
 export default function ProductList({ products }: ProductListProps) {
-  console.log('product', products)
+  console.log('product', products);
   return (
     <ul className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {products.map((product) => (

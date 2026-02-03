@@ -7100,7 +7100,7 @@
       "_id": "productCategory",
       "title": "상품 카테고리",
       "codes": [
-         {
+        {
           "sort": 1,
           "code": "PC00",
           "value": "전체",

@@ -1,16 +1,16 @@
 'use client';
 
-import { useEffect, useState, useMemo, useRef } from 'react'
-import { useRouter } from 'next/navigation'
-import Button from '@/components/common/Button'
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
-import ProductList from '@/components/pages/recommend/ProductList'
-import { getRecommendProducts } from '@/lib/api/recommend'
+import { useEffect, useState, useMemo, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import Button from '@/components/common/Button';
+import Footer from '@/components/common/Footer/Footer';
+import Header from '@/components/common/Header/Header';
+import ProductList from '@/components/pages/recommend/ProductList';
+import { getRecommendProducts } from '@/lib/api/recommend';
 import type {
   Answer,
   RecommendResult as RecommendResultType,
-} from '@/types/aitest.types'
+} from '@/types/aitest.types';
 
 export interface Product {
   _id: string;
@@ -18,45 +18,46 @@ export interface Product {
   price: number;
   mainImages: { path: string; name: string }[];
   extra?: {
-    tags?: string[]
-    category?: string[]
-  }
-  rating?: number
+    tags?: string[];
+    category?: string[];
+  };
+  rating?: number;
 }
 
 export default function RecommendResultPage() {
-  const router = useRouter()
+  const router = useRouter();
   const [data, setData] = useState<{
-    result: RecommendResultType
-    answers: Answer[]
-  } | null>(null)
-  const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const hasFetched = useRef(false)
+    result: RecommendResultType;
+    answers: Answer[];
+  } | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
-    const storedData = sessionStorage.getItem('recommend_data')
+    const storedData = sessionStorage.getItem('recommend_data');
 
     if (storedData) {
       try {
-        const parsed = JSON.parse(storedData)
-        setData(parsed)
+        const parsed = JSON.parse(storedData);
+        setData(parsed);
       } catch (error) {
-        console.error('데이터 파싱 실패:', error)
-        router.push('/recommend')
+        console.error('데이터 파싱 실패:', error);
+        router.push('/recommend');
       }
     } else {
-      router.push('/recommend')
+      router.push('/recommend');
     }
-  }, [router])
+  }, [router]);
 
-  const a = (i: number) => data?.answers[i]?.value?.trim() ?? ''
-  const stripGiftWord = (text: string) => text.replace(/\s*선물\s*/g, '').trim()
+  const a = (i: number) => data?.answers[i]?.value?.trim() ?? '';
+  const stripGiftWord = (text: string) =>
+    text.replace(/\s*선물\s*/g, '').trim();
 
-  const isAllFilled = data ? [0, 1, 2, 3, 4].every((i) => a(i)) : false
+  const isAllFilled = data ? [0, 1, 2, 3, 4].every((i) => a(i)) : false;
 
   const searchParams = useMemo(() => {
-    if (!data) return null
+    if (!data) return null;
     return {
       recipient: data.result.tags.target,
       ageGroup: data.result.tags.age,
@@ -64,13 +65,13 @@ export default function RecommendResultPage() {
       style: data.result.tags.style,
       minPrice: data.result.tags.priceRange.min,
       maxPrice: data.result.tags.priceRange.max,
-    }
-  }, [data])
+    };
+  }, [data]);
 
   useEffect(() => {
-    if (!isAllFilled || !searchParams || hasFetched.current) return
+    if (!isAllFilled || !searchParams || hasFetched.current) return;
 
-    hasFetched.current = true
+    hasFetched.current = true;
 
     const tags = [
       searchParams.recipient,
@@ -103,20 +104,20 @@ export default function RecommendResultPage() {
       }
     };
 
-    fetchProducts()
-  }, [isAllFilled, searchParams])
+    fetchProducts();
+  }, [isAllFilled, searchParams]);
 
   const handleReset = () => {
-    sessionStorage.removeItem('recommend_data')
-    router.push('/recommend')
-  }
+    sessionStorage.removeItem('recommend_data');
+    router.push('/recommend');
+  };
 
   if (!data) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <p className="text-lg">로딩중...</p>
       </div>
-    )
+    );
   }
 
   if (!isAllFilled) return null;
@@ -126,13 +127,13 @@ export default function RecommendResultPage() {
     data.result.tags.age,
     data.result.tags.occasion,
     data.result.tags.style,
-  ].filter(Boolean)
+  ].filter(Boolean);
 
-  console.log('대답', JSON.stringify(data.answers, null, 2))
-  console.log('반환', JSON.stringify(data.result, null, 2))
-  console.log('태그 배열:', tags)
-  console.log('가격대:', data.result.tags.priceRange)
-  console.log('필터링된 상품 수:', products.length)
+  console.log('대답', JSON.stringify(data.answers, null, 2));
+  console.log('반환', JSON.stringify(data.result, null, 2));
+  console.log('태그 배열:', tags);
+  console.log('가격대:', data.result.tags.priceRange);
+  console.log('필터링된 상품 수:', products.length);
 
   return (
     <div className="mx-auto bg-gray-50 lg:max-w-375 lg:min-w-5xl">

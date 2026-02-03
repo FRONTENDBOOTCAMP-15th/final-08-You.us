@@ -1,15 +1,15 @@
 'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductCardProps {
-  id: string
-  image: string
-  name: string
-  price: number
-  rating?: number
-  reviewCount?: number
+  id: string;
+  image: string;
+  name: string;
+  price: number;
+  rating?: number;
+  reviewCount?: number;
 }
 
 export default function ProductCard({

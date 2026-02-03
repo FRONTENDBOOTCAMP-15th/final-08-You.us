@@ -1,5 +1,5 @@
-import useUserStore from '@/lib/zustand/auth/userStore'
-import { ErrorRes } from '@/types/api.types'
+import useUserStore from '@/lib/zustand/auth/userStore';
+import { ErrorRes } from '@/types/api.types';
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
@@ -13,27 +13,27 @@ export async function fetchClient<T>(
   url: string,
   options: FetchOptions = {},
 ): Promise<T | ErrorRes> {
-  const { user, setUser, resetUser } = useUserStore.getState()
-  const { params, ...fetchOptions } = options
+  const { user, setUser, resetUser } = useUserStore.getState();
+  const { params, ...fetchOptions } = options;
 
   // Next.js API 라우트인지 확인 (내부 API)
-  const isInternalApi = url.startsWith('/api/')
+  const isInternalApi = url.startsWith('/api/');
 
   // URL 설정
-  let fullUrl = isInternalApi ? url : `${API_SERVER}${url}`
+  let fullUrl = isInternalApi ? url : `${API_SERVER}${url}`;
   if (params) {
     const searchParams = new URLSearchParams(params);
     fullUrl += `?${searchParams.toString()}`;
   }
 
   // 기본 헤더 설정
-  const headers = new Headers(fetchOptions.headers)
-  headers.set('Content-Type', 'application/json')
-  headers.set('Accept', 'application/json')
+  const headers = new Headers(fetchOptions.headers);
+  headers.set('Content-Type', 'application/json');
+  headers.set('Accept', 'application/json');
 
   // 외부 API만 Client-Id 추가
   if (!isInternalApi) {
-    headers.set('Client-Id', CLIENT_ID)
+    headers.set('Client-Id', CLIENT_ID);
   }
 
   // accessToken 추가 (refresh 요청이 아닐 때)
@@ -41,17 +41,17 @@ export async function fetchClient<T>(
     headers.set('Authorization', `Bearer ${user.token?.accessToken}`);
   }
 
-  let response: Response
+  let response: Response;
 
   try {
     // 첫 번째 요청
     response = await fetch(fullUrl, {
       ...fetchOptions,
       headers,
-    })
+    });
   } catch (error) {
-    console.error('fetch 실패:', error)
-    throw new Error('네트워크 요청에 실패했습니다.')
+    console.error('fetch 실패:', error);
+    throw new Error('네트워크 요청에 실패했습니다.');
   }
 
   // 401 에러 처리 (토큰 갱신) - 내부 API는 스킵
@@ -93,9 +93,9 @@ export async function fetchClient<T>(
         throw new Error('토큰 갱신 실패');
       }
 
-      const refreshData = await refreshResponse.json()
+      const refreshData = await refreshResponse.json();
       const { accessToken, refreshToken: newRefreshToken } =
-        refreshData.item || refreshData
+        refreshData.item || refreshData;
 
       // 새 토큰으로 store 업데이트
       setUser({
@@ -123,13 +123,13 @@ export async function fetchClient<T>(
     }
   }
 
-  const data = await response.json()
-  return data as T | ErrorRes
+  const data = await response.json();
+  return data as T | ErrorRes;
 }
 
 function navigateLogin() {
   // 브라우저 환경 체크
-  if (typeof window === 'undefined') return
+  if (typeof window === 'undefined') return;
 
   const gotoLogin = confirm(
     '로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?',
