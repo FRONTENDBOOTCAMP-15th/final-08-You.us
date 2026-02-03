@@ -166,14 +166,18 @@ export async function fetchClient<T>(
 
 // 로그인 페이지로 이동하는 함수
 function navigateLogin() {
-  // 서버 사이드에서 실행되면 window가 없으니까 체크
+  // window는 브라우저에만 존재
+  // 서버 사이드에서 실행되면 window가 없으니까
+  // 서버 환경에선 아무것도 안 하고 리턴
   if (typeof window === 'undefined') return;
 
   // 사용자에게 로그인 페이지로 갈지 물어보기
+  // 나중에 모달로 수정하기
   const gotoLogin = confirm(
     '로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?',
   );
 
+  // 여기부터 브라우저에서 실행
   if (gotoLogin) {
     // 현재 페이지 경로 저장 (로그인 후 다시 돌아오려고)
     const currentPath = window.location.pathname;
