@@ -572,13 +572,7 @@
     "extra": {
       "category": ["PC07", "PC0704"],
       "sort": 2,
-      "tags": [
-        "child",
-        "teen",
-        "20s",
-        "practical",
-        "light"
-      ]
+      "tags": ["child", "teen", "20s", "practical", "light"]
     },
     "options": ["Black", "Gray", "Beige", "Pink"]
   },
@@ -608,13 +602,7 @@
     "extra": {
       "category": ["PC07", "PC0704"],
       "sort": 3,
-      "tags": [
-        "child",
-        "teen",
-        "birthday",
-        "cute",
-        "emotional"
-      ]
+      "tags": ["child", "teen", "birthday", "cute", "emotional"]
     },
     "options": []
   },
@@ -682,13 +670,7 @@
     "extra": {
       "category": ["PC07", "PC0704"],
       "sort": 5,
-      "tags": [
-        "child",
-        "teen",
-        "practical",
-        "light",
-        "cute"
-      ]
+      "tags": ["child", "teen", "practical", "light", "cute"]
     },
     "options": []
   },
@@ -756,14 +738,7 @@
     "extra": {
       "category": ["PC07", "PC0705"],
       "sort": 2,
-      "tags": [
-        "friend",
-        "child",
-        "teen",
-        "20s",
-        "light",
-        "practical"
-      ]
+      "tags": ["friend", "child", "teen", "20s", "light", "practical"]
     },
     "options": ["Tree", "Orange"]
   },
@@ -831,14 +806,7 @@
     "extra": {
       "category": ["PC07", "PC0705"],
       "sort": 4,
-      "tags": [
-        "child",
-        "teen",
-        "20s",
-        "birthday",
-        "cute",
-        "light"
-      ]
+      "tags": ["child", "teen", "20s", "birthday", "cute", "light"]
     },
     "options": ["Boy", "Dog"]
   },
@@ -868,13 +836,7 @@
     "extra": {
       "category": ["PC07", "PC0705"],
       "sort": 5,
-      "tags": [
-        "child",
-        "teen",
-        "20s",
-        "practical",
-        "emotional"
-      ]
+      "tags": ["child", "teen", "20s", "practical", "emotional"]
     },
     "options": []
   },
@@ -904,14 +866,7 @@
     "extra": {
       "category": ["PC08", "PC0802"],
       "sort": 1,
-      "tags": [
-        "friend",
-        "coworker",
-        "20s",
-        "30s",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "coworker", "20s", "30s", "practical", "light"]
     },
     "options": ["White", "Space Black"]
   },
@@ -941,14 +896,7 @@
     "extra": {
       "category": ["PC08", "PC0802"],
       "sort": 2,
-      "tags": [
-        "lover",
-        "sibling",
-        "20s",
-        "30s",
-        "birthday",
-        "premium"
-      ]
+      "tags": ["lover", "sibling", "20s", "30s", "birthday", "premium"]
     },
     "options": []
   },
@@ -978,14 +926,7 @@
     "extra": {
       "category": ["PC08", "PC0802"],
       "sort": 3,
-      "tags": [
-        "friend",
-        "lover",
-        "20s",
-        "30s",
-        "housewarming",
-        "emotional"
-      ]
+      "tags": ["friend", "lover", "20s", "30s", "housewarming", "emotional"]
     },
     "options": ["Default"]
   },
@@ -1015,14 +956,7 @@
     "extra": {
       "category": ["PC08", "PC0802"],
       "sort": 4,
-      "tags": [
-        "friend",
-        "coworker",
-        "20s",
-        "40s",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "coworker", "20s", "40s", "practical", "light"]
     },
     "options": ["Black", "White"]
   },
@@ -1090,12 +1024,7 @@
     "extra": {
       "category": ["PC08", "PC0803"],
       "sort": 1,
-      "tags": [
-        "friend",
-        "20s",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "20s", "practical", "light"]
     },
     "options": ["AirPods Pro", "AirPods 3"]
   },
@@ -1125,13 +1054,7 @@
     "extra": {
       "category": ["PC08", "PC0803"],
       "sort": 2,
-      "tags": [
-        "teen",
-        "20s",
-        "birthday",
-        "cute",
-        "emotional"
-      ]
+      "tags": ["teen", "20s", "birthday", "cute", "emotional"]
     },
     "options": ["Sky Blue", "Lemon"]
   },
@@ -1161,11 +1084,7 @@
     "extra": {
       "category": ["PC08", "PC0803"],
       "sort": 3,
-      "tags": [
-        "coworker",
-        "practical",
-        "light"
-      ]
+      "tags": ["coworker", "practical", "light"]
     },
     "options": []
   },
@@ -1195,12 +1114,7 @@
     "extra": {
       "category": ["PC08", "PC0803"],
       "sort": 4,
-      "tags": [
-        "coworker",
-        "30s",
-        "practical",
-        "premium"
-      ]
+      "tags": ["coworker", "30s", "practical", "premium"]
     },
     "options": []
   },
@@ -1230,13 +1144,7 @@
     "extra": {
       "category": ["PC08", "PC0803"],
       "sort": 5,
-      "tags": [
-        "friend",
-        "20s",
-        "30s",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "20s", "30s", "practical", "light"]
     },
     "options": []
   },
@@ -1266,13 +1174,7 @@
     "extra": {
       "category": ["PC05", "PC0505"],
       "sort": 1,
-      "tags": [
-        "friend",
-        "teen",
-        "20s",
-        "cute",
-        "light"
-      ]
+      "tags": ["friend", "teen", "20s", "cute", "light"]
     },
     "options": ["Kaki"]
   },
@@ -1302,14 +1204,7 @@
     "extra": {
       "category": ["PC05", "PC0505"],
       "sort": 2,
-      "tags": [
-        "lover",
-        "coworker",
-        "30s",
-        "40s",
-        "anniversary",
-        "premium"
-      ]
+      "tags": ["lover", "coworker", "30s", "40s", "anniversary", "premium"]
     },
     "options": ["Brown Leather", "Kaki"]
   },
@@ -1339,14 +1234,7 @@
     "extra": {
       "category": ["PC05", "PC0505"],
       "sort": 3,
-      "tags": [
-        "friend",
-        "20s",
-        "30s",
-        "birthday",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "20s", "30s", "birthday", "practical", "light"]
     },
     "options": ["Silver", "Black"]
   },
@@ -1376,13 +1264,7 @@
     "extra": {
       "category": ["PC05", "PC0505"],
       "sort": 4,
-      "tags": [
-        "friend",
-        "teen",
-        "20s",
-        "practical",
-        "light"
-      ]
+      "tags": ["friend", "teen", "20s", "practical", "light"]
     },
     "options": ["White", "Orange", "Khaki", "Navy", "Black"]
   },
@@ -1412,14 +1294,7 @@
     "extra": {
       "category": ["PC05", "PC0505"],
       "sort": 5,
-      "tags": [
-        "lover",
-        "20s",
-        "30s",
-        "anniversary",
-        "premium",
-        "emotional"
-      ]
+      "tags": ["lover", "20s", "30s", "anniversary", "premium", "emotional"]
     },
     "options": ["Rose Gold"]
   },
@@ -1449,13 +1324,7 @@
     "extra": {
       "category": ["PC05", "PC0506"],
       "sort": 1,
-      "tags": [
-        "friend",
-        "teen",
-        "20s",
-        "cute",
-        "light"
-      ]
+      "tags": ["friend", "teen", "20s", "cute", "light"]
     },
     "options": ["Brown", "Cream", "Black"]
   },
@@ -1485,14 +1354,7 @@
     "extra": {
       "category": ["PC05", "PC0506"],
       "sort": 2,
-      "tags": [
-        "coworker",
-        "lover",
-        "30s",
-        "40s",
-        "premium",
-        "practical"
-      ]
+      "tags": ["coworker", "lover", "30s", "40s", "premium", "practical"]
     },
     "options": ["Brown", "Black", "Green", "Red", "Salmon", "Indigo"]
   },
@@ -1522,13 +1384,7 @@
     "extra": {
       "category": ["PC05", "PC0506"],
       "sort": 3,
-      "tags": [
-        "friend",
-        "20s",
-        "birthday",
-        "emotional",
-        "cute"
-      ]
+      "tags": ["friend", "20s", "birthday", "emotional", "cute"]
     },
     "options": ["White", "Black", "Gold", "Pink"]
   },
@@ -1558,15 +1414,21 @@
     "extra": {
       "category": ["PC05", "PC0506"],
       "sort": 4,
-      "tags": [
-        "friend",
-        "sibling",
-        "teen",
-        "20s",
-        "thanks",
-        "light"]
+      "tags": ["friend", "sibling", "teen", "20s", "thanks", "light"]
     },
-    "options": ["Black", "Brown", "Green", "Pink", "Beige", "LightGreen", "SkyBlue", "Gray", "Red", "Salmon", "Blue"]
+    "options": [
+      "Black",
+      "Brown",
+      "Green",
+      "Pink",
+      "Beige",
+      "LightGreen",
+      "SkyBlue",
+      "Gray",
+      "Red",
+      "Salmon",
+      "Blue"
+    ]
   },
   {
     "price": 11000,
@@ -1594,13 +1456,7 @@
     "extra": {
       "category": ["PC05", "PC0506"],
       "sort": 5,
-      "tags": [
-        "friend",
-        "20s",
-        "30s",
-        "emotional",
-        "light"
-      ]
+      "tags": ["friend", "20s", "30s", "emotional", "light"]
     },
     "options": ["Whale", "Dolphin", "MoonkillerWhale", "killerWhale"]
   }
