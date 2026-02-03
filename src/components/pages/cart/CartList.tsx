@@ -1,19 +1,13 @@
-'use client'
-
 import Button from '@/components/common/Button'
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function CartList() {
   return (
     <>
-      <Header />
-
       <main className="pb-20 lg:pb-50">
         {/* 장바구니 제목 */}
-        <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] mb-[50px] ml-[25px] lg:mt-[50px] lg:mb-[57px] lg:ml-[225px]">
+        <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] mb-[50px] ml-[25px] lg:mt-[50px] lg:mb-[57px]">
           장바구니
         </h1>
 
@@ -242,8 +236,6 @@ export default function CartList() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </>
   )
 }

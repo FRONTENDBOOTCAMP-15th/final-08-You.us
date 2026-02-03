@@ -1,16 +1,10 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/common/Button'
-import Header from '@/components/common/Header/Header'
-import Footer from '@/components/common/Footer/Footer'
 
 export default function CartEmpty() {
   return (
     <>
-      <Header />
-
       <main>
         {/* 장바구니 제목 */}
         <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] ml-[25px] lg:mt-[105px] lg:ml-[225px]">
@@ -65,8 +59,6 @@ export default function CartEmpty() {
           </section>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 }
