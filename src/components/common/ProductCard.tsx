@@ -7,7 +7,8 @@ interface ProductCardProps {
   image: string
   name: string
   price: string
-  rating: string
+  rating: number
+  replies: number
   detailLinkText?: string
 }
 
@@ -17,6 +18,7 @@ export default function ProductCard({
   name,
   price,
   rating,
+  replies,
   detailLinkText = '상세보기',
 }: ProductCardProps) {
   return (
@@ -27,12 +29,14 @@ export default function ProductCard({
 
       <div className="flex flex-1 flex-col gap-2">
         <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">{name}</h3>
-        <p className="text-body-md text-primary font-bold">{price}</p>
+        <p className="text-body-md text-primary font-bold">{price}원</p>
         <div className="flex shrink-0 items-center justify-between">
-          <p className="text-gray-500">{rating}</p>
+          <p className="text-gray-500">
+            ★ {rating.toFixed(2)}({replies})
+          </p>
           <Link
             href={`/products/food/vegetable/${id}`} // 동적 라우팅
-            className="text-body-md text-primary shrink-0 cursor-pointer font-bold"
+            className="text-body-md text-primary hover:text-primary-hover shrink-0 cursor-pointer transition-colors duration-300 ease-in-out"
           >
             {detailLinkText}
           </Link>
