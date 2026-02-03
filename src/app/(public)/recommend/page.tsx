@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import type { Answer, RecommendResult } from '@/types/aitest.types';
-import { validateAnswers } from '@/lib/openai/validateAnswers';
-import RecommendLoading from '@/components/pages/recommend/RecommendLoading';
-import RecommendTest from '@/components/pages/recommend/RecommendTest';
-import RecommendError from '@/components/pages/recommend/RecommendError';
-import RecommendResultView from '@/components/pages/recommend/RecommendResult';
-import RecommendWarning from '@/components/pages/recommend/RecommendWarning';
-import { LogoLayout } from '@/components/pages/recommend/LogoLayout';
+import { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
+import type { Answer } from '@/types/aitest.types'
+import { validateAnswers } from '@/lib/openai/validateAnswers'
+import RecommendLoading from '@/components/pages/recommend/RecommendLoading'
+import RecommendTest from '@/components/pages/recommend/RecommendTest'
+import RecommendError from '@/components/pages/recommend/RecommendError'
+import RecommendWarning from '@/components/pages/recommend/RecommendWarning'
+import { LogoLayout } from '@/components/pages/recommend/LogoLayout'
+import fetchClient from '@/lib/api/fetchClient'
 
 const QUESTIONS = [
   {
@@ -37,82 +38,69 @@ const GENERIC_ERROR_MESSAGE =
   '추천 답변을 생성하던 중 오류가 발생했어요. 다시 시도해주세요.';
 
 export default function RecommendPage() {
-  const [step, setStep] = useState<number | null>(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const router = useRouter()
+  const [step, setStep] = useState<number | null>(0)
+  const [answers, setAnswers] = useState<Answer[]>([])
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<RecommendResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  // 완료 후 경고 화면을 띄울지 제어
-  const [proceedAnyway, setProceedAnyway] = useState(false);
+  const [proceedAnyway, setProceedAnyway] = useState(false)
+  const hasFetched = useRef(false)
 
   const answerValues = answers.map((a) => a?.value ?? '');
 
-  // ✅ step === null(모두 입력 완료)일 때만 경고 계산
-  const warnings = step === null ? validateAnswers(answerValues) : [];
+  const warnings = step === null ? validateAnswers(answerValues) : []
 
   const resetAll = () => {
-    setStep(0);
-    setAnswers([]);
-    setIsLoading(false);
-    setResult(null);
-    setError(null);
-    setProceedAnyway(false);
-  };
+    setStep(0)
+    setAnswers([])
+    setIsLoading(false)
+    setError(null)
+    setProceedAnyway(false)
+    hasFetched.current = false
+    sessionStorage.removeItem('recommend_data')
+  }
 
-  // ✅ 마지막 질문까지 완료되면(API 호출)
   useEffect(() => {
     const run = async () => {
-      if (step !== null) return;
-      if (isLoading) return;
-      if (answers.length < QUESTIONS.length) return;
-      if (result || error) return;
+      if (step !== null) return
+      if (hasFetched.current) return
+      if (isLoading) return
+      if (answers.length < QUESTIONS.length) return
 
-      // 경고가 있는데, 사용자가 "그대로 진행"을 누르지 않았다면 호출 금지
-      // (현재 UI에 "그대로 진행하기" 버튼이 없어서 사실상 경고면 항상 여기서 멈춤)
-      if (warnings.length > 0 && !proceedAnyway) return;
+      if (warnings.length > 0 && !proceedAnyway) return
 
-      setIsLoading(true);
-      setError(null);
+      hasFetched.current = true
+      setIsLoading(true)
+      setError(null)
 
       try {
-        const res = await fetch('/api/recommend', {
+        const data = await fetchClient('/api/recommend', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ answers: answerValues }),
         });
 
-        if (!res.ok) {
-          throw new Error('API_ERROR');
-        }
-
-        const data = await res.json();
-
-        // ✅ 결과 shape 방어: 반드시 { tags: ... } 이어야만 성공 처리
         if (!data || typeof data !== 'object' || !('tags' in data)) {
           throw new Error('INVALID_RESULT');
         }
 
-        setResult(data as RecommendResult);
+        sessionStorage.setItem(
+          'recommend_data',
+          JSON.stringify({ result: data, answers }),
+        )
+
+        router.push('/recommend/result')
       } catch {
-        setError(GENERIC_ERROR_MESSAGE);
+        setError(GENERIC_ERROR_MESSAGE)
+        hasFetched.current = false
       } finally {
         setIsLoading(false);
       }
     };
 
-    run();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    step,
-    proceedAnyway,
-    warnings.length,
-    answers.length,
-    isLoading,
-    result,
-    error,
-  ]);
+    run()
+  }, [step, proceedAnyway, warnings.length, answers.length, isLoading])
 
   const handleDone = (value: string) => {
     if (step === null) return;
@@ -129,42 +117,21 @@ export default function RecommendPage() {
       return next;
     });
 
-    const isLast = step === QUESTIONS.length - 1;
-    setStep(isLast ? null : step + 1);
-  };
+    const isLast = step === QUESTIONS.length - 1
+    setStep(isLast ? null : step + 1)
+  }
 
-  // ================== Done Screen ==================
   if (step === null) {
-    // ✅ 결과 화면: 로고 없음 (나중에 헤더/푸터 붙일 예정)
-    if (
-      (warnings.length === 0 || proceedAnyway) &&
-      !isLoading &&
-      !error &&
-      result
-    ) {
-      return (
-        <RecommendResultView
-          result={result}
-          answers={answers}
-          onReset={resetAll}
-        />
-      );
-    }
-
-    // 경고/로딩/에러 화면: 로고 있음
     return (
       <LogoLayout>
-        {/* 1) 경고 */}
         {warnings.length > 0 && !proceedAnyway && (
           <RecommendWarning warnings={warnings} onReset={resetAll} />
         )}
 
-        {/* 2) 로딩 */}
         {(warnings.length === 0 || proceedAnyway) && isLoading && (
           <RecommendLoading />
         )}
 
-        {/* 3) 에러 */}
         {(warnings.length === 0 || proceedAnyway) && !isLoading && error && (
           <RecommendError message={GENERIC_ERROR_MESSAGE} onReset={resetAll} />
         )}
@@ -172,7 +139,6 @@ export default function RecommendPage() {
     );
   }
 
-  // ================== Test Screen ==================
   return (
     <LogoLayout>
       <RecommendTest step={step} questions={QUESTIONS} onDone={handleDone} />

@@ -174,7 +174,7 @@ export default function LoginForm() {
       </div>
       <Button
         type="submit"
-        className="border-primary text-primary hover:bg-primary mt-10 w-full border-1 bg-white outline-none hover:text-white focus:border-gray-900"
+        className="border-primary text-primary hover:bg-primary mt-10 w-full border bg-white outline-none hover:text-white focus:border-gray-900"
         disabled={isPending}
       >
         로그인
@@ -182,7 +182,7 @@ export default function LoginForm() {
       <Button
         onClick={handleNaverLogin}
         disabled={isPending}
-        className="mt-button-y px-button-x py-button-y w-full cursor-pointer rounded-lg border-1 border-[#03C75A] bg-white text-center font-bold text-[#02B350] transition-colors outline-none hover:bg-[#03C75A] hover:text-[white] focus:border-gray-900"
+        className="mt-button-y px-button-x py-button-y w-full cursor-pointer rounded-lg border border-[#03C75A] bg-white text-center font-bold text-[#02B350] transition-colors outline-none hover:bg-[#03C75A] hover:text-[white] focus:border-gray-900"
       >
         네이버 로그인
       </Button>

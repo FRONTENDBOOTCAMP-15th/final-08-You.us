@@ -1,21 +1,16 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
-import Button from '@/components/common/Button';
-import Footer from '@/components/common/Footer/Footer';
-import Header from '@/components/common/Header/Header';
-import ProductList from '@/components/pages/recommend/ProductList';
-import { getRecommendProducts } from '@/lib/api/recommend';
+import { useEffect, useState, useMemo, useRef } from 'react'
+import { useRouter } from 'next/navigation'
+import Button from '@/components/common/Button'
+import Footer from '@/components/common/Footer/Footer'
+import Header from '@/components/common/Header/Header'
+import ProductList from '@/components/pages/recommend/ProductList'
+import { getRecommendProducts } from '@/lib/api/recommend'
 import type {
   Answer,
   RecommendResult as RecommendResultType,
-} from '@/types/aitest.types';
-
-type Props = {
-  result: RecommendResultType;
-  answers: Answer[];
-  onReset: () => void;
-};
+} from '@/types/aitest.types'
 
 export interface Product {
   _id: string;
@@ -23,46 +18,59 @@ export interface Product {
   price: number;
   mainImages: { path: string; name: string }[];
   extra?: {
-    tags?: string[];
-    category?: string[];
-  };
+    tags?: string[]
+    category?: string[]
+  }
+  rating?: number
 }
 
-export default function RecommendResultView({
-  result,
-  answers,
-  onReset,
-}: Props) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const a = (i: number) => answers[i]?.value?.trim() ?? '';
-  const stripGiftWord = (text: string) =>
-    text.replace(/\s*선물\s*/g, '').trim();
-
-  const isAllFilled = [0, 1, 2, 3, 4].every((i) => a(i));
-
-  const searchParams = useMemo(
-    () => ({
-      recipient: result.tags.recipient,
-      ageGroup: result.tags.ageGroup,
-      occasion: result.tags.occasion,
-      style: result.tags.style,
-      minPrice: result.tags.priceRange.min,
-      maxPrice: result.tags.priceRange.max,
-    }),
-    [
-      result.tags.recipient,
-      result.tags.ageGroup,
-      result.tags.occasion,
-      result.tags.style,
-      result.tags.priceRange.min,
-      result.tags.priceRange.max,
-    ],
-  );
+export default function RecommendResultPage() {
+  const router = useRouter()
+  const [data, setData] = useState<{
+    result: RecommendResultType
+    answers: Answer[]
+  } | null>(null)
+  const [products, setProducts] = useState<Product[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const hasFetched = useRef(false)
 
   useEffect(() => {
-    if (!isAllFilled) return;
+    const storedData = sessionStorage.getItem('recommend_data')
+
+    if (storedData) {
+      try {
+        const parsed = JSON.parse(storedData)
+        setData(parsed)
+      } catch (error) {
+        console.error('데이터 파싱 실패:', error)
+        router.push('/recommend')
+      }
+    } else {
+      router.push('/recommend')
+    }
+  }, [router])
+
+  const a = (i: number) => data?.answers[i]?.value?.trim() ?? ''
+  const stripGiftWord = (text: string) => text.replace(/\s*선물\s*/g, '').trim()
+
+  const isAllFilled = data ? [0, 1, 2, 3, 4].every((i) => a(i)) : false
+
+  const searchParams = useMemo(() => {
+    if (!data) return null
+    return {
+      recipient: data.result.tags.target,
+      ageGroup: data.result.tags.age,
+      occasion: data.result.tags.occasion,
+      style: data.result.tags.style,
+      minPrice: data.result.tags.priceRange.min,
+      maxPrice: data.result.tags.priceRange.max,
+    }
+  }, [data])
+
+  useEffect(() => {
+    if (!isAllFilled || !searchParams || hasFetched.current) return
+
+    hasFetched.current = true
 
     const tags = [
       searchParams.recipient,
@@ -95,23 +103,36 @@ export default function RecommendResultView({
       }
     };
 
-    fetchProducts();
-  }, [isAllFilled, searchParams]);
+    fetchProducts()
+  }, [isAllFilled, searchParams])
+
+  const handleReset = () => {
+    sessionStorage.removeItem('recommend_data')
+    router.push('/recommend')
+  }
+
+  if (!data) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">로딩중...</p>
+      </div>
+    )
+  }
 
   if (!isAllFilled) return null;
 
   const tags = [
-    result.tags.recipient,
-    result.tags.ageGroup,
-    result.tags.occasion,
-    result.tags.style,
-  ].filter(Boolean);
+    data.result.tags.target,
+    data.result.tags.age,
+    data.result.tags.occasion,
+    data.result.tags.style,
+  ].filter(Boolean)
 
-  console.log('대답', JSON.stringify(answers, null, 2));
-  console.log('반환', JSON.stringify(result, null, 2));
-  console.log('태그 배열:', tags);
-  console.log('가격대:', result.tags.priceRange);
-  console.log('필터링된 상품 수:', products.length);
+  console.log('대답', JSON.stringify(data.answers, null, 2))
+  console.log('반환', JSON.stringify(data.result, null, 2))
+  console.log('태그 배열:', tags)
+  console.log('가격대:', data.result.tags.priceRange)
+  console.log('필터링된 상품 수:', products.length)
 
   return (
     <div className="mx-auto bg-gray-50 lg:max-w-375 lg:min-w-5xl">
@@ -123,7 +144,7 @@ export default function RecommendResultView({
           <br className="block lg:hidden" />({stripGiftWord(a(4))}) (
           {stripGiftWord(a(3))}) ({stripGiftWord(a(2))}) 선물
         </h3>
-        <Button type="button" className="mb-15 leading-4" onClick={onReset}>
+        <Button type="button" className="mb-15 leading-4" onClick={handleReset}>
           다시 하기
         </Button>
 
@@ -139,9 +160,7 @@ export default function RecommendResultView({
             </p>
           </div>
         ) : (
-          <>
-            <ProductList products={products} />
-          </>
+          <ProductList products={products} />
         )}
       </section>
       <Footer />
