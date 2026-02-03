@@ -6,15 +6,12 @@ import Button from '../Button';
 import DesktopCategoryDropdown from './DesktopCategoryDropdown';
 import Image from 'next/image';
 import useUserStore from '@/lib/zustand/auth/userStore';
-import type { CategoryCode } from '@/types/categoryCode.type';
+import { useCategoryStore } from '@/lib/zustand/categoryStore';
 
-export default function DesktopHeader({
-  categories,
-}: {
-  categories: CategoryCode[];
-}) {
+export default function DesktopHeader() {
   const { user, resetUser } = useUserStore();
   const router = useRouter();
+  const categories = useCategoryStore((state) => state.categories);
 
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

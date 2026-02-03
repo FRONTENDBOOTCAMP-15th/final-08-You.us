@@ -4,23 +4,19 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import useUserStore from '@/lib/zustand/auth/userStore';
-import type { CategoryCode } from '@/types/categoryCode.type';
+import { useCategoryStore } from '@/lib/zustand/categoryStore';
 
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  categories: CategoryCode[];
 }
 
-export default function MobileSidebar({
-  isOpen,
-  onClose,
-  categories,
-}: MobileSidebarProps) {
+export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const { user, resetUser } = useUserStore();
   const router = useRouter();
 
+  const categories = useCategoryStore((state) => state.categories);
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     resetUser();
