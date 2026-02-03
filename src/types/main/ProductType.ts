@@ -19,6 +19,7 @@ export interface ProductItem {
   replies: number
   bookmarks: number
   likes: number
+  rating: number
 }
 
 export interface ProductImage {

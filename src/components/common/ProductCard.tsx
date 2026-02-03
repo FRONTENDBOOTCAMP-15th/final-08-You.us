@@ -10,6 +10,8 @@ interface ProductCardProps {
   rating: number
   replies: number
   detailLinkText?: string
+  mainCategory: string
+  subCategory: string
 }
 
 export default function ProductCard({
@@ -20,6 +22,8 @@ export default function ProductCard({
   rating,
   replies,
   detailLinkText = '상세보기',
+  mainCategory,
+  subCategory,
 }: ProductCardProps) {
   return (
     <div className="flex h-full flex-col rounded border border-gray-200 bg-white p-4">
@@ -35,7 +39,7 @@ export default function ProductCard({
             ★ {rating.toFixed(2)}({replies})
           </p>
           <Link
-            href={`/products/food/vegetable/${id}`} // 동적 라우팅
+            href={`/products/${mainCategory}/${subCategory}/${id}`} // 동적 라우팅
             className="text-body-md text-primary hover:text-primary-hover shrink-0 cursor-pointer transition-colors duration-300 ease-in-out"
           >
             {detailLinkText}
