@@ -2,15 +2,14 @@
 
 import MoreButton from '@/components/common/MoreButton'
 import ProductCard from '@/components/common/ProductCard'
-import product from '@/types/product.type'
 
 interface Product {
-  _id?: number
-  id?: number
+  _id: number
   name: string
-  price: number | string
-  rating?: string
-  image: string
+  price: number
+  rating: string
+  mainImage: string
+  replies: number
 }
 
 interface ProductSortProps {
