@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import Footer from '@/components/common/Footer/Footer'
+import Header from '@/components/common/Header/Header'
 
 export const metadata: Metadata = {
   title: 'Gift Shop',
@@ -13,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>
+      <body className="mx-auto max-w-[1500px] min-w-[360px]">
+        <Header />
         <div>{children}</div>
+        <Footer />
       </body>
     </html>
   )
