@@ -1,9 +1,16 @@
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
-import Main from '@/components/pages/main/Main'
+import MainBannerSwiper from '@/components/pages/main/MainBannerSwiper'
+import ProductCategorySection from '@/components/pages/main/ProductCategorySection'
+import getMainCategorySeller from '@/lib/api/main/getProductsList'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-export default async function ThemeTestPage() {
+
+const CATEGORIES = [
+  { code: 'PC01', title: '식품' },
+  { code: 'PC03', title: '뷰티' },
+  { code: 'PC04', title: '쥬얼리' },
+] as const
+
+export default async function MainPage() {
   const cookieStore = await cookies()
   const hasVisited = cookieStore.get('hasVisited')
 
@@ -11,11 +18,29 @@ export default async function ThemeTestPage() {
     redirect('/intro')
   }
 
+  const responses = await Promise.all(
+    CATEGORIES.map(async (cat) => {
+      const res = await getMainCategorySeller(cat.code)
+      return {
+        title: cat.title,
+        items: 'item' in res ? res.item : [],
+      }
+    }),
+  )
+
   return (
-    <div className="mx-auto max-w-[1500px] bg-gray-50">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <main>
+      <MainBannerSwiper />
+
+      <div className="mx-auto px-4 py-8 lg:mb-[60px]">
+        {responses.map((category) => (
+          <ProductCategorySection
+            key={category.title}
+            categoryName={category.title}
+            products={category.items}
+          />
+        ))}
+      </div>
+    </main>
   )
 }
