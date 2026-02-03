@@ -142,19 +142,19 @@
       "buyQuantity": 80,
       "mainImages": [
         {
-          "path": "/products/PC070101-IMAGE-01.png",
+          "path": "uploadFiles/PC070101-IMAGE-01.png",
           "name": "PC070101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070101-IMAGE-02.png",
+          "path": "uploadFiles/PC070101-IMAGE-02.png",
           "name": "PC070101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070101-IMAGE-03.png",
+          "path": "uploadFiles/PC070101-IMAGE-03.png",
           "name": "PC070101-IMAGE-03.png"
         },
         {
-          "path": "/products/PC070101-IMAGE-04.png",
+          "path": "uploadFiles/PC070101-IMAGE-04.png",
           "name": "PC070101-IMAGE-04.png"
         }
       ],
@@ -184,19 +184,19 @@
       "buyQuantity": 150,
       "mainImages": [
         {
-          "path": "/products/PC070102-IMAGE-01.png",
+          "path": "uploadFiles/PC070102-IMAGE-01.png",
           "name": "PC070102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070102-IMAGE-02.png",
+          "path": "uploadFiles/PC070102-IMAGE-02.png",
           "name": "PC070102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070102-IMAGE-03.png",
+          "path": "uploadFiles/PC070102-IMAGE-03.png",
           "name": "PC070102-IMAGE-03.png"
         },
         {
-          "path": "/products/PC070102-IMAGE-04.png",
+          "path": "uploadFiles/PC070102-IMAGE-04.png",
           "name": "PC070102-IMAGE-04.png"
         }
       ],
@@ -218,15 +218,15 @@
       "buyQuantity": 60,
       "mainImages": [
         {
-          "path": "/products/PC070103-IMAGE-01.png",
+          "path": "uploadFiles/PC070103-IMAGE-01.png",
           "name": "PC070103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070103-IMAGE-02.png",
+          "path": "uploadFiles/PC070103-IMAGE-02.png",
           "name": "PC070103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070103-IMAGE-03.png",
+          "path": "uploadFiles/PC070103-IMAGE-03.png",
           "name": "PC070103-IMAGE-03.png"
         }
       ],
@@ -258,15 +258,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC070104-IMAGE-01.png",
+          "path": "uploadFiles/PC070104-IMAGE-01.png",
           "name": "PC070104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070104-IMAGE-02.png",
+          "path": "uploadFiles/PC070104-IMAGE-02.png",
           "name": "PC070104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070104-IMAGE-03.png",
+          "path": "uploadFiles/PC070104-IMAGE-03.png",
           "name": "PC070104-IMAGE-03.png"
         }
       ],
@@ -288,23 +288,23 @@
       "buyQuantity": 70,
       "mainImages": [
         {
-          "path": "/products/PC070105-IMAGE-01.png",
+          "path": "uploadFiles/PC070105-IMAGE-01.png",
           "name": "PC070105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070105-IMAGE-02.png",
+          "path": "uploadFiles/PC070105-IMAGE-02.png",
           "name": "PC070105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070105-IMAGE-03.png",
+          "path": "uploadFiles/PC070105-IMAGE-03.png",
           "name": "PC070105-IMAGE-03.png"
         },
         {
-          "path": "/products/PC070105-IMAGE-04.png",
+          "path": "uploadFiles/PC070105-IMAGE-04.png",
           "name": "PC070105-IMAGE-04.png"
         },
         {
-          "path": "/products/PC070105-IMAGE-05.png",
+          "path": "uploadFiles/PC070105-IMAGE-05.png",
           "name": "PC070105-IMAGE-05.png"
         }
       ],
@@ -326,15 +326,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC070201-IMAGE-01.jpg",
+          "path": "uploadFiles/PC070201-IMAGE-01.jpg",
           "name": "PC070201-IMAGE-01.jpg"
         },
         {
-          "path": "/products/PC070201-IMAGE-02.jpg",
+          "path": "uploadFiles/PC070201-IMAGE-02.jpg",
           "name": "PC070201-IMAGE-02.jpg"
         },
         {
-          "path": "/products/PC070201-IMAGE-03.jpg",
+          "path": "uploadFiles/PC070201-IMAGE-03.jpg",
           "name": "PC070201-IMAGE-03.jpg"
         }
       ],
@@ -356,15 +356,15 @@
       "buyQuantity": 250,
       "mainImages": [
         {
-          "path": "/products/PC070202-IMAGE-01.png",
+          "path": "uploadFiles/PC070202-IMAGE-01.png",
           "name": "PC070202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070202-IMAGE-02.png",
+          "path": "uploadFiles/PC070202-IMAGE-02.png",
           "name": "PC070202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070202-IMAGE-03.png",
+          "path": "uploadFiles/PC070202-IMAGE-03.png",
           "name": "PC070202-IMAGE-03.png"
         }
       ],
@@ -386,19 +386,19 @@
       "buyQuantity": 90,
       "mainImages": [
         {
-          "path": "/products/PC070203-IMAGE-01.png",
+          "path": "uploadFiles/PC070203-IMAGE-01.png",
           "name": "PC070203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070203-IMAGE-02.png",
+          "path": "uploadFiles/PC070203-IMAGE-02.png",
           "name": "PC070203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070203-IMAGE-03.png",
+          "path": "uploadFiles/PC070203-IMAGE-03.png",
           "name": "PC070203-IMAGE-03.png"
         },
         {
-          "path": "/products/PC070203-IMAGE-04.png",
+          "path": "uploadFiles/PC070203-IMAGE-04.png",
           "name": "PC070203-IMAGE-04.png"
         }
       ],
@@ -428,15 +428,15 @@
       "buyQuantity": 130,
       "mainImages": [
         {
-          "path": "/products/PC070204-IMAGE-01.png",
+          "path": "uploadFiles/PC070204-IMAGE-01.png",
           "name": "PC070204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070204-IMAGE-02.png",
+          "path": "uploadFiles/PC070204-IMAGE-02.png",
           "name": "PC070204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070204-IMAGE-03.png",
+          "path": "uploadFiles/PC070204-IMAGE-03.png",
           "name": "PC070204-IMAGE-03.png"
         }
       ],
@@ -467,15 +467,15 @@
       "buyQuantity": 300,
       "mainImages": [
         {
-          "path": "/products/PC070205-IMAGE-01.png",
+          "path": "uploadFiles/PC070205-IMAGE-01.png",
           "name": "PC070205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070205-IMAGE-02.png",
+          "path": "uploadFiles/PC070205-IMAGE-02.png",
           "name": "PC070205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070205-IMAGE-03.png",
+          "path": "uploadFiles/PC070205-IMAGE-03.png",
           "name": "PC070205-IMAGE-03.png"
         }
       ],
@@ -497,15 +497,15 @@
       "buyQuantity": 40,
       "mainImages": [
         {
-          "path": "/products/PC070301-IMAGE-01.jpg",
+          "path": "uploadFiles/PC070301-IMAGE-01.jpg",
           "name": "PC070301-IMAGE-01.jpg"
         },
         {
-          "path": "/products/PC070301-IMAGE-02.jpg",
+          "path": "uploadFiles/PC070301-IMAGE-02.jpg",
           "name": "PC070301-IMAGE-02.jpg"
         },
         {
-          "path": "/products/PC070301-IMAGE-03.jpg",
+          "path": "uploadFiles/PC070301-IMAGE-03.jpg",
           "name": "PC070301-IMAGE-03.jpg"
         }
       ],
@@ -527,15 +527,15 @@
       "buyQuantity": 210,
       "mainImages": [
         {
-          "path": "/products/PC070302-IMAGE-01.jpg",
+          "path": "uploadFiles/PC070302-IMAGE-01.jpg",
           "name": "PC070302-IMAGE-01.jpg"
         },
         {
-          "path": "/products/PC070302-IMAGE-02.jpg",
+          "path": "uploadFiles/PC070302-IMAGE-02.jpg",
           "name": "PC070302-IMAGE-02.jpg"
         },
         {
-          "path": "/products/PC070302-IMAGE-03.jpg",
+          "path": "uploadFiles/PC070302-IMAGE-03.jpg",
           "name": "PC070302-IMAGE-03.jpg"
         }
       ],
@@ -557,15 +557,15 @@
       "buyQuantity": 35,
       "mainImages": [
         {
-          "path": "/products/PC070303-IMAGE-01.png",
+          "path": "uploadFiles/PC070303-IMAGE-01.png",
           "name": "PC070303-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070303-IMAGE-02.png",
+          "path": "uploadFiles/PC070303-IMAGE-02.png",
           "name": "PC070303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070303-IMAGE-03.png",
+          "path": "uploadFiles/PC070303-IMAGE-03.png",
           "name": "PC070303-IMAGE-03.png"
         }
       ],
@@ -587,15 +587,15 @@
       "buyQuantity": 180,
       "mainImages": [
         {
-          "path": "/products/PC070304-IMAGE-01.png",
+          "path": "uploadFiles/PC070304-IMAGE-01.png",
           "name": "PC070304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070304-IMAGE-02.png",
+          "path": "uploadFiles/PC070304-IMAGE-02.png",
           "name": "PC070304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070304-IMAGE-03.png",
+          "path": "uploadFiles/PC070304-IMAGE-03.png",
           "name": "PC070304-IMAGE-03.png"
         }
       ],
@@ -617,15 +617,15 @@
       "buyQuantity": 90,
       "mainImages": [
         {
-          "path": "/products/PC070305-IMAGE-01.png",
+          "path": "uploadFiles/PC070305-IMAGE-01.png",
           "name": "PC070305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070305-IMAGE-02.png",
+          "path": "uploadFiles/PC070305-IMAGE-02.png",
           "name": "PC070305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070305-IMAGE-03.png",
+          "path": "uploadFiles/PC070305-IMAGE-03.png",
           "name": "PC070305-IMAGE-03.png"
         }
       ],
@@ -647,15 +647,15 @@
       "buyQuantity": 45,
       "mainImages": [
         {
-          "path": "/products/PC070401-IMAGE-01.png",
+          "path": "uploadFiles/PC070401-IMAGE-01.png",
           "name": "PC070401-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070401-IMAGE-02.png",
+          "path": "uploadFiles/PC070401-IMAGE-02.png",
           "name": "PC070401-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070401-IMAGE-03.png",
+          "path": "uploadFiles/PC070401-IMAGE-03.png",
           "name": "PC070401-IMAGE-03.png"
         }
       ],
@@ -685,19 +685,19 @@
       "buyQuantity": 150,
       "mainImages": [
         {
-          "path": "/products/PC070402-IMAGE-01.png",
+          "path": "uploadFiles/PC070402-IMAGE-01.png",
           "name": "PC070402-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070402-IMAGE-02.png",
+          "path": "uploadFiles/PC070402-IMAGE-02.png",
           "name": "PC070402-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070402-IMAGE-03.png",
+          "path": "uploadFiles/PC070402-IMAGE-03.png",
           "name": "PC070402-IMAGE-03.png"
         },
         {
-          "path": "/products/PC070402-IMAGE-04.png",
+          "path": "uploadFiles/PC070402-IMAGE-04.png",
           "name": "PC070402-IMAGE-04.png"
         }
       ],
@@ -719,15 +719,15 @@
       "buyQuantity": 110,
       "mainImages": [
         {
-          "path": "/products/PC070403-IMAGE-01.png",
+          "path": "uploadFiles/PC070403-IMAGE-01.png",
           "name": "PC070403-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070403-IMAGE-02.png",
+          "path": "uploadFiles/PC070403-IMAGE-02.png",
           "name": "PC070403-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070403-IMAGE-03.png",
+          "path": "uploadFiles/PC070403-IMAGE-03.png",
           "name": "PC070403-IMAGE-03.png"
         }
       ],
@@ -749,15 +749,15 @@
       "buyQuantity": 30,
       "mainImages": [
         {
-          "path": "/products/PC070404-IMAGE-01.png",
+          "path": "uploadFiles/PC070404-IMAGE-01.png",
           "name": "PC070404-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070404-IMAGE-02.png",
+          "path": "uploadFiles/PC070404-IMAGE-02.png",
           "name": "PC070404-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070404-IMAGE-03.png",
+          "path": "uploadFiles/PC070404-IMAGE-03.png",
           "name": "PC070404-IMAGE-03.png"
         }
       ],
@@ -787,15 +787,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC070405-IMAGE-01.png",
+          "path": "uploadFiles/PC070405-IMAGE-01.png",
           "name": "PC070405-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070405-IMAGE-02.png",
+          "path": "uploadFiles/PC070405-IMAGE-02.png",
           "name": "PC070405-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070405-IMAGE-03.png",
+          "path": "uploadFiles/PC070405-IMAGE-03.png",
           "name": "PC070405-IMAGE-03.png"
         }
       ],
@@ -817,15 +817,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC070501-IMAGE-01.png",
+          "path": "uploadFiles/PC070501-IMAGE-01.png",
           "name": "PC070501-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070501-IMAGE-02.png",
+          "path": "uploadFiles/PC070501-IMAGE-02.png",
           "name": "PC070501-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070501-IMAGE-03.png",
+          "path": "uploadFiles/PC070501-IMAGE-03.png",
           "name": "PC070501-IMAGE-03.png"
         }
       ],
@@ -855,15 +855,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC070502-IMAGE-01.png",
+          "path": "uploadFiles/PC070502-IMAGE-01.png",
           "name": "PC070502-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070502-IMAGE-02.png",
+          "path": "uploadFiles/PC070502-IMAGE-02.png",
           "name": "PC070502-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070502-IMAGE-03.png",
+          "path": "uploadFiles/PC070502-IMAGE-03.png",
           "name": "PC070502-IMAGE-03.png"
         }
       ],
@@ -885,15 +885,15 @@
       "buyQuantity": 20,
       "mainImages": [
         {
-          "path": "/products/PC070503-IMAGE-01.png",
+          "path": "uploadFiles/PC070503-IMAGE-01.png",
           "name": "PC070503-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070503-IMAGE-02.png",
+          "path": "uploadFiles/PC070503-IMAGE-02.png",
           "name": "PC070503-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070503-IMAGE-03.png",
+          "path": "uploadFiles/PC070503-IMAGE-03.png",
           "name": "PC070503-IMAGE-03.png"
         }
       ],
@@ -923,15 +923,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC070504-IMAGE-01.png",
+          "path": "uploadFiles/PC070504-IMAGE-01.png",
           "name": "PC070504-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070504-IMAGE-02.png",
+          "path": "uploadFiles/PC070504-IMAGE-02.png",
           "name": "PC070504-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070504-IMAGE-03.png",
+          "path": "uploadFiles/PC070504-IMAGE-03.png",
           "name": "PC070504-IMAGE-03.png"
         }
       ],
@@ -953,15 +953,15 @@
       "buyQuantity": 180,
       "mainImages": [
         {
-          "path": "/products/PC070505-IMAGE-01.png",
+          "path": "uploadFiles/PC070505-IMAGE-01.png",
           "name": "PC070505-IMAGE-01.png"
         },
         {
-          "path": "/products/PC070505-IMAGE-02.png",
+          "path": "uploadFiles/PC070505-IMAGE-02.png",
           "name": "PC070505-IMAGE-02.png"
         },
         {
-          "path": "/products/PC070505-IMAGE-03.png",
+          "path": "uploadFiles/PC070505-IMAGE-03.png",
           "name": "PC070505-IMAGE-03.png"
         }
       ],
@@ -983,15 +983,15 @@
       "buyQuantity": 65,
       "mainImages": [
         {
-          "path": "/products/PC080201-IMAGE-01.png",
+          "path": "uploadFiles/PC080201-IMAGE-01.png",
           "name": "PC080201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080201-IMAGE-02.png",
+          "path": "uploadFiles/PC080201-IMAGE-02.png",
           "name": "PC080201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080201-IMAGE-03.png",
+          "path": "uploadFiles/PC080201-IMAGE-03.png",
           "name": "PC080201-IMAGE-03.png"
         }
       ],
@@ -1013,15 +1013,15 @@
       "buyQuantity": 40,
       "mainImages": [
         {
-          "path": "/products/PC080202-IMAGE-01.png",
+          "path": "uploadFiles/PC080202-IMAGE-01.png",
           "name": "PC080202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080202-IMAGE-02.png",
+          "path": "uploadFiles/PC080202-IMAGE-02.png",
           "name": "PC080202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080202-IMAGE-03.png",
+          "path": "uploadFiles/PC080202-IMAGE-03.png",
           "name": "PC080202-IMAGE-03.png"
         }
       ],
@@ -1043,15 +1043,15 @@
       "buyQuantity": 12,
       "mainImages": [
         {
-          "path": "/products/PC080203-IMAGE-01.png",
+          "path": "uploadFiles/PC080203-IMAGE-01.png",
           "name": "PC080203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080203-IMAGE-02.png",
+          "path": "uploadFiles/PC080203-IMAGE-02.png",
           "name": "PC080203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080203-IMAGE-03.png",
+          "path": "uploadFiles/PC080203-IMAGE-03.png",
           "name": "PC080203-IMAGE-03.png"
         }
       ],
@@ -1073,15 +1073,15 @@
       "buyQuantity": 95,
       "mainImages": [
         {
-          "path": "/products/PC080204-IMAGE-01.png",
+          "path": "uploadFiles/PC080204-IMAGE-01.png",
           "name": "PC080204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080204-IMAGE-02.png",
+          "path": "uploadFiles/PC080204-IMAGE-02.png",
           "name": "PC080204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080204-IMAGE-03.png",
+          "path": "uploadFiles/PC080204-IMAGE-03.png",
           "name": "PC080204-IMAGE-03.png"
         }
       ],
@@ -1103,15 +1103,15 @@
       "buyQuantity": 50,
       "mainImages": [
         {
-          "path": "/products/PC080205-IMAGE-01.png",
+          "path": "uploadFiles/PC080205-IMAGE-01.png",
           "name": "PC080205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080205-IMAGE-02.png",
+          "path": "uploadFiles/PC080205-IMAGE-02.png",
           "name": "PC080205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080205-IMAGE-03.png",
+          "path": "uploadFiles/PC080205-IMAGE-03.png",
           "name": "PC080205-IMAGE-03.png"
         }
       ],
@@ -1141,15 +1141,15 @@
       "buyQuantity": 140,
       "mainImages": [
         {
-          "path": "/products/PC080301-IMAGE-01.png",
+          "path": "uploadFiles/PC080301-IMAGE-01.png",
           "name": "PC080301-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080301-IMAGE-02.png",
+          "path": "uploadFiles/PC080301-IMAGE-02.png",
           "name": "PC080301-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080301-IMAGE-03.png",
+          "path": "uploadFiles/PC080301-IMAGE-03.png",
           "name": "PC080301-IMAGE-03.png"
         }
       ],
@@ -1171,15 +1171,15 @@
       "buyQuantity": 55,
       "mainImages": [
         {
-          "path": "/products/PC080302-IMAGE-01.png",
+          "path": "uploadFiles/PC080302-IMAGE-01.png",
           "name": "PC080302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080302-IMAGE-02.png",
+          "path": "uploadFiles/PC080302-IMAGE-02.png",
           "name": "PC080302-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080302-IMAGE-03.png",
+          "path": "uploadFiles/PC080302-IMAGE-03.png",
           "name": "PC080302-IMAGE-03.png"
         }
       ],
@@ -1201,15 +1201,15 @@
       "buyQuantity": 210,
       "mainImages": [
         {
-          "path": "/products/PC080303-IMAGE-01.png",
+          "path": "uploadFiles/PC080303-IMAGE-01.png",
           "name": "PC080303-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080303-IMAGE-02.png",
+          "path": "uploadFiles/PC080303-IMAGE-02.png",
           "name": "PC080303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080303-IMAGE-03.png",
+          "path": "uploadFiles/PC080303-IMAGE-03.png",
           "name": "PC080303-IMAGE-03.png"
         }
       ],
@@ -1231,15 +1231,15 @@
       "buyQuantity": 70,
       "mainImages": [
         {
-          "path": "/products/PC08030-IMAGE-01.png",
+          "path": "uploadFiles/PC08030-IMAGE-01.png",
           "name": "PC080304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080304-IMAGE-02.png",
+          "path": "uploadFiles/PC080304-IMAGE-02.png",
           "name": "PC080304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080304-IMAGE-03.png",
+          "path": "uploadFiles/PC080304-IMAGE-03.png",
           "name": "PC080304-IMAGE-03.png"
         }
       ],
@@ -1261,15 +1261,15 @@
       "buyQuantity": 180,
       "mainImages": [
         {
-          "path": "/products/PC080305-IMAGE-01.png",
+          "path": "uploadFiles/PC080305-IMAGE-01.png",
           "name": "PC080305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080305-IMAGE-02.png",
+          "path": "uploadFiles/PC080305-IMAGE-02.png",
           "name": "PC080305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080305-IMAGE-03.png",
+          "path": "uploadFiles/PC080305-IMAGE-03.png",
           "name": "PC080305-IMAGE-03.png"
         }
       ],
@@ -1291,15 +1291,15 @@
       "buyQuantity": 45,
       "mainImages": [
         {
-          "path": "/products/PC050501-IMAGE-01.png",
+          "path": "uploadFiles/PC050501-IMAGE-01.png",
           "name": "PC050501-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050501-IMAGE-02.png",
+          "path": "uploadFiles/PC050501-IMAGE-02.png",
           "name": "PC050501-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050501-IMAGE-03.png",
+          "path": "uploadFiles/PC050501-IMAGE-03.png",
           "name": "PC050501-IMAGE-03.png"
         }
       ],
@@ -1321,15 +1321,15 @@
       "buyQuantity": 35,
       "mainImages": [
         {
-          "path": "/products/PC050502-IMAGE-01.png",
+          "path": "uploadFiles/PC050502-IMAGE-01.png",
           "name": "PC050502-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050502-IMAGE-02.png",
+          "path": "uploadFiles/PC050502-IMAGE-02.png",
           "name": "PC050502-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050502-IMAGE-03.png",
+          "path": "uploadFiles/PC050502-IMAGE-03.png",
           "name": "PC050502-IMAGE-03.png"
         }
       ],
@@ -1351,15 +1351,15 @@
       "buyQuantity": 60,
       "mainImages": [
         {
-          "path": "/products/PC050503-IMAGE-01.png",
+          "path": "uploadFiles/PC050503-IMAGE-01.png",
           "name": "PC050503-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050503-IMAGE-02.png",
+          "path": "uploadFiles/PC050503-IMAGE-02.png",
           "name": "PC050503-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050503-IMAGE-03.png",
+          "path": "uploadFiles/PC050503-IMAGE-03.png",
           "name": "PC050503-IMAGE-03.png"
         }
       ],
@@ -1381,15 +1381,15 @@
       "buyQuantity": 90,
       "mainImages": [
         {
-          "path": "/products/PC050504-IMAGE-01.png",
+          "path": "uploadFiles/PC050504-IMAGE-01.png",
           "name": "PC050504-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050504-IMAGE-02.png",
+          "path": "uploadFiles/PC050504-IMAGE-02.png",
           "name": "PC050504-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050504-IMAGE-03.png",
+          "path": "uploadFiles/PC050504-IMAGE-03.png",
           "name": "PC050504-IMAGE-03.png"
         }
       ],
@@ -1411,15 +1411,15 @@
       "buyQuantity": 25,
       "mainImages": [
         {
-          "path": "/products/PC050505-IMAGE-01.png",
+          "path": "uploadFiles/PC050505-IMAGE-01.png",
           "name": "PC050505-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050505-IMAGE-02.png",
+          "path": "uploadFiles/PC050505-IMAGE-02.png",
           "name": "PC050505-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050505-IMAGE-03.png",
+          "path": "uploadFiles/PC050505-IMAGE-03.png",
           "name": "PC050505-IMAGE-03.png"
         }
       ],
@@ -1441,15 +1441,15 @@
       "buyQuantity": 85,
       "mainImages": [
         {
-          "path": "/products/PC050601-IMAGE-01.png",
+          "path": "uploadFiles/PC050601-IMAGE-01.png",
           "name": "PC050601-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050601-IMAGE-02.png",
+          "path": "uploadFiles/PC050601-IMAGE-02.png",
           "name": "PC050601-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050601-IMAGE-03.png",
+          "path": "uploadFiles/PC050601-IMAGE-03.png",
           "name": "PC050601-IMAGE-03.png"
         }
       ],
@@ -1471,15 +1471,15 @@
       "buyQuantity": 40,
       "mainImages": [
         {
-          "path": "/products/PC050602-IMAGE-01.png",
+          "path": "uploadFiles/PC050602-IMAGE-01.png",
           "name": "PC050602-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050602-IMAGE-02.png",
+          "path": "uploadFiles/PC050602-IMAGE-02.png",
           "name": "PC050602-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050602-IMAGE-03.png",
+          "path": "uploadFiles/PC050602-IMAGE-03.png",
           "name": "PC050602-IMAGE-03.png"
         }
       ],
@@ -1501,15 +1501,15 @@
       "buyQuantity": 60,
       "mainImages": [
         {
-          "path": "/products/PC050603-IMAGE-01.png",
+          "path": "uploadFiles/PC050603-IMAGE-01.png",
           "name": "PC050603-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050603-IMAGE-02.png",
+          "path": "uploadFiles/PC050603-IMAGE-02.png",
           "name": "PC050603-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050603-IMAGE-03.png",
+          "path": "uploadFiles/PC050603-IMAGE-03.png",
           "name": "PC050603-IMAGE-03.png"
         }
       ],
@@ -1531,15 +1531,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050604-IMAGE-01.png",
+          "path": "uploadFiles/PC050604-IMAGE-01.png",
           "name": "PC050604-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050604-IMAGE-02.png",
+          "path": "uploadFiles/PC050604-IMAGE-02.png",
           "name": "PC050604-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050604-IMAGE-03.png",
+          "path": "uploadFiles/PC050604-IMAGE-03.png",
           "name": "PC050604-IMAGE-03.png"
         }
       ],
@@ -1573,15 +1573,15 @@
       "buyQuantity": 50,
       "mainImages": [
         {
-          "path": "/products/PC050605-IMAGE-01.png",
+          "path": "uploadFiles/PC050605-IMAGE-01.png",
           "name": "PC050605-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050605-IMAGE-02.png",
+          "path": "uploadFiles/PC050605-IMAGE-02.png",
           "name": "PC050605-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050605-IMAGE-03.png",
+          "path": "uploadFiles/PC050605-IMAGE-03.png",
           "name": "PC050605-IMAGE-03.png"
         }
       ],
@@ -1603,15 +1603,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030301-IMAGE-01.png",
+          "path": "uploadFiles/PC030301-IMAGE-01.png",
           "name": "PC030301-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030301-IMAGE-02.png",
+          "path": "uploadFiles/PC030301-IMAGE-02.png",
           "name": "PC030301-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030301-IMAGE-03.png",
+          "path": "uploadFiles/PC030301-IMAGE-03.png",
           "name": "PC030301-IMAGE-03.png"
         }
       ],
@@ -1644,15 +1644,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC030302-IMAGE-01.png",
+          "path": "uploadFiles/PC030302-IMAGE-01.png",
           "name": "PC030302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030302-IMAGE-02.png",
+          "path": "uploadFiles/PC030302-IMAGE-02.png",
           "name": "PC030302-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030302-IMAGE-03.png",
+          "path": "uploadFiles/PC030302-IMAGE-03.png",
           "name": "PC030302-IMAGE-03.png"
         }
       ],
@@ -1684,15 +1684,15 @@
       "buyQuantity": 160,
       "mainImages": [
         {
-          "path": "/products/PC030303-IMAGE-01.png",
+          "path": "uploadFiles/PC030303-IMAGE-01.png",
           "name": "PC030303-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030303-IMAGE-02.png",
+          "path": "uploadFiles/PC030303-IMAGE-02.png",
           "name": "PC030303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030303-IMAGE-03.png",
+          "path": "uploadFiles/PC030303-IMAGE-03.png",
           "name": "PC030303-IMAGE-03.png"
         }
       ],
@@ -1729,15 +1729,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC030304-IMAGE-01.png",
+          "path": "uploadFiles/PC030304-IMAGE-01.png",
           "name": "PC030304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030304-IMAGE-02.png",
+          "path": "uploadFiles/PC030304-IMAGE-02.png",
           "name": "PC030304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030304-IMAGE-03.png",
+          "path": "uploadFiles/PC030304-IMAGE-03.png",
           "name": "PC030304-IMAGE-03.png"
         }
       ],
@@ -1771,15 +1771,15 @@
       "buyQuantity": 320,
       "mainImages": [
         {
-          "path": "/products/PC030305-IMAGE-01.png",
+          "path": "uploadFiles/PC030305-IMAGE-01.png",
           "name": "PC030305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030305-IMAGE-02.png",
+          "path": "uploadFiles/PC030305-IMAGE-02.png",
           "name": "PC030305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030305-IMAGE-03.png",
+          "path": "uploadFiles/PC030305-IMAGE-03.png",
           "name": "PC030305-IMAGE-03.png"
         }
       ],
@@ -1813,15 +1813,15 @@
       "buyQuantity": 80,
       "mainImages": [
         {
-          "path": "/products/PC030401-IMAGE-01.png",
+          "path": "uploadFiles/PC030401-IMAGE-01.png",
           "name": "PC030401-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030401-IMAGE-02.png",
+          "path": "uploadFiles/PC030401-IMAGE-02.png",
           "name": "PC030401-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030401-IMAGE-03.png",
+          "path": "uploadFiles/PC030401-IMAGE-03.png",
           "name": "PC030401-IMAGE-03.png"
         }
       ],
@@ -1857,15 +1857,15 @@
       "buyQuantity": 400,
       "mainImages": [
         {
-          "path": "/products/PC030402-IMAGE-01.png",
+          "path": "uploadFiles/PC030402-IMAGE-01.png",
           "name": "PC030402-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030402-IMAGE-02.png",
+          "path": "uploadFiles/PC030402-IMAGE-02.png",
           "name": "PC030402-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030402-IMAGE-03.png",
+          "path": "uploadFiles/PC030402-IMAGE-03.png",
           "name": "PC030402-IMAGE-03.png"
         }
       ],
@@ -1901,15 +1901,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030403-IMAGE-01.png",
+          "path": "uploadFiles/PC030403-IMAGE-01.png",
           "name": "PC030403-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030403-IMAGE-02.png",
+          "path": "uploadFiles/PC030403-IMAGE-02.png",
           "name": "PC030403-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030403-IMAGE-03.png",
+          "path": "uploadFiles/PC030403-IMAGE-03.png",
           "name": "PC030403-IMAGE-03.png"
         }
       ],
@@ -1942,15 +1942,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC030404-IMAGE-01.png",
+          "path": "uploadFiles/PC030404-IMAGE-01.png",
           "name": "PC030404-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030404-IMAGE-02.png",
+          "path": "uploadFiles/PC030404-IMAGE-02.png",
           "name": "PC030404-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030404-IMAGE-03.png",
+          "path": "uploadFiles/PC030404-IMAGE-03.png",
           "name": "PC030404-IMAGE-03.png"
         }
       ],
@@ -1984,15 +1984,15 @@
       "buyQuantity": 160,
       "mainImages": [
         {
-          "path": "/products/PC030405-IMAGE-01.png",
+          "path": "uploadFiles/PC030405-IMAGE-01.png",
           "name": "PC030405-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030405-IMAGE-02.png",
+          "path": "uploadFiles/PC030405-IMAGE-02.png",
           "name": "PC030405-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030405-IMAGE-03.png",
+          "path": "uploadFiles/PC030405-IMAGE-03.png",
           "name": "PC030405-IMAGE-03.png"
         }
       ],
@@ -2033,15 +2033,15 @@
       "buyQuantity": 160,
       "mainImages": [
         {
-          "path": "/products/PC040101-IMAGE-01.png",
+          "path": "uploadFiles/PC040101-IMAGE-01.png",
           "name": "PC040101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040101-IMAGE-02.png",
+          "path": "uploadFiles/PC040101-IMAGE-02.png",
           "name": "PC040101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040101-IMAGE-03.png",
+          "path": "uploadFiles/PC040101-IMAGE-03.png",
           "name": "PC040101-IMAGE-03.png"
         }
       ],
@@ -2074,15 +2074,15 @@
       "buyQuantity": 80,
       "mainImages": [
         {
-          "path": "/products/PC040102-IMAGE-01.png",
+          "path": "uploadFiles/PC040102-IMAGE-01.png",
           "name": "PC040102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040102-IMAGE-02.png",
+          "path": "uploadFiles/PC040102-IMAGE-02.png",
           "name": "PC040102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040102-IMAGE-03.png",
+          "path": "uploadFiles/PC040102-IMAGE-03.png",
           "name": "PC040102-IMAGE-03.png"
         }
       ],
@@ -2115,15 +2115,15 @@
       "buyQuantity": 320,
       "mainImages": [
         {
-          "path": "/products/PC040103-IMAGE-01.png",
+          "path": "uploadFiles/PC040103-IMAGE-01.png",
           "name": "PC040103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040103-IMAGE-02.png",
+          "path": "uploadFiles/PC040103-IMAGE-02.png",
           "name": "PC040103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040103-IMAGE-03.png",
+          "path": "uploadFiles/PC040103-IMAGE-03.png",
           "name": "PC040103-IMAGE-03.png"
         }
       ],
@@ -2157,15 +2157,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC040104-IMAGE-01.png",
+          "path": "uploadFiles/PC040104-IMAGE-01.png",
           "name": "PC040104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040104-IMAGE-02.png",
+          "path": "uploadFiles/PC040104-IMAGE-02.png",
           "name": "PC040104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040104-IMAGE-03.png",
+          "path": "uploadFiles/PC040104-IMAGE-03.png",
           "name": "PC040104-IMAGE-03.png"
         }
       ],
@@ -2201,15 +2201,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC040105-IMAGE-01.png",
+          "path": "uploadFiles/PC040105-IMAGE-01.png",
           "name": "PC040105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040105-IMAGE-02.png",
+          "path": "uploadFiles/PC040105-IMAGE-02.png",
           "name": "PC040105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040105-IMAGE-03.png",
+          "path": "uploadFiles/PC040105-IMAGE-03.png",
           "name": "PC040105-IMAGE-03.png"
         }
       ],
@@ -2245,15 +2245,15 @@
       "buyQuantity": 240,
       "mainImages": [
         {
-          "path": "/products/PC040201-IMAGE-01.png",
+          "path": "uploadFiles/PC040201-IMAGE-01.png",
           "name": "PC040201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040201-IMAGE-02.png",
+          "path": "uploadFiles/PC040201-IMAGE-02.png",
           "name": "PC040201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040201-IMAGE-03.png",
+          "path": "uploadFiles/PC040201-IMAGE-03.png",
           "name": "PC040201-IMAGE-03.png"
         }
       ],
@@ -2287,15 +2287,15 @@
       "buyQuantity": 400,
       "mainImages": [
         {
-          "path": "/products/PC040202-IMAGE-01.png",
+          "path": "uploadFiles/PC040202-IMAGE-01.png",
           "name": "PC040202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040202-IMAGE-02.png",
+          "path": "uploadFiles/PC040202-IMAGE-02.png",
           "name": "PC040202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040202-IMAGE-03.png",
+          "path": "uploadFiles/PC040202-IMAGE-03.png",
           "name": "PC040202-IMAGE-03.png"
         }
       ],
@@ -2329,15 +2329,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC040203-IMAGE-01.png",
+          "path": "uploadFiles/PC040203-IMAGE-01.png",
           "name": "PC040203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040203-IMAGE-02.png",
+          "path": "uploadFiles/PC040203-IMAGE-02.png",
           "name": "PC040203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040203-IMAGE-03.png",
+          "path": "uploadFiles/PC040203-IMAGE-03.png",
           "name": "PC040203-IMAGE-03.png"
         }
       ],
@@ -2371,15 +2371,15 @@
       "buyQuantity": 160,
       "mainImages": [
         {
-          "path": "/products/PC040204-IMAGE-01.png",
+          "path": "uploadFiles/PC040204-IMAGE-01.png",
           "name": "PC040204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040204-IMAGE-02.png",
+          "path": "uploadFiles/PC040204-IMAGE-02.png",
           "name": "PC040204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040204-IMAGE-03.png",
+          "path": "uploadFiles/PC040204-IMAGE-03.png",
           "name": "PC040204-IMAGE-03.png"
         }
       ],
@@ -2414,15 +2414,15 @@
       "buyQuantity": 160,
       "mainImages": [
         {
-          "path": "/products/PC040301-IMAGE-01.png",
+          "path": "uploadFiles/PC040301-IMAGE-01.png",
           "name": "PC040301-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040301-IMAGE-02.png",
+          "path": "uploadFiles/PC040301-IMAGE-02.png",
           "name": "PC040301-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040301-IMAGE-03.png",
+          "path": "uploadFiles/PC040301-IMAGE-03.png",
           "name": "PC040301-IMAGE-03.png"
         }
       ],
@@ -2457,15 +2457,15 @@
       "buyQuantity": 300,
       "mainImages": [
         {
-          "path": "/products/PC040302-IMAGE-01.png",
+          "path": "uploadFiles/PC040302-IMAGE-01.png",
           "name": "PC040302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040302-IMAGE-02.png",
+          "path": "uploadFiles/PC040302-IMAGE-02.png",
           "name": "PC040302-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040302-IMAGE-03.png",
+          "path": "uploadFiles/PC040302-IMAGE-03.png",
           "name": "PC040302-IMAGE-03.png"
         }
       ],
@@ -2515,15 +2515,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC040303-IMAGE-01.png",
+          "path": "uploadFiles/PC040303-IMAGE-01.png",
           "name": "PC040303-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040303-IMAGE-02.png",
+          "path": "uploadFiles/PC040303-IMAGE-02.png",
           "name": "PC040303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040303-IMAGE-03.png",
+          "path": "uploadFiles/PC040303-IMAGE-03.png",
           "name": "PC040303-IMAGE-03.png"
         }
       ],
@@ -2560,15 +2560,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC040304-IMAGE-01.png",
+          "path": "uploadFiles/PC040304-IMAGE-01.png",
           "name": "PC040304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040304-IMAGE-02.png",
+          "path": "uploadFiles/PC040304-IMAGE-02.png",
           "name": "PC040304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040304-IMAGE-03.png",
+          "path": "uploadFiles/PC040304-IMAGE-03.png",
           "name": "PC040304-IMAGE-03.png"
         }
       ],
@@ -2605,15 +2605,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC040401-IMAGE-01.png",
+          "path": "uploadFiles/PC040401-IMAGE-01.png",
           "name": "PC040401-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040401-IMAGE-02.png",
+          "path": "uploadFiles/PC040401-IMAGE-02.png",
           "name": "PC040401-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040401-IMAGE-03.png",
+          "path": "uploadFiles/PC040401-IMAGE-03.png",
           "name": "PC040401-IMAGE-03.png"
         }
       ],
@@ -2651,15 +2651,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC040402-IMAGE-01.png",
+          "path": "uploadFiles/PC040402-IMAGE-01.png",
           "name": "PC040402-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040402-IMAGE-02.png",
+          "path": "uploadFiles/PC040402-IMAGE-02.png",
           "name": "PC040402-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040402-IMAGE-03.png",
+          "path": "uploadFiles/PC040402-IMAGE-03.png",
           "name": "PC040402-IMAGE-03.png"
         }
       ],
@@ -2695,15 +2695,15 @@
       "buyQuantity": 40,
       "mainImages": [
         {
-          "path": "/products/PC040403-IMAGE-01.png",
+          "path": "uploadFiles/PC040403-IMAGE-01.png",
           "name": "PC040403-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040403-IMAGE-02.png",
+          "path": "uploadFiles/PC040403-IMAGE-02.png",
           "name": "PC040403-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040403-IMAGE-03.png",
+          "path": "uploadFiles/PC040403-IMAGE-03.png",
           "name": "PC040403-IMAGE-03.png"
         }
       ],
@@ -2740,15 +2740,15 @@
       "buyQuantity": 40,
       "mainImages": [
         {
-          "path": "/products/PC040404-IMAGE-01.png",
+          "path": "uploadFiles/PC040404-IMAGE-01.png",
           "name": "PC040404-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040404-IMAGE-02.png",
+          "path": "uploadFiles/PC040404-IMAGE-02.png",
           "name": "PC040404-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040404-IMAGE-03.png",
+          "path": "uploadFiles/PC040404-IMAGE-03.png",
           "name": "PC040404-IMAGE-03.png"
         }
       ],
@@ -2784,15 +2784,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC040405-IMAGE-01.png",
+          "path": "uploadFiles/PC040405-IMAGE-01.png",
           "name": "PC040405-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040405-IMAGE-02.png",
+          "path": "uploadFiles/PC040405-IMAGE-02.png",
           "name": "PC040405-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040405-IMAGE-03.png",
+          "path": "uploadFiles/PC040405-IMAGE-03.png",
           "name": "PC040405-IMAGE-03.png"
         }
       ],
@@ -2828,15 +2828,15 @@
       "buyQuantity": 100,
       "mainImages": [
         {
-          "path": "/products/PC050101-IMAGE-01.png",
+          "path": "uploadFiles/PC050101-IMAGE-01.png",
           "name": "PC050101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050101-IMAGE-02.png",
+          "path": "uploadFiles/PC050101-IMAGE-02.png",
           "name": "PC050101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050101-IMAGE-03.png",
+          "path": "uploadFiles/PC050101-IMAGE-03.png",
           "name": "PC050101-IMAGE-03.png"
         }
       ],
@@ -2875,15 +2875,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050102-IMAGE-01.png",
+          "path": "uploadFiles/PC050102-IMAGE-01.png",
           "name": "PC050102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050102-IMAGE-02.png",
+          "path": "uploadFiles/PC050102-IMAGE-02.png",
           "name": "PC050102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050102-IMAGE-03.png",
+          "path": "uploadFiles/PC050102-IMAGE-03.png",
           "name": "PC050102-IMAGE-03.png"
         }
       ],
@@ -2922,15 +2922,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050103-IMAGE-01.png",
+          "path": "uploadFiles/PC050103-IMAGE-01.png",
           "name": "PC050103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050103-IMAGE-02.png",
+          "path": "uploadFiles/PC050103-IMAGE-02.png",
           "name": "PC050103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050103-IMAGE-03.png",
+          "path": "uploadFiles/PC050103-IMAGE-03.png",
           "name": "PC050103-IMAGE-03.png"
         }
       ],
@@ -2969,15 +2969,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050104-IMAGE-01.png",
+          "path": "uploadFiles/PC050104-IMAGE-01.png",
           "name": "PC050104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050104-IMAGE-02.png",
+          "path": "uploadFiles/PC050104-IMAGE-02.png",
           "name": "PC050104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050104-IMAGE-03.png",
+          "path": "uploadFiles/PC050104-IMAGE-03.png",
           "name": "PC050104-IMAGE-03.png"
         }
       ],
@@ -3014,15 +3014,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050105-IMAGE-01.png",
+          "path": "uploadFiles/PC050105-IMAGE-01.png",
           "name": "PC050105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050105-IMAGE-02.png",
+          "path": "uploadFiles/PC050105-IMAGE-02.png",
           "name": "PC050105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050105-IMAGE-03.png",
+          "path": "uploadFiles/PC050105-IMAGE-03.png",
           "name": "PC050105-IMAGE-03.png"
         }
       ],
@@ -3061,15 +3061,15 @@
       "buyQuantity": 500,
       "mainImages": [
         {
-          "path": "/products/PC050201-IMAGE-01.png",
+          "path": "uploadFiles/PC050201-IMAGE-01.png",
           "name": "PC050201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050201-IMAGE-02.png",
+          "path": "uploadFiles/PC050201-IMAGE-02.png",
           "name": "PC050201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050201-IMAGE-03.png",
+          "path": "uploadFiles/PC050201-IMAGE-03.png",
           "name": "PC050201-IMAGE-03.png"
         }
       ],
@@ -3107,15 +3107,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050202-IMAGE-01.png",
+          "path": "uploadFiles/PC050202-IMAGE-01.png",
           "name": "PC050202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050202-IMAGE-02.png",
+          "path": "uploadFiles/PC050202-IMAGE-02.png",
           "name": "PC050202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050202-IMAGE-03.png",
+          "path": "uploadFiles/PC050202-IMAGE-03.png",
           "name": "PC050202-IMAGE-03.png"
         }
       ],
@@ -3155,15 +3155,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC050203-IMAGE-01.png",
+          "path": "uploadFiles/PC050203-IMAGE-01.png",
           "name": "PC050203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050203-IMAGE-02.png",
+          "path": "uploadFiles/PC050203-IMAGE-02.png",
           "name": "PC050203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050203-IMAGE-03.png",
+          "path": "uploadFiles/PC050203-IMAGE-03.png",
           "name": "PC050203-IMAGE-03.png"
         }
       ],
@@ -3200,15 +3200,15 @@
       "buyQuantity": 300,
       "mainImages": [
         {
-          "path": "/products/PC050204-IMAGE-01.png",
+          "path": "uploadFiles/PC050204-IMAGE-01.png",
           "name": "PC050204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050204-IMAGE-02.png",
+          "path": "uploadFiles/PC050204-IMAGE-02.png",
           "name": "PC050204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050204-IMAGE-03.png",
+          "path": "uploadFiles/PC050204-IMAGE-03.png",
           "name": "PC050204-IMAGE-03.png"
         }
       ],
@@ -3245,15 +3245,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050205-IMAGE-01.png",
+          "path": "uploadFiles/PC050205-IMAGE-01.png",
           "name": "PC050205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050205-IMAGE-02.png",
+          "path": "uploadFiles/PC050205-IMAGE-02.png",
           "name": "PC050205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050205-IMAGE-03.png",
+          "path": "uploadFiles/PC050205-IMAGE-03.png",
           "name": "PC050205-IMAGE-03.png"
         }
       ],
@@ -3291,15 +3291,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC060101-IMAGE-01.png",
+          "path": "uploadFiles/PC060101-IMAGE-01.png",
           "name": "PC060101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060101-IMAGE-02.png",
+          "path": "uploadFiles/PC060101-IMAGE-02.png",
           "name": "PC060101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060101-IMAGE-03.png",
+          "path": "uploadFiles/PC060101-IMAGE-03.png",
           "name": "PC060101-IMAGE-03.png"
         }
       ],
@@ -3337,15 +3337,15 @@
       "buyQuantity": 440,
       "mainImages": [
         {
-          "path": "/products/PC060102-IMAGE-01.png",
+          "path": "uploadFiles/PC060102-IMAGE-01.png",
           "name": "PC060102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060102-IMAGE-02.png",
+          "path": "uploadFiles/PC060102-IMAGE-02.png",
           "name": "PC060102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060102-IMAGE-03.png",
+          "path": "uploadFiles/PC060102-IMAGE-03.png",
           "name": "PC060102-IMAGE-03.png"
         }
       ],
@@ -3383,15 +3383,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC060103-IMAGE-01.png",
+          "path": "uploadFiles/PC060103-IMAGE-01.png",
           "name": "PC060103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060103-IMAGE-02.png",
+          "path": "uploadFiles/PC060103-IMAGE-02.png",
           "name": "PC060103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060103-IMAGE-03.png",
+          "path": "uploadFiles/PC060103-IMAGE-03.png",
           "name": "PC060103-IMAGE-03.png"
         }
       ],
@@ -3429,15 +3429,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC060104-IMAGE-01.png",
+          "path": "uploadFiles/PC060104-IMAGE-01.png",
           "name": "PC060104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060104-IMAGE-02.png",
+          "path": "uploadFiles/PC060104-IMAGE-02.png",
           "name": "PC060104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060104-IMAGE-03.png",
+          "path": "uploadFiles/PC060104-IMAGE-03.png",
           "name": "PC060104-IMAGE-03.png"
         }
       ],
@@ -3478,15 +3478,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC060105-IMAGE-01.png",
+          "path": "uploadFiles/PC060105-IMAGE-01.png",
           "name": "PC060105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060105-IMAGE-02.png",
+          "path": "uploadFiles/PC060105-IMAGE-02.png",
           "name": "PC060105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060105-IMAGE-03.png",
+          "path": "uploadFiles/PC060105-IMAGE-03.png",
           "name": "PC060105-IMAGE-03.png"
         }
       ],
@@ -3525,15 +3525,15 @@
       "buyQuantity": 440,
       "mainImages": [
         {
-          "path": "/products/PC060201-IMAGE-01.png",
+          "path": "uploadFiles/PC060201-IMAGE-01.png",
           "name": "PC060201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060201-IMAGE-02.png",
+          "path": "uploadFiles/PC060201-IMAGE-02.png",
           "name": "PC060201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060201-IMAGE-03.png",
+          "path": "uploadFiles/PC060201-IMAGE-03.png",
           "name": "PC060201-IMAGE-03.png"
         }
       ],
@@ -3570,15 +3570,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC060202-IMAGE-01.png",
+          "path": "uploadFiles/PC060202-IMAGE-01.png",
           "name": "PC060202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060202-IMAGE-02.png",
+          "path": "uploadFiles/PC060202-IMAGE-02.png",
           "name": "PC060202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060202-IMAGE-03.png",
+          "path": "uploadFiles/PC060202-IMAGE-03.png",
           "name": "PC060202-IMAGE-03.png"
         }
       ],
@@ -3615,15 +3615,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC060203-IMAGE-01.png",
+          "path": "uploadFiles/PC060203-IMAGE-01.png",
           "name": "PC060203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060203-IMAGE-02.png",
+          "path": "uploadFiles/PC060203-IMAGE-02.png",
           "name": "PC060203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060203-IMAGE-03.png",
+          "path": "uploadFiles/PC060203-IMAGE-03.png",
           "name": "PC060203-IMAGE-03.png"
         }
       ],
@@ -3661,15 +3661,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC060204-IMAGE-01.png",
+          "path": "uploadFiles/PC060204-IMAGE-01.png",
           "name": "PC060204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060204-IMAGE-02.png",
+          "path": "uploadFiles/PC060204-IMAGE-02.png",
           "name": "PC060204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060204-IMAGE-03.png",
+          "path": "uploadFiles/PC060204-IMAGE-03.png",
           "name": "PC060204-IMAGE-03.png"
         }
       ],
@@ -3706,15 +3706,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC060205-IMAGE-01.png",
+          "path": "uploadFiles/PC060205-IMAGE-01.png",
           "name": "PC060205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC060205-IMAGE-02.png",
+          "path": "uploadFiles/PC060205-IMAGE-02.png",
           "name": "PC060205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC060205-IMAGE-03.png",
+          "path": "uploadFiles/PC060205-IMAGE-03.png",
           "name": "PC060205-IMAGE-03.png"
         }
       ],
@@ -3756,15 +3756,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC080101-IMAGE-01.png",
+          "path": "uploadFiles/PC080101-IMAGE-01.png",
           "name": "PC080101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080101-IMAGE-02.png",
+          "path": "uploadFiles/PC080101-IMAGE-02.png",
           "name": "PC080101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080101-IMAGE-03.png",
+          "path": "uploadFiles/PC080101-IMAGE-03.png",
           "name": "PC080101-IMAGE-03.png"
         }
       ],
@@ -3803,15 +3803,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC080102-IMAGE-01.png",
+          "path": "uploadFiles/PC080102-IMAGE-01.png",
           "name": "PC080102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080102-IMAGE-02.png",
+          "path": "uploadFiles/PC080102-IMAGE-02.png",
           "name": "PC080102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080102-IMAGE-03.png",
+          "path": "uploadFiles/PC080102-IMAGE-03.png",
           "name": "PC080102-IMAGE-03.png"
         }
       ],
@@ -3850,15 +3850,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC080103-IMAGE-01.png",
+          "path": "uploadFiles/PC080103-IMAGE-01.png",
           "name": "PC080103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080103-IMAGE-02.png",
+          "path": "uploadFiles/PC080103-IMAGE-02.png",
           "name": "PC080103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080103-IMAGE-03.png",
+          "path": "uploadFiles/PC080103-IMAGE-03.png",
           "name": "PC080103-IMAGE-03.png"
         }
       ],
@@ -3898,15 +3898,15 @@
       "buyQuantity": 400,
       "mainImages": [
         {
-          "path": "/products/PC080104-IMAGE-01.png",
+          "path": "uploadFiles/PC080104-IMAGE-01.png",
           "name": "PC080104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080104-IMAGE-02.png",
+          "path": "uploadFiles/PC080104-IMAGE-02.png",
           "name": "PC080104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080104-IMAGE-03.png",
+          "path": "uploadFiles/PC080104-IMAGE-03.png",
           "name": "PC080104-IMAGE-03.png"
         }
       ],
@@ -3946,15 +3946,15 @@
       "buyQuantity": 400,
       "mainImages": [
         {
-          "path": "/products/PC080105-IMAGE-01.png",
+          "path": "uploadFiles/PC080105-IMAGE-01.png",
           "name": "PC080105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC080105-IMAGE-02.png",
+          "path": "uploadFiles/PC080105-IMAGE-02.png",
           "name": "PC080105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC080105-IMAGE-03.png",
+          "path": "uploadFiles/PC080105-IMAGE-03.png",
           "name": "PC080105-IMAGE-03.png"
         }
       ],
@@ -3994,27 +3994,27 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030101-IMAGE-01.png",
+          "path": "uploadFiles/PC030101-IMAGE-01.png",
           "name": "PC030101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030101-IMAGE-02.png",
+          "path": "uploadFiles/PC030101-IMAGE-02.png",
           "name": "PC030101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030101-IMAGE-03.png",
+          "path": "uploadFiles/PC030101-IMAGE-03.png",
           "name": "PC030101-IMAGE-03.png"
         },
         {
-          "path": "/products/PC030101-IMAGE-04.png",
+          "path": "uploadFiles/PC030101-IMAGE-04.png",
           "name": "PC030101-IMAGE-04.png"
         },
         {
-          "path": "/products/PC030101-IMAGE-05.png",
+          "path": "uploadFiles/PC030101-IMAGE-05.png",
           "name": "PC030101-IMAGE-05.png"
         },
         {
-          "path": "/products/PC030101-IMAGE-06.png",
+          "path": "uploadFiles/PC030101-IMAGE-06.png",
           "name": "PC030101-IMAGE-06.png"
         }
       ],
@@ -4049,15 +4049,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030102-IMAGE-01.png",
+          "path": "uploadFiles/PC030102-IMAGE-01.png",
           "name": "PC030102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030102-IMAGE-02.png",
+          "path": "uploadFiles/PC030102-IMAGE-02.png",
           "name": "PC030102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030102-IMAGE-03.png",
+          "path": "uploadFiles/PC030102-IMAGE-03.png",
           "name": "PC030102-IMAGE-03.png"
         }
       ],
@@ -4093,15 +4093,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030103-IMAGE-01.png",
+          "path": "uploadFiles/PC030103-IMAGE-01.png",
           "name": "PC030103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030103-IMAGE-02.png",
+          "path": "uploadFiles/PC030103-IMAGE-02.png",
           "name": "PC030103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030103-IMAGE-03.png",
+          "path": "uploadFiles/PC030103-IMAGE-03.png",
           "name": "PC030103-IMAGE-03.png"
         }
       ],
@@ -4137,15 +4137,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030104-IMAGE-01.png",
+          "path": "uploadFiles/PC030104-IMAGE-01.png",
           "name": "PC030104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030104-IMAGE-02.png",
+          "path": "uploadFiles/PC030104-IMAGE-02.png",
           "name": "PC030104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030104-IMAGE-03.png",
+          "path": "uploadFiles/PC030104-IMAGE-03.png",
           "name": "PC030104-IMAGE-03.png"
         }
       ],
@@ -4181,15 +4181,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030105-IMAGE-01.png",
+          "path": "uploadFiles/PC030105-IMAGE-01.png",
           "name": "PC030105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030105-IMAGE-02.png",
+          "path": "uploadFiles/PC030105-IMAGE-02.png",
           "name": "PC030105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030105-IMAGE-03.png",
+          "path": "uploadFiles/PC030105-IMAGE-03.png",
           "name": "PC030105-IMAGE-03.png"
         }
       ],
@@ -4225,15 +4225,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010301-IMAGE-01.png",
+          "path": "uploadFiles/PC010301-IMAGE-01.png",
           "name": "PC010301-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010301-IMAGE-02.png",
+          "path": "uploadFiles/PC010301-IMAGE-02.png",
           "name": "PC010301-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010301-IMAGE-03.png",
+          "path": "uploadFiles/PC010301-IMAGE-03.png",
           "name": "PC010301-IMAGE-03.png"
         }
       ],
@@ -4269,15 +4269,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010302-IMAGE-01.png",
+          "path": "uploadFiles/PC010302-IMAGE-01.png",
           "name": "PC010302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010302-IMAGE-02.png",
+          "path": "uploadFiles/PC010302-IMAGE-02.png",
           "name": "PC010302-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010302-IMAGE-03.png",
+          "path": "uploadFiles/PC010302-IMAGE-03.png",
           "name": "PC010302-IMAGE-03.png"
         }
       ],
@@ -4313,15 +4313,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010303-IMAGE-01.png",
+          "path": "uploadFiles/PC010303-IMAGE-01.png",
           "name": "PC010303-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010303-IMAGE-02.png",
+          "path": "uploadFiles/PC010303-IMAGE-02.png",
           "name": "PC010303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010303-IMAGE-03.png",
+          "path": "uploadFiles/PC010303-IMAGE-03.png",
           "name": "PC010303-IMAGE-03.png"
         }
       ],
@@ -4357,15 +4357,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010304-IMAGE-01.png",
+          "path": "uploadFiles/PC010304-IMAGE-01.png",
           "name": "PC010304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010304-IMAGE-02.png",
+          "path": "uploadFiles/PC010304-IMAGE-02.png",
           "name": "PC010304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010304-IMAGE-03.png",
+          "path": "uploadFiles/PC010304-IMAGE-03.png",
           "name": "PC010304-IMAGE-03.png"
         }
       ],
@@ -4401,15 +4401,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010305-IMAGE-01.png",
+          "path": "uploadFiles/PC010305-IMAGE-01.png",
           "name": "PC010305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010305-IMAGE-02.png",
+          "path": "uploadFiles/PC010305-IMAGE-02.png",
           "name": "PC010305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010305-IMAGE-03.png",
+          "path": "uploadFiles/PC010305-IMAGE-03.png",
           "name": "PC010305-IMAGE-03.png"
         }
       ],
@@ -4445,15 +4445,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020201-IMAGE-01.png",
+          "path": "uploadFiles/PC020201-IMAGE-01.png",
           "name": "PC020201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020201-IMAGE-02.png",
+          "path": "uploadFiles/PC020201-IMAGE-02.png",
           "name": "PC020201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020201-IMAGE-03.png",
+          "path": "uploadFiles/PC020201-IMAGE-03.png",
           "name": "PC020201-IMAGE-03.png"
         }
       ],
@@ -4489,15 +4489,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020202-IMAGE-01.png",
+          "path": "uploadFiles/PC020202-IMAGE-01.png",
           "name": "PC020202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020202-IMAGE-02.png",
+          "path": "uploadFiles/PC020202-IMAGE-02.png",
           "name": "PC020202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020202-IMAGE-03.png",
+          "path": "uploadFiles/PC020202-IMAGE-03.png",
           "name": "PC020202-IMAGE-03.png"
         }
       ],
@@ -4533,15 +4533,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020203-IMAGE-01.png",
+          "path": "uploadFiles/PC020203-IMAGE-01.png",
           "name": "PC020203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020203-IMAGE-02.png",
+          "path": "uploadFiles/PC020203-IMAGE-02.png",
           "name": "PC020203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020203-IMAGE-03.png",
+          "path": "uploadFiles/PC020203-IMAGE-03.png",
           "name": "PC020203-IMAGE-03.png"
         }
       ],
@@ -4577,15 +4577,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020204-IMAGE-01.png",
+          "path": "uploadFiles/PC020204-IMAGE-01.png",
           "name": "PC020204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020204-IMAGE-02.png",
+          "path": "uploadFiles/PC020204-IMAGE-02.png",
           "name": "PC020204-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020204-IMAGE-03.png",
+          "path": "uploadFiles/PC020204-IMAGE-03.png",
           "name": "PC020204-IMAGE-03.png"
         }
       ],
@@ -4621,15 +4621,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020205-IMAGE-01.png",
+          "path": "uploadFiles/PC020205-IMAGE-01.png",
           "name": "PC020205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020205-IMAGE-02.png",
+          "path": "uploadFiles/PC020205-IMAGE-02.png",
           "name": "PC020205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020205-IMAGE-03.png",
+          "path": "uploadFiles/PC020205-IMAGE-03.png",
           "name": "PC020205-IMAGE-03.png"
         }
       ],
@@ -4665,15 +4665,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020101-IMAGE-01.png",
+          "path": "uploadFiles/PC020101-IMAGE-01.png",
           "name": "PC020101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020101-IMAGE-02.png",
+          "path": "uploadFiles/PC020101-IMAGE-02.png",
           "name": "PC020201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020101-IMAGE-03.png",
+          "path": "uploadFiles/PC020101-IMAGE-03.png",
           "name": "PC020201-IMAGE-03.png"
         }
       ],
@@ -4709,15 +4709,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020102-IMAGE-01.png",
+          "path": "uploadFiles/PC020102-IMAGE-01.png",
           "name": "PC020102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020102-IMAGE-02.png",
+          "path": "uploadFiles/PC020102-IMAGE-02.png",
           "name": "PC020102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020102-IMAGE-03.png",
+          "path": "uploadFiles/PC020102-IMAGE-03.png",
           "name": "PC020102-IMAGE-03.png"
         }
       ],
@@ -4753,15 +4753,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020103-IMAGE-01.png",
+          "path": "uploadFiles/PC020103-IMAGE-01.png",
           "name": "PC020103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020103-IMAGE-02.png",
+          "path": "uploadFiles/PC020103-IMAGE-02.png",
           "name": "PC020103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020103-IMAGE-03.png",
+          "path": "uploadFiles/PC020103-IMAGE-03.png",
           "name": "PC020103-IMAGE-03.png"
         }
       ],
@@ -4797,15 +4797,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020104-IMAGE-01.png",
+          "path": "uploadFiles/PC020104-IMAGE-01.png",
           "name": "PC020104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020104-IMAGE-02.png",
+          "path": "uploadFiles/PC020104-IMAGE-02.png",
           "name": "PC020104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020104-IMAGE-03.png",
+          "path": "uploadFiles/PC020104-IMAGE-03.png",
           "name": "PC020104-IMAGE-03.png"
         }
       ],
@@ -4841,15 +4841,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC020105-IMAGE-01.png",
+          "path": "uploadFiles/PC020105-IMAGE-01.png",
           "name": "PC020105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC020105-IMAGE-02.png",
+          "path": "uploadFiles/PC020105-IMAGE-02.png",
           "name": "PC020105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC020105-IMAGE-03.png",
+          "path": "uploadFiles/PC020105-IMAGE-03.png",
           "name": "PC020105-IMAGE-03.png"
         }
       ],
@@ -4885,15 +4885,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030201-IMAGE-01.png",
+          "path": "uploadFiles/PC030201-IMAGE-01.png",
           "name": "PC030201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030201-IMAGE-02.png",
+          "path": "uploadFiles/PC030201-IMAGE-02.png",
           "name": "PC030201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030201-IMAGE-03.png",
+          "path": "uploadFiles/PC030201-IMAGE-03.png",
           "name": "PC030201-IMAGE-03.png"
         }
       ],
@@ -4929,15 +4929,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030202-IMAGE-01.png",
+          "path": "uploadFiles/PC030202-IMAGE-01.png",
           "name": "PC030202-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030202-IMAGE-02.png",
+          "path": "uploadFiles/PC030202-IMAGE-02.png",
           "name": "PC030202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030202-IMAGE-03.png",
+          "path": "uploadFiles/PC030202-IMAGE-03.png",
           "name": "PC030202-IMAGE-03.png"
         }
       ],
@@ -4973,15 +4973,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030203-IMAGE-01.png",
+          "path": "uploadFiles/PC030203-IMAGE-01.png",
           "name": "PC030203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030203-IMAGE-02.png",
+          "path": "uploadFiles/PC030203-IMAGE-02.png",
           "name": "PC030203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030203-IMAGE-03.png",
+          "path": "uploadFiles/PC030203-IMAGE-03.png",
           "name": "PC030203-IMAGE-03.png"
         }
       ],
@@ -5017,15 +5017,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030204-IMAGE-01.png",
+          "path": "uploadFiles/PC030204-IMAGE-01.png",
           "name": "PC030203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030203-IMAGE-02.png",
+          "path": "uploadFiles/PC030203-IMAGE-02.png",
           "name": "PC030203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030203-IMAGE-03.png",
+          "path": "uploadFiles/PC030203-IMAGE-03.png",
           "name": "PC030203-IMAGE-03.png"
         }
       ],
@@ -5061,15 +5061,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC030205-IMAGE-01.png",
+          "path": "uploadFiles/PC030205-IMAGE-01.png",
           "name": "PC030205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC030205-IMAGE-02.png",
+          "path": "uploadFiles/PC030205-IMAGE-02.png",
           "name": "PC030205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC030205-IMAGE-03.png",
+          "path": "uploadFiles/PC030205-IMAGE-03.png",
           "name": "PC030205-IMAGE-03.png"
         }
       ],
@@ -5105,15 +5105,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010101-IMAGE-01.png",
+          "path": "uploadFiles/PC010101-IMAGE-01.png",
           "name": "PC010101-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010101-IMAGE-02.png",
+          "path": "uploadFiles/PC010101-IMAGE-02.png",
           "name": "PC010101-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010101-IMAGE-03.png",
+          "path": "uploadFiles/PC010101-IMAGE-03.png",
           "name": "PC010101-IMAGE-03.png"
         }
       ],
@@ -5149,15 +5149,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010102-IMAGE-01.png",
+          "path": "uploadFiles/PC010102-IMAGE-01.png",
           "name": "PC010102-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010102-IMAGE-02.png",
+          "path": "uploadFiles/PC010102-IMAGE-02.png",
           "name": "PC010102-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010102-IMAGE-03.png",
+          "path": "uploadFiles/PC010102-IMAGE-03.png",
           "name": "PC010102-IMAGE-03.png"
         }
       ],
@@ -5193,15 +5193,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010103-IMAGE-01.png",
+          "path": "uploadFiles/PC010103-IMAGE-01.png",
           "name": "PC010103-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010103-IMAGE-02.png",
+          "path": "uploadFiles/PC010103-IMAGE-02.png",
           "name": "PC010103-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010103-IMAGE-03.png",
+          "path": "uploadFiles/PC010103-IMAGE-03.png",
           "name": "PC010103-IMAGE-03.png"
         }
       ],
@@ -5237,15 +5237,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010104-IMAGE-01.png",
+          "path": "uploadFiles/PC010104-IMAGE-01.png",
           "name": "PC010104-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010104-IMAGE-02.png",
+          "path": "uploadFiles/PC010104-IMAGE-02.png",
           "name": "PC010104-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010104-IMAGE-03.png",
+          "path": "uploadFiles/PC010104-IMAGE-03.png",
           "name": "PC010104-IMAGE-03.png"
         }
       ],
@@ -5281,15 +5281,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010105-IMAGE-01.png",
+          "path": "uploadFiles/PC010105-IMAGE-01.png",
           "name": "PC010105-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010105-IMAGE-02.png",
+          "path": "uploadFiles/PC010105-IMAGE-02.png",
           "name": "PC010105-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010105-IMAGE-03.png",
+          "path": "uploadFiles/PC010105-IMAGE-03.png",
           "name": "PC010105-IMAGE-03.png"
         }
       ],
@@ -5325,15 +5325,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010201-IMAGE-01.png",
+          "path": "uploadFiles/PC010201-IMAGE-01.png",
           "name": "PC010201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010201-IMAGE-02.png",
+          "path": "uploadFiles/PC010201-IMAGE-02.png",
           "name": "PC010201-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010201-IMAGE-03.png",
+          "path": "uploadFiles/PC010201-IMAGE-03.png",
           "name": "PC010201-IMAGE-03.png"
         }
       ],
@@ -5369,15 +5369,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010202-IMAGE-01.png",
+          "path": "uploadFiles/PC010202-IMAGE-01.png",
           "name": "PC010201-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010202-IMAGE-02.png",
+          "path": "uploadFiles/PC010202-IMAGE-02.png",
           "name": "PC010202-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010202-IMAGE-03.png",
+          "path": "uploadFiles/PC010202-IMAGE-03.png",
           "name": "PC010202-IMAGE-03.png"
         }
       ],
@@ -5413,15 +5413,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010203-IMAGE-01.png",
+          "path": "uploadFiles/PC010203-IMAGE-01.png",
           "name": "PC010203-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010203-IMAGE-02.png",
+          "path": "uploadFiles/PC010203-IMAGE-02.png",
           "name": "PC010203-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010203-IMAGE-03.png",
+          "path": "uploadFiles/PC010203-IMAGE-03.png",
           "name": "PC010203-IMAGE-03.png"
         }
       ],
@@ -5457,15 +5457,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010204-IMAGE-01.png",
+          "path": "uploadFiles/PC010204-IMAGE-01.png",
           "name": "PC010204-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010204-IMAGE-02.png",
+          "path": "uploadFiles/PC010204-IMAGE-02.png",
           "name": "PC010204-IMAGE-03.png"
         },
         {
-          "path": "/products/PC010204-IMAGE-03.png",
+          "path": "uploadFiles/PC010204-IMAGE-03.png",
           "name": "PC010204-IMAGE-03.png"
         }
       ],
@@ -5501,15 +5501,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC010205-IMAGE-01.png",
+          "path": "uploadFiles/PC010205-IMAGE-01.png",
           "name": "PC010205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC010205-IMAGE-02.png",
+          "path": "uploadFiles/PC010205-IMAGE-02.png",
           "name": "PC010205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC010205-IMAGE-03.png",
+          "path": "uploadFiles/PC010205-IMAGE-03.png",
           "name": "PC010205-IMAGE-03.png"
         }
       ],
@@ -5545,15 +5545,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050401-IMAGE-01.png",
+          "path": "uploadFiles/PC050401-IMAGE-01.png",
           "name": "PC050401-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050401-IMAGE-02.png",
+          "path": "uploadFiles/PC050401-IMAGE-02.png",
           "name": "PC050401-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050401-IMAGE-03.png",
+          "path": "uploadFiles/PC050401-IMAGE-03.png",
           "name": "PC050401-IMAGE-03.png"
         }
       ],
@@ -5589,15 +5589,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050402-IMAGE-01.png",
+          "path": "uploadFiles/PC050402-IMAGE-01.png",
           "name": "PC050402-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050402-IMAGE-02.png",
+          "path": "uploadFiles/PC050402-IMAGE-02.png",
           "name": "PC050402-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050402-IMAGE-03.png",
+          "path": "uploadFiles/PC050402-IMAGE-03.png",
           "name": "PC050402-IMAGE-03.png"
         }
       ],
@@ -5633,15 +5633,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050403-IMAGE-01.png",
+          "path": "uploadFiles/PC050403-IMAGE-01.png",
           "name": "PC050403-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050403-IMAGE-02.png",
+          "path": "uploadFiles/PC050403-IMAGE-02.png",
           "name": "PC050403-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050403-IMAGE-03.png",
+          "path": "uploadFiles/PC050403-IMAGE-03.png",
           "name": "PC050403-IMAGE-03.png"
         }
       ],
@@ -5677,15 +5677,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050404-IMAGE-01.png",
+          "path": "uploadFiles/PC050404-IMAGE-01.png",
           "name": "PC050404-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050404-IMAGE-02.png",
+          "path": "uploadFiles/PC050404-IMAGE-02.png",
           "name": "PC050404-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050404-IMAGE-03.png",
+          "path": "uploadFiles/PC050404-IMAGE-03.png",
           "name": "PC050404-IMAGE-03.png"
         }
       ],
@@ -5721,15 +5721,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050405-IMAGE-01.png",
+          "path": "uploadFiles/PC050405-IMAGE-01.png",
           "name": "PC050405-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050405-IMAGE-02.png",
+          "path": "uploadFiles/PC050405-IMAGE-02.png",
           "name": "PC050405-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050405-IMAGE-03.png",
+          "path": "uploadFiles/PC050405-IMAGE-03.png",
           "name": "PC050405-IMAGE-03.png"
         }
       ],
@@ -5765,15 +5765,15 @@
       "buyQuantity": 280,
       "mainImages": [
         {
-          "path": "/products/PC050301-IMAGE-01.png",
+          "path": "uploadFiles/PC050301-IMAGE-01.png",
           "name": "PC050301-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050301-IMAGE-02.png",
+          "path": "uploadFiles/PC050301-IMAGE-02.png",
           "name": "PC050301-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050301-IMAGE-03.png",
+          "path": "uploadFiles/PC050301-IMAGE-03.png",
           "name": "PC050301-IMAGE-03.png"
         }
       ],
@@ -5807,15 +5807,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050302-IMAGE-01.png",
+          "path": "uploadFiles/PC050302-IMAGE-01.png",
           "name": "PC050302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050302-IMAGE-02.png",
+          "path": "uploadFiles/PC050302-IMAGE-02.png",
           "name": "PC050302-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050302-IMAGE-03.png",
+          "path": "uploadFiles/PC050302-IMAGE-03.png",
           "name": "PC050302-IMAGE-03.png"
         }
       ],
@@ -5849,15 +5849,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050303-IMAGE-01.png",
+          "path": "uploadFiles/PC050303-IMAGE-01.png",
           "name": "PC050302-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050303-IMAGE-02.png",
+          "path": "uploadFiles/PC050303-IMAGE-02.png",
           "name": "PC050303-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050303-IMAGE-03.png",
+          "path": "uploadFiles/PC050303-IMAGE-03.png",
           "name": "PC050303-IMAGE-03.png"
         }
       ],
@@ -5891,15 +5891,15 @@
       "buyQuantity": 120,
       "mainImages": [
         {
-          "path": "/products/PC050304-IMAGE-01.png",
+          "path": "uploadFiles/PC050304-IMAGE-01.png",
           "name": "PC050304-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050304-IMAGE-02.png",
+          "path": "uploadFiles/PC050304-IMAGE-02.png",
           "name": "PC050304-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050304-IMAGE-03.png",
+          "path": "uploadFiles/PC050304-IMAGE-03.png",
           "name": "PC050304-IMAGE-03.png"
         }
       ],
@@ -5935,15 +5935,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC050305-IMAGE-01.png",
+          "path": "uploadFiles/PC050305-IMAGE-01.png",
           "name": "PC050305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC050305-IMAGE-02.png",
+          "path": "uploadFiles/PC050305-IMAGE-02.png",
           "name": "PC050305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC050305-IMAGE-03.png",
+          "path": "uploadFiles/PC050305-IMAGE-03.png",
           "name": "PC050305-IMAGE-03.png"
         }
       ],
@@ -5979,15 +5979,15 @@
       "buyQuantity": 200,
       "mainImages": [
         {
-          "path": "/products/PC040205-IMAGE-01.png",
+          "path": "uploadFiles/PC040205-IMAGE-01.png",
           "name": "PC040205-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040205-IMAGE-02.png",
+          "path": "uploadFiles/PC040205-IMAGE-02.png",
           "name": "PC040205-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040205-IMAGE-03.png",
+          "path": "uploadFiles/PC040205-IMAGE-03.png",
           "name": "PC040205-IMAGE-03.png"
         }
       ],
@@ -6022,15 +6022,15 @@
       "buyQuantity": 300,
       "mainImages": [
         {
-          "path": "/products/PC040305-IMAGE-01.png",
+          "path": "uploadFiles/PC040305-IMAGE-01.png",
           "name": "PC040305-IMAGE-01.png"
         },
         {
-          "path": "/products/PC040305-IMAGE-02.png",
+          "path": "uploadFiles/PC040305-IMAGE-02.png",
           "name": "PC040305-IMAGE-02.png"
         },
         {
-          "path": "/products/PC040305-IMAGE-03.png",
+          "path": "uploadFiles/PC040305-IMAGE-03.png",
           "name": "PC040305-IMAGE-03.png"
         }
       ],
@@ -6069,7 +6069,7 @@
           "state": "OS040",
           "name": "록시땅 시어 버터 드라이 스킨 핸드 크림 머스크향 75ml, 1개",
           "image": {
-            "path": "/products/PC030301-IMAGE-01.png",
+            "path": "uploadFiles/PC030301-IMAGE-01.png",
             "name": "PC030301-IMAGE-01.png"
           },
           "quantity": 1,
@@ -6100,7 +6100,7 @@
           "state": "OS040",
           "name": "록시땅 시어 버터 드라이 스킨 핸드 크림 머스크향 75ml, 1개",
           "image": {
-            "path": "/products/PC030301-IMAGE-01.png",
+            "path": "uploadFiles/PC030301-IMAGE-01.png",
             "name": "PC030301-IMAGE-01.png"
           },
           "quantity": 2,
@@ -6131,7 +6131,7 @@
           "state": "OS040",
           "name": "록시땅 시어 버터 드라이 스킨 핸드 크림 머스크향 75ml, 1개",
           "image": {
-            "path": "/products/PC030301-IMAGE-01.png",
+            "path": "uploadFiles/PC030301-IMAGE-01.png",
             "name": "PC030301-IMAGE-01.png"
           },
           "quantity": 1,
@@ -6162,7 +6162,7 @@
           "state": "OS040",
           "name": "더블유드레스룸 퍼퓸 핸드크림 97 에이프릴코튼향, 50ml",
           "image": {
-            "path": "/products/PC030302-IMAGE-01.png",
+            "path": "uploadFiles/PC030302-IMAGE-01.png",
             "name": "PC030302-IMAGE-01.png"
           },
           "quantity": 1,
@@ -6193,7 +6193,7 @@
           "state": "OS040",
           "name": "더블유드레스룸 퍼퓸 핸드크림 97 에이프릴코튼향, 50ml",
           "image": {
-            "path": "/products/PC030302-IMAGE-01.png",
+            "path": "uploadFiles/PC030302-IMAGE-01.png",
             "name": "PC030302-IMAGE-01.png"
           },
           "quantity": 3,
@@ -6224,7 +6224,7 @@
           "state": "OS040",
           "name": "더블유드레스룸 퍼퓸 핸드크림 97 에이프릴코튼향, 50ml",
           "image": {
-            "path": "/products/PC030302-IMAGE-01.png",
+            "path": "uploadFiles/PC030302-IMAGE-01.png",
             "name": "PC030302-IMAGE-01.png"
           },
           "quantity": 2,
@@ -6260,11 +6260,11 @@
       "content": "록시땅 핸드크림 정말 좋아요! 향도 은은하고 보습력도 뛰어나서 겨울철 필수템이에요. 선물용으로도 딱이고 포장도 예쁘게 와서 만족합니다.",
       "extra": {
         "images": [
-          "/uploadFiles/PC030301-REVIEW-01-IMAGE-01.jpg",
-          "/uploadFiles/PC030301-REVIEW-01-IMAGE-02.jpg",
-          "/uploadFiles/PC030301-REVIEW-01-IMAGE-03.jpg",
-          "/uploadFiles/PC030301-REVIEW-01-IMAGE-04.jpg",
-          "/uploadFiles/PC030301-REVIEW-01-IMAGE-05.jpg"
+          "uploadFiles/PC030301-REVIEW-01-IMAGE-01.jpg",
+          "uploadFiles/PC030301-REVIEW-01-IMAGE-02.jpg",
+          "uploadFiles/PC030301-REVIEW-01-IMAGE-03.jpg",
+          "uploadFiles/PC030301-REVIEW-01-IMAGE-04.jpg",
+          "uploadFiles/PC030301-REVIEW-01-IMAGE-05.jpg"
         ]
       }
     },
@@ -6281,11 +6281,11 @@
       "content": "시어버터 성분이 들어있어서 건조한 손에 정말 좋아요. 다만 향이 조금 강한 편이라 호불호가 있을 수 있어요. 전반적으로 만족스러운 제품입니다!",
       "extra": {
         "images": [
-          "/uploadFiles/PC030301-REVIEW-02-IMAGE-01.jpg",
-          "/uploadFiles/PC030301-REVIEW-02-IMAGE-02.jpg",
-          "/uploadFiles/PC030301-REVIEW-02-IMAGE-03.jpg",
-          "/uploadFiles/PC030301-REVIEW-02-IMAGE-04.jpg",
-          "/uploadFiles/PC030301-REVIEW-02-IMAGE-05.jpeg"
+          "uploadFiles/PC030301-REVIEW-02-IMAGE-01.jpg",
+          "uploadFiles/PC030301-REVIEW-02-IMAGE-02.jpg",
+          "uploadFiles/PC030301-REVIEW-02-IMAGE-03.jpg",
+          "uploadFiles/PC030301-REVIEW-02-IMAGE-04.jpg",
+          "uploadFiles/PC030301-REVIEW-02-IMAGE-05.jpeg"
         ]
       }
     },
@@ -6302,11 +6302,11 @@
       "content": "여자친구 선물로 샀는데 너무 좋아하네요! 패키지도 고급스럽고 향도 좋아서 선물용으로 추천드려요. 재구매 의사 있습니다.",
       "extra": {
         "images": [
-          "/uploadFiles/PC030301-REVIEW-03-IMAGE-01.jpg",
-          "/uploadFiles/PC030301-REVIEW-03-IMAGE-02.jpg",
-          "/uploadFiles/PC030301-REVIEW-03-IMAGE-03.jpg",
-          "/uploadFiles/PC030301-REVIEW-03-IMAGE-04.jpg",
-          "/uploadFiles/PC030301-REVIEW-03-IMAGE-05.jpg"
+          "uploadFiles/PC030301-REVIEW-03-IMAGE-01.jpg",
+          "uploadFiles/PC030301-REVIEW-03-IMAGE-02.jpg",
+          "uploadFiles/PC030301-REVIEW-03-IMAGE-03.jpg",
+          "uploadFiles/PC030301-REVIEW-03-IMAGE-04.jpg",
+          "uploadFiles/PC030301-REVIEW-03-IMAGE-05.jpg"
         ]
       }
     },
@@ -6323,11 +6323,11 @@
       "content": "에이프릴코튼 향이 정말 좋아요! 은은하면서도 깔끔한 향이라 데일리로 쓰기 딱이에요. 가격대비 용량도 넉넉하고 흡수도 빨라서 추천합니다!",
       "extra": {
         "images": [
-          "/uploadFiles/PC030302-REVIEW-01-IMAGE-01.jpg",
-          "/uploadFiles/PC030302-REVIEW-01-IMAGE-02.jpg",
-          "/uploadFiles/PC030302-REVIEW-01-IMAGE-03.jpg",
-          "/uploadFiles/PC030302-REVIEW-01-IMAGE-04.jpg",
-          "/uploadFiles/PC030302-REVIEW-01-IMAGE-05.jpg"
+          "uploadFiles/PC030302-REVIEW-01-IMAGE-01.jpg",
+          "uploadFiles/PC030302-REVIEW-01-IMAGE-02.jpg",
+          "uploadFiles/PC030302-REVIEW-01-IMAGE-03.jpg",
+          "uploadFiles/PC030302-REVIEW-01-IMAGE-04.jpg",
+          "uploadFiles/PC030302-REVIEW-01-IMAGE-05.jpg"
         ]
       }
     },
@@ -6344,11 +6344,11 @@
       "content": "향이 오래 지속되고 끈적임 없이 촉촉해요. 회사에서 쓰기 좋은 향이에요. 다음에도 재구매할 예정입니다. 배송도 빨랐어요!",
       "extra": {
         "images": [
-          "/uploadFiles/PC030302-REVIEW-02-IMAGE-01.jpg",
-          "/uploadFiles/PC030302-REVIEW-02-IMAGE-02.jpg",
-          "/uploadFiles/PC030302-REVIEW-02-IMAGE-03.jpg",
-          "/uploadFiles/PC030302-REVIEW-02-IMAGE-04.jpg",
-          "/uploadFiles/PC030302-REVIEW-02-IMAGE-05.jpg"
+          "uploadFiles/PC030302-REVIEW-02-IMAGE-01.jpg",
+          "uploadFiles/PC030302-REVIEW-02-IMAGE-02.jpg",
+          "uploadFiles/PC030302-REVIEW-02-IMAGE-03.jpg",
+          "uploadFiles/PC030302-REVIEW-02-IMAGE-04.jpg",
+          "uploadFiles/PC030302-REVIEW-02-IMAGE-05.jpg"
         ]
       }
     },
@@ -6365,11 +6365,11 @@
       "content": "가성비 최고의 핸드크림이에요! 향도 좋고 보습력도 괜찮아서 사무실에 두고 쓰기 좋아요. 선물용으로 여러 개 더 주문했습니다.",
       "extra": {
         "images": [
-          "/uploadFiles/PC030302-REVIEW-03-IMAGE-01.jpg",
-          "/uploadFiles/PC030302-REVIEW-03-IMAGE-02.jpg",
-          "/uploadFiles/PC030302-REVIEW-03-IMAGE-03.jpg",
-          "/uploadFiles/PC030302-REVIEW-03-IMAGE-04.jpg",
-          "/uploadFiles/PC030302-REVIEW-03-IMAGE-05.jpg"
+          "uploadFiles/PC030302-REVIEW-03-IMAGE-01.jpg",
+          "uploadFiles/PC030302-REVIEW-03-IMAGE-02.jpg",
+          "uploadFiles/PC030302-REVIEW-03-IMAGE-03.jpg",
+          "uploadFiles/PC030302-REVIEW-03-IMAGE-04.jpg",
+          "uploadFiles/PC030302-REVIEW-03-IMAGE-05.jpg"
         ]
       }
     }
@@ -7100,6 +7100,12 @@
       "_id": "productCategory",
       "title": "상품 카테고리",
       "codes": [
+         {
+          "sort": 1,
+          "code": "PC00",
+          "value": "전체",
+          "depth": 1
+        },
         {
           "sort": 1,
           "code": "PC01",
