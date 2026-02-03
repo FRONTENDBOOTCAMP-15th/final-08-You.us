@@ -1,4 +1,5 @@
 import useUserStore from '@/lib/zustand/auth/userStore'
+import { ErrorRes } from '@/types/api.types'
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_URL
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || ''
@@ -8,15 +9,18 @@ interface FetchOptions extends RequestInit {
   params?: Record<string, string>
 }
 
-export async function fetchClient(
+export async function fetchClient<T>(
   url: string,
   options: FetchOptions = {},
-): Promise<Response> {
+): Promise<T | ErrorRes> {
   const { user, setUser, resetUser } = useUserStore.getState()
   const { params, ...fetchOptions } = options
 
-  // URL에 쿼리 파라미터 추가
-  let fullUrl = `${API_SERVER}${url}`
+  // Next.js API 라우트인지 확인 (내부 API)
+  const isInternalApi = url.startsWith('/api/')
+
+  // URL 설정
+  let fullUrl = isInternalApi ? url : `${API_SERVER}${url}`
   if (params) {
     const searchParams = new URLSearchParams(params)
     fullUrl += `?${searchParams.toString()}`
@@ -26,21 +30,32 @@ export async function fetchClient(
   const headers = new Headers(fetchOptions.headers)
   headers.set('Content-Type', 'application/json')
   headers.set('Accept', 'application/json')
-  headers.set('Client-Id', CLIENT_ID)
+
+  // 외부 API만 Client-Id 추가
+  if (!isInternalApi) {
+    headers.set('Client-Id', CLIENT_ID)
+  }
 
   // accessToken 추가 (refresh 요청이 아닐 때)
   if (user && url !== REFRESH_URL) {
     headers.set('Authorization', `Bearer ${user.token?.accessToken}`)
   }
 
-  // 첫 번째 요청
-  let response = await fetch(fullUrl, {
-    ...fetchOptions,
-    headers,
-  })
+  let response: Response
 
-  // 401 에러 처리 (토큰 갱신)
-  if (response.status === 401) {
+  try {
+    // 첫 번째 요청
+    response = await fetch(fullUrl, {
+      ...fetchOptions,
+      headers,
+    })
+  } catch (error) {
+    console.error('fetch 실패:', error)
+    throw new Error('네트워크 요청에 실패했습니다.')
+  }
+
+  // 401 에러 처리 (토큰 갱신) - 내부 API는 스킵
+  if (response.status === 401 && !isInternalApi) {
     // refresh 요청 자체가 401이면 로그아웃
     if (url === REFRESH_URL) {
       navigateLogin()
@@ -79,7 +94,8 @@ export async function fetchClient(
       }
 
       const refreshData = await refreshResponse.json()
-      const { accessToken, refreshToken: newRefreshToken } = refreshData
+      const { accessToken, refreshToken: newRefreshToken } =
+        refreshData.item || refreshData
 
       // 새 토큰으로 store 업데이트
       setUser({
@@ -107,10 +123,14 @@ export async function fetchClient(
     }
   }
 
-  return response
+  const data = await response.json()
+  return data as T | ErrorRes
 }
 
 function navigateLogin() {
+  // 브라우저 환경 체크
+  if (typeof window === 'undefined') return
+
   const gotoLogin = confirm(
     '로그인 후 이용 가능합니다.\n로그인 페이지로 이동하시겠습니까?',
   )
