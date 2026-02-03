@@ -1,23 +1,23 @@
-import Button from '@/components/common/Button'
-import Image from 'next/image'
-import Link from 'next/link'
+import Button from '@/components/common/Button';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export type ReviewCardProps = {
-  type: 'written' | 'pending'
-  productId: number
-  imageSrc: string
-  imageAlt: string
-  name: string
-  price: string
+  type: 'written' | 'pending';
+  productId: number;
+  imageSrc: string;
+  imageAlt: string;
+  name: string;
+  price: string;
   // 작성된 리뷰일 경우
-  reviewId?: number
-  rating?: number
-  createdAt?: string
-  reviewContent?: string
-  reviewImages?: string[]
+  reviewId?: number;
+  rating?: number;
+  createdAt?: string;
+  reviewContent?: string;
+  reviewImages?: string[];
   // 대기 중인 리뷰일 경우
-  orderItemId?: number
-}
+  orderItemId?: number;
+};
 
 export default function ReviewCard({
   type,
@@ -40,7 +40,7 @@ export default function ReviewCard({
         <span>
           <span className="text-gray-300">{'☆'.repeat(5)}</span> ?/5
         </span>
-      )
+      );
     }
     return (
       <span>
@@ -48,8 +48,8 @@ export default function ReviewCard({
         <span className="text-gray-300">{'★'.repeat(5 - rating)}</span> {rating}
         /5
       </span>
-    )
-  }
+    );
+  };
 
   return (
     <li className="overflow-hidden border border-gray-200 bg-white">
@@ -139,5 +139,5 @@ export default function ReviewCard({
         </div>
       )}
     </li>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-'use server'
+'use server';
 
-import { ErrorRes, UserInfoRes } from '@/types/api.types'
+import { ErrorRes, UserInfoRes } from '@/types/api.types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
-const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || ''
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 
-type UserActionState = UserInfoRes | ErrorRes | null
+type UserActionState = UserInfoRes | ErrorRes | null;
 
 /**
  * 회원가입
@@ -19,8 +19,8 @@ export async function createUser(
   state: UserActionState,
   formData: FormData,
 ): Promise<UserActionState> {
-  let res: Response
-  let data: UserInfoRes | ErrorRes
+  let res: Response;
+  let data: UserInfoRes | ErrorRes;
 
   try {
     // 회원가입 요청 바디 생성
@@ -31,7 +31,7 @@ export async function createUser(
       email: formData.get('email'),
       password: formData.get('password'),
       // ...(image ? { image } : {}),
-    }
+    };
 
     // 회원가입 API 호출
     res = await fetch(`${API_URL}/users`, {
@@ -41,16 +41,16 @@ export async function createUser(
         'Client-Id': CLIENT_ID,
       },
       body: JSON.stringify(body),
-    })
+    });
 
-    data = await res.json()
+    data = await res.json();
   } catch (error) {
     // 네트워크 오류 처리
-    console.error(error)
-    return { ok: 0, message: '일시적인 네트워크 문제가 발생했습니다.' }
+    console.error(error);
+    return { ok: 0, message: '일시적인 네트워크 문제가 발생했습니다.' };
   }
 
-  return data
+  return data;
 }
 
 /**
@@ -65,16 +65,16 @@ export async function login(
   state: UserActionState,
   formData: FormData,
 ): Promise<UserActionState> {
-  const email = formData.get('email')
-  const password = formData.get('password')
+  const email = formData.get('email');
+  const password = formData.get('password');
   const body = {
     email,
     password,
-  }
-  console.log('body', body)
-  console.log('formData', formData)
-  let res: Response
-  let data: UserInfoRes | ErrorRes
+  };
+  console.log('body', body);
+  console.log('formData', formData);
+  let res: Response;
+  let data: UserInfoRes | ErrorRes;
 
   try {
     // 로그인 API 호출
@@ -85,15 +85,15 @@ export async function login(
         'Client-Id': CLIENT_ID,
       },
       body: JSON.stringify(body),
-    })
-    console.log('res', res)
-    data = await res.json()
-    console.log('data', data)
+    });
+    console.log('res', res);
+    data = await res.json();
+    console.log('data', data);
   } catch (error) {
     // 네트워크 오류 처리
-    console.error(error)
-    return { ok: 0, message: '일시적인 네트워크 문제가 발생했습니다.' }
+    console.error(error);
+    return { ok: 0, message: '일시적인 네트워크 문제가 발생했습니다.' };
   }
 
-  return data
+  return data;
 }

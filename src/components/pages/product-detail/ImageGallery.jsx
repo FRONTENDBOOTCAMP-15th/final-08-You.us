@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { useState } from 'react'
+import Image from 'next/image';
+import { useState } from 'react';
 
 export default function ImageGallery() {
-  const [currentImage, setCurrentImage] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0);
 
   const images = [
     'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800',
     'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
     'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
     'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
-  ]
+  ];
 
   const goToPrevious = () => {
-    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1))
-  }
+    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   const goToNext = () => {
-    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-  }
+    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <div className="space-y-4">
@@ -115,5 +115,5 @@ export default function ImageGallery() {
         </button>
       </div>
     </div>
-  )
+  );
 }

@@ -1,15 +1,15 @@
-import ReviewInfo from '@/components/pages/mypage/main/ReviewInfo'
-import Image from 'next/image'
+import ReviewInfo from '@/components/pages/mypage/main/ReviewInfo';
+import Image from 'next/image';
 
 type ProductSummaryProps = {
-  imageSrc: string
-  imageAlt: string
-  name: string
-  price: number | string
-  scope: { rating: number } | null
-  deliveryStatus: 'SHIPPING' | 'DELIVERED'
-  reviewStatus: 'NONE' | 'WRITTEN'
-}
+  imageSrc: string;
+  imageAlt: string;
+  name: string;
+  price: number | string;
+  scope: { rating: number } | null;
+  deliveryStatus: 'SHIPPING' | 'DELIVERED';
+  reviewStatus: 'NONE' | 'WRITTEN';
+};
 
 export default function ProductSummary({
   imageSrc,
@@ -39,5 +39,5 @@ export default function ProductSummary({
         />
       </div>
     </div>
-  )
+  );
 }

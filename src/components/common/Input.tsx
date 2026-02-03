@@ -1,12 +1,12 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: boolean
-  className?: string
-  wrapperClassName?: string
-  labelClassName?: string
-  id: string
+  label?: string;
+  error?: boolean;
+  className?: string;
+  wrapperClassName?: string;
+  labelClassName?: string;
+  id: string;
 }
 
 export default function Input({
@@ -18,7 +18,7 @@ export default function Input({
   labelClassName = '',
   ...props
 }: InputProps) {
-  console.log(props.value)
+  console.log(props.value);
 
   return (
     <div className={`flex flex-col gap-1 ${wrapperClassName}`}>
@@ -37,5 +37,5 @@ export default function Input({
         {...props}
       />
     </div>
-  )
+  );
 }

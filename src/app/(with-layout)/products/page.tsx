@@ -1,4 +1,4 @@
-import ProductSort from '@/components/pages/products/ProductSort'
+import ProductSort from '@/components/pages/products/ProductSort';
 
 export default function ProductsPage() {
   return (
@@ -6,5 +6,5 @@ export default function ProductsPage() {
       {/* 전체 상품 그리드/리스트 뷰 */}
       <ProductSort />
     </div>
-  )
+  );
 }

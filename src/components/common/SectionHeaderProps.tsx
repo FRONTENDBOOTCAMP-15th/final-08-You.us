@@ -1,10 +1,10 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 // SectionHeader.tsx (또는 CategoryHeader.tsx)
 interface SectionHeaderProps {
-  title: string
-  accentColor?: string // 밑줄 색상 커스터마이징 가능
-  mainCategory: string
+  title: string;
+  accentColor?: string; // 밑줄 색상 커스터마이징 가능
+  mainCategory: string;
 }
 
 export default function SectionHeader({
@@ -29,5 +29,5 @@ export default function SectionHeader({
       </div>
       <div className={`h-0.75 w-16 rounded-lg ${accentColor} lg:w-20`}></div>
     </div>
-  )
+  );
 }

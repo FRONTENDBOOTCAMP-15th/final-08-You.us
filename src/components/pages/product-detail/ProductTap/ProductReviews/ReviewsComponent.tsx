@@ -1,18 +1,18 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export interface Review {
-  id: number
-  userName: string
-  rating: number
-  date: string
-  content: string
-  images: string[]
-  userImage?: string
+  id: number;
+  userName: string;
+  rating: number;
+  date: string;
+  content: string;
+  images: string[];
+  userImage?: string;
 }
 
 interface ReviewsComponentProps {
-  review: Review
-  onImageClick?: (images: string[], index: number) => void
+  review: Review;
+  onImageClick?: (images: string[], index: number) => void;
 }
 
 export default function ReviewsComponent({
@@ -79,5 +79,5 @@ export default function ReviewsComponent({
       {/* 후기 내용 */}
       <p className="text-sm leading-relaxed text-gray-700">{review.content}</p>
     </div>
-  )
+  );
 }

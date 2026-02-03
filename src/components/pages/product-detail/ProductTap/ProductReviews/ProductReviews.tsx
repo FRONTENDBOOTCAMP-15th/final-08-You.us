@@ -1,23 +1,23 @@
-'use client'
+'use client';
 
-import { useState, useReducer } from 'react'
-import ReviewsComponent from '@/components/pages/product-detail/ProductTap/ProductReviews/ReviewsComponent'
-import Pagination from '@/components/common/Pagination'
-import ImageModal from '@/components/pages/product-detail/ProductTap/ProductReviews/ImageModal'
-import { modalReducer, initialModalState } from './modalReducer'
+import { useState, useReducer } from 'react';
+import ReviewsComponent from '@/components/pages/product-detail/ProductTap/ProductReviews/ReviewsComponent';
+import Pagination from '@/components/common/Pagination';
+import ImageModal from '@/components/pages/product-detail/ProductTap/ProductReviews/ImageModal';
+import { modalReducer, initialModalState } from './modalReducer';
 
 export default function ProductReviews() {
-  const [sortType, setSortType] = useState('latest')
+  const [sortType, setSortType] = useState('latest');
 
   // 모달 이벤트 Reducer로 관리
-  const [modal, dispatch] = useReducer(modalReducer, initialModalState)
+  const [modal, dispatch] = useReducer(modalReducer, initialModalState);
 
   const handleImageClick = (images: string[], index: number) => {
-    dispatch({ type: 'OPEN', images, index })
-  }
-  const handleCloseModal = () => dispatch({ type: 'CLOSE' })
-  const handlePrev = () => dispatch({ type: 'PREV' })
-  const handleNext = () => dispatch({ type: 'NEXT' })
+    dispatch({ type: 'OPEN', images, index });
+  };
+  const handleCloseModal = () => dispatch({ type: 'CLOSE' });
+  const handlePrev = () => dispatch({ type: 'PREV' });
+  const handleNext = () => dispatch({ type: 'NEXT' });
 
   // 더미 데이터 정의
   const reviews = [
@@ -51,7 +51,7 @@ export default function ProductReviews() {
       content: '정말 좋아요! 또 구매할게요.',
       images: [],
     },
-  ]
+  ];
 
   return (
     <div className="min-x-[360px] lg:px-15">
@@ -95,7 +95,7 @@ export default function ProductReviews() {
       <div className="mx-auto mt-15.5 w-fit">
         <Pagination
           onPageChange={(page) => {
-            console.log(page)
+            console.log(page);
           }}
         />
       </div>
@@ -111,5 +111,5 @@ export default function ProductReviews() {
         />
       )}
     </div>
-  )
+  );
 }

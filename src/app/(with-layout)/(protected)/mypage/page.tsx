@@ -1,11 +1,11 @@
-import Button from '@/components/common/Button'
-import ProductCard from '@/components/common/ProductCard'
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection'
-import OrderItem from '@/components/pages/mypage/orders/OrderItem'
-import { order } from '@/components/pages/mypage/orders/OrderList'
-import ProfileCard from '@/components/pages/mypage/profile/ProfileCard'
-import Image from 'next/image'
-import Link from 'next/link'
+import Button from '@/components/common/Button';
+import ProductCard from '@/components/common/ProductCard';
+import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
+import OrderItem from '@/components/pages/mypage/orders/OrderItem';
+import { order } from '@/components/pages/mypage/orders/OrderList';
+import ProfileCard from '@/components/pages/mypage/profile/ProfileCard';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function MyPage() {
   return (
@@ -258,5 +258,5 @@ export default function MyPage() {
         </ul>
       </section>
     </main>
-  )
+  );
 }

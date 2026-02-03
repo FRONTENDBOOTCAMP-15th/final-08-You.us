@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import ProductCard from '@/components/pages/recommend/ProductCard'
+import ProductCard from '@/components/pages/recommend/ProductCard';
 
 export default function ProductList() {
   return (
@@ -10,5 +10,5 @@ export default function ProductList() {
       <ProductCard />
       <ProductCard />
     </ul>
-  )
+  );
 }
