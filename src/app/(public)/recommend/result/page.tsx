@@ -59,8 +59,8 @@ export default function RecommendResultPage() {
   const searchParams = useMemo(() => {
     if (!data) return null;
     return {
-      recipient: data.result.tags.target,
-      ageGroup: data.result.tags.age,
+      recipient: data.result.tags.recipient,
+      ageGroup: data.result.tags.ageGroup,
       occasion: data.result.tags.occasion,
       style: data.result.tags.style,
       minPrice: data.result.tags.priceRange.min,
@@ -122,9 +122,12 @@ export default function RecommendResultPage() {
 
   if (!isAllFilled) return null;
 
+  console.log('전체 result:', data.result);
+  console.log('tags 객체:', data.result.tags);
+
   const tags = [
-    data.result.tags.target,
-    data.result.tags.age,
+    data.result.tags.recipient,
+    data.result.tags.ageGroup,
     data.result.tags.occasion,
     data.result.tags.style,
   ].filter(Boolean);

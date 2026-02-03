@@ -67,8 +67,8 @@ export type RecommendResponseBody = {
 
 export type RecommendResult = {
   tags: {
-    target: string;
-    age: string;
+    recipient: string;
+    ageGroup: string;
     occasion: string;
     priceRange: {
       min: number;
