@@ -25,8 +25,12 @@ export default function IntroPage() {
         alt="유어스"
       />
       <div className={`mt-6 flex flex-col items-center ${styles.content}`}>
-        <h3 className="text-[1.5rem] md:text-[3rem]">선물 고르기 힘들 때,</h3>
-        <h3 className="text-[1.5rem] md:text-[3rem]">AI에게 선물 추천받자!</h3>
+        <h3 className="text-[1.5rem] font-bold md:text-[3rem]">
+          선물 고르기 힘들 때,
+        </h3>
+        <h3 className="text-[1.5rem] font-bold md:text-[3rem]">
+          AI에게 선물 추천받자!
+        </h3>
         <div className="flex flex-col gap-4">
           <Link
             href="/recommend"
