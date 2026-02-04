@@ -1,4 +1,3 @@
-// lib/api/auth.ts
 'use server';
 
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;

@@ -1,23 +1,10 @@
-import { Product } from '@/app/(public)/recommend/result/page';
 import fetchClient from '@/lib/api/fetchClient';
-interface GetRecommendProductsParams {
-  tags: string[];
-  minPrice?: number;
-  maxPrice?: number;
-  limit?: number;
-}
-
-interface ProductListResponse {
-  ok: number;
-  item: Product[];
-}
-
-interface RecommendProductsResult {
-  ok: number;
-  items: Product[];
-  total: number;
-  message?: string;
-}
+import {
+  GetRecommendProductsParams,
+  Product,
+  ProductListResponse,
+  RecommendProductsResult,
+} from '@/types/recommend.types';
 
 /**
  * 태그로 상품 필터링
