@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Image from 'next/image'
-import Button from '@/components/common/Button'
+import { useState } from 'react';
+import Image from 'next/image';
+import Button from '@/components/common/Button';
 
 export default function CartAddOption() {
-  const [selectedOption, setSelectedOption] = useState('옵션추가')
-  const [quantity, setQuantity] = useState(1)
+  const [selectedOption, setSelectedOption] = useState('옵션추가');
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <>
@@ -70,5 +70,5 @@ export default function CartAddOption() {
         </div>
       </div>
     </>
-  )
+  );
 }

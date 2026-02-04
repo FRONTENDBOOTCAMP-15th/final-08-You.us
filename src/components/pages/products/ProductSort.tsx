@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
-import MoreButton from '@/components/common/MoreButton'
-import ProductCard from '@/components/common/ProductCard'
-import Link from 'next/link'
+import Footer from '@/components/common/Footer/Footer';
+import Header from '@/components/common/Header/Header';
+import MoreButton from '@/components/common/MoreButton';
+import ProductCard from '@/components/common/ProductCard';
+import Link from 'next/link';
 
 export default function ProductSort() {
   const products = [
@@ -64,7 +64,7 @@ export default function ProductSort() {
       rating: '★ 5.0 (10)',
       image: '/images/products/Beauty/04.png',
     },
-  ]
+  ];
 
   return (
     <>
@@ -149,5 +149,5 @@ export default function ProductSort() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

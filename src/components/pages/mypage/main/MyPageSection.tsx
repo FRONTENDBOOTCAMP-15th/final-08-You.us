@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import { ReactNode } from 'react'
+import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface MyPageSectionProps {
-  title: string
-  moreHref?: string
-  children: ReactNode
+  title: string;
+  moreHref?: string;
+  children: ReactNode;
 }
 
 export default function MyPageSection({
@@ -27,5 +27,5 @@ export default function MyPageSection({
 
       <div>{children}</div>
     </section>
-  )
+  );
 }

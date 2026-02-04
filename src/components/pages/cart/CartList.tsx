@@ -278,5 +278,5 @@ export default function CartList({
         </section>
       </main>
     </>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import useUserStore from '@/lib/zustand/auth/userStore'
-import Image from 'next/image'
-import Link from 'next/link'
+import useUserStore from '@/lib/zustand/auth/userStore';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface MobileHeaderProps {
-  onMenuOpen: () => void
-  isOpen: boolean
+  onMenuOpen: () => void;
+  isOpen: boolean;
 }
 
 export default function MobileHeader({
   onMenuOpen,
   isOpen,
 }: MobileHeaderProps) {
-  const { user } = useUserStore()
+  const { user } = useUserStore();
   return (
     <div className="relative flex h-20 min-w-[360px] items-center justify-between bg-gray-50 px-7">
       <button
@@ -81,5 +81,5 @@ export default function MobileHeader({
         </ul>
       </nav>
     </div>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface QuickMenuProps {
-  className?: string
+  className?: string;
 }
 
 export default function QuickMenu({ className }: QuickMenuProps) {
@@ -76,5 +76,5 @@ export default function QuickMenu({ className }: QuickMenuProps) {
         </div>
       </nav>
     </div>
-  )
+  );
 }

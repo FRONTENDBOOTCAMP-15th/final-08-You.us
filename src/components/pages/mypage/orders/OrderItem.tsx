@@ -1,6 +1,6 @@
-import ProductSummary from '@/components/pages/mypage/main/ProductSummary'
-import OrderButtons from '@/components/pages/mypage/orders/OrderButtons'
-import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader'
+import ProductSummary from '@/components/pages/mypage/main/ProductSummary';
+import OrderButtons from '@/components/pages/mypage/orders/OrderButtons';
+import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader';
 
 export default function OrderItem({
   id,
@@ -16,18 +16,18 @@ export default function OrderItem({
     scope,
   },
 }: {
-  id: number
+  id: number;
   item: {
-    status: 'SHIPPING' | 'DELIVERED'
-    date: string
-    imageSrc: string
-    imageAlt: string
-    name: string
-    price: number | string
-    deliveryStatus: 'SHIPPING' | 'DELIVERED'
-    reviewStatus: 'NONE' | 'WRITTEN'
-    scope: { rating: number } | null
-  }
+    status: 'SHIPPING' | 'DELIVERED';
+    date: string;
+    imageSrc: string;
+    imageAlt: string;
+    name: string;
+    price: number | string;
+    deliveryStatus: 'SHIPPING' | 'DELIVERED';
+    reviewStatus: 'NONE' | 'WRITTEN';
+    scope: { rating: number } | null;
+  };
 }) {
   return (
     <li>
@@ -49,5 +49,5 @@ export default function OrderItem({
         />
       </div>
     </li>
-  )
+  );
 }

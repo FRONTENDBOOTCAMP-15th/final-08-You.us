@@ -1,3 +1,3 @@
-const testf = 123
-console.log(testf)
-export {}
+const testf = 123;
+console.log(testf);
+export {};

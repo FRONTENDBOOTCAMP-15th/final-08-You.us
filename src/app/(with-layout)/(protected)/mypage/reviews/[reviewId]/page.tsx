@@ -1,5 +1,5 @@
-import Button from '@/components/common/Button'
-import Link from 'next/link'
+import Button from '@/components/common/Button';
+import Link from 'next/link';
 
 export default function ReviewsPage() {
   return (
@@ -12,5 +12,5 @@ export default function ReviewsPage() {
         </Button>
       </Link>
     </main>
-  )
+  );
 }

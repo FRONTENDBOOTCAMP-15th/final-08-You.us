@@ -1,5 +1,5 @@
-import Button from '@/components/common/Button'
-import Image from 'next/image'
+import Button from '@/components/common/Button';
+import Image from 'next/image';
 
 export default function ProfilePage() {
   return (
@@ -69,5 +69,5 @@ export default function ProfilePage() {
         </li>
       </ul>
     </section>
-  )
+  );
 }

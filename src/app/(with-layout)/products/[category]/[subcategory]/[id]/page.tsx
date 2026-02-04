@@ -1,6 +1,6 @@
-import ImageGallery from '@/components/pages/product-detail/ImageGallery'
-import ProductDetailInfo from '@/components/pages/product-detail/ProductDetailInfo'
-import ProductTabs from '@/components/pages/product-detail/ProductTabs'
+import ImageGallery from '@/components/pages/product-detail/ImageGallery';
+import ProductDetailInfo from '@/components/pages/product-detail/ProductDetailInfo';
+import ProductTabs from '@/components/pages/product-detail/ProductTabs';
 
 export default function ProductDatailPage() {
   return (
@@ -15,5 +15,5 @@ export default function ProductDatailPage() {
       </div>
       <ProductTabs />
     </main>
-  )
+  );
 }

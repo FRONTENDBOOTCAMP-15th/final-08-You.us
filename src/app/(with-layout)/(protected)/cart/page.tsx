@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import CartList from '@/components/pages/cart/CartList'
-import CartEmpty from '@/components/pages/cart/CartEmpty'
+import { useState } from 'react';
+import CartList from '@/components/pages/cart/CartList';
+import CartEmpty from '@/components/pages/cart/CartEmpty';
 
 interface CartItem {
   _id: number

@@ -1,18 +1,16 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from 'next';
+import { ReactNode } from 'react';
+import './globals.css';
+
 export const metadata: Metadata = {
   title: 'Gift Shop',
   description: 'Find the perfect gift for your loved ones',
-}
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body className="mx-auto bg-gray-50">{children}</body>
+      <body className="bg-gray-50">{children}</body>
     </html>
-  )
+  );
 }

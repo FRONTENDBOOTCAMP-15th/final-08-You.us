@@ -1,16 +1,16 @@
-import Button from '@/components/common/Button'
-import Link from 'next/link'
+import Button from '@/components/common/Button';
+import Link from 'next/link';
 
 interface OrderButtonsProps {
-  deliveryStatus: 'SHIPPING' | 'DELIVERED'
-  reviewStatus: 'NONE' | 'WRITTEN'
+  deliveryStatus: 'SHIPPING' | 'DELIVERED';
+  reviewStatus: 'NONE' | 'WRITTEN';
 }
 
 export default function OrderButtons({
   deliveryStatus,
   reviewStatus,
 }: OrderButtonsProps) {
-  const isShipping = deliveryStatus === 'SHIPPING'
+  const isShipping = deliveryStatus === 'SHIPPING';
 
   return (
     <div className="flex flex-col gap-2 p-2 *:w-full lg:*:w-[162px]">
@@ -54,5 +54,5 @@ export default function OrderButtons({
         </Link>
       )}
     </div>
-  )
+  );
 }
