@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 export default function MainBannerSwiper() {
   return (
-    <div className="relative my-[43px] h-[280px] w-full lg:h-[500px]">
+    <div className="relative my-10.75 h-70 w-full lg:h-125">
       <Swiper
         modules={[Navigation, Pagination, EffectFade]}
         spaceBetween={0}
@@ -20,7 +20,7 @@ export default function MainBannerSwiper() {
         pagination={{ clickable: true }}
         navigation={true}
         loop={true}
-        className={`${styles.bannerSwiper} min-w-[360px]`}
+        className={`${styles.bannerSwiper} min-w-90`}
         effect="fade"
         fadeEffect={{
           crossFade: true,
@@ -56,27 +56,29 @@ export default function MainBannerSwiper() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="flex h-full w-full items-center justify-center bg-gray-900 bg-linear-to-r">
-            <Image
-              width={1024}
-              height={500}
-              className="mx-auto hidden md:hidden lg:block"
-              alt=""
-              src="/images/banners/swiper-image-2-lg.svg"
-            />
-            <Image
-              width={738}
-              height={280}
-              className="mx-auto hidden md:block lg:hidden"
-              alt=""
-              src="/images/banners/swiper-image-2-md.svg"
-            />
-            <Image
-              width={360}
-              height={280}
-              className="mx-auto block md:hidden lg:hidden"
-              alt=""
-              src="/images/banners/swiper-image-2-mo.svg"
-            />
+            <Link href="/">
+              <Image
+                width={1024}
+                height={500}
+                className="mx-auto hidden md:hidden lg:block"
+                alt=""
+                src="/images/banners/swiper-image-2-lg.svg"
+              />
+              <Image
+                width={738}
+                height={280}
+                className="mx-auto hidden md:block lg:hidden"
+                alt=""
+                src="/images/banners/swiper-image-2-md.svg"
+              />
+              <Image
+                width={360}
+                height={280}
+                className="mx-auto block md:hidden lg:hidden"
+                alt=""
+                src="/images/banners/swiper-image-2-mo.svg"
+              />
+            </Link>
           </div>
         </SwiperSlide>
       </Swiper>
