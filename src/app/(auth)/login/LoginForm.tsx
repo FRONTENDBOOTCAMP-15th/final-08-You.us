@@ -129,6 +129,7 @@ export default function LoginForm() {
         id="password"
         type="password"
         name="password"
+        autoComplete="current-password"
         placeholder="패스워드"
         className="mt-button-y w-75 lg:w-82.5"
         labelClassName="sr-only"

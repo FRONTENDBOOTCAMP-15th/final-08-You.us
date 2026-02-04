@@ -11,18 +11,7 @@ import type {
   Answer,
   RecommendResult as RecommendResultType,
 } from '@/types/aitest.types';
-
-export interface Product {
-  _id: string;
-  name: string;
-  price: number;
-  mainImages: { path: string; name: string }[];
-  extra?: {
-    tags?: string[];
-    category?: string[];
-  };
-  rating?: number;
-}
+import { Product } from '@/types/recommend.types';
 
 export default function RecommendResultPage() {
   const router = useRouter();
