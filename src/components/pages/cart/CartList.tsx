@@ -1,29 +1,35 @@
-import Button from '@/components/common/Button'
-import Image from 'next/image'
-import Link from 'next/link'
+'use client';
+
+import { useState } from 'react';
+import Button from '@/components/common/Button';
+import Image from 'next/image';
+import Link from 'next/link';
+import CartAddOption from '@/components/pages/cart/CartAddOption';
 
 interface CartItem {
-  _id: number
-  name: string
-  price: number
-  quantity: number
-  checked: boolean
-  option: string
-  image: string
-  storeName: string
+  _id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  checked: boolean;
+  option: string;
+  image: string;
+  storeName: string;
 }
 
 interface CartListProps {
-  items: CartItem[]
-  allChecked: boolean
-  checkedCount: number
-  totalPrice: number
-  totalQuantity: number
-  onAllCheck: (checked: boolean) => void
-  onItemCheck: (id: number) => void
-  onQuantityChange: (id: number, delta: number) => void
-  onDelete: (id: number) => void
-  onDeleteSelected: () => void
+  items: CartItem[];
+  allChecked: boolean;
+  checkedCount: number;
+  totalPrice: number;
+  totalQuantity: number;
+  onAllCheck: (checked: boolean) => void;
+  onItemCheck: (id: number) => void;
+  onQuantityChange: (id: number, delta: number) => void;
+  onDelete: (id: number) => void;
+  onDeleteSelected: () => void;
+  onOptionChange: (id: number, option: string, quantity: number) => void;
+  onOptionAdd: (id: number, option: string, quantity: number) => void; // ⭐ 추가!
 }
 
 export default function CartList({
@@ -37,7 +43,56 @@ export default function CartList({
   onQuantityChange,
   onDelete,
   onDeleteSelected,
+  onOptionChange,
+  onOptionAdd,
 }: CartListProps) {
+  // 옵션 변경 모달 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<CartItem | null>(null);
+  const [modalOption, setModalOption] = useState('');
+  const [modalQuantity, setModalQuantity] = useState(1);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  // 옵션 변경 모달 함수들
+  const handleOpenModal = (item: CartItem) => {
+    setSelectedItem(item);
+    setModalOption(item.option);
+    setModalQuantity(item.quantity);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
+  const handleSaveOption = () => {
+    if (selectedItem) {
+      onOptionChange(selectedItem._id, modalOption, modalQuantity);
+      handleCloseModal();
+    }
+  };
+
+  const handleModalQuantityChange = (delta: number) => {
+    setModalQuantity((prev) => Math.max(1, prev + delta));
+  };
+
+  const handleOpenAddModal = (item: CartItem) => {
+    setSelectedItem(item);
+    setIsAddModalOpen(true);
+  };
+
+  const handleCloseAddModal = () => {
+    setIsAddModalOpen(false);
+    setSelectedItem(null);
+  };
+
+  const handleAddOption = (option: string, quantity: number) => {
+    if (selectedItem) {
+      onOptionAdd(selectedItem._id, option, quantity);
+    }
+  };
+
   return (
     <>
       <main className="pb-20 lg:pb-50">
@@ -140,6 +195,7 @@ export default function CartList({
                           type="button"
                           className="text-body-sm cursor-pointer rounded-sm border border-gray-300 px-[60px] py-2 text-gray-900 max-[639px]:w-full max-[639px]:px-4 sm:self-start"
                           aria-label="상품 옵션 추가"
+                          onClick={() => handleOpenAddModal(item)}
                         >
                           옵션추가
                         </button>
@@ -150,6 +206,7 @@ export default function CartList({
                           <button
                             className="text-body-sm mt-8 cursor-pointer rounded-sm border border-gray-300 px-3 py-1 text-gray-900"
                             aria-label="옵션 변경"
+                            onClick={() => handleOpenModal(item)}
                           >
                             옵션변경
                           </button>
@@ -159,7 +216,6 @@ export default function CartList({
                             role="group"
                             aria-label="수량 조절"
                           >
-                            <legend className="sr-only">상품 수량</legend>
                             <button
                               className="text-body-sm mt-8 cursor-pointer rounded-sm border border-gray-300 px-2 py-1 text-gray-900"
                               aria-label="수량 감소"
@@ -175,7 +231,7 @@ export default function CartList({
                             </label>
                             <input
                               id={`quantity-${item._id}`}
-                              type=""
+                              type="text"
                               value={item.quantity}
                               readOnly
                               className="text-body-sm mt-8 w-15 rounded-sm border border-gray-300 px-2 py-1 text-center text-gray-900"
@@ -277,6 +333,85 @@ export default function CartList({
           </div>
         </section>
       </main>
+
+      {/* 옵션 변경 모달 */}
+      {isModalOpen && selectedItem && (
+        <>
+          <div
+            className="bg-opacity-50 fixed inset-0 z-40 bg-gray-900 opacity-80"
+            onClick={handleCloseModal}
+          />
+          <div className="fixed top-1/2 left-1/2 z-50 w-full max-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded bg-gray-100 p-4 shadow-xl">
+            <div className="mb-4 flex justify-center">
+              <Image
+                src={selectedItem.image}
+                alt={selectedItem.name}
+                width={300}
+                height={300}
+                className="object-contain"
+              />
+            </div>
+            <p className="text-body-sm mb-2 text-gray-900">
+              {selectedItem.name}
+            </p>
+            <p className="text-body-sm mb-4 font-bold">
+              {selectedItem.price.toLocaleString()}원
+            </p>
+            <select
+              value={modalOption}
+              onChange={(e) => setModalOption(e.target.value)}
+              className="text-body-sm mb-4 w-full cursor-pointer rounded-sm border border-gray-300 bg-gray-50 p-2 text-center"
+            >
+              <option value="향: 라벤더 향">라벤더 향</option>
+              <option value="향: 로즈마리 향">로즈마리 향</option>
+              <option value="향: 유칼립투스 향">유칼립투스 향</option>
+              <option value="향: 바닐라 향">바닐라 향</option>
+            </select>
+            <div className="mb-6 flex items-center justify-end gap-4">
+              <button
+                onClick={() => handleModalQuantityChange(-1)}
+                className="flex h-8 w-6 cursor-pointer items-center justify-center rounded-sm border border-gray-300 bg-gray-50"
+              >
+                -
+              </button>
+              <span className="w-5 text-center">{modalQuantity}</span>
+              <button
+                onClick={() => handleModalQuantityChange(1)}
+                className="flex h-8 w-6 cursor-pointer items-center justify-center rounded-sm border border-gray-300 bg-gray-50"
+              >
+                +
+              </button>
+            </div>
+            <div className="flex gap-5">
+              <Button
+                onClick={handleCloseModal}
+                className="flex-1 border border-gray-300 bg-gray-50 py-3 text-gray-900 hover:bg-gray-50 hover:text-gray-900"
+              >
+                취소
+              </Button>
+              <Button
+                onClick={handleSaveOption}
+                className="flex-1 py-3 text-gray-50"
+              >
+                수정
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {isAddModalOpen && selectedItem && (
+        <CartAddOption
+          item={{
+            _id: selectedItem._id,
+            name: selectedItem.name,
+            price: selectedItem.price,
+            image: selectedItem.image,
+          }}
+          onClose={handleCloseAddModal}
+          onAdd={handleAddOption}
+        />
+      )}
     </>
   );
 }

@@ -4,21 +4,46 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/common/Button';
 
-export default function CartAddOption() {
-  const [selectedOption, setSelectedOption] = useState('옵션추가');
+interface CartItem {
+  _id: number;
+  name: string;
+  price: number;
+  image: string;
+}
+
+interface CartAddOptionProps {
+  item: CartItem;
+  onClose: () => void;
+  onAdd: (option: string, quantity: number) => void;
+}
+
+export default function CartAddOption({
+  item,
+  onClose,
+  onAdd,
+}: CartAddOptionProps) {
+  const [selectedOption, setSelectedOption] = useState('라벤더 향');
   const [quantity, setQuantity] = useState(1);
+
+  const handleAdd = () => {
+    onAdd(selectedOption, quantity);
+    onClose();
+  };
 
   return (
     <>
-      <div className="bg-opacity-50 fixed inset-0 z-40 bg-gray-900 opacity-80" />
+      <div
+        className="bg-opacity-50 fixed inset-0 z-40 bg-gray-900 opacity-80"
+        onClick={onClose}
+      />
 
       {/* 모달 컨텐츠 */}
       <div className="fixed top-1/2 left-1/2 z-50 w-full max-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded bg-gray-100 p-4 shadow-xl">
         {/* 상품 이미지 */}
         <div className="mb-4 flex justify-center">
           <Image
-            src="/images/products/Beauty/03.png"
-            alt="상품"
+            src={item.image}
+            alt={item.name}
             width={300}
             height={300}
             className="object-contain"
@@ -26,12 +51,12 @@ export default function CartAddOption() {
         </div>
 
         {/* 상품명 */}
-        <p className="text-body-sm mb-2 text-gray-900">
-          선물 이름 예) 향기 좋은 향초 - 라벤더
-        </p>
+        <p className="text-body-sm mb-2 text-gray-900">{item.name}</p>
 
         {/* 가격 */}
-        <p className="text-body-sm mb-4 font-bold">10,900원</p>
+        <p className="text-body-sm mb-4 font-bold">
+          {item.price.toLocaleString()}원
+        </p>
 
         {/* 옵션 추가 */}
         <select
@@ -39,9 +64,10 @@ export default function CartAddOption() {
           onChange={(e) => setSelectedOption(e.target.value)}
           className="text-body-sm mb-4 w-full cursor-pointer rounded-sm border border-gray-300 bg-gray-50 p-2 text-center"
         >
-          <option>옵션추가</option>
-          <option>옵션1</option>
-          <option>옵션2</option>
+          <option value="라벤더 향">라벤더 향</option>
+          <option value="로즈마리 향">로즈마리 향</option>
+          <option value="유칼립투스 향">유칼립투스 향</option>
+          <option value="바닐라 향">바닐라 향</option>
         </select>
 
         {/* 수량 조절 */}
@@ -63,10 +89,15 @@ export default function CartAddOption() {
 
         {/* 취소/추가 버튼 */}
         <div className="flex gap-5">
-          <Button className="flex-1 border border-gray-300 bg-gray-50 py-3 text-gray-900 hover:bg-gray-50 hover:text-gray-900">
+          <Button
+            onClick={onClose}
+            className="flex-1 border border-gray-300 bg-gray-50 py-3 text-gray-900 hover:bg-gray-50 hover:text-gray-900"
+          >
             취소
           </Button>
-          <Button className="flex-1 py-3 text-gray-50">추가</Button>
+          <Button onClick={handleAdd} className="flex-1 py-3 text-gray-50">
+            추가
+          </Button>
         </div>
       </div>
     </>
