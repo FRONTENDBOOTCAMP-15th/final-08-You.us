@@ -1,8 +1,8 @@
-import { RecommendTags } from '@/types/aitest.types'
+import { RecommendTags } from '@/types/aitest.types';
 
 export function buildPrompt(answers: string[]) {
-  const safeAnswers = answers.map((a) => (a ?? '').toString().trim())
-  const joined = safeAnswers.map((a, i) => `${i + 1}. ${a}`).join('\n')
+  const safeAnswers = answers.map((a) => (a ?? '').toString().trim());
+  const joined = safeAnswers.map((a, i) => `${i + 1}. ${a}`).join('\n');
 
   return `
 너는 한국어 사용자 입력을 정해진 태그로 강제 매핑하는 분류기다.
@@ -72,18 +72,29 @@ ${joined}
 [우선순위 2: 범위 표현]
 - "n~m만원"(대 없음) =>
   min=n*10000, max=m*10000
-- "n만원에서 m만원대" 또는 "n만~m만원대" =>
+- "n만원에서 m만원대" 또는 "n~m만원대" =>
   min=n*10000, max=(m*10000)+9999
 
-[우선순위 3: 만원대 표현]
-- "n만원대" (n < 10) =>
+[우선순위 3: 만원 단위 표현 (대 없음)]
+- "n만원" (한 자리 수, n < 10) =>
   min=n*10000, max=(n*10000)+9999
-- "n만원대" n >= 10)=>
-  min=n*10000, max=(n*10000)+99999
+  예: "5만원" => { min: 50000, max: 59999 }
+- "nn만원" (두 자리 수, n >= 10) =>
+  min=nn*10000, max=(nn*10000)+(n*10000)-1
+  예: "15만원" => { min: 150000, max: 199999 }
+  예: "30만원" => { min: 300000, max: 399999 }
 
-[우선순위 5: 단일 금액]
-- "n만원" => { min=n*10000, max=n*10000 }
-- "n천원대" => { min=n*1000, max=(n*1000)+999 }
+[우선순위 4: 만원대 표현]
+- "n만원대" (한 자리 수, n < 10) =>
+  min=n*10000, max=(n*10000)+9999
+  예: "5만원대" => { min: 50000, max: 59999 }
+- "nn만원대" (두 자리 수, n >= 10) =>
+  min=nn*10000, max=(nn*10000)+(n*10000)-1
+  예: "15만원대" => { min: 150000, max: 199999 }
+  예: "30만원대" => { min: 300000, max: 399999 }
+
+[우선순위 5: 천원 단위]
+- "n천원" => { min=n*1000, max=(n*1000)+999 }
 
 [최후 규칙]
 - 위 모든 규칙에 해당하지 않을 때만
@@ -97,8 +108,8 @@ ${joined}
 4) premium: 고급/특별/좋은 걸로/브랜드/퀄리티
 5) 그 외 전부 practical(실용 포함)
 
-이제 위 규칙에 따라 결과 JSON만 출력해라.
-`.trim()
+이제 위 규칙에 따라 결과 JSON만 출력해ra.
+`.trim();
 }
 
 // 타입 체크용(선택)
@@ -108,4 +119,4 @@ export const _promptContractExample: RecommendTags = {
   occasion: 'birthday',
   priceRange: { min: 30000, max: 39999 },
   style: 'cute',
-}
+};

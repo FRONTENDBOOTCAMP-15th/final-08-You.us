@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import LoginForm from '@/app/(auth)/login/LoginForm'
-import Image from 'next/image'
-import Link from 'next/link'
+import LoginForm from '@/app/(auth)/login/LoginForm';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function LoginPage() {
   return (
@@ -19,5 +19,5 @@ export default function LoginPage() {
       </Link>
       <LoginForm />
     </div>
-  )
+  );
 }

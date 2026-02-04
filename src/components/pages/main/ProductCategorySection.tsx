@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import ProductCard from '@/components/common/ProductCard'
-import SectionHeader from '@/components/common/SectionHeaderProps'
-import { ProductItem } from '@/types/main/ProductType'
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import styles from './Main-swiper.module.css'
+import ProductCard from '@/components/common/ProductCard';
+import SectionHeader from '@/components/common/SectionHeaderProps';
+import { ProductItem } from '@/types/product.types';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import styles from './Main-swiper.module.css';
 
 interface ProductCategorySectionProps {
-  categoryName: string
-  products: ProductItem[]
+  categoryName: string;
+  products: ProductItem[];
 }
 
 export default function ProductCategorySection({
@@ -72,5 +72,5 @@ export default function ProductCategorySection({
         </Swiper>
       </div>
     </div>
-  )
+  );
 }

@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import MoreButton from '@/components/common/MoreButton'
-import ProductCard from '@/components/common/ProductCard'
+import MoreButton from '@/components/common/MoreButton';
+import ProductCard from '@/components/common/ProductCard';
 
 interface Product {
-  _id: number
-  name: string
-  price: number
-  rating: string
-  mainImage: string
-  replies: number
+  _id: number;
+  name: string;
+  price: number;
+  rating: string;
+  mainImage: string;
+  replies: number;
 }
 
 interface ProductSortProps {
-  products: Product[]
+  products: Product[];
 }
 
 export default function ProductSort({ products }: ProductSortProps) {
@@ -23,5 +23,5 @@ export default function ProductSort({ products }: ProductSortProps) {
         <MoreButton className="mx-auto mb-[150px]" />
       </div>
     </div>
-  )
+  );
 }

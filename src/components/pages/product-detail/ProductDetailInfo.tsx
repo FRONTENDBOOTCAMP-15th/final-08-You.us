@@ -1,21 +1,21 @@
-'use client'
+'use client';
 
-import Button from '@/components/common/Button'
-import { useState } from 'react'
-import SelectedOptionItem from '@/components/pages/product-detail/OptionItems'
+import Button from '@/components/common/Button';
+import { useState } from 'react';
+import SelectedOptionItem from '@/components/pages/product-detail/OptionItems';
 
 interface SelectedOption {
-  id: string
-  name: string
-  price: number
-  quantity: number
-  isDefault?: boolean
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  isDefault?: boolean;
 }
 
 export default function ProductDetailInfo() {
-  const price = 32000
+  const price = 32000;
   const productName =
-    '딸기 이렇게 진짜 맛있을 수가 없다 인정? ❤️에게 줄까말까 진짜 고민하다 안줄래 ❤️ 3개 가격 / 인정이긴해'
+    '딸기 이렇게 진짜 맛있을 수가 없다 인정? ❤️에게 줄까말까 진짜 고민하다 안줄래 ❤️ 3개 가격 / 인정이긴해';
 
   // 기본 상품 1개가 처음부터 있음
   const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([
@@ -26,15 +26,15 @@ export default function ProductDetailInfo() {
       quantity: 1,
       isDefault: true,
     },
-  ])
-  const [selectValue, setSelectValue] = useState('')
+  ]);
+  const [selectValue, setSelectValue] = useState('');
 
   const handleOptionSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    setSelectValue(value)
+    const value = e.target.value;
+    setSelectValue(value);
 
     if (value && value !== '추가 옵션을 선택해주세요') {
-      const exists = selectedOptions.find((opt) => opt.name === value)
+      const exists = selectedOptions.find((opt) => opt.name === value);
       if (!exists) {
         const newOption: SelectedOption = {
           id: Date.now().toString(),
@@ -42,29 +42,29 @@ export default function ProductDetailInfo() {
           price: price,
           quantity: 1,
           isDefault: false,
-        }
-        setSelectedOptions([...selectedOptions, newOption])
+        };
+        setSelectedOptions([...selectedOptions, newOption]);
       }
-      setSelectValue('')
+      setSelectValue('');
     }
-  }
+  };
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     setSelectedOptions(
       selectedOptions.map((opt) =>
         opt.id === id ? { ...opt, quantity: newQuantity } : opt,
       ),
-    )
-  }
+    );
+  };
 
   const handleRemove = (id: string) => {
-    setSelectedOptions(selectedOptions.filter((opt) => opt.id !== id))
-  }
+    setSelectedOptions(selectedOptions.filter((opt) => opt.id !== id));
+  };
 
   const totalPrice = selectedOptions.reduce(
     (sum, opt) => sum + opt.price * opt.quantity,
     0,
-  )
+  );
 
   return (
     <div className="relative h-full min-w-0">
@@ -178,5 +178,5 @@ export default function ProductDetailInfo() {
         <Button className="w-full rounded">장바구니</Button>
       </div>
     </div>
-  )
+  );
 }

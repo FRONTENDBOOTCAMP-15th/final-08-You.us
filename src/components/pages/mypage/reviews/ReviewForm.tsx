@@ -1,25 +1,25 @@
-'use client'
+'use client';
 
-import Button from '@/components/common/Button'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+import Button from '@/components/common/Button';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 type ReviewFormProps = {
-  mode: 'create' | 'edit'
+  mode: 'create' | 'edit';
   productInfo: {
-    imageSrc: string
-    imageAlt: string
-    name: string
-    price: string
-  }
-  createdAt?: string
+    imageSrc: string;
+    imageAlt: string;
+    name: string;
+    price: string;
+  };
+  createdAt?: string;
   initialData?: {
-    rating: number
-    content: string
-    images: string[]
-  }
-}
+    rating: number;
+    content: string;
+    images: string[];
+  };
+};
 
 export default function ReviewForm({
   mode,
@@ -27,12 +27,12 @@ export default function ReviewForm({
   createdAt,
   initialData,
 }: ReviewFormProps) {
-  const [rating, setRating] = useState(initialData?.rating || 0)
-  const [content, setContent] = useState(initialData?.content || '')
-  const [images, setImages] = useState<string[]>(initialData?.images || [])
+  const [rating, setRating] = useState(initialData?.rating || 0);
+  const [content, setContent] = useState(initialData?.content || '');
+  const [images, setImages] = useState<string[]>(initialData?.images || []);
 
-  const title = mode === 'create' ? '후기 작성' : '후기 수정'
-  const submitText = mode === 'create' ? '등록하기' : '수정하기'
+  const title = mode === 'create' ? '후기 작성' : '후기 수정';
+  const submitText = mode === 'create' ? '등록하기' : '수정하기';
 
   // 별점 렌더링
   const renderStars = () => {
@@ -52,18 +52,18 @@ export default function ReviewForm({
         ))}
         <span className="text-body-sm ml-1">{rating}/5</span>
       </div>
-    )
-  }
+    );
+  };
 
   // 이미지 업로드 핸들러 (UI만)
   const handleImageUpload = () => {
     // TODO: 실제 이미지 업로드 로직
-  }
+  };
 
   // 폼 제출 핸들러 (UI만)
   const handleSubmit = () => {
-    console.log({ rating, content, images })
-  }
+    console.log({ rating, content, images });
+  };
 
   return (
     <div>
@@ -165,5 +165,5 @@ export default function ReviewForm({
         </div>
       </div>
     </div>
-  )
+  );
 }

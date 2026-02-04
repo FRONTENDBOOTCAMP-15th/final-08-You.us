@@ -1,7 +1,7 @@
-import ProductCard from '@/components/common/ProductCard'
-import ProductSort from '@/components/pages/products/ProductSort'
-import { getProducts } from '@/lib/api/products'
-import Link from 'next/link'
+import ProductCard from '@/components/common/ProductCard';
+import ProductSort from '@/components/pages/products/ProductSort';
+import { getProducts } from '@/lib/api/products';
+import Link from 'next/link';
 
 export default async function ProductsPage() {
   // const products = [
@@ -71,7 +71,7 @@ export default async function ProductsPage() {
   //   },
   // ]
 
-  const products = await getProducts()
+  const products = await getProducts();
 
   return (
     <div className="mx-auto max-w-375">
@@ -156,5 +156,5 @@ export default async function ProductsPage() {
       </main>
       <ProductSort products={products} />
     </div>
-  )
+  );
 }

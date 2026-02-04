@@ -1,13 +1,13 @@
-'use client'
-import Button from '@/components/common/Button'
-import Input from '@/components/common/Input'
-import OrderItems from '@/components/pages/checkout/OrderItems'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+'use client';
+import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
+import OrderItems from '@/components/pages/checkout/OrderItems';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function CheckoutPage() {
-  const [checked, setChecked] = useState(true)
+  const [checked, setChecked] = useState(true);
   return (
     <div className="mx-auto max-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:gap-37.5">
       <h1 className="sr-only">주문・결제 페이지</h1>
@@ -375,5 +375,5 @@ export default function CheckoutPage() {
         </button>
       </section>
     </div>
-  )
+  );
 }

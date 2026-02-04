@@ -1,5 +1,5 @@
-import MoreButton from '@/components/common/MoreButton'
-import ProductCard from '@/components/common/ProductCard'
+import MoreButton from '@/components/common/MoreButton';
+import ProductCard from '@/components/common/ProductCard';
 
 export default function WishlistPage() {
   const products = [
@@ -87,7 +87,7 @@ export default function WishlistPage() {
       rating: '★ 5.0 (10)',
       image: '/images/products/Beauty/04.png',
     },
-  ]
+  ];
 
   return (
     <>
@@ -117,5 +117,5 @@ export default function WishlistPage() {
         </main>
       </div>
     </>
-  )
+  );
 }

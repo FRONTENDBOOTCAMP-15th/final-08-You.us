@@ -125,5 +125,5 @@ export default function ProductDtailContent() {
         </div>
       </section>
     </div>
-  )
+  );
 }

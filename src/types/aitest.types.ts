@@ -1,13 +1,13 @@
 export type QuestionFormProps = {
-  question: string
-  example?: string
-  autoFocus?: boolean
-}
+  question: string;
+  example?: string;
+  autoFocus?: boolean;
+};
 
 export type Answer = {
-  question: string
-  value: string
-}
+  question: string;
+  value: string;
+};
 
 // =========================
 // AI Gift Recommend Types
@@ -19,7 +19,7 @@ export type Recipient =
   | 'lover'
   | 'friend'
   | 'coworker'
-  | 'child'
+  | 'child';
 
 export type AgeGroup =
   | 'child'
@@ -28,7 +28,7 @@ export type AgeGroup =
   | '30s'
   | '40s'
   | '50s'
-  | '60plus'
+  | '60plus';
 
 export type Occasion =
   | 'birthday'
@@ -36,52 +36,52 @@ export type Occasion =
   | 'anniversary'
   | 'holiday'
   | 'housewarming'
-  | 'celebration'
+  | 'celebration';
 
-export type Style = 'practical' | 'premium' | 'emotional' | 'cute' | 'light'
+export type Style = 'practical' | 'premium' | 'emotional' | 'cute' | 'light';
 
 export type PriceRange = {
-  min: number
-  max: number
-}
+  min: number;
+  max: number;
+};
 
 export type RecommendTags = {
-  recipient: Recipient
-  ageGroup: AgeGroup
-  occasion: Occasion
-  priceRange: PriceRange
-  style: Style
-}
+  recipient: Recipient;
+  ageGroup: AgeGroup;
+  occasion: Occasion;
+  priceRange: PriceRange;
+  style: Style;
+};
 
 // =========================
 // API Payload
 // =========================
 
 export type RecommendRequestBody = {
-  answers: string[]
-}
+  answers: string[];
+};
 
 export type RecommendResponseBody = {
-  tags: RecommendTags
-}
+  tags: RecommendTags;
+};
 
 export type RecommendResult = {
   tags: {
-    target: string
-    age: string
-    occasion: string
+    recipient: string;
+    ageGroup: string;
+    occasion: string;
     priceRange: {
-      min: number
-      max: number
-    }
-    style: string
-  }
-}
+      min: number;
+      max: number;
+    };
+    style: string;
+  };
+};
 
-type WarningLevel = 'hard' | 'soft'
+type WarningLevel = 'hard' | 'soft';
 
 export type Warning = {
-  level: WarningLevel
-  title: string
-  detail: string
-}
+  level: WarningLevel;
+  title: string;
+  detail: string;
+};

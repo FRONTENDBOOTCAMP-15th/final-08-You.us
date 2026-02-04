@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import Button from '@/components/common/Button'
-import Header from '@/components/common/Header/Header'
-import Footer from '@/components/common/Footer/Footer'
+import Image from 'next/image';
+import Link from 'next/link';
+import Button from '@/components/common/Button';
+import Header from '@/components/common/Header/Header';
+import Footer from '@/components/common/Footer/Footer';
 
 export default function CartEmpty() {
   return (
@@ -68,5 +68,5 @@ export default function CartEmpty() {
 
       <Footer />
     </>
-  )
+  );
 }

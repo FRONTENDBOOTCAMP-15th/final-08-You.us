@@ -1,9 +1,9 @@
-import QuickMenu from '@/components/pages/mypage/main/QuickMenu'
+import QuickMenu from '@/components/pages/mypage/main/QuickMenu';
 
 export default function MypageLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <div className="mx-auto bg-gray-50">
@@ -14,5 +14,5 @@ export default function MypageLayout({
         </div>
       </main>
     </div>
-  )
+  );
 }

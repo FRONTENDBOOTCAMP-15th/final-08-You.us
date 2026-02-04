@@ -1,32 +1,38 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Button from '../Button'
-import DesktopCategoryDropdown from './DesktopCategoryDropdown'
-import Image from 'next/image'
-import useUserStore from '@/lib/zustand/auth/userStore'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Button from '../Button';
+import DesktopCategoryDropdown from './DesktopCategoryDropdown';
+import Image from 'next/image';
+import useUserStore from '@/lib/zustand/auth/userStore';
+import { useCategoryStore } from '@/lib/zustand/categoryStore';
 
 export default function DesktopHeader() {
-  const [searchQuery, setSearchQuery] = useState('')
-  const { user, resetUser } = useUserStore()
+  const { user, resetUser } = useUserStore();
+  const router = useRouter();
+  const categories = useCategoryStore((state) => state.categories);
 
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    // 1. Zustand store 초기화
-    resetUser()
+    event.preventDefault();
+    resetUser();
+    localStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('naver_state');
+    alert('로그아웃 되었습니다.');
+  };
 
-    // 2. localStorage 정리
-    localStorage.removeItem('refreshToken')
+  const keywordHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const keyword = formData.get('keyword') as string;
 
-    // 3. sessionStorage 정리 (네이버 state)
-    sessionStorage.removeItem('naver_state')
+    router.push(
+      keyword.trim() ? `/products?keyword=${keyword.trim()}` : '/products',
+    );
+  };
 
-    alert('로그아웃 되었습니다.')
-  }
   return (
     <div className="px-10">
-      {/* 상단 헤더 */}
       <div className="flex h-32.5 items-center justify-between px-4">
         <div className="flex flex-1 items-center gap-6">
           <Link href="/" className="shrink-0">
@@ -49,19 +55,23 @@ export default function DesktopHeader() {
             </Button>
           </Link>
 
-          <form className="relative mr-6 max-w-xl flex-1" role="search">
+          <form
+            onSubmit={keywordHandler}
+            className="relative mr-6 max-w-xl flex-1"
+            role="search"
+          >
             <label htmlFor="desktop-search" className="sr-only">
               상품목록 검색창
             </label>
             <input
               type="text"
               id="desktop-search"
+              name="keyword"
               placeholder="검색어를 입력하세요"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
               className="focus:border-primary h-10 w-full rounded-lg border border-gray-300 px-4 pr-10 text-sm placeholder:text-gray-400 focus:outline-none"
             />
             <button
+              type="submit"
               className="absolute top-1/2 right-3 -translate-y-1/2"
               aria-label="검색"
             >
@@ -121,8 +131,7 @@ export default function DesktopHeader() {
         )}
       </div>
 
-      {/* 카테고리 네비게이션 */}
-      <DesktopCategoryDropdown />
+      <DesktopCategoryDropdown categories={categories} />
     </div>
-  )
+  );
 }

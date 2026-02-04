@@ -1,29 +1,34 @@
-import Link from 'next/link'
-import { categories, categoryData } from './Header'
-import SmallCategory from './SmallCategory'
-import Image from 'next/image'
-import useUserStore from '@/lib/zustand/auth/userStore'
+import Link from 'next/link';
+import SmallCategory from './SmallCategory';
+import Image from 'next/image';
+import useUserStore from '@/lib/zustand/auth/userStore';
+import type { CategoryCode } from '@/types/categoryCode.type';
 
-export default function DesktopCategoryDropdown() {
-  const { user } = useUserStore()
+export default function DesktopCategoryDropdown({
+  categories,
+}: {
+  categories: CategoryCode[];
+}) {
+  const { user } = useUserStore();
+
   return (
     <nav aria-label="상품 카테고리" className="relative border-gray-200">
       <div className="flex justify-between px-4">
         <div className="group w-[60%]">
           <ul className="flex h-11 flex-wrap items-center justify-between gap-3 overflow-x-auto">
-            {categories.map((category) => (
-              <li key={category}>
+            {categories?.map((category) => (
+              <li key={category.code}>
                 <Link
-                  href={`/products`}
+                  href={`/products/${category.code}`}
                   className="hover:text-primary text-body-sm font-medium text-gray-700 transition-colors"
                 >
-                  {category}
+                  {category.value}
                 </Link>
               </li>
             ))}
           </ul>
 
-          <SmallCategory categories={categories} categoryData={categoryData} />
+          <SmallCategory categories={categories} />
         </div>
 
         <ul className="flex gap-6" aria-label="빠른 메뉴">
@@ -62,5 +67,5 @@ export default function DesktopCategoryDropdown() {
         </ul>
       </div>
     </nav>
-  )
+  );
 }

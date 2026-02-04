@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { EffectFade, Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-fade'
-import styles from './Main-swiper.module.css'
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import styles from './Main-swiper.module.css';
 
 export default function MainBannerSwiper() {
   return (
@@ -64,5 +64,5 @@ export default function MainBannerSwiper() {
         </SwiperSlide>
       </Swiper>
     </div>
-  )
+  );
 }

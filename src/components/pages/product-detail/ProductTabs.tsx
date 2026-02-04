@@ -1,35 +1,35 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import ProductDetailContent from '@/components/pages/product-detail/ProductTap/ProductDetailContent'
-import ProductReviews from '@/components/pages/product-detail/ProductTap/ProductReviews/ProductReviews'
-import ProductInquiry from '@/components/pages/product-detail/ProductTap/ProductInquiry'
-import RelatedProducts from '@/components/pages/product-detail/ProductTap/RelatedProducts'
+import { useState } from 'react';
+import ProductDetailContent from '@/components/pages/product-detail/ProductTap/ProductDetailContent';
+import ProductReviews from '@/components/pages/product-detail/ProductTap/ProductReviews/ProductReviews';
+import ProductInquiry from '@/components/pages/product-detail/ProductTap/ProductInquiry';
+import RelatedProducts from '@/components/pages/product-detail/ProductTap/RelatedProducts';
 
 export default function ProductTabs() {
-  const [activeTab, setActiveTab] = useState('detail')
+  const [activeTab, setActiveTab] = useState('detail');
 
   const tabs = [
     { id: 'detail', label: '상세정보' },
     { id: 'review', label: '후기', count: '1,000' },
     { id: 'inquiry', label: '상품문의' },
     { id: 'related', label: '관련상품' },
-  ]
+  ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'detail':
-        return <ProductDetailContent />
+        return <ProductDetailContent />;
       case 'review':
-        return <ProductReviews />
+        return <ProductReviews />;
       case 'inquiry':
-        return <ProductInquiry />
+        return <ProductInquiry />;
       case 'related':
-        return <RelatedProducts />
+        return <RelatedProducts />;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <>
@@ -61,5 +61,5 @@ export default function ProductTabs() {
         {renderTabContent()}
       </div>
     </>
-  )
+  );
 }

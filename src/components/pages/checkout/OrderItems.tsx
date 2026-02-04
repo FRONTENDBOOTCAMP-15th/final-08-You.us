@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function OrderItems() {
   return (
@@ -55,5 +55,5 @@ export default function OrderItems() {
         </li>
       </ul>
     </section>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection'
-import ReviewCard from '@/components/pages/mypage/reviews/ReviewCard'
+import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
+import ReviewCard from '@/components/pages/mypage/reviews/ReviewCard';
 
 // 더미 데이터 - 작성한 리뷰
 const writtenReviews = [
@@ -31,7 +31,7 @@ const writtenReviews = [
       '부모님 선물로 주문했는데 정말 만족스러웠어요. 마블링이 고르게 퍼져 있고 색감이 너무 좋아서 개봉하자마자 신뢰가 갔습니다. 구워 먹으니 육즙이 풍부하고 잡내 없이 깔끔했어요. 명절 선물로도 손색없습니다.',
     reviewImages: ['/images/products/mypage/image-food-meat.png'],
   },
-]
+];
 
 // 더미 데이터 - 리뷰 대기 중
 const pendingReviews = [
@@ -44,10 +44,10 @@ const pendingReviews = [
     name: '제니쿠키 4믹스 쿠키',
     price: '26,877원',
   },
-]
+];
 
 export default function ReviewsPage() {
-  const userName = '홍길동'
+  const userName = '홍길동';
 
   return (
     <main className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 *:text-gray-900 md:px-8 lg:px-12">
@@ -99,5 +99,5 @@ export default function ReviewsPage() {
         </section>
       )}
     </main>
-  )
+  );
 }

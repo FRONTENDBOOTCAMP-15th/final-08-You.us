@@ -1,22 +1,22 @@
-import Button from '@/components/common/Button'
-import EmptyState from '@/components/common/EmptyState'
-import OrderItem from '@/components/pages/mypage/orders/OrderItem'
-import Link from 'next/link'
+import Button from '@/components/common/Button';
+import EmptyState from '@/components/common/EmptyState';
+import OrderItem from '@/components/pages/mypage/orders/OrderItem';
+import Link from 'next/link';
 
 type OrderData = {
-  id: number
+  id: number;
   item: {
-    status: 'SHIPPING' | 'DELIVERED'
-    date: string
-    imageSrc: string
-    imageAlt: string
-    name: string
-    price: string
-    deliveryStatus: 'SHIPPING' | 'DELIVERED'
-    reviewStatus: 'NONE' | 'WRITTEN'
-    scope: { rating: number } | null
-  }
-}
+    status: 'SHIPPING' | 'DELIVERED';
+    date: string;
+    imageSrc: string;
+    imageAlt: string;
+    name: string;
+    price: string;
+    deliveryStatus: 'SHIPPING' | 'DELIVERED';
+    reviewStatus: 'NONE' | 'WRITTEN';
+    scope: { rating: number } | null;
+  };
+};
 
 export const order: OrderData[] = [
   {
@@ -75,7 +75,7 @@ export const order: OrderData[] = [
       reviewStatus: 'WRITTEN',
     },
   },
-]
+];
 
 export default function OrderList() {
   if (order.length === 0) {
@@ -88,7 +88,7 @@ export default function OrderList() {
           </Link>
         }
       />
-    )
+    );
   }
 
   return (
@@ -97,5 +97,5 @@ export default function OrderList() {
         <OrderItem key={id} {...item} />
       ))}
     </ul>
-  )
+  );
 }
