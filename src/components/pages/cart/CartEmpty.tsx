@@ -7,7 +7,7 @@ export default function CartEmpty() {
     <>
       <main>
         {/* 장바구니 제목 */}
-        <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] ml-[25px] lg:mt-[105px] lg:ml-[225px]">
+        <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] ml-[25px] lg:mt-[105px]">
           장바구니
         </h1>
 
