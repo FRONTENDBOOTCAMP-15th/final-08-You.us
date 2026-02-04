@@ -1,12 +1,32 @@
-// lib/api/recommend.ts
-const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
-const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
-
+import { Product } from '@/app/(public)/recommend/result/page';
+import fetchClient from '@/lib/api/fetchClient';
 interface GetRecommendProductsParams {
   tags: string[];
   minPrice?: number;
   maxPrice?: number;
   limit?: number;
+}
+
+interface ProductListResponse {
+  ok: number;
+  item: Product[];
+}
+
+interface RecommendProductsResult {
+  ok: number;
+  items: Product[];
+  total: number;
+  message?: string;
+}
+
+/**
+ * 태그로 상품 필터링
+ */
+function filterProductsByTags(products: Product[], tags: string[]): Product[] {
+  return products.filter((product) => {
+    const productTags = product.extra?.tags || [];
+    return tags.every((tag) => productTags.includes(tag));
+  });
 }
 
 /**
@@ -17,49 +37,34 @@ export async function getRecommendProducts({
   minPrice,
   maxPrice,
   limit = 100,
-}: GetRecommendProductsParams) {
+}: GetRecommendProductsParams): Promise<RecommendProductsResult> {
   try {
+    // params 생성
     const params: Record<string, string> = {
       limit: String(limit),
+      ...(minPrice !== undefined && { minPrice: String(minPrice) }),
+      ...(maxPrice !== undefined && { maxPrice: String(maxPrice) }),
     };
 
-    // 가격 필터
-    if (minPrice !== undefined) {
-      params.minPrice = String(minPrice);
-    }
-    if (maxPrice !== undefined) {
-      params.maxPrice = String(maxPrice);
-    }
-
-    const searchParams = new URLSearchParams(params);
-    const url = `${API_SERVER}/products?${searchParams.toString()}`;
-
-    const response = await fetch(url, {
+    // API 호출
+    const response = await fetchClient<ProductListResponse>('/products', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Client-Id': CLIENT_ID,
-      },
+      params,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error('API 응답 에러:', errorData);
+    // 에러 응답 처리
+    if ('message' in response) {
+      console.error('API 응답 에러:', response);
       return {
         ok: 0,
-        message: errorData.message || '상품을 불러오는데 실패했습니다.',
+        message: response.message || '상품을 불러오는데 실패했습니다.',
         items: [],
+        total: 0,
       };
     }
 
-    const data = await response.json();
-
     // 4개 태그 모두 포함된 상품만 필터링
-    const filteredProducts = (data.item || []).filter((product: any) => {
-      const productTags = product.extra?.tags || [];
-      return tags.every((tag) => productTags.includes(tag));
-    });
+    const filteredProducts = filterProductsByTags(response.item || [], tags);
 
     return {
       ok: 1,
@@ -70,8 +75,12 @@ export async function getRecommendProducts({
     console.error('상품 조회 오류:', error);
     return {
       ok: 0,
-      message: '상품을 불러오는데 실패했습니다.',
+      message:
+        error instanceof Error
+          ? error.message
+          : '상품을 불러오는데 실패했습니다.',
       items: [],
+      total: 0,
     };
   }
 }
