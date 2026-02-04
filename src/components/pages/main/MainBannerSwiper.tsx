@@ -33,16 +33,23 @@ export default function MainBannerSwiper() {
               <Image
                 width={1024}
                 height={500}
-                className="mx-auto hidden lg:block"
+                className="mx-auto hidden md:hidden lg:block"
                 alt=""
                 src="/images/banners/swiper-image-1-lg.svg"
               />
               <Image
+                width={738}
+                height={280}
+                className="mx-auto hidden md:block lg:hidden"
+                alt=""
+                src="/images/banners/swiper-image-1-md.svg"
+              />
+              <Image
                 width={360}
                 height={280}
-                className="mx-auto block lg:hidden"
+                className="mx-auto block md:hidden lg:hidden"
                 alt=""
-                src="/images/banners/swiper-image-1-sm.svg"
+                src="/images/banners/swiper-image-1-mo.svg"
               />
             </Link>
           </div>
@@ -52,16 +59,23 @@ export default function MainBannerSwiper() {
             <Image
               width={1024}
               height={500}
-              className="mx-auto hidden lg:block"
+              className="mx-auto hidden md:hidden lg:block"
               alt=""
               src="/images/banners/swiper-image-2-lg.svg"
             />
             <Image
+              width={738}
+              height={280}
+              className="mx-auto hidden md:block lg:hidden"
+              alt=""
+              src="/images/banners/swiper-image-2-md.svg"
+            />
+            <Image
               width={360}
               height={280}
-              className="mx-auto block lg:hidden"
+              className="mx-auto block md:hidden lg:hidden"
               alt=""
-              src="/images/banners/swiper-image-2-sm.svg"
+              src="/images/banners/swiper-image-2-mo.svg"
             />
           </div>
         </SwiperSlide>
