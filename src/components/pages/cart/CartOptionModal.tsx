@@ -7,10 +7,10 @@ import Button from '@/components/common/Button';
 interface CartItem {
   id: string;
   name: string;
-  image: string;
   price: number;
-  option: string;
   quantity: number;
+  option: string;
+  image: string;
 }
 
 interface CartItemWithModalProps {

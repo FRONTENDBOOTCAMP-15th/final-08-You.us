@@ -29,7 +29,7 @@ interface CartListProps {
   onDelete: (id: number) => void;
   onDeleteSelected: () => void;
   onOptionChange: (id: number, option: string, quantity: number) => void;
-  onOptionAdd: (id: number, option: string, quantity: number) => void; // ⭐ 추가!
+  onOptionAdd: (id: number, option: string, quantity: number) => void;
 }
 
 export default function CartList({
@@ -92,7 +92,6 @@ export default function CartList({
       onOptionAdd(selectedItem._id, option, quantity);
     }
   };
-
   return (
     <>
       <main className="pb-20 lg:pb-50">
