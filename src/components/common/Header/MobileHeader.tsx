@@ -13,7 +13,7 @@ export default function MobileHeader({
 }: MobileHeaderProps) {
   const { user } = useUserStore();
   return (
-    <div className="relative flex h-20 min-w-[360px] items-center justify-between bg-gray-50 px-7">
+    <div className="relative flex h-20 min-w-90 items-center justify-between bg-gray-50 px-7">
       <button
         onClick={onMenuOpen}
         aria-label="메뉴 열기"
