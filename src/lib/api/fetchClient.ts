@@ -1,10 +1,28 @@
 import useUserStore from '@/lib/zustand/auth/userStore';
-import { ErrorRes } from '@/types/api.types';
+import { ServerValidationError } from '@/types/api.types';
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 // 토큰 갱신할 때 사용하는 URL 경로
 const REFRESH_URL = '/auth/refresh';
+/**
+ * API 호출 중 발생하는 에러를 커스텀하기 위한 클래스
+ */
+export class ApiError extends Error {
+  status: number;
+  errors?: { [fieldName: string]: ServerValidationError };
+
+  constructor(
+    message: string,
+    status: number,
+    errors?: { [fieldName: string]: ServerValidationError },
+  ) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+    this.errors = errors;
+  }
+}
 
 // fetch 함수에 전달할 옵션 타입 정의
 // RequestInit는 기본 fetch 옵션 (method, body 등)
@@ -19,7 +37,7 @@ export async function fetchClient<T>(
   url: string, // API 엔드포인트 (예: '/products')
   options: FetchOptions = {}, // fetch 옵션 (기본값 빈 객체)
 ): Promise<T> {
-  // 성공하면 T 타입, 실패하면 ErrorRes 타입 반환
+  // 성공하면 T 타입
 
   // Zustand 스토어에서 유저 정보와 관련 함수들 가져오기
   // getState()는 컴포넌트 밖에서도 스토어 값을 읽을 수 있게 해줌
@@ -30,7 +48,7 @@ export async function fetchClient<T>(
   const { params, ...fetchOptions } = options;
 
   // URL이 '/api/'로 시작하면 Next.js 내부 API라고 판단
-  // 예: '/api/recommend' → 내부 API, '/products' → 외부 API
+  // 예: '/api/recommend' -> 내부 API, '/products' -> 외부 API
   const isInternalApi = url.startsWith('/api/');
 
   // 내부 API면 그대로 사용, 외부 API면 API_SERVER 붙이기
@@ -42,7 +60,7 @@ export async function fetchClient<T>(
     // URLSearchParams는 객체를 ?key=value&key2=value2 형태로 변환
     const searchParams = new URLSearchParams(params);
     fullUrl += `?${searchParams.toString()}`;
-    // 예: '/products' + '?page=1&limit=10' → '/products?page=1&limit=10'
+    // 예: '/products' + '?page=1&limit=10' -> '/products?page=1&limit=10'
   }
 
   // HTTP 요청 헤더 설정 시작
@@ -77,7 +95,7 @@ export async function fetchClient<T>(
   } catch (error) {
     // 네트워크 에러 (인터넷 끊김, 서버 다운 등)
     console.error('fetch 실패:', error);
-    throw new Error('네트워크 요청에 실패했습니다.');
+    throw new ApiError('네트워크 요청에 실패했습니다.', 500);
   }
 
   // 401 에러 처리 (인증 만료) - 내부 API는 건너뛰기
@@ -87,13 +105,13 @@ export async function fetchClient<T>(
     // (refresh token도 만료된 상황)
     if (url === REFRESH_URL) {
       navigateLogin(); // 로그인 페이지로 이동
-      throw new Error('인증이 만료되었습니다.');
+      throw new ApiError('인증이 만료되었습니다.', 401);
     }
 
     // 로그인 상태가 아니면 로그인 페이지로
     if (!user) {
       navigateLogin();
-      throw new Error('로그인이 필요합니다.');
+      throw new ApiError('로그인이 필요합니다.', 401);
     }
 
     try {
@@ -105,7 +123,7 @@ export async function fetchClient<T>(
       // refreshToken도 없으면 로그인 필요
       if (!refreshToken) {
         navigateLogin();
-        throw new Error('인증 정보가 없습니다.');
+        throw new ApiError('인증 정보가 없습니다.', 401);
       }
 
       // refreshToken으로 새 accessToken 받아오기
@@ -121,7 +139,7 @@ export async function fetchClient<T>(
 
       // 토큰 갱신 실패하면 에러
       if (!refreshResponse.ok) {
-        throw new Error('토큰 갱신 실패');
+        throw new ApiError('토큰 갱신 실패', refreshResponse.status);
       }
 
       // 갱신된 토큰 받아오기
@@ -160,6 +178,14 @@ export async function fetchClient<T>(
 
   // 응답을 JSON으로 변환
   const data = await response.json();
+  if (data.ok === 0) {
+    throw new ApiError(
+      data.message || 'API 요청에 실패했습니다.',
+      response.status,
+      data.errors, // 서버의 필드별 유효성 검사 에러도 함께 전달
+    );
+  }
+
   // 타입 단언해서 반환
   return data as T;
 }
