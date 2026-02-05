@@ -1,0 +1,213 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import ProductCard from '@/components/common/ProductCard';
+import ProductSort from '@/components/pages/products/ProductSort';
+import { getProducts, getFilteredProducts } from '@/lib/api/products';
+import Link from 'next/link';
+import type { Product } from '@/types/product.types';
+
+export default function ProductsPage({
+  params,
+}: {
+  params: Promise<{ categories?: string[] }>;
+}) {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [sortOption, setSortOption] = useState<
+    'price_high' | 'price_low' | 'latest' | 'oldest'
+  >('price_high');
+  const [activeSort, setActiveSort] = useState<string>('');
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const category = categories[0];
+  const subCategory = categories[1];
+
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const resolvedParams = await params;
+      const cats = resolvedParams.categories || [];
+      setCategories(cats);
+
+      const res = await getProducts(cats[0], cats[1]);
+      setProducts(res.item);
+    };
+
+    loadInitialData();
+  }, [params]);
+
+  useEffect(() => {
+    if (!category) return;
+
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        const res = await getFilteredProducts(
+          category,
+          subCategory,
+          sortOption,
+          1,
+        );
+        setProducts(res.item);
+        setPage(1);
+        setHasMore(res.item.length === 8);
+      } catch (error) {
+        console.error('상품 불러오기 실패:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [sortOption, category, subCategory]);
+
+  // 더보기 버튼 클릭
+  const handleLoadMore = async () => {
+    try {
+      setIsLoading(true);
+      const nextPage = page + 1;
+      const res = await getFilteredProducts(
+        category,
+        subCategory,
+        sortOption,
+        nextPage,
+      );
+
+      setProducts((prev) => [...prev, ...res.item]);
+      setPage(nextPage);
+      setHasMore(res.item.length === 8);
+    } catch (error) {
+      console.error('상품 더 불러오기 실패:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSort = (
+    option: 'price_high' | 'price_low' | 'latest' | 'oldest',
+  ) => {
+    setSortOption(option);
+    setActiveSort(option);
+  };
+
+  return (
+    <div className="mx-auto max-w-375">
+      <main className="w-full bg-gray-50 py-8">
+        <div className="px-4">
+          <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
+            <ol className="text-body-sm flex items-center gap-1 text-gray-900">
+              <li>
+                <Link
+                  href="/"
+                  className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                >
+                  홈
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <span className="text-gray-900">&gt;</span>
+              </li>
+              <li>
+                <Link
+                  href="/category/beauty"
+                  className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                >
+                  뷰티
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <span className="text-gray-900">&gt;</span>
+              </li>
+              <li>
+                <span
+                  className="text-body-md text-gray-900"
+                  aria-current="page"
+                >
+                  화장품
+                </span>
+              </li>
+            </ol>
+          </nav>
+
+          {/* 정렬 버튼 */}
+          <div className="mb-6 flex items-center gap-1 pb-4 lg:mb-[45px]">
+            <button
+              onClick={() => handleSort('price_high')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_high'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              높은가격순
+            </button>
+            <button
+              onClick={() => handleSort('price_low')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_low'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              낮은가격순
+            </button>
+            <button
+              onClick={() => handleSort('latest')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'latest'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              최신순
+            </button>
+            <button
+              onClick={() => handleSort('oldest')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'oldest'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              오래된순
+            </button>
+          </div>
+
+          {/* 카테고리 제목 */}
+          <h1 className="text-title-sm font-pretendard mb-8 font-bold text-gray-900">
+            화장품 카테고리
+          </h1>
+
+          {/* 상품 그리드 */}
+          <div
+            className="mb-[100px] grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+            role="list"
+            aria-label="상품 목록"
+          >
+            {products.map((product) => (
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                image={product.mainImages[0]!.path}
+                name={product.name}
+                price={String(product.price)}
+                rating={product.rating || 0}
+                replies={product.replies}
+                mainCategory={product.extra.category[0]!}
+                subCategory={product.extra.category[1]!}
+              />
+            ))}
+          </div>
+
+          <ProductSort
+            hasMore={hasMore}
+            isLoading={isLoading}
+            onLoadMore={handleLoadMore}
+          />
+        </div>
+      </main>
+    </div>
+  );
+}

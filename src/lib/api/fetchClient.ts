@@ -5,6 +5,7 @@ const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
 // 토큰 갱신할 때 사용하는 URL 경로
 const REFRESH_URL = '/auth/refresh';
+
 /**
  * API 호출 중 발생하는 에러를 커스텀하기 위한 클래스
  */
@@ -48,7 +49,7 @@ export async function fetchClient<T>(
   const { params, ...fetchOptions } = options;
 
   // URL이 '/api/'로 시작하면 Next.js 내부 API라고 판단
-  // 예: '/api/recommend' -> 내부 API, '/products' -> 외부 API
+  // 예: '/api/recommend' → 내부 API, '/products' → 외부 API
   const isInternalApi = url.startsWith('/api/');
 
   // 내부 API면 그대로 사용, 외부 API면 API_SERVER 붙이기
@@ -60,7 +61,7 @@ export async function fetchClient<T>(
     // URLSearchParams는 객체를 ?key=value&key2=value2 형태로 변환
     const searchParams = new URLSearchParams(params);
     fullUrl += `?${searchParams.toString()}`;
-    // 예: '/products' + '?page=1&limit=10' -> '/products?page=1&limit=10'
+    // 예: '/products' + '?page=1&limit=10' → '/products?page=1&limit=10'
   }
 
   // HTTP 요청 헤더 설정 시작
@@ -116,9 +117,11 @@ export async function fetchClient<T>(
 
     try {
       // refreshToken 가져오기
-      // localStorage에 저장된 거 먼저 확인, 없으면 store에서 가져오기
+      // localStorage에 저장된 거 먼저 확인, 없으면 sessionStorage, 없으면 store에서 가져오기
       const refreshToken =
-        localStorage.getItem('refreshToken') || user.token?.refreshToken;
+        localStorage.getItem('refreshToken') ||
+        sessionStorage.getItem('refreshToken') ||
+        user.token?.refreshToken;
 
       // refreshToken도 없으면 로그인 필요
       if (!refreshToken) {
@@ -154,10 +157,11 @@ export async function fetchClient<T>(
         token: { accessToken, refreshToken: newRefreshToken }, // 토큰만 업데이트
       });
 
-      // 자동 로그인 상태였으면 (localStorage에 저장되어 있었으면)
-      // 새 refreshToken도 localStorage에 업데이트
+      // 원래 저장된 곳에 다시 저장 (localStorage 또는 sessionStorage)
       if (localStorage.getItem('refreshToken')) {
         localStorage.setItem('refreshToken', newRefreshToken);
+      } else if (sessionStorage.getItem('refreshToken')) {
+        sessionStorage.setItem('refreshToken', newRefreshToken);
       }
 
       // 새 accessToken으로 원래 요청 다시 보내기
@@ -171,6 +175,7 @@ export async function fetchClient<T>(
       console.error('토큰 갱신 실패:', refreshError);
       resetUser(); // Zustand store 초기화
       localStorage.removeItem('refreshToken'); // localStorage 삭제
+      sessionStorage.removeItem('refreshToken'); // sessionStorage 삭제
       navigateLogin(); // 로그인 페이지로
       throw refreshError; // 에러 다시 던지기
     }

@@ -1,3 +1,4 @@
+import fetchClient from '@/lib/api/fetchClient';
 import type { ProductResponse, ProductError } from '@/types/product.types';
 
 // 메인페이지(식품, 뷰티, 쥬얼리 제일많이 팔리는 카테고리 호출)
@@ -31,4 +32,57 @@ export default async function getMainCategorySeller(
       message: err instanceof Error ? err.message : String(err),
     };
   }
+}
+
+export async function getProducts(
+  category: string | undefined,
+  subCategory: string | undefined,
+): Promise<ProductResponse> {
+  let customFilter = '';
+  if (category !== 'PC00') {
+    if (subCategory) {
+      customFilter = `&custom={"extra.category.1":"${subCategory}"}`;
+    } else if (category) {
+      customFilter = `&custom={"extra.category.0":"${category}"}`;
+    }
+  }
+  const url = `/products?limit=8${customFilter}`;
+  return fetchClient<ProductResponse>(url);
+}
+
+export async function getFilteredProducts(
+  category: string | undefined,
+  subCategory: string | undefined,
+  sortOption?: 'price_high' | 'price_low' | 'latest' | 'oldest',
+  page: number = 1,
+): Promise<ProductResponse> {
+  let customFilter = '';
+  if (category !== 'PC00') {
+    if (subCategory) {
+      customFilter = `&custom={"extra.category.1":"${subCategory}"}`;
+    } else if (category) {
+      customFilter = `&custom={"extra.category.0":"${category}"}`;
+    }
+  }
+
+  let sortParam = '';
+  if (sortOption) {
+    switch (sortOption) {
+      case 'price_high':
+        sortParam = `&sort={"price":-1}`;
+        break;
+      case 'price_low':
+        sortParam = `&sort={"price":1}`;
+        break;
+      case 'latest':
+        sortParam = `&sort={"createdAt":-1}`;
+        break;
+      case 'oldest':
+        sortParam = `&sort={"createdAt":1}`;
+        break;
+    }
+  }
+
+  const url = `/products?limit=8&page=${page}${customFilter}${sortParam}`;
+  return fetchClient<ProductResponse>(url);
 }
