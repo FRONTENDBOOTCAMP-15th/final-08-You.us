@@ -14,28 +14,30 @@ export default function SmallCategory({ categories }: SmallCategoryProps) {
     >
       <div className="px-6 py-5">
         <div className="flex flex-wrap gap-7">
-          {categories?.map((category) => (
-            <div
-              key={category.code}
-              className="hover:bg-category w-[14%] rounded p-7 transition-colors"
-            >
-              <h2 className="text-primary mb-4 border-b-2 pb-2 pl-1.5 font-bold">
-                {category.value}
-              </h2>
-              <ul className="space-y-2">
-                {category.sub?.map((subCategory) => (
-                  <li key={subCategory.code}>
-                    <Link
-                      href={`/products/${category.code}/${subCategory.code}`}
-                      className="hover:text-primary before:bg-primary text-body-sm relative inline-block text-gray-700 transition-colors before:absolute before:top-1/2 before:-left-4 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:opacity-0 before:transition-opacity before:content-[''] hover:before:opacity-100"
-                    >
-                      {subCategory.value}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {categories
+            ?.filter((category) => category.code !== 'PC00')
+            .map((category) => (
+              <div
+                key={category.code}
+                className="hover:bg-category w-[14%] rounded p-7 transition-colors"
+              >
+                <h2 className="text-primary mb-4 border-b-2 pb-2 pl-1.5 font-bold">
+                  {category.value}
+                </h2>
+                <ul className="space-y-2">
+                  {category.sub?.map((subCategory) => (
+                    <li key={subCategory.code}>
+                      <Link
+                        href={`/products/${category.code}/${subCategory.code}`}
+                        className="hover:text-primary before:bg-primary text-body-sm relative inline-block text-gray-700 transition-colors before:absolute before:top-1/2 before:-left-4 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:opacity-0 before:transition-opacity before:content-[''] hover:before:opacity-100"
+                      >
+                        {subCategory.value}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
         </div>
       </div>
     </div>

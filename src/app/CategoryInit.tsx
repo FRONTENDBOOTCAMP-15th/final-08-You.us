@@ -13,7 +13,6 @@ export default function CategoryInit({
   if (!initialized.current) {
     useCategoryStore.setState({ categories });
     initialized.current = false;
-    console.log('categories', categories);
   }
   return null;
 }
