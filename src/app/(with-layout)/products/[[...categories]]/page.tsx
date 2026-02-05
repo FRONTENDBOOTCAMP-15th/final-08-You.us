@@ -1,24 +1,99 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import ProductCard from '@/components/common/ProductCard';
 import ProductSort from '@/components/pages/products/ProductSort';
-import { getProducts } from '@/lib/api/products';
+import { getProducts, getFilteredProducts } from '@/lib/api/products';
 import Link from 'next/link';
+import type { Product } from '@/types/product.types';
 
-export default async function ProductsPage({
+export default function ProductsPage({
   params,
 }: {
   params: Promise<{ categories?: string[] }>;
 }) {
-  const { categories } = await params;
+  const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [sortOption, setSortOption] = useState<
+    'price_high' | 'price_low' | 'latest' | 'oldest'
+  >('price_high');
+  const [activeSort, setActiveSort] = useState<string>('');
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [category, subCategory] = categories || [];
+  const category = categories[0];
+  const subCategory = categories[1];
 
-  console.log(categories);
-  const res = await getProducts(category, subCategory);
-  const products = res.item;
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const resolvedParams = await params;
+      const cats = resolvedParams.categories || [];
+      setCategories(cats);
+
+      const res = await getProducts(cats[0], cats[1]);
+      setProducts(res.item);
+    };
+
+    loadInitialData();
+  }, [params]);
+
+  useEffect(() => {
+    if (!category) return;
+
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        const res = await getFilteredProducts(
+          category,
+          subCategory,
+          sortOption,
+          1,
+        );
+        setProducts(res.item);
+        setPage(1);
+        setHasMore(res.item.length === 8);
+      } catch (error) {
+        console.error('상품 불러오기 실패:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [sortOption, category, subCategory]);
+
+  // 더보기 버튼 클릭
+  const handleLoadMore = async () => {
+    try {
+      setIsLoading(true);
+      const nextPage = page + 1;
+      const res = await getFilteredProducts(
+        category,
+        subCategory,
+        sortOption,
+        nextPage,
+      );
+
+      setProducts((prev) => [...prev, ...res.item]);
+      setPage(nextPage);
+      setHasMore(res.item.length === 8);
+    } catch (error) {
+      console.error('상품 더 불러오기 실패:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSort = (
+    option: 'price_high' | 'price_low' | 'latest' | 'oldest',
+  ) => {
+    setSortOption(option);
+    setActiveSort(option);
+  };
 
   return (
     <div className="mx-auto max-w-375">
-      {/* 전체 상품 그리드/리스트 뷰 */}
       <main className="w-full bg-gray-50 py-8">
         <div className="px-4">
           <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
@@ -56,19 +131,47 @@ export default async function ProductsPage({
             </ol>
           </nav>
 
-          {/* 필터 탭 - 높은가격순, 낮은가격순, 평점많은순, 리뷰많은순 */}
+          {/* 정렬 버튼 */}
           <div className="mb-6 flex items-center gap-1 pb-4 lg:mb-[45px]">
-            <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
+            <button
+              onClick={() => handleSort('price_high')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_high'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
               높은가격순
             </button>
-            <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
+            <button
+              onClick={() => handleSort('price_low')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_low'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
               낮은가격순
             </button>
-            <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
-              평점많은순
+            <button
+              onClick={() => handleSort('latest')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'latest'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              최신순
             </button>
-            <button className="text-body-md cursor-pointer rounded px-3 py-1.5 text-gray-500 hover:text-gray-900">
-              리뷰많은순
+            <button
+              onClick={() => handleSort('oldest')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'oldest'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              오래된순
             </button>
           </div>
 
@@ -97,9 +200,14 @@ export default async function ProductsPage({
               />
             ))}
           </div>
+
+          <ProductSort
+            hasMore={hasMore}
+            isLoading={isLoading}
+            onLoadMore={handleLoadMore}
+          />
         </div>
       </main>
-      <ProductSort products={products} />
     </div>
   );
 }

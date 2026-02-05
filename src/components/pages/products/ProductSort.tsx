@@ -1,18 +1,37 @@
 'use client';
 
 import MoreButton from '@/components/common/MoreButton';
-import { ProductItem } from '@/types/product.types';
 
 interface ProductSortProps {
-  products: ProductItem[];
+  hasMore: boolean;
+  isLoading: boolean;
+  onLoadMore: () => void;
 }
 
-export default function ProductSort({ products }: ProductSortProps) {
+export default function ProductSort({
+  hasMore,
+  isLoading,
+  onLoadMore,
+}: ProductSortProps) {
   return (
-    <div className="mb-[20px] grid cursor-pointer grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-y-15">
-      <div className="col-span-full mt-[60px]">
-        <MoreButton className="mx-auto mb-[150px]" />
-      </div>
-    </div>
+    <>
+      {hasMore && (
+        <div className="col-span-full mt-[60px]">
+          <MoreButton
+            className="mx-auto mb-[150px]"
+            onClick={onLoadMore}
+            disabled={isLoading}
+          >
+            {isLoading ? '로딩 중...' : '더보기'}
+          </MoreButton>
+        </div>
+      )}
+
+      {!hasMore && (
+        <p className="mb-[150px] text-center text-gray-500">
+          모든 상품을 불러왔습니다.
+        </p>
+      )}
+    </>
   );
 }
