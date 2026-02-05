@@ -18,7 +18,7 @@ interface FetchOptions extends RequestInit {
 export async function fetchClient<T>(
   url: string, // API 엔드포인트 (예: '/products')
   options: FetchOptions = {}, // fetch 옵션 (기본값 빈 객체)
-): Promise<T | ErrorRes> {
+): Promise<T> {
   // 성공하면 T 타입, 실패하면 ErrorRes 타입 반환
 
   // Zustand 스토어에서 유저 정보와 관련 함수들 가져오기
@@ -161,7 +161,7 @@ export async function fetchClient<T>(
   // 응답을 JSON으로 변환
   const data = await response.json();
   // 타입 단언해서 반환
-  return data as T | ErrorRes;
+  return data as T;
 }
 
 // 로그인 페이지로 이동하는 함수

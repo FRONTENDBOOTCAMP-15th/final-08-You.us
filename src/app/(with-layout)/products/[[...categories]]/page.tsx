@@ -3,7 +3,11 @@ import ProductSort from '@/components/pages/products/ProductSort';
 import { getProducts } from '@/lib/api/products';
 import Link from 'next/link';
 
-export default async function ProductsPage() {
+export default async function ProductsPage({
+  params,
+}: {
+  params: Promise<{ categories?: string[] }>;
+}) {
   // const products = [
   //   {
   //     _id: 1,
@@ -71,7 +75,13 @@ export default async function ProductsPage() {
   //   },
   // ]
 
-  const products = await getProducts();
+  const { categories } = await params;
+
+  const [category, subCategory] = categories || [];
+
+  console.log(categories);
+  const res = await getProducts(category, subCategory);
+  const products = res.item;
 
   return (
     <div className="mx-auto max-w-375">
@@ -142,13 +152,15 @@ export default async function ProductsPage() {
           >
             {products.map((product) => (
               <ProductCard
-                key={product.id}
-                id={product.id}
-                image={product.mainImages}
+                key={product._id}
+                id={product._id}
+                image={product.mainImages[0]!.path}
                 name={product.name}
                 price={String(product.price)}
-                rating={product.rating}
+                rating={product.rating || 0}
                 replies={product.replies}
+                mainCategory={product.extra.category[0]!}
+                subCategory={product.extra.category[1]!}
               />
             ))}
           </div>

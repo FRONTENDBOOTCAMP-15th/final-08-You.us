@@ -2,18 +2,19 @@
 
 import MoreButton from '@/components/common/MoreButton';
 import ProductCard from '@/components/common/ProductCard';
+import { ProductItem } from '@/types/product.types';
 
-interface Product {
-  _id: number;
-  name: string;
-  price: number;
-  rating: string;
-  mainImage: string;
-  replies: number;
-}
+// interface Product {
+//   _id: number;
+//   name: string;
+//   price: number;
+//   rating: string;
+//   mainImage: string;
+//   replies: number;
+// }
 
 interface ProductSortProps {
-  products: Product[];
+  products: ProductItem[];
 }
 
 export default function ProductSort({ products }: ProductSortProps) {
