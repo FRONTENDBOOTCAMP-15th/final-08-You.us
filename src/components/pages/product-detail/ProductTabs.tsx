@@ -42,7 +42,7 @@ export default function ProductTabs({
       <div className="mt-20 flex gap-2">
         <div
           role="tablist"
-          className="flex h-[70px] w-full items-center justify-between gap-6 border-b p-0 lg:gap-1.5 lg:rounded lg:border-b-0 lg:bg-gray-300 lg:p-3"
+          className="flex h-[70px] w-full items-center justify-around gap-6 border-b p-0 lg:justify-between lg:gap-1.5 lg:rounded lg:border-b-0 lg:bg-gray-300 lg:p-3"
         >
           {tabs.map((tab) => (
             <button
