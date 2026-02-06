@@ -6,20 +6,26 @@ import ProductReviews from '@/components/pages/product-detail/ProductTap/Product
 import ProductInquiry from '@/components/pages/product-detail/ProductTap/ProductInquiry';
 import RelatedProducts from '@/components/pages/product-detail/ProductTap/RelatedProducts';
 
-export default function ProductTabs() {
+export default function ProductTabs({
+  content,
+  replies,
+}: {
+  content: string;
+  replies: number;
+}) {
   const [activeTab, setActiveTab] = useState('detail');
 
   const tabs = [
     { id: 'detail', label: '상세정보' },
-    { id: 'review', label: '후기', count: '1,000' },
-    { id: 'inquiry', label: '상품문의' },
-    { id: 'related', label: '관련상품' },
+    { id: 'review', label: '후기', count: replies },
+    // { id: 'inquiry', label: '상품문의' },
+    // { id: 'related', label: '관련상품' },
   ];
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'detail':
-        return <ProductDetailContent />;
+        return <ProductDetailContent content={content} />;
       case 'review':
         return <ProductReviews />;
       case 'inquiry':

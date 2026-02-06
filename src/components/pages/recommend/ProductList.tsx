@@ -20,7 +20,6 @@ interface ProductListProps {
 }
 
 export default function ProductList({ products }: ProductListProps) {
-  console.log('product', products);
   return (
     <ul className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {products.map((product) => (

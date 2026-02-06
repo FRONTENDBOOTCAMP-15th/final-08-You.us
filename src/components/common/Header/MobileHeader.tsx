@@ -1,6 +1,10 @@
+'use client';
+
 import useUserStore from '@/lib/zustand/auth/userStore';
+import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 interface MobileHeaderProps {
   onMenuOpen: () => void;
@@ -12,6 +16,16 @@ export default function MobileHeader({
   isOpen,
 }: MobileHeaderProps) {
   const { user } = useUserStore();
+  const localCartCount = useCartStore((state) => state.items.length);
+  const serverCartCount = useCartStore((state) => state.serverCartCount);
+
+  useEffect(() => {
+    if (user) {
+      fetchServerCartCount();
+    }
+  }, [user]);
+
+  const cartCount = user ? serverCartCount : localCartCount;
   return (
     <div className="relative flex h-20 min-w-90 items-center justify-between bg-gray-50 px-7">
       <button
@@ -68,7 +82,7 @@ export default function MobileHeader({
             </Link>
           </li>
           <li>
-            <Link href="/cart">
+            <Link href="/cart" className="relative">
               <Image
                 src="/icons/Basket.svg"
                 alt="장바구니"
@@ -76,6 +90,11 @@ export default function MobileHeader({
                 height={32}
                 className="h-8 w-auto"
               />
+              {cartCount > 0 && (
+                <span className="bg-primary absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold text-white">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
             </Link>
           </li>
         </ul>

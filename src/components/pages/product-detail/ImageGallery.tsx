@@ -3,15 +3,17 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function ImageGallery() {
-  const [currentImage, setCurrentImage] = useState(0);
+interface ImageItem {
+  path: string;
+  name: string;
+}
 
-  const images = [
-    'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=800',
-    'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
-    'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
-    'https://images.unsplash.com/photo-1543528176-61b239494933?w=800',
-  ];
+interface ImageGalleryProps {
+  images?: ImageItem[];
+}
+
+export default function ImageGallery({ images = [] }: ImageGalleryProps) {
+  const [currentImage, setCurrentImage] = useState(0);
 
   const goToPrevious = () => {
     setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -21,6 +23,17 @@ export default function ImageGallery() {
     setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  // 이미지가 없는 상품일 때
+  if (images.length === 0) {
+    return (
+      <div className="mx-auto max-w-80 overflow-hidden rounded-3xl bg-gray-100 shadow-xl lg:max-w-none">
+        <div className="flex aspect-square items-center justify-center">
+          <span className="text-gray-400">이미지 없음</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       {/* 큰 이미지 */}
@@ -29,14 +42,14 @@ export default function ImageGallery() {
           <Image
             width={600}
             height={600}
-            src={images[currentImage]}
+            src={images[currentImage]?.path ?? ''}
             alt="상품 이미지"
             className="h-full w-full object-cover"
           />
 
           {/* 점 인디케이터 */}
           <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-            {images.map((_, index) => (
+            {images?.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImage(index)}
@@ -73,7 +86,7 @@ export default function ImageGallery() {
         </button>
 
         <div className="flex flex-1 gap-3 overflow-x-auto p-3.5">
-          {images.map((img, index) => (
+          {images?.map((img, index) => (
             <button
               key={index}
               onClick={() => setCurrentImage(index)}
@@ -86,7 +99,7 @@ export default function ImageGallery() {
               <Image
                 width={500}
                 height={500}
-                src={img}
+                src={img.path}
                 alt={`썸네일 ${index + 1}`}
                 className="h-full w-full rounded-md object-cover"
               />

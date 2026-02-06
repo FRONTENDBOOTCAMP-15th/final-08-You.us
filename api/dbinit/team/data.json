@@ -171,7 +171,8 @@
           "thanks",
           "emotional",
           "premium"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -206,7 +207,9 @@
         "category": ["PC07", "PC0701"],
         "sort": 2,
         "tags": ["friend", "child", "teen", "birthday", "cute", "light"],
-        "options": ["Pink", "Orange", "Blue", "Yellow"]
+        "options": {
+          "color": ["Pink", "Orange", "Blue", "Yellow"]
+        }
       }
     },
     {
@@ -247,7 +250,9 @@
           "premium",
           "emotional"
         ],
-        "options": ["Yellow", "Mint", "Green", "Pink"]
+        "options": {
+          "color": ["Yellow", "Mint", "Green", "Pink"]
+        }
       }
     },
     {
@@ -277,7 +282,8 @@
       "extra": {
         "category": ["PC07", "PC0701"],
         "sort": 4,
-        "tags": ["friend", "coworker", "20s", "30s", "practical", "light"]
+        "tags": ["friend", "coworker", "20s", "30s", "practical", "light"],
+        "options": {}
       }
     },
     {
@@ -316,7 +322,9 @@
         "category": ["PC07", "PC0701"],
         "sort": 5,
         "tags": ["friend", "lover", "20s", "30s", "celebration", "emotional"],
-        "options": ["Sky", "Bridge", "Sea", "Tower"]
+        "options": {
+          "color": ["Sky", "Bridge", "Sea", "Tower"]
+        }
       }
     },
     {
@@ -346,7 +354,8 @@
       "extra": {
         "category": ["PC07", "PC0702"],
         "sort": 1,
-        "tags": ["parent", "40s", "50s", "60plus", "thanks", "premium"]
+        "tags": ["parent", "40s", "50s", "60plus", "thanks", "premium"],
+        "options": {}
       }
     },
     {
@@ -376,7 +385,8 @@
       "extra": {
         "category": ["PC07", "PC0702"],
         "sort": 2,
-        "tags": ["child", "teen", "birthday", "holiday", "cute", "light"]
+        "tags": ["child", "teen", "birthday", "holiday", "cute", "light"],
+        "options": {}
       }
     },
     {
@@ -419,7 +429,9 @@
           "emotional",
           "premium"
         ],
-        "options": ["Green", "Red", "Yellow", "White"]
+        "options": {
+          "color": ["Green", "Red", "Yellow", "White"]
+        }
       }
     },
     {
@@ -458,7 +470,8 @@
           "birthday",
           "celebration",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -489,7 +502,9 @@
         "category": ["PC07", "PC0702"],
         "sort": 5,
         "tags": ["friend", "coworker", "teen", "20s", "practical", "light"],
-        "options": ["White", "Brown"]
+        "options": {
+          "color": ["White", "Brown"]
+        }
       }
     },
     {
@@ -520,7 +535,9 @@
         "category": ["PC07", "PC0703"],
         "sort": 1,
         "tags": ["lover", "30s", "anniversary", "premium", "emotional"],
-        "options": ["Blue Rose", "Pink Rose"]
+        "options": {
+          "color": ["Blue Rose", "Pink Rose"]
+        }
       }
     },
     {
@@ -551,7 +568,9 @@
         "category": ["PC07", "PC0703"],
         "sort": 2,
         "tags": ["friend", "20s", "housewarming", "practical", "light"],
-        "options": ["S", "M", "L"]
+        "options": {
+          "size": ["S", "M", "L"]
+        }
       }
     },
     {
@@ -589,7 +608,9 @@
           "celebration",
           "premium"
         ],
-        "options": ["Deep Green", "Black"]
+        "options": {
+          "color": ["Deep Green", "Black"]
+        }
       }
     },
     {
@@ -619,7 +640,8 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 4,
-        "tags": ["child", "friend", "teen", "holiday", "cute", "light"]
+        "tags": ["child", "friend", "teen", "holiday", "cute", "light"],
+        "options": {}
       }
     },
     {
@@ -649,7 +671,8 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 5,
-        "tags": ["coworker", "20s", "30s", "thanks", "practical", "emotional"]
+        "tags": ["coworker", "20s", "30s", "thanks", "practical", "emotional"],
+        "options": {}
       }
     },
     {
@@ -687,7 +710,8 @@
           "thanks",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -722,7 +746,9 @@
         "category": ["PC07", "PC0704"],
         "sort": 2,
         "tags": ["child", "teen", "20s", "practical", "light"],
-        "options": ["Black", "Gray", "Beige", "Pink"]
+        "options": {
+          "color": ["Black", "Gray", "Beige", "Pink"]
+        }
       }
     },
     {
@@ -752,7 +778,8 @@
       "extra": {
         "category": ["PC07", "PC0704"],
         "sort": 3,
-        "tags": ["child", "teen", "birthday", "cute", "emotional"]
+        "tags": ["child", "teen", "birthday", "cute", "emotional"],
+        "options": {}
       }
     },
     {
@@ -791,7 +818,9 @@
           "premium",
           "emotional"
         ],
-        "options": ["Brown", "Navy"]
+        "options": {
+          "color": ["Brown", "Navy"]
+        }
       }
     },
     {
@@ -821,7 +850,8 @@
       "extra": {
         "category": ["PC07", "PC0704"],
         "sort": 5,
-        "tags": ["child", "teen", "practical", "light", "cute"]
+        "tags": ["child", "teen", "practical", "light", "cute"],
+        "options": {}
       }
     },
     {
@@ -859,7 +889,8 @@
           "30s",
           "practical",
           "premium"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -890,7 +921,9 @@
         "category": ["PC07", "PC0705"],
         "sort": 2,
         "tags": ["friend", "child", "teen", "20s", "light", "practical"],
-        "options": ["Tree", "Orange"]
+        "options": {
+          "color": ["Tree", "Orange"]
+        }
       }
     },
     {
@@ -928,7 +961,8 @@
           "anniversary",
           "premium",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -959,7 +993,9 @@
         "category": ["PC07", "PC0705"],
         "sort": 4,
         "tags": ["child", "teen", "20s", "birthday", "cute", "light"],
-        "options": ["Boy", "Dog"]
+        "options": {
+          "color": ["Boy", "Dog"]
+        }
       }
     },
     {
@@ -989,7 +1025,8 @@
       "extra": {
         "category": ["PC07", "PC0705"],
         "sort": 5,
-        "tags": ["child", "teen", "20s", "practical", "emotional"]
+        "tags": ["child", "teen", "20s", "practical", "emotional"],
+        "options": {}
       }
     },
     {
@@ -1020,7 +1057,9 @@
         "category": ["PC08", "PC0802"],
         "sort": 1,
         "tags": ["friend", "coworker", "20s", "30s", "practical", "light"],
-        "options": ["White", "Space Black"]
+        "options": {
+          "color": ["White", "Space Black"]
+        }
       }
     },
     {
@@ -1050,7 +1089,8 @@
       "extra": {
         "category": ["PC08", "PC0802"],
         "sort": 2,
-        "tags": ["lover", "sibling", "20s", "30s", "birthday", "premium"]
+        "tags": ["lover", "sibling", "20s", "30s", "birthday", "premium"],
+        "options": {}
       }
     },
     {
@@ -1081,7 +1121,7 @@
         "category": ["PC08", "PC0802"],
         "sort": 3,
         "tags": ["friend", "lover", "20s", "30s", "housewarming", "emotional"],
-        "options": ["Default"]
+        "options": {}
       }
     },
     {
@@ -1112,7 +1152,9 @@
         "category": ["PC08", "PC0802"],
         "sort": 4,
         "tags": ["friend", "coworker", "20s", "40s", "practical", "light"],
-        "options": ["Black", "White"]
+        "options": {
+          "color": ["Black", "White"]
+        }
       }
     },
     {
@@ -1151,7 +1193,9 @@
           "thanks",
           "emotional"
         ],
-        "options": ["Wood", "Marble"]
+        "options": {
+          "color": ["Wood", "Marble"]
+        }
       }
     },
     {
@@ -1182,7 +1226,9 @@
         "category": ["PC08", "PC0803"],
         "sort": 1,
         "tags": ["friend", "20s", "practical", "light"],
-        "options": ["AirPods Pro", "AirPods 3"]
+        "options": {
+          "color": ["AirPods Pro", "AirPods 3"]
+        }
       }
     },
     {
@@ -1213,7 +1259,9 @@
         "category": ["PC08", "PC0803"],
         "sort": 2,
         "tags": ["teen", "20s", "birthday", "cute", "emotional"],
-        "options": ["Sky Blue", "Lemon"]
+        "options": {
+          "color": ["Sky Blue", "Lemon"]
+        }
       }
     },
     {
@@ -1243,7 +1291,8 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 3,
-        "tags": ["coworker", "practical", "light"]
+        "tags": ["coworker", "practical", "light"],
+        "options": {}
       }
     },
     {
@@ -1273,7 +1322,8 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 4,
-        "tags": ["coworker", "30s", "practical", "premium"]
+        "tags": ["coworker", "30s", "practical", "premium"],
+        "options": {}
       }
     },
     {
@@ -1303,7 +1353,8 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 5,
-        "tags": ["friend", "20s", "30s", "practical", "light"]
+        "tags": ["friend", "20s", "30s", "practical", "light"],
+        "options": {}
       }
     },
     {
@@ -1334,7 +1385,9 @@
         "category": ["PC05", "PC0505"],
         "sort": 1,
         "tags": ["friend", "teen", "20s", "cute", "light"],
-        "options": ["Kaki"]
+        "options": {
+          "color": ["Kaki"]
+        }
       }
     },
     {
@@ -1365,7 +1418,9 @@
         "category": ["PC05", "PC0505"],
         "sort": 2,
         "tags": ["lover", "coworker", "30s", "40s", "anniversary", "premium"],
-        "options": ["Brown Leather", "Kaki"]
+        "options": {
+          "color": ["Brown Leather", "Kaki"]
+        }
       }
     },
     {
@@ -1396,7 +1451,9 @@
         "category": ["PC05", "PC0505"],
         "sort": 3,
         "tags": ["friend", "20s", "30s", "birthday", "practical", "light"],
-        "options": ["Silver", "Black"]
+        "options": {
+          "color": ["Silver", "Black"]
+        }
       }
     },
     {
@@ -1427,7 +1484,9 @@
         "category": ["PC05", "PC0505"],
         "sort": 4,
         "tags": ["friend", "teen", "20s", "practical", "light"],
-        "options": ["White", "Orange", "Khaki", "Navy", "Black"]
+        "options": {
+          "color": ["White", "Orange", "Khaki", "Navy", "Black"]
+        }
       }
     },
     {
@@ -1458,7 +1517,9 @@
         "category": ["PC05", "PC0505"],
         "sort": 5,
         "tags": ["lover", "20s", "30s", "anniversary", "premium", "emotional"],
-        "options": ["Rose Gold"]
+        "options": {
+          "color": ["Rose Gold"]
+        }
       }
     },
     {
@@ -1489,7 +1550,9 @@
         "category": ["PC05", "PC0506"],
         "sort": 1,
         "tags": ["friend", "teen", "20s", "cute", "light"],
-        "options": ["Brown", "Cream", "Black"]
+        "options": {
+          "color": ["Brown", "Cream", "Black"]
+        }
       }
     },
     {
@@ -1520,7 +1583,9 @@
         "category": ["PC05", "PC0506"],
         "sort": 2,
         "tags": ["coworker", "lover", "30s", "40s", "premium", "practical"],
-        "options": ["Brown", "Black", "Green", "Red", "Salmon", "Indigo"]
+        "options": {
+          "color": ["Brown", "Black", "Green", "Red", "Salmon", "Indigo"]
+        }
       }
     },
     {
@@ -1551,7 +1616,9 @@
         "category": ["PC05", "PC0506"],
         "sort": 3,
         "tags": ["friend", "20s", "birthday", "emotional", "cute"],
-        "options": ["White", "Black", "Gold", "Pink"]
+        "options": {
+          "color": ["White", "Black", "Gold", "Pink"]
+        }
       }
     },
     {
@@ -1582,19 +1649,21 @@
         "category": ["PC05", "PC0506"],
         "sort": 4,
         "tags": ["friend", "sibling", "teen", "20s", "thanks", "light"],
-        "options": [
-          "Black",
-          "Brown",
-          "Green",
-          "Pink",
-          "Beige",
-          "LightGreen",
-          "SkyBlue",
-          "Gray",
-          "Red",
-          "Salmon",
-          "Blue"
-        ]
+        "options": {
+          "color": [
+            "Black",
+            "Brown",
+            "Green",
+            "Pink",
+            "Beige",
+            "LightGreen",
+            "SkyBlue",
+            "Gray",
+            "Red",
+            "Salmon",
+            "Blue"
+          ]
+        }
       }
     },
     {
@@ -1625,7 +1694,9 @@
         "category": ["PC05", "PC0506"],
         "sort": 5,
         "tags": ["friend", "20s", "30s", "emotional", "light"],
-        "options": ["Whale", "Dolphin", "MoonkillerWhale", "killerWhale"]
+        "options": {
+          "color": ["Whale", "Dolphin", "MoonkillerWhale", "killerWhale"]
+        }
       }
     },
     {
@@ -1666,7 +1737,8 @@
           "birthday",
           "practical",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1706,7 +1778,8 @@
           "birthday",
           "practical",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1751,7 +1824,8 @@
           "holiday",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1793,7 +1867,8 @@
           "celebration",
           "practical",
           "premium"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1835,7 +1910,8 @@
           "celebration",
           "practical",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1879,7 +1955,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1923,7 +2000,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -1964,7 +2042,8 @@
           "housewarming",
           "premium",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2006,7 +2085,8 @@
           "housewarming",
           "emotional",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2052,11 +2132,13 @@
           "practical",
           "cute"
         ],
-        "options": [
-          "로즈 버블 파우더",
-          "포레스트 버블 파우더",
-          "러블리 라벤더 버블 파우더"
-        ]
+        "options": {
+          "color": [
+            "로즈 버블 파우더",
+            "포레스트 버블 파우더",
+            "러블리 라벤더 버블 파우더"
+          ]
+        }
       }
     },
     {
@@ -2097,7 +2179,8 @@
           "celebration",
           "premium",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2138,7 +2221,8 @@
           "celebration",
           "premium",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2180,7 +2264,8 @@
           "cute",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2224,7 +2309,8 @@
           "premium",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2268,7 +2354,8 @@
           "cute",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2311,7 +2398,9 @@
           "emotional",
           "light"
         ],
-        "options": ["9호", "10호", "11호", "12호", "13호"]
+        "options": {
+          "size": ["9호", "10호", "11호", "12호", "13호"]
+        }
       }
     },
     {
@@ -2354,7 +2443,9 @@
           "cute",
           "emotional"
         ],
-        "options": ["9호-10호", "11호-12호", "13호-14호", "15-16호"]
+        "options": {
+          "size": ["9호-10호", "11호-12호", "13호-14호", "15-16호"]
+        }
       }
     },
     {
@@ -2397,7 +2488,9 @@
           "cute",
           "emotional"
         ],
-        "options": ["S size", "M size", "L size"]
+        "options": {
+          "size": ["S", "M", "L"]
+        }
       }
     },
     {
@@ -2441,7 +2534,9 @@
           "emotional",
           "light"
         ],
-        "options": ["MONO", "MAROON", "DAISY"]
+        "options": {
+          "color": ["MONO", "MAROON", "DAISY"]
+        }
       }
     },
     {
@@ -2485,7 +2580,9 @@
           "emotional",
           "light"
         ],
-        "options": ["S", "M", "L"]
+        "options": {
+          "size": ["S", "M", "L"]
+        }
       }
     },
     {
@@ -2531,20 +2628,22 @@
           "cute",
           "emotional"
         ],
-        "options": [
-          "가넷",
-          "자수정",
-          "아쿠아마린",
-          "백수정",
-          "에메랄드",
-          "담수진주",
-          "루비",
-          "페리도트",
-          "사파이어",
-          "오팔",
-          "옐로우토파즈",
-          "터키석"
-        ]
+        "options": {
+          "color": [
+            "가넷",
+            "자수정",
+            "아쿠아마린",
+            "백수정",
+            "에메랄드",
+            "담수진주",
+            "루비",
+            "페리도트",
+            "사파이어",
+            "오팔",
+            "옐로우토파즈",
+            "터키석"
+          ]
+        }
       }
     },
     {
@@ -2589,7 +2688,8 @@
           "cute",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2634,7 +2734,8 @@
           "cute",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2680,7 +2781,8 @@
           "cute",
           "light",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2724,7 +2826,8 @@
           "cute",
           "light",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2769,7 +2872,8 @@
           "thanks",
           "premium",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2813,7 +2917,8 @@
           "thanks",
           "premium",
           "emotional"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2858,7 +2963,9 @@
           "cute",
           "light"
         ],
-        "options": ["SILVER", "GOLD Plated"]
+        "options": {
+          "color": ["SILVER", "GOLD Plated"]
+        }
       }
     },
     {
@@ -2905,7 +3012,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2952,7 +3060,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -2999,7 +3108,8 @@
           "emotional",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3044,7 +3154,8 @@
           "emotional",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3091,7 +3202,8 @@
           "cute",
           "practical",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3137,7 +3249,8 @@
           "cute",
           "practical",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3185,7 +3298,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3230,7 +3344,8 @@
           "cute",
           "light",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3275,7 +3390,8 @@
           "cute",
           "light",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3321,7 +3437,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3367,7 +3484,8 @@
           "light",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3413,7 +3531,8 @@
           "premium",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3459,7 +3578,8 @@
           "light",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3508,7 +3628,8 @@
           "premium",
           "emotional",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3555,7 +3676,8 @@
           "emotional",
           "practical",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3600,7 +3722,8 @@
           "emotional",
           "practical",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3645,7 +3768,8 @@
           "emotional",
           "practical",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3691,7 +3815,8 @@
           "practical",
           "light",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3736,7 +3861,8 @@
           "anniversary",
           "emotional",
           "premium"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3786,7 +3912,8 @@
           "emotional",
           "premium",
           "cute"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3833,7 +3960,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3880,7 +4008,8 @@
           "emotional",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3928,7 +4057,8 @@
           "light",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -3976,7 +4106,8 @@
           "premium",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4024,7 +4155,8 @@
           "premium",
           "cute",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4080,14 +4212,16 @@
           "cute",
           "light"
         ],
-        "options": [
-          "포트레이트",
-          "프로퓨전",
-          "펄스",
-          "포에트리",
-          "퓨어",
-          "펄프"
-        ]
+        "options": {
+          "color": [
+            "포트레이트",
+            "프로퓨전",
+            "펄스",
+            "포에트리",
+            "퓨어",
+            "펄프"
+          ]
+        }
       }
     },
     {
@@ -4131,7 +4265,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4176,7 +4311,7 @@
           "cute",
           "light"
         ],
-        "options": ["30ml", "50ml"]
+        "options": {}
       }
     },
     {
@@ -4221,7 +4356,7 @@
           "cute",
           "light"
         ],
-        "options": ["100ml", "250ml", "500ml"]
+        "options": {}
       }
     },
     {
@@ -4265,7 +4400,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4309,7 +4445,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4353,7 +4490,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4398,7 +4536,7 @@
           "cute",
           "light"
         ],
-        "options": ["올인원(기존)", "올인원 맨", "올인원 우먼"]
+        "options": {}
       }
     },
     {
@@ -4443,7 +4581,7 @@
           "cute",
           "light"
         ],
-        "options": ["1개월분(60캡슐)", "2개월분(120캡슐)", "3개월분(180캡슐)"]
+        "options": {}
       }
     },
     {
@@ -4487,7 +4625,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4531,7 +4670,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4575,7 +4715,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4619,7 +4760,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4663,7 +4805,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4707,7 +4850,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4751,7 +4895,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4795,7 +4940,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4839,7 +4985,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4883,7 +5030,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4927,7 +5075,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -4971,7 +5120,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5015,7 +5165,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5059,7 +5210,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5103,7 +5255,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5147,7 +5300,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5191,7 +5345,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5235,7 +5390,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5279,7 +5435,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5323,7 +5480,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5367,7 +5525,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5411,7 +5570,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5455,7 +5615,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5499,7 +5660,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5543,7 +5705,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5587,7 +5750,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5631,7 +5795,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5675,7 +5840,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5719,7 +5885,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5763,7 +5930,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5807,7 +5975,8 @@
           "thanks",
           "cute",
           "light"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5850,7 +6019,9 @@
           "premium",
           "practical"
         ],
-        "options": ["블랙", "라이트 베이지", "핑크"]
+        "options": {
+          "color": ["블랙", "라이트 베이지", "핑크"]
+        }
       }
     },
     {
@@ -5892,7 +6063,8 @@
           "thanks",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5934,7 +6106,8 @@
           "thanks",
           "premium",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -5978,7 +6151,8 @@
           "cute",
           "light",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -6022,7 +6196,8 @@
           "cute",
           "light",
           "practical"
-        ]
+        ],
+        "options": {}
       }
     },
     {
@@ -6066,7 +6241,9 @@
           "emotional",
           "light"
         ],
-        "options": ["10-12호", "13-14호", "15-16호", "17-18호"]
+        "options": {
+          "size": ["10-12호", "13-14호", "15-16호", "17-18호"]
+        }
       }
     },
     {
@@ -6111,7 +6288,8 @@
           "cute",
           "emotional",
           "light"
-        ]
+        ],
+        "options": {}
       }
     }
   ],
