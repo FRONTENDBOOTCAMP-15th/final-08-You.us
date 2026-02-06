@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/common/ProductCard';
 import ProductSort from '@/components/pages/products/ProductSort';
-import { getProducts, getFilteredProducts } from '@/lib/api/products';
+import {
+  getProducts,
+  getFilteredProducts,
+  searchProducts,
+} from '@/lib/api/products';
 import Link from 'next/link';
 import type { Product } from '@/types/product.types';
 
@@ -12,6 +17,9 @@ export default function ProductsPage({
 }: {
   params: Promise<{ categories?: string[] }>;
 }) {
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get('keyword') || '';
+
   const [categories, setCategories] = useState<string[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [sortOption, setSortOption] = useState<
@@ -31,14 +39,41 @@ export default function ProductsPage({
       const cats = resolvedParams.categories || [];
       setCategories(cats);
 
-      const res = await getProducts(cats[0], cats[1]);
-      setProducts(res.item);
+      // 검색어가 있으면 검색
+      if (keyword) {
+        const res = await searchProducts(keyword);
+        setProducts(res.item);
+      } else {
+        const res = await getProducts(cats[0], cats[1]);
+        setProducts(res.item);
+      }
     };
 
     loadInitialData();
-  }, [params]);
+  }, [params, keyword]);
 
+  // 정렬 옵션 변경 시
   useEffect(() => {
+    // 검색 모드
+    if (keyword) {
+      const fetchSearchProducts = async () => {
+        try {
+          setIsLoading(true);
+          const res = await searchProducts(keyword, undefined, sortOption, 1);
+          setProducts(res.item);
+          setPage(1);
+          setHasMore(res.item.length === 8);
+        } catch (error) {
+          console.error('검색 실패:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchSearchProducts();
+      return;
+    }
+
+    // 카테고리 모드
     if (!category) return;
 
     const fetchProducts = async () => {
@@ -61,19 +96,27 @@ export default function ProductsPage({
     };
 
     fetchProducts();
-  }, [sortOption, category, subCategory]);
+  }, [sortOption, category, subCategory, keyword]);
 
   // 더보기 버튼 클릭
   const handleLoadMore = async () => {
     try {
       setIsLoading(true);
       const nextPage = page + 1;
-      const res = await getFilteredProducts(
-        category,
-        subCategory,
-        sortOption,
-        nextPage,
-      );
+
+      let res;
+      if (keyword) {
+        // 검색 모드
+        res = await searchProducts(keyword, undefined, sortOption, nextPage);
+      } else {
+        // 카테고리 모드
+        res = await getFilteredProducts(
+          category,
+          subCategory,
+          sortOption,
+          nextPage,
+        );
+      }
 
       setProducts((prev) => [...prev, ...res.item]);
       setPage(nextPage);
@@ -96,40 +139,52 @@ export default function ProductsPage({
     <div className="mx-auto max-w-375">
       <main className="w-full bg-gray-50 py-8">
         <div className="px-4">
-          <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
-            <ol className="text-body-sm flex items-center gap-1 text-gray-900">
-              <li>
-                <Link
-                  href="/"
-                  className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                >
-                  홈
-                </Link>
-              </li>
-              <li aria-hidden="true">
-                <span className="text-gray-900">&gt;</span>
-              </li>
-              <li>
-                <Link
-                  href="/category/beauty"
-                  className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                >
-                  뷰티
-                </Link>
-              </li>
-              <li aria-hidden="true">
-                <span className="text-gray-900">&gt;</span>
-              </li>
-              <li>
-                <span
-                  className="text-body-md text-gray-900"
-                  aria-current="page"
-                >
-                  화장품
-                </span>
-              </li>
-            </ol>
-          </nav>
+          {keyword ? (
+            // 검색 결과 헤더
+            <div className="mb-6">
+              <h1 className="text-title-sm font-pretendard font-bold text-gray-900">
+                &quot;{keyword}&quot; 검색 결과
+              </h1>
+              <p className="text-body-md mt-2 text-gray-600">
+                총 {products.length}개의 상품
+              </p>
+            </div>
+          ) : (
+            <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
+              <ol className="text-body-sm flex items-center gap-1 text-gray-900">
+                <li>
+                  <Link
+                    href="/"
+                    className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                  >
+                    홈
+                  </Link>
+                </li>
+                <li aria-hidden="true">
+                  <span className="text-gray-900">&gt;</span>
+                </li>
+                <li>
+                  <Link
+                    href="/category/beauty"
+                    className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                  >
+                    뷰티
+                  </Link>
+                </li>
+                <li aria-hidden="true">
+                  <span className="text-gray-900">&gt;</span>
+                </li>
+                <li>
+                  <span
+                    className="text-body-md text-gray-900"
+                    aria-current="page"
+                  >
+                    화장품
+                  </span>
+                </li>
+              </ol>
+            </nav>
+          )}
 
           {/* 정렬 버튼 */}
           <div className="mb-6 flex items-center gap-1 pb-4 lg:mb-[45px]">
@@ -175,31 +230,46 @@ export default function ProductsPage({
             </button>
           </div>
 
-          {/* 카테고리 제목 */}
-          <h1 className="text-title-sm font-pretendard mb-8 font-bold text-gray-900">
-            화장품 카테고리
-          </h1>
+          {/* 카테고리 제목 (검색이 아닐 때만) */}
+          {!keyword && (
+            <h1 className="text-title-sm font-pretendard mb-8 font-bold text-gray-900">
+              화장품 카테고리
+            </h1>
+          )}
 
           {/* 상품 그리드 */}
-          <div
-            className="mb-[100px] grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
-            role="list"
-            aria-label="상품 목록"
-          >
-            {products.map((product) => (
-              <ProductCard
-                key={product._id}
-                id={product._id}
-                image={product.mainImages[0]!.path}
-                name={product.name}
-                price={String(product.price)}
-                rating={product.rating || 0}
-                replies={product.replies}
-                mainCategory={product.extra.category[0]!}
-                subCategory={product.extra.category[1]!}
-              />
-            ))}
-          </div>
+          {products.length > 0 ? (
+            <div
+              className="mb-[100px] grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+              role="list"
+              aria-label={keyword ? '검색 결과' : '상품 목록'}
+            >
+              {products.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  id={product._id}
+                  image={product.mainImages[0]!.path}
+                  name={product.name}
+                  price={String(product.price)}
+                  rating={product.rating || 0}
+                  replies={product.replies}
+                  mainCategory={product.extra.category[0]!}
+                  subCategory={product.extra.category[1]!}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center">
+              <p className="text-lg text-gray-600">
+                {keyword ? '검색 결과가 없습니다.' : '상품이 없습니다.'}
+              </p>
+              {keyword && (
+                <p className="mt-2 text-sm text-gray-500">
+                  다른 검색어로 다시 시도하세요.
+                </p>
+              )}
+            </div>
+          )}
 
           <ProductSort
             hasMore={hasMore}

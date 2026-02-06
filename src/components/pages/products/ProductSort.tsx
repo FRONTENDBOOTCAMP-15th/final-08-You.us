@@ -26,12 +26,6 @@ export default function ProductSort({
           </MoreButton>
         </div>
       )}
-
-      {!hasMore && (
-        <p className="mb-[150px] text-center text-gray-500">
-          모든 상품을 불러왔습니다.
-        </p>
-      )}
     </>
   );
 }

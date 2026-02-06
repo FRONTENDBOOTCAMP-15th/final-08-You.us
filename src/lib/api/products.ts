@@ -86,3 +86,41 @@ export async function getFilteredProducts(
   const url = `/products?limit=8&page=${page}${customFilter}${sortParam}`;
   return fetchClient<ProductResponse>(url);
 }
+
+export async function searchProducts(
+  keyword: string,
+  category?: string,
+  sortOption?: 'price_high' | 'price_low' | 'latest' | 'oldest',
+  page: number = 1,
+): Promise<ProductResponse> {
+  // customFilter
+  let customFilter = '';
+  if (category && category !== 'PC00') {
+    customFilter = `&custom={"extra.category.0":"${category}"}`;
+  }
+
+  // sortParam
+  let sortParam = '';
+  if (sortOption) {
+    switch (sortOption) {
+      case 'price_high':
+        sortParam = `&sort={"price":-1}`;
+        break;
+      case 'price_low':
+        sortParam = `&sort={"price":1}`;
+        break;
+      case 'latest':
+        sortParam = `&sort={"createdAt":-1}`;
+        break;
+      case 'oldest':
+        sortParam = `&sort={"createdAt":1}`;
+        break;
+    }
+  }
+
+  // keywordParam
+  const keywordParam = `&keyword=${encodeURIComponent(keyword)}`;
+
+  const url = `/products?limit=8&page=${page}${keywordParam}${customFilter}${sortParam}`;
+  return fetchClient<ProductResponse>(url);
+}
