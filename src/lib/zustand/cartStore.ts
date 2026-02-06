@@ -11,17 +11,26 @@ export interface LocalCartItem {
   size?: string;
 }
 
+// 아이템 식별용 타입 (product_id + 옵션)
+interface ItemIdentifier {
+  product_id: number;
+  color?: string;
+  size?: string;
+}
+
 interface CartStoreState {
   // 비로그인용 로컬 장바구니
   items: LocalCartItem[];
   addItem: (item: LocalCartItem) => void;
+  updateItem: (identifier: ItemIdentifier, newData: Partial<LocalCartItem>) => void;
+  removeItem: (identifier: ItemIdentifier) => void;
   clearCart: () => void;
   // 로그인용 서버 장바구니 수량
   serverCartCount: number;
   setServerCartCount: (count: number) => void;
 }
 
-const isSameItem = (a: LocalCartItem, b: LocalCartItem): boolean => {
+const isSameItem = (a: ItemIdentifier, b: ItemIdentifier): boolean => {
   if (a.product_id !== b.product_id) return false;
   if (a.color && b.color && a.color !== b.color) return false;
   if (a.size && b.size && a.size !== b.size) return false;
@@ -49,6 +58,25 @@ const CartStore: StateCreator<CartStoreState> = (set) => ({
 
       return { items: [...state.items, item] };
     }),
+
+  // 아이템 수정 (옵션, 수량 변경)
+  updateItem: (identifier, newData) =>
+    set((state) => {
+      const index = state.items.findIndex((el) => isSameItem(el, identifier));
+      if (index === -1) return state;
+
+      //장바구니 배열 복사 (원본 수정 방지)
+      const updated = [...state.items];
+      updated[index] = { ...updated[index]!, ...newData };
+      return { items: updated };
+    }),
+
+  // 아이템 삭제
+  removeItem: (identifier) =>
+    set((state) => ({
+      items: state.items.filter((el) => !isSameItem(el, identifier)),
+    })),
+
   clearCart: () => set({ items: [] }),
   serverCartCount: 0,
   setServerCartCount: (count) => set({ serverCartCount: count }),
