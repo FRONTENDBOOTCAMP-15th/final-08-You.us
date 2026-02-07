@@ -30,5 +30,5 @@ export interface BookmarkItem {
 
 export interface BookmarkResponse {
   ok: number;
-  item: BookmarkItem;
+  item: BookmarkItem[];
 }
