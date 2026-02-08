@@ -1,15 +1,31 @@
+'use client';
+
 import Link from 'next/link';
 import SmallCategory from './SmallCategory';
 import Image from 'next/image';
 import useUserStore from '@/lib/zustand/auth/userStore';
+import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
 import type { CategoryCode } from '@/types/categoryCode.type';
+import { useEffect } from 'react';
 
 export default function DesktopCategoryDropdown({
   categories,
 }: {
   categories: CategoryCode[];
 }) {
-  const { user } = useUserStore();
+  const user = useUserStore((state) => state.user);
+  const localCartCount = useCartStore((state) => state.items.length);
+  const serverCartCount = useCartStore((state) => state.serverCartCount);
+
+  // 로그인 상태면 서버 장바구니 수량 조회
+  useEffect(() => {
+    if (user) {
+      fetchServerCartCount();
+    }
+  }, [user]);
+
+  // 로그인: 서버 수량, 비로그인: 로컬 수량
+  const cartCount = user ? serverCartCount : localCartCount;
 
   return (
     <nav aria-label="상품 카테고리" className="relative border-gray-200">
@@ -54,7 +70,7 @@ export default function DesktopCategoryDropdown({
             </Link>
           </li>
           <li>
-            <Link href="/cart" className="block">
+            <Link href="/cart" className="relative block">
               <Image
                 src="/icons/Basket.svg"
                 alt="장바구니"
@@ -62,6 +78,11 @@ export default function DesktopCategoryDropdown({
                 height={32}
                 className="h-10 w-auto"
               />
+              {cartCount > 0 && (
+                <span className="bg-primary absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
             </Link>
           </li>
         </ul>

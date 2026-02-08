@@ -21,6 +21,8 @@ export default async function MainPage() {
   const responses = await Promise.all(
     CATEGORIES.map(async (cat) => {
       const res = await getMainCategorySeller(cat.code);
+
+      console.log('testtesttest', res);
       return {
         title: cat.title,
         items: 'item' in res ? res.item : [],

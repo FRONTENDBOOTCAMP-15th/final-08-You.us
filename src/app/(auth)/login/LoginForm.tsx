@@ -3,6 +3,7 @@ import Input from '@/components/common/Input';
 import { login } from '@/lib/api/users';
 import { getNaverLoginUrl } from '@/lib/auth/naver';
 import useUserStore from '@/lib/zustand/auth/userStore';
+import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
@@ -30,7 +31,9 @@ export default function LoginForm() {
   console.log(autoLogin);
 
   useEffect(() => {
-    if (userState?.ok) {
+    const handleLoginSuccess = async () => {
+      if (!userState?.ok) return;
+
       setUser({
         _id: userState.item._id,
         email: userState.item.email,
@@ -49,9 +52,14 @@ export default function LoginForm() {
         localStorage.setItem('refreshToken', userState.item.token.refreshToken);
       }
 
+      // 로컬 장바구니 서버에 병합
+      await mergeLocalCartToServer();
+
       alert(`${userState.item.name}님 로그인이 완료되었습니다.`);
       router.replace(redirect || '/');
-    }
+    };
+
+    handleLoginSuccess();
   }, [userState, router, redirect, setUser, setAutoLoginStore, autoLogin]);
 
   const validateEmail = (email: string) => {

@@ -1,3 +1,11 @@
+import { ReviewItem } from './review.types';
+
+// 단일 상품 응답 타입
+export interface SingleProductResponse {
+  ok: number;
+  item: ProductItem;
+}
+
 export interface ProductResponse {
   ok: number;
   item: ProductItem[];
@@ -14,9 +22,10 @@ export interface ProductItem {
   quantity: number;
   buyQuantity: number;
   mainImages: ProductImage[];
+  content: string;
   extra: ProductExtra;
   options: number;
-  replies: number;
+  replies: number | ReviewItem[];
   bookmarks: number;
   likes: number;
   rating: number;
@@ -31,6 +40,7 @@ export interface ProductExtra {
   category: string[];
   sort: number;
   tags: string[];
+  options: { color?: string[]; size?: string[] };
 }
 
 export interface ProductError {

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getNaverToken } from '@/lib/api/auth';
 import useUserStore from '@/lib/zustand/auth/userStore';
+import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
 
 export default function NaverCallbackPage() {
   const router = useRouter();
@@ -62,6 +63,9 @@ export default function NaverCallbackPage() {
 
           // state 정리
           sessionStorage.removeItem('naver_state');
+
+          // 로컬 장바구니 서버에 병합
+          await mergeLocalCartToServer();
 
           alert(`${result.user.name}님 로그인 성공!`);
           router.push('/');
