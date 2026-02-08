@@ -58,7 +58,7 @@ export default function ProductTabs({
               }`}
             >
               {tab.label}
-              {tab.count && <span className="ml-1 text-sm">({tab.count})</span>}
+              {<span className="ml-1 text-sm">({tab.count ?? '0'})</span>}
             </button>
           ))}
         </div>

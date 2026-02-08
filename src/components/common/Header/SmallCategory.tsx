@@ -10,10 +10,10 @@ export default function SmallCategory({ categories }: SmallCategoryProps) {
     <div
       role="menu"
       aria-label="상세 카테고리"
-      className="absolute top-full left-0 z-50 hidden w-full bg-gray-100 shadow-lg group-hover:block"
+      className="absolute top-full left-0 z-50 hidden w-full bg-gray-100 shadow-lg group-hover:block "
     >
       <div className="px-6 py-5">
-        <div className="flex flex-wrap gap-7">
+        <div className="flex flex-wrap gap-6">
           {categories
             ?.filter((category) => category.code !== 'PC00')
             .map((category) => (
@@ -21,7 +21,7 @@ export default function SmallCategory({ categories }: SmallCategoryProps) {
                 key={category.code}
                 className="hover:bg-category w-[14%] rounded p-7 transition-colors"
               >
-                <h2 className="text-primary mb-4 border-b-2 pb-2 pl-1.5 font-bold">
+                <h2 className="text-primary mb-4 border-b-2 pb-2 pl-1.5 font-bold ">
                   {category.value}
                 </h2>
                 <ul className="space-y-2">
