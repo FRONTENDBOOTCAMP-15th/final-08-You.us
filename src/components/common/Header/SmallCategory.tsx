@@ -12,19 +12,19 @@ export default function SmallCategory({ categories }: SmallCategoryProps) {
       aria-label="상세 카테고리"
       className="absolute top-full left-0 z-50 hidden w-full bg-gray-100 shadow-lg group-hover:block "
     >
-      <div className="px-6 py-5">
-        <div className="flex flex-wrap gap-6">
+      <div className="px-4 py-3">
+        <div className="grid grid-cols-4 gap-4">
           {categories
             ?.filter((category) => category.code !== 'PC00')
             .map((category) => (
               <div
                 key={category.code}
-                className="hover:bg-category w-[14%] rounded p-7 transition-colors"
+                className="hover:bg-category rounded p-4 transition-colors"
               >
-                <h2 className="text-primary mb-4 border-b-2 pb-2 pl-1.5 font-bold ">
+                <h2 className="text-primary mb-2 border-b-2 pb-1.5 pl-1 text-sm font-bold">
                   {category.value}
                 </h2>
-                <ul className="space-y-2">
+                <ul className="space-y-1 pl-5">
                   {category.sub?.map((subCategory) => (
                     <li key={subCategory.code}>
                       <Link

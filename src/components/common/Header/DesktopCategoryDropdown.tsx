@@ -30,7 +30,7 @@ export default function DesktopCategoryDropdown({
   return (
     <nav aria-label="상품 카테고리" className="relative border-gray-200">
       <div className="flex justify-between px-4">
-        <div className="group w-[60%]">
+        <div className="group relative w-[60%]">
           <ul className="flex h-11 flex-wrap items-center justify-between gap-3 overflow-x-auto">
             {categories?.map((category) => (
               <li key={category.code}>
