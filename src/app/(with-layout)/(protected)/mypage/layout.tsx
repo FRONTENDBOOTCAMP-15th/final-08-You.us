@@ -1,10 +1,24 @@
+'use client';
+
 import QuickMenu from '@/components/pages/mypage/main/QuickMenu';
+import useUserStore from '@/lib/zustand/auth/userStore';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function MypageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // 로그인 사용자 점검
+  const { user } = useUserStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!user) {
+      const currentPath = window.location.pathname;
+      router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+    }
+  }, [user, router]);
   return (
     <div className="mx-auto bg-gray-50">
       <main className="mx-auto w-full px-7.5 lg:flex lg:max-w-375 lg:min-w-5xl lg:gap-32.5">

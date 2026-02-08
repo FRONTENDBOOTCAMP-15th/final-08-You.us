@@ -92,7 +92,7 @@ export default function WishlistPage() {
   return (
     <>
       <div className="mx-auto flex max-w-[1500px] flex-col gap-10 px-4 lg:flex-row lg:py-10">
-        <main className="flex-1">
+        <div className="flex-1">
           <h2 className="text-title-sm font-pretendard mb-3 pl-4 font-bold text-gray-900 lg:mb-6">
             찜한 선물
           </h2>
@@ -114,7 +114,7 @@ export default function WishlistPage() {
             ))}
           </div>
           <MoreButton className="mx-auto mt-[35px] mb-[120px]" />
-        </main>
+        </div>
       </div>
     </>
   );

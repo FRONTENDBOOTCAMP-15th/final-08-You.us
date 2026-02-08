@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'picsum.photos',
+        hostname: 'fesp-api.koyeb.app',
         pathname: '/**',
       },
     ],
