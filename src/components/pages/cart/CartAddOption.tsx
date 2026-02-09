@@ -8,7 +8,11 @@ interface CartItem {
   _id: number;
   name: string;
   price: number;
+  quantity: number;
+  checked: boolean;
+  option: string;
   image: string;
+  storeName: string;
 }
 
 interface CartAddOptionProps {
@@ -22,7 +26,7 @@ export default function CartAddOption({
   onClose,
   onAdd,
 }: CartAddOptionProps) {
-  const [selectedOption, setSelectedOption] = useState('라벤더 향');
+  const [selectedOption, setSelectedOption] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   const handleAdd = () => {

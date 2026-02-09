@@ -13,7 +13,7 @@ interface CartItem {
   quantity: number;
   checked: boolean;
   option: string;
-  image: string;
+  mainImages: string;
   storeName: string;
 }
 
@@ -29,7 +29,7 @@ interface CartListProps {
   onDelete: (id: number) => void;
   onDeleteSelected: () => void;
   onOptionChange: (id: number, option: string, quantity: number) => void;
-  onOptionAdd: (id: number, option: string, quantity: number) => void; // ⭐ 추가!
+  onOptionAdd: (id: number, option: string, quantity: number) => void;
 }
 
 export default function CartList({
@@ -175,8 +175,10 @@ export default function CartList({
                     {/* 상품 이미지 */}
                     <figure className="relative h-24 w-24 shrink-0">
                       <Image
-                        src={item.image}
-                        alt=""
+                        src={item.mainImages}
+                        alt={item.name}
+                        width={96}
+                        height={96}
                         fill
                         className="object-cover"
                         aria-hidden="true"
@@ -344,7 +346,7 @@ export default function CartList({
           <div className="fixed top-1/2 left-1/2 z-50 w-full max-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded bg-gray-100 p-4 shadow-xl">
             <div className="mb-4 flex justify-center">
               <Image
-                src={selectedItem.image}
+                src={selectedItem.mainImages}
                 alt={selectedItem.name}
                 width={300}
                 height={300}
@@ -357,6 +359,7 @@ export default function CartList({
             <p className="text-body-sm mb-4 font-bold">
               {selectedItem.price.toLocaleString()}원
             </p>
+
             <select
               value={modalOption}
               onChange={(e) => setModalOption(e.target.value)}
@@ -367,6 +370,7 @@ export default function CartList({
               <option value="향: 유칼립투스 향">유칼립투스 향</option>
               <option value="향: 바닐라 향">바닐라 향</option>
             </select>
+
             <div className="mb-6 flex items-center justify-end gap-4">
               <button
                 onClick={() => handleModalQuantityChange(-1)}
@@ -406,7 +410,7 @@ export default function CartList({
             _id: selectedItem._id,
             name: selectedItem.name,
             price: selectedItem.price,
-            image: selectedItem.image,
+            image: selectedItem.mainImages,
           }}
           onClose={handleCloseAddModal}
           onAdd={handleAddOption}
