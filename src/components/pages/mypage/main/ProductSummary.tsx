@@ -31,7 +31,7 @@ export default function ProductSummary({
       />
       <div className="leading-8 *:line-clamp-1">
         <p className="text-body-md line-clamp-1">{name}</p>
-        <p className="text-body-md">{price}</p>
+        <p className="text-body-md">{price}원</p>
         <ReviewInfo
           deliveryStatus={deliveryStatus}
           reviewStatus={reviewStatus}

@@ -2,6 +2,7 @@ import fetchClient from '@/lib/api/fetchClient';
 import { ErrorRes, UserInfoRes } from '@/types/api.types';
 import { BookmarkResponse } from '@/types/bookmark.types';
 import { MyUser, UserReset } from '@/types/mypage.types';
+import { Orders } from '@/types/order.types';
 
 export async function getMyproduct() {
   //찜한 상품 목록 불러오기
@@ -9,6 +10,14 @@ export async function getMyproduct() {
   // console.log(products);
 
   return products;
+}
+
+export async function getMyorder() {
+  //주문 목록 불러오기
+  const order = await fetchClient<Orders>('/orders');
+  console.log('주문 목록:', order);
+
+  return order;
 }
 
 export async function getUserItem({ userId }: { userId: number }) {
