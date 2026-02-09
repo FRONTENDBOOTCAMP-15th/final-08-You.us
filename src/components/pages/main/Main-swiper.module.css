@@ -116,6 +116,12 @@
 
 .productSwiper :global(.swiper-wrapper) {
 }
+
+/* Swiper 초기화 전 슬라이드 크기 제한 (CLS 방지) */
+.productSwiper :global(.swiper-slide) {
+  width: 25%;
+  flex-shrink: 0;
+}
 /* 화살표 스타일 */
 .productSwiper :global(.swiper-button-next),
 .productSwiper :global(.swiper-button-prev) {

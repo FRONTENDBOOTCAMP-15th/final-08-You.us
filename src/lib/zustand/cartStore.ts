@@ -22,7 +22,10 @@ interface CartStoreState {
   // 비로그인용 로컬 장바구니
   items: LocalCartItem[];
   addItem: (item: LocalCartItem) => void;
-  updateItem: (identifier: ItemIdentifier, newData: Partial<LocalCartItem>) => void;
+  updateItem: (
+    identifier: ItemIdentifier,
+    newData: Partial<LocalCartItem>,
+  ) => void;
   removeItem: (identifier: ItemIdentifier) => void;
   clearCart: () => void;
   // 로그인용 서버 장바구니 수량

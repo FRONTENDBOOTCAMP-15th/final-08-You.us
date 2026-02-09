@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/common/ProductCard';
 import ProductSort from '@/components/pages/products/ProductSort';
@@ -10,7 +10,9 @@ import {
   searchProducts,
 } from '@/lib/api/products';
 import Link from 'next/link';
-import type { Product } from '@/types/product.types';
+import type { ProductItem } from '@/types/product.types';
+import { useCategoryStore } from '@/lib/zustand/categoryStore';
+import Loading from '@/components/common/Loading';
 
 export default function ProductsPage({
   params,
@@ -21,17 +23,42 @@ export default function ProductsPage({
   const keyword = searchParams.get('keyword') || '';
 
   const [categories, setCategories] = useState<string[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductItem[]>([]);
   const [sortOption, setSortOption] = useState<
     'price_high' | 'price_low' | 'latest' | 'oldest'
-  >('price_high');
-  const [activeSort, setActiveSort] = useState<string>('');
+  >('latest');
+  const [activeSort, setActiveSort] = useState<string>('latest');
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const category = categories[0];
   const subCategory = categories[1];
+
+  //카테고리 목록 가져오기
+  const categoryList = useCategoryStore((state) => state.categories);
+
+  // 카테고리 코드 → 이름 변환
+  const breadcrumbData = useMemo(() => {
+    if (!category) {
+      return { mainName: null, subName: null };
+    }
+
+    console.log('categoryList', categoryList);
+    // 대분류 찾기
+    const mainCategory = categoryList.find((cat) => cat.code === category);
+    const mainName = mainCategory?.value || null;
+
+    // 소분류 찾기
+    let subName = null;
+    if (subCategory && mainCategory?.sub) {
+      const subCat = mainCategory.sub.find((s) => s.code === subCategory);
+      subName = subCat?.value || null;
+    }
+
+    return { mainName, subName };
+  }, [category, subCategory, categoryList]);
 
   useEffect(() => {
     const loadInitialData = async () => {
@@ -43,9 +70,11 @@ export default function ProductsPage({
       if (keyword) {
         const res = await searchProducts(keyword);
         setProducts(res.item);
+        setIsInitialized(true);
       } else {
         const res = await getProducts(cats[0], cats[1]);
         setProducts(res.item);
+        setIsInitialized(true);
       }
     };
 
@@ -135,6 +164,15 @@ export default function ProductsPage({
     setActiveSort(option);
   };
 
+  // 초기 데이터 로딩 전에는 빈 화면 (깜빡임 방지)
+  if (!isInitialized) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-375">
       <main className="w-full bg-gray-50 py-8">
@@ -152,6 +190,7 @@ export default function ProductsPage({
           ) : (
             <nav aria-label="breadcrumb" className="mb-6 ml-4 lg:mb-8 lg:ml-3">
               <ol className="text-body-sm flex items-center gap-1 text-gray-900">
+                {/* 홈 */}
                 <li>
                   <Link
                     href="/"
@@ -160,54 +199,72 @@ export default function ProductsPage({
                     홈
                   </Link>
                 </li>
-                <li aria-hidden="true">
-                  <span className="text-gray-900">&gt;</span>
-                </li>
-                <li>
-                  <Link
-                    href="/category/beauty"
-                    className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
-                  >
-                    뷰티
-                  </Link>
-                </li>
-                <li aria-hidden="true">
-                  <span className="text-gray-900">&gt;</span>
-                </li>
-                <li>
-                  <span
-                    className="text-body-md text-gray-900"
-                    aria-current="page"
-                  >
-                    화장품
-                  </span>
-                </li>
+
+                {/* 전체 상품 (카테고리 없을 때) */}
+                {!category && (
+                  <>
+                    <li aria-hidden="true">
+                      <span className="text-gray-900">&gt;</span>
+                    </li>
+                    <li>
+                      <span
+                        className="text-body-md text-gray-900"
+                        aria-current="page"
+                      >
+                        전체 상품
+                      </span>
+                    </li>
+                  </>
+                )}
+
+                {/* 대분류 */}
+                {breadcrumbData.mainName && (
+                  <>
+                    <li aria-hidden="true">
+                      <span className="text-gray-900">&gt;</span>
+                    </li>
+                    <li>
+                      {breadcrumbData.subName ? (
+                        <Link
+                          href={`/products/${category}`}
+                          className="text-body-md hover:text-gray-900 focus:ring-2 focus:ring-gray-400 focus:outline-none"
+                        >
+                          {breadcrumbData.mainName}
+                        </Link>
+                      ) : (
+                        <span
+                          className="text-body-md text-gray-900"
+                          aria-current="page"
+                        >
+                          {breadcrumbData.mainName}
+                        </span>
+                      )}
+                    </li>
+                  </>
+                )}
+
+                {/* 소분류 */}
+                {breadcrumbData.subName && (
+                  <>
+                    <li aria-hidden="true">
+                      <span className="text-gray-900">&gt;</span>
+                    </li>
+                    <li>
+                      <span
+                        className="text-body-md text-gray-900"
+                        aria-current="page"
+                      >
+                        {breadcrumbData.subName}
+                      </span>
+                    </li>
+                  </>
+                )}
               </ol>
             </nav>
           )}
 
           {/* 정렬 버튼 */}
           <div className="mb-6 flex items-center gap-1 pb-4 lg:mb-[45px]">
-            <button
-              onClick={() => handleSort('price_high')}
-              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
-                activeSort === 'price_high'
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-500 hover:text-gray-900'
-              }`}
-            >
-              높은가격순
-            </button>
-            <button
-              onClick={() => handleSort('price_low')}
-              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
-                activeSort === 'price_low'
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-500 hover:text-gray-900'
-              }`}
-            >
-              낮은가격순
-            </button>
             <button
               onClick={() => handleSort('latest')}
               className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
@@ -228,12 +285,32 @@ export default function ProductsPage({
             >
               오래된순
             </button>
+            <button
+              onClick={() => handleSort('price_high')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_high'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              높은가격순
+            </button>
+            <button
+              onClick={() => handleSort('price_low')}
+              className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
+                activeSort === 'price_low'
+                  ? 'bg-gray-900 text-white'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              낮은가격순
+            </button>
           </div>
 
           {/* 카테고리 제목 (검색이 아닐 때만) */}
           {!keyword && (
             <h1 className="text-title-sm font-pretendard mb-8 font-bold text-gray-900">
-              화장품 카테고리
+              {breadcrumbData.subName || breadcrumbData.mainName || '전체 상품'}
             </h1>
           )}
 
@@ -252,7 +329,11 @@ export default function ProductsPage({
                   name={product.name}
                   price={String(product.price)}
                   rating={product.rating || 0}
-                  replies={product.replies}
+                  replies={
+                    typeof product.replies === 'number'
+                      ? product.replies
+                      : product.replies.length
+                  }
                   mainCategory={product.extra.category[0]!}
                   subCategory={product.extra.category[1]!}
                 />
