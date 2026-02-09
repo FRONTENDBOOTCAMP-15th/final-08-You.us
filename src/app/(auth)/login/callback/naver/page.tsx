@@ -1,4 +1,3 @@
-// app/login/callback/naver/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -46,20 +45,9 @@ export default function NaverCallbackPage() {
         // Server Action 호출하여 토큰 받기
         const result = await getNaverToken(code);
 
-        if (result.ok) {
-          // 사용자 정보 저장
-          setUser({
-            _id: '', // 네이버 로그인은 _id가 없을 수 있음
-            email: result.user.email,
-            name: result.user.name,
-            image: result.user.image,
-            phone: '',
-            address: '',
-            token: {
-              accessToken: '',
-              refreshToken: '',
-            },
-          });
+        if (result.ok && result.user) {
+          // 우리 서버에서 받은 완전한 사용자 정보 저장
+          setUser(result.user);
 
           // state 정리
           sessionStorage.removeItem('naver_state');
