@@ -7,12 +7,15 @@ import useUserStore from '@/lib/zustand/auth/userStore';
 import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
 import type { CategoryCode } from '@/types/categoryCode.type';
 import { useEffect } from 'react';
+import useHasHydrated from '@/hooks/auth/useHasHydrated';
 
 export default function DesktopCategoryDropdown({
   categories,
 }: {
   categories: CategoryCode[];
 }) {
+  // persist 스토어 hydration 완료 여부 (SSR/클라이언트 불일치 방지)
+  const isHydrated = useHasHydrated();
   const user = useUserStore((state) => state.user);
   const localCartCount = useCartStore((state) => state.items.length);
   const serverCartCount = useCartStore((state) => state.serverCartCount);
@@ -24,13 +27,13 @@ export default function DesktopCategoryDropdown({
     }
   }, [user]);
 
-  // 로그인: 서버 수량, 비로그인: 로컬 수량
-  const cartCount = user ? serverCartCount : localCartCount;
+  // hydration 전에는 0 (SSR과 동일), hydration 후 실제 값
+  const cartCount = isHydrated ? (user ? serverCartCount : localCartCount) : 0;
 
   return (
     <nav aria-label="상품 카테고리" className="relative border-gray-200">
       <div className="flex justify-between px-4">
-        <div className="group w-[60%]">
+        <div className="group relative w-[60%]">
           <ul className="flex h-11 flex-wrap items-center justify-between gap-3 overflow-x-auto">
             {categories?.map((category) => (
               <li key={category.code}>
@@ -49,25 +52,27 @@ export default function DesktopCategoryDropdown({
 
         <ul className="flex gap-6" aria-label="빠른 메뉴">
           <li>
-            <Link href="/mypage" className="block">
-              {user ? (
-                <Image
-                  src="/icons/MyPage.svg"
-                  alt="마이페이지"
-                  width={120}
-                  height={32}
-                  className="h-10 w-auto"
-                />
-              ) : (
-                <Image
-                  src="/icons/User.svg"
-                  alt="마이페이지 비활성화"
-                  width={120}
-                  height={32}
-                  className="h-10 w-auto"
-                />
-              )}
-            </Link>
+            {isHydrated && (
+              <Link href="/mypage" className="block">
+                {user ? (
+                  <Image
+                    src="/icons/MyPage.svg"
+                    alt="마이페이지"
+                    width={120}
+                    height={32}
+                    className="h-10 w-auto"
+                  />
+                ) : (
+                  <Image
+                    src="/icons/User.svg"
+                    alt="마이페이지 비활성화"
+                    width={120}
+                    height={32}
+                    className="h-10 w-auto"
+                  />
+                )}
+              </Link>
+            )}
           </li>
           <li>
             <Link href="/cart" className="relative block">

@@ -28,7 +28,13 @@ export default function ProductCard({
   return (
     <div className="flex h-full flex-col rounded border border-gray-200 bg-white p-4">
       <div className="relative mb-4 aspect-square">
-        <Image src={image} alt={name} fill className="object-contain" />
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-contain"
+        />
       </div>
 
       <div className="flex flex-1 flex-col gap-2">

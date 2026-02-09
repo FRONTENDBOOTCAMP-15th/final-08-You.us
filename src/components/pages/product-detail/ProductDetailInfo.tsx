@@ -2,11 +2,12 @@
 
 import Button from '@/components/common/Button';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import SelectedOptionItem from '@/components/pages/product-detail/OptionItems';
 import BookmarkButton from '@/components/pages/product-detail/BookmarkButton';
 import { ProductItem } from '@/types/product.types';
 import useUserStore from '@/lib/zustand/auth/userStore';
-import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
+import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import fetchClient from '@/lib/api/fetchClient';
 import { CartResponse } from '@/types/cart.types';
 
@@ -45,8 +46,7 @@ export default function ProductDetailInfo({
   const { name, price, extra } = product;
   //로그인 여부관리
   const user = useUserStore((state) => state.user);
-  // 장바구니 상품목록관리
-  const addItem = useCartStore((state) => state.addItem);
+  const router = useRouter();
 
   const optionList = buildOptionCombinations(extra.options);
   const hasOptions = optionList.length > 0;
@@ -70,21 +70,26 @@ export default function ProductDetailInfo({
     const value = e.target.value;
     if (!value) return;
 
+    //이미 선택된 옵션 목록이 있는지 확인 (모든속성 color로 통일)
     const exists = selectedOptions.find((opt) => opt.name === value);
     if (!exists) {
       const hasColor = (extra.options.color?.length ?? 0) > 0;
-      const hasSize = (extra.options.size?.length ?? 0) > 0;
+      // const hasSize = (extra.options.size?.length ?? 0) > 0;
 
       let color: string | undefined;
-      let size: string | undefined;
+      // let size: string | undefined;
 
-      if (hasColor && hasSize) {
-        [color, size] = value.split(' - ');
-      } else if (hasColor) {
+      if (hasColor) {
         color = value;
-      } else if (hasSize) {
-        size = value;
       }
+
+      // if (hasColor && hasSize) {
+      //   [color, size] = value.split(' - ');
+      // } else if (hasColor) {
+      //   color = value;
+      // } else if (hasSize) {
+      //   size = value;
+      // }
 
       setSelectedOptions([
         ...selectedOptions,
@@ -93,7 +98,7 @@ export default function ProductDetailInfo({
           name: value,
           price,
           color,
-          size,
+          // size,
           quantity: 1,
           isDefault: false,
         },
@@ -144,7 +149,7 @@ export default function ProductDetailInfo({
               product_id: product._id,
               quantity: opt.quantity,
               ...(opt.color && { color: opt.color }),
-              ...(opt.size && { size: opt.size }),
+              // ...(opt.size && { size: opt.size }),
             }),
           });
         }
@@ -157,16 +162,10 @@ export default function ProductDetailInfo({
         }
       }
     } else {
-      for (const opt of selectedOptions) {
-        addItem({
-          product_id: product._id,
-          quantity: opt.quantity,
-          ...(opt.color && { color: opt.color }),
-          ...(opt.size && { size: opt.size }),
-        });
+      if (confirm('로그인이 필요한 기능입니다. 이동하시겠습니까?')) {
+        router.push('/login');
       }
-      alert('장바구니에 담았습니다.');
-      resetOptions();
+      return;
     }
 
     setIsCartLoading(false);

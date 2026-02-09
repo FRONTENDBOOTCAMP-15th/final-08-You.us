@@ -6,8 +6,9 @@ import Pagination from '@/components/common/Pagination';
 import ImageModal from '@/components/pages/product-detail/ProductTap/ProductReviews/ImageModal';
 import { modalReducer, initialModalState } from './modalReducer';
 import fetchClient from '@/lib/api/fetchClient';
-import { ReviewItem, ReviewResponse } from '@/types/review.types';
+import { ReviewResponse } from '@/types/review.types';
 import { useParams } from 'next/navigation';
+import Loading from '@/components/common/Loading';
 
 export default function ProductReviews() {
   const { id } = useParams();
@@ -19,6 +20,7 @@ export default function ProductReviews() {
   });
   const [page, setPage] = useState<number>(1);
   const [sortType, setSortType] = useState('latest');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let url = `/replies/products/${id}?page=${page}&limit=4`;
@@ -37,6 +39,7 @@ export default function ProductReviews() {
 
     fetchClient<ReviewResponse>(url).then((data) => {
       setReviews(data);
+      setIsLoading(false);
     });
   }, [id, page, sortType]);
 
@@ -50,6 +53,11 @@ export default function ProductReviews() {
   const handlePrev = () => dispatch({ type: 'PREV' });
   const handleNext = () => dispatch({ type: 'NEXT' });
 
+  const handlePageChange = (newPage: number) => {
+    setIsLoading(true);
+    setPage(newPage);
+  };
+
   return (
     <div className="min-x-[360px] lg:px-15">
       <div className="space-y-6">
@@ -57,7 +65,7 @@ export default function ProductReviews() {
         <div
           role="group"
           aria-label="리뷰 정렬 옵션"
-          className="flex justify-end gap-2 border-b pb-4"
+          className="flex justify-end gap-2 pb-4"
         >
           {[
             { id: 'latest', label: '최신순으로' },
@@ -67,13 +75,14 @@ export default function ProductReviews() {
             <button
               key={button.id}
               onClick={() => {
+                setIsLoading(true);
                 setSortType(button.id);
                 setPage(1);
               }}
               aria-pressed={sortType === button.id}
               className={`text-body-sm cursor-pointer border-r border-r-gray-300 px-4 py-2 ${
-                index == array.length - 1 && 'border-none'
-              } ${sortType === button.id && 'font-bold text-gray-500'} `}
+                index === array.length - 1 && 'border-none'
+              } ${sortType === button.id && 'font-bold text-gray-500'}`}
             >
               {button.label}
             </button>
@@ -81,27 +90,33 @@ export default function ProductReviews() {
         </div>
 
         {/* 리뷰 목록 */}
-        <div className="min-h-[700px] space-y-6">
-          {reviews.item &&
-            reviews.item.map((review) => (
+        {isLoading ? (
+          <Loading />
+        ) : reviews.item?.length === 0 ? (
+          <div className="flex min-h-[700px] items-center justify-center">
+            <p className="text-gray-400">등록된 후기가 없습니다.</p>
+          </div>
+        ) : (
+          <div className="min-h-[700px] space-y-6">
+            {reviews.item?.map((review) => (
               <ReviewsComponent
                 key={review._id}
                 review={review}
                 onImageClick={handleImageClick}
               />
             ))}
-        </div>
-      </div>
+          </div>
+        )}
 
-      <div className="mx-auto mt-15.5 w-fit">
-        <Pagination
-          currentPage={page}
-          totalPages={reviews.pagination?.totalPages}
-          maxVisible={reviews.pagination?.limit}
-          onPageChange={(page) => {
-            setPage(page);
-          }}
-        />
+        {/* 페이지네이션 */}
+        <div className="mx-auto mt-15.5 mb-15.5 w-fit">
+          <Pagination
+            currentPage={page}
+            totalPages={reviews.pagination?.totalPages}
+            maxVisible={reviews.pagination?.limit}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
 
       {/* 이미지 확대 모달 */}
