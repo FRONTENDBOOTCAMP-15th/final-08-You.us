@@ -100,7 +100,16 @@ export default function RecommendPage() {
     };
 
     run();
-  }, [step, proceedAnyway, warnings.length, answers.length, isLoading]);
+  }, [
+    step,
+    proceedAnyway,
+    warnings.length,
+    answers.length,
+    isLoading,
+    answerValues,
+    answers,
+    router,
+  ]);
 
   const handleDone = (value: string) => {
     if (step === null) return;

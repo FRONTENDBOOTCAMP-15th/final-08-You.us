@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import useUserStore from '@/lib/zustand/auth/userStore';
+import useHasHydrated from '@/hooks/auth/useHasHydrated';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
 
 interface MobileSidebarProps {
@@ -14,6 +15,7 @@ interface MobileSidebarProps {
 export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const { user, resetUser } = useUserStore();
+  const isHydrated = useHasHydrated();
   const router = useRouter();
 
   const categories = useCategoryStore((state) => state.categories);
@@ -188,31 +190,32 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
           </ul>
         </nav>
 
-        {!user ? (
-          <nav aria-label="사용자 메뉴" className="m-5.5">
-            <ul className="flex justify-end gap-5">
-              <li>
-                <Link href="/login" onClick={onClose}>
-                  로그인
-                </Link>
-              </li>
-              <li>
-                <Link href="/signup" onClick={onClose}>
-                  회원가입
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        ) : (
-          <form onSubmit={handleLogout} className="flex justify-end gap-5">
-            <button
-              type="submit"
-              className="m-5.5 text-gray-700 transition-colors"
-            >
-              로그아웃
-            </button>
-          </form>
-        )}
+        {isHydrated &&
+          (!user ? (
+            <nav aria-label="사용자 메뉴" className="m-5.5">
+              <ul className="flex justify-end gap-5">
+                <li>
+                  <Link href="/login" onClick={onClose}>
+                    로그인
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/signup" onClick={onClose}>
+                    회원가입
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          ) : (
+            <form onSubmit={handleLogout} className="flex justify-end gap-5">
+              <button
+                type="submit"
+                className="m-5.5 text-gray-700 transition-colors"
+              >
+                로그아웃
+              </button>
+            </form>
+          ))}
       </aside>
     </>
   );

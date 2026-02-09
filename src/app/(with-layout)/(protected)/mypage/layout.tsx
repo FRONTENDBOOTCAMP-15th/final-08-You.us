@@ -2,18 +2,9 @@
 
 import QuickMenu from '@/components/pages/mypage/main/QuickMenu';
 import useUserStore from '@/lib/zustand/auth/userStore';
+import useHasHydrated from '@/hooks/auth/useHasHydrated';
 import { useRouter } from 'next/navigation';
-import { useSyncExternalStore } from 'react';
 import { useEffect } from 'react';
-
-// Zustand persist가 sessionStorage에서 복원 완료했는지 확인
-function useHasHydrated() {
-  return useSyncExternalStore(
-    (cb) => useUserStore.persist.onFinishHydration(cb),
-    () => useUserStore.persist.hasHydrated(),
-    () => false,
-  );
-}
 
 export default function MypageLayout({
   children,

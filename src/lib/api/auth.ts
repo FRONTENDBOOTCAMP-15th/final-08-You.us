@@ -3,6 +3,7 @@
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
 const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET;
 const NAVER_REDIRECT_URI = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI;
+const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
 
 interface NaverTokenResponse {
   access_token: string;
@@ -62,14 +63,28 @@ export async function getNaverToken(code: string) {
 
     const userData: NaverUserResponse = await userResponse.json();
 
-    return {
-      ok: 1,
-      user: {
+    // 3. 우리 서버에 네이버 로그인 정보 전달하여 회원가입/로그인 처리
+    const loginResponse = await fetch(`${API_SERVER}/login/oauth/naver`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         email: userData.response.email,
         name: userData.response.name,
         image: userData.response.profile_image || '',
-        // 필요한 다른 정보들 추가
-      },
+      }),
+    });
+
+    if (!loginResponse.ok) {
+      throw new Error('서버 로그인 실패');
+    }
+
+    const loginData = await loginResponse.json();
+
+    return {
+      ok: 1,
+      user: loginData.item, // 우리 서버에서 받은 사용자 정보 (accessToken, refreshToken 포함)
     };
   } catch (error) {
     console.error('네이버 로그인 오류:', error);

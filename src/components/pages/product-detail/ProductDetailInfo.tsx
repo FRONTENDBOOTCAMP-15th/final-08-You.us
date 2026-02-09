@@ -70,6 +70,7 @@ export default function ProductDetailInfo({
     const value = e.target.value;
     if (!value) return;
 
+    //이미 선택된 옵션 목록이 있는지 확인
     const exists = selectedOptions.find((opt) => opt.name === value);
     if (!exists) {
       const hasColor = (extra.options.color?.length ?? 0) > 0;

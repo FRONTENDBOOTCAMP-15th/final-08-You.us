@@ -1,7 +1,26 @@
 'use client';
 
-export default function PaymentButton() {
+import Button from '@/components/common/Button';
+import { PaymentButtonProps } from '@/types/checkout.types';
+
+export default function PaymentButton({
+  paymentMethod,
+  agreePayment,
+  onOrder,
+  isLoading,
+}: PaymentButtonProps) {
+  const handleClick = async () => {
+    await onOrder();
+  };
+
   return (
-    <div className="mt-6">{/* 결제 버튼 - 최종 결제하기, 약관 동의 */}</div>
+    <Button
+      type="button"
+      onClick={handleClick}
+      disabled={!agreePayment || isLoading}
+      className="bg-primary hover:bg-primary-hover mt-6 w-full rounded-full py-4 text-lg font-bold text-white"
+    >
+      {isLoading ? '주문 처리중...' : '주문하기'}
+    </Button>
   );
 }
