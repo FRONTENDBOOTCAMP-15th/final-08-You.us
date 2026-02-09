@@ -3,22 +3,25 @@
 import { useState, useEffect } from 'react';
 import CartList from '@/components/pages/cart/CartList';
 import CartEmpty from '@/components/pages/cart/CartEmpty';
-import { getCartItems, deleteCartItem, updateCartItem } from '@/lib/api/cart';
+import { getCartItems } from '@/lib/api/cart';
+import { CartItemOnList } from '@/types/cart.types';
 
-interface CartItem {
-  _id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  checked: boolean;
-  option: string;
-  image: string;
-  storeName: string;
+import Button from '@/components/common/Button';
+import CartOptionModal from '@/components/pages/cart/CartOptionModal';
+import Allcheck from '@/components/pages/cart/AllCheck';
+import { useRouter } from 'next/navigation';
+
+export interface ModalItem extends CartItemOnList {
+  type: 'edit' | 'add';
 }
 
 export default function CartPage() {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItemOnList[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const router = useRouter();
+  // 옵션 변경 모달 상태
+  const [modalItem, setModalItem] = useState<ModalItem | null>(null);
 
   // 장바구니 데이터 불러오기
   useEffect(() => {
@@ -26,24 +29,20 @@ export default function CartPage() {
       try {
         setIsLoading(true);
         const response = await getCartItems();
+        console.log('장바구니 데이터', response);
 
         // API 응답을 CartItem 형식으로 변환
-        const cartItems: CartItem[] = response.item.map((item) => ({
+        const cartItems: CartItemOnList[] = response.item.map((item) => ({
           _id: item._id,
+          product_id: item.product_id,
           name: item.product.name,
           price: item.product.price,
           quantity: item.quantity,
           checked: false,
-          option:
-            item.size && item.color
-              ? `사이즈: ${item.size}, 색상: ${item.color}`
-              : item.size
-                ? `사이즈: ${item.size}`
-                : item.color
-                  ? `색상: ${item.color}`
-                  : '옵션 없음',
-          image: item.product.mainImages?.[0]?.path || '',
-          storeName: item.product.seller?.name || '판매자 정보 없음',
+          option: item.color,
+          options: item.product.extra.options,
+          image: item.product.image?.path || '',
+          storeName: item.product.seller?.name || '',
         }));
 
         setItems(cartItems);
@@ -57,88 +56,24 @@ export default function CartPage() {
     fetchCartItems();
   }, []);
 
-  const allChecked = items.length > 0 && items.every((item) => item.checked);
-  const checkedCount = items.filter((item) => item.checked).length;
+  const handleOrder = () => {
+    const idList = items
+      .filter((item) => item.checked)
+      .map((item) => item._id)
+      .join(',');
+    const url = `/checkout?id=${idList}`;
+    router.push(url);
+  };
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
-  const updateItem = (_id: number, updates: Partial<CartItem>) => {
+  const updateItem = (_id: number, updates: Partial<CartItemOnList>) => {
     setItems(
       items.map((item) => (item._id === _id ? { ...item, ...updates } : item)),
     );
-  };
-
-  const handleAllCheck = (checked: boolean) => {
-    setItems(items.map((item) => ({ ...item, checked })));
-  };
-
-  const handleItemCheck = (_id: number) => {
-    updateItem(_id, {
-      checked: !items.find((item) => item._id === _id)?.checked,
-    });
-  };
-
-  const handleQuantityChange = async (_id: number, delta: number) => {
-    const item = items.find((item) => item._id === _id);
-    if (!item) return;
-
-    const newQuantity = Math.max(1, item.quantity + delta);
-
-    try {
-      await updateCartItem(_id, { quantity: newQuantity });
-      updateItem(_id, { quantity: newQuantity });
-    } catch (error) {
-      console.error('수량 변경 실패:', error);
-    }
-  };
-
-  const handleDelete = async (_id: number) => {
-    try {
-      await deleteCartItem(_id);
-      setItems(items.filter((item) => item._id !== _id));
-    } catch (error) {
-      console.error('삭제 실패:', error);
-    }
-  };
-
-  const handleDeleteSelected = async () => {
-    try {
-      const selectedIds = items
-        .filter((item) => item.checked)
-        .map((item) => item._id);
-      await Promise.all(selectedIds.map((id) => deleteCartItem(id)));
-      setItems(items.filter((item) => !item.checked));
-    } catch (error) {
-      console.error('선택 삭제 실패:', error);
-    }
-  };
-
-  const handleOptionChange = (
-    _id: number,
-    option: string,
-    quantity: number,
-  ) => {
-    updateItem(_id, { option, quantity });
-  };
-
-  const handleOptionAdd = (_id: number, option: string, quantity: number) => {
-    const baseItem = items.find((item) => item._id === _id);
-    if (!baseItem) return;
-
-    const newId = Math.max(...items.map((item) => item._id)) + 1;
-
-    const newItem: CartItem = {
-      ...baseItem,
-      _id: newId,
-      option: `향: ${option}`,
-      quantity: quantity,
-      checked: false,
-    };
-
-    setItems([...items, newItem]);
   };
 
   if (isLoading) {
@@ -148,19 +83,83 @@ export default function CartPage() {
   if (items.length === 0) return <CartEmpty />;
 
   return (
-    <CartList
-      items={items}
-      allChecked={allChecked}
-      checkedCount={checkedCount}
-      totalPrice={totalPrice}
-      totalQuantity={totalQuantity}
-      onAllCheck={handleAllCheck}
-      onItemCheck={handleItemCheck}
-      onQuantityChange={handleQuantityChange}
-      onDelete={handleDelete}
-      onDeleteSelected={handleDeleteSelected}
-      onOptionChange={handleOptionChange}
-      onOptionAdd={handleOptionAdd}
-    />
+    <>
+      <main className="pb-20 lg:pb-50">
+        {/* 장바구니 제목 */}
+        <h1 className="text-title-sm color-gray-900 font-pretendard mt-[55px] mb-[50px] ml-[25px] lg:mt-[50px] lg:mb-[57px]">
+          장바구니
+        </h1>
+
+        {/* 전체선택 */}
+        <Allcheck items={items} setItems={setItems} />
+        {/* 장바구니 내용 */}
+        <section className="w-full bg-gray-100 pt-[45px] pb-[60px] lg:pb-[80px]">
+          <div className="mx-auto max-w-[1500px] px-4 py-4 lg:flex lg:gap-11">
+            <CartList
+              items={items}
+              setItems={setItems}
+              updateItem={updateItem}
+              setModalItem={setModalItem}
+            />
+
+            {/* 주문 예상 금액 */}
+            <aside
+              className="w-full shrink-0 lg:w-105"
+              aria-labelledby="order-summary-title"
+            >
+              <div className="rounded border border-gray-300 bg-white p-6 lg:px-8 lg:pt-12">
+                <h2
+                  id="order-summary-title"
+                  className="text-body-lg mb-4 border-b border-gray-900 pb-4 font-bold"
+                >
+                  주문 예상 금액
+                </h2>
+
+                <dl className="space-y-3">
+                  <div className="flex justify-between">
+                    <dt className="text-body-sm text-gray-900">총 상품금액</dt>
+                    <dd className="text-body-sm font-bold text-gray-900">
+                      {totalPrice.toLocaleString()}원
+                    </dd>
+                  </div>
+                  <div className="mb-8 flex justify-between">
+                    <dt className="text-body-sm text-gray-900">배송비</dt>
+                    <dd>0원</dd>
+                  </div>
+                </dl>
+
+                <dl className="mb-12">
+                  <div className="flex items-center justify-between rounded-2xl">
+                    <dt className="text-body-md">
+                      총 {totalQuantity}건 주문 금액
+                    </dt>
+                    <dd className="text-body-lg font-bold text-gray-900">
+                      {totalPrice.toLocaleString()}원
+                    </dd>
+                  </div>
+                </dl>
+
+                <Button
+                  onClick={handleOrder}
+                  variant="primary"
+                  className="w-full px-16 py-2 tracking-tighter lg:py-4"
+                >
+                  주문하기
+                </Button>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      {/* 옵션 변경 모달 */}
+      {modalItem && (
+        <CartOptionModal
+          modalItem={modalItem}
+          setModalItem={setModalItem}
+          setItems={setItems}
+        />
+      )}
+    </>
   );
 }
