@@ -6,7 +6,7 @@ import Pagination from '@/components/common/Pagination';
 import ImageModal from '@/components/pages/product-detail/ProductTap/ProductReviews/ImageModal';
 import { modalReducer, initialModalState } from './modalReducer';
 import fetchClient from '@/lib/api/fetchClient';
-import { ReviewItem, ReviewResponse } from '@/types/review.types';
+import { ReviewResponse } from '@/types/review.types';
 import { useParams } from 'next/navigation';
 import Loading from '@/components/common/Loading';
 
@@ -92,6 +92,10 @@ export default function ProductReviews() {
         {/* 리뷰 목록 */}
         {isLoading ? (
           <Loading />
+        ) : reviews.item?.length === 0 ? (
+          <div className="flex min-h-[700px] items-center justify-center">
+            <p className="text-gray-400">등록된 후기가 없습니다.</p>
+          </div>
         ) : (
           <div className="min-h-[700px] space-y-6">
             {reviews.item?.map((review) => (
