@@ -1,282 +1,161 @@
 'use client';
-import Button from '@/components/common/Button';
-import Input from '@/components/common/Input';
+
+import AddressInfo from '@/components/pages/checkout/AddressInfo';
 import OrderItems from '@/components/pages/checkout/OrderItems';
-import Image from 'next/image';
+import PaymentButton from '@/components/pages/checkout/PaymentButton';
+import PaymentMethod from '@/components/pages/checkout/PaymentMethod';
+import UserInfo from '@/components/pages/checkout/UserInfo';
+import getCartItems, { createOrder, deleteCartItems } from '@/lib/api/checkout';
+import useUserStore from '@/lib/zustand/auth/userStore';
+import { OrderItem } from '@/types/checkout.types';
+
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function CheckoutPage() {
-  const [checked, setChecked] = useState(true);
+  const { user } = useUserStore();
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const cartItemIds = searchParams.get('cartItemIds');
+  const ArrayCartItemIds = useMemo(() => {
+    return cartItemIds?.split(',').map(Number) || [];
+  }, [cartItemIds]);
+  const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+  const [shippingFees, setShippingFees] = useState(3000);
+  const [paymentMethod, setPaymentMethod] = useState('deposit');
+  const [sumPrice, setSumPrice] = useState(0);
+  const [agreePayment, setAgreePayment] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [addressInfo, setAddressInfo] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    postalCode: '',
+    isDefault: true,
+  });
+
+  useEffect(() => {
+    if (!user) {
+      const currentPath = window.location.pathname;
+      router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+    }
+  }, [user, router]);
+
+  // user 정보 로드되면 addressInfo 초기값 설정
+  useEffect(() => {
+    if (user) {
+      setAddressInfo({
+        name: user.name,
+        phone: user.phone,
+        address: user.address.streetAddress,
+        postalCode: user.address.postalCode,
+        isDefault: true,
+      });
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    const fetchCartItems = async () => {
+      const items = await getCartItems();
+      console.log('아이템즈:', items);
+      setShippingFees(items.cost.shippingFees);
+      if (items?.item && ArrayCartItemIds) {
+        const item = items.item.filter((item) =>
+          ArrayCartItemIds.includes(item._id),
+        );
+        console.log('아이디 배열:', ArrayCartItemIds);
+        console.log('필터링된 아이템:', item);
+        if (item && item.length > 0) {
+          const orders = item.map((item) => ({
+            _id: item.product._id,
+            image: item.product.image,
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+            ...(item.size && { size: item.size }),
+            ...(item.color && { color: item.color }),
+          }));
+
+          setOrderItems(orders);
+          console.log('주문 아이템:', orders);
+          setSumPrice(
+            orders.reduce((sum, item) => sum + item.price * item.quantity, 0),
+          );
+        }
+      }
+    };
+
+    fetchCartItems();
+  }, [user, ArrayCartItemIds]);
+
+  const handleOrder = async () => {
+    if (!user) return;
+
+    setIsLoading(true);
+    try {
+      const orderData = {
+        products: orderItems.map((item) => ({
+          _id: item._id,
+          quantity: item.quantity,
+          ...(item.size && { size: item.size }),
+          ...(item.color && { color: item.color }),
+        })),
+        address: {
+          name: addressInfo.name,
+          value: `${addressInfo.postalCode} ${addressInfo.address}`,
+        },
+        state: 'OS010',
+      };
+
+      console.log('주문 데이터:', orderData);
+
+      const result = await createOrder(orderData);
+
+      if (result.ok === 1) {
+        // 주문 성공 후 장바구니에서 삭제
+        try {
+          await deleteCartItems(ArrayCartItemIds);
+          console.log('장바구니 삭제 완료');
+        } catch (error) {
+          console.error('장바구니 삭제 실패:', error);
+          // 장바구니 삭제 실패해도 주문은 완료되었으므로 계속 진행
+        }
+
+        router.push(`/checkout/result?orderId=${result.item._id}`);
+      } else {
+        alert('주문에 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('주문 실패:', error);
+      alert('주문 중 오류가 발생했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (!user) {
+    return null;
+  }
+
+  if (orderItems.length === 0) {
+    return <div>주문 상품을 불러오는 중...</div>;
+  }
   return (
     <div className="mx-auto max-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:gap-37.5">
       <h1 className="sr-only">주문・결제 페이지</h1>
       <div className="mb-15 lg:w-200">
-        <OrderItems />
+        <OrderItems items={orderItems} />
         <form className="mt-7.5">
           {/* 주문자 정보 */}
-          <fieldset className="mb-7.5 flex flex-col gap-2.5">
-            <legend className="text-body-sm mb-2.5">주문자 정보</legend>
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="ordererName">주문자</label>
-              <span>|</span>
-              <Input
-                id="ordererName"
-                name="ordererName"
-                type="text"
-                autoComplete="name"
-                disabled
-                placeholder="홍길동"
-                wrapperClassName="flex-1"
-                className="lg:w-82.5"
-              />
-            </div>
-
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="ordererTel">연락처</label>
-              <span>|</span>
-              <Input
-                id="ordererTel"
-                name="ordererTel"
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
-                placeholder="010-1234-5678"
-                wrapperClassName="flex-1"
-                className="lg:w-82.5"
-                disabled
-              />
-            </div>
-
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="ordererEmail">이메일</label>
-              <span>|</span>
-              <Input
-                id="ordererEmail"
-                name="ordererEmail"
-                type="email"
-                inputMode="email"
-                autoComplete="email"
-                className="lg:w-82.5"
-                placeholder="example@domain.com"
-                wrapperClassName="flex-1"
-                disabled
-              />
-            </div>
-          </fieldset>
-
-          <fieldset className="flex flex-col gap-2.5">
-            <div className="flex flex-row items-center gap-2.5">
-              <legend className="text-body-sm">배송지 정보</legend>
-              <div className="flex flex-row items-center gap-1 text-[12px]">
-                <Input
-                  id="isDefaultAddress"
-                  name="isDefaultAddress"
-                  type="checkbox"
-                  checked={checked}
-                  onChange={(e) => setChecked(e.target.checked)}
-                />
-                <label htmlFor="isDefaultAddress">기본 배송지</label>
-              </div>
-            </div>
-
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="receiverName">주문자</label>
-              <span>|</span>
-              <Input
-                id="receiverName"
-                name="receiverName"
-                type="text"
-                autoComplete="name"
-                wrapperClassName="flex-1"
-                placeholder="홍길동"
-                className="lg:w-82.5"
-              />
-            </div>
-
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="receiverTel">연락처</label>
-              <span>|</span>
-              <Input
-                id="receiverTel"
-                name="receiverTel"
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
-                placeholder="010-1234-5678"
-                wrapperClassName="flex-1"
-                className="lg:w-82.5"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2.5">
-              <div className="flex flex-row items-center gap-2.5 text-[12px]">
-                <span id="addressLabel" className="shrink-0">
-                  주소
-                </span>
-                <span>|</span>
-                <div
-                  role="group"
-                  aria-labelledby="addressLabel"
-                  className="flex w-full items-center gap-2.5"
-                >
-                  <Button className="text-primary border-primary shrink-0 border bg-white focus:text-white">
-                    우편번호 찾기
-                  </Button>
-
-                  <label htmlFor="postalCode" className="sr-only">
-                    우편번호
-                  </label>
-
-                  <Input
-                    id="postalCode"
-                    name="postalCode"
-                    type="text"
-                    inputMode="numeric"
-                    autoComplete="postal-code"
-                    placeholder="03057"
-                    className="text-center lg:w-36.25"
-                    wrapperClassName="min-w-0 flex-1"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="addressLine1" className="sr-only">
-                  기본 주소
-                </label>
-                <Input
-                  id="addressLine1"
-                  name="addressLine1"
-                  type="text"
-                  autoComplete="address-line1"
-                  placeholder="기본 주소"
-                  disabled
-                />
-              </div>
-
-              <div>
-                <label htmlFor="addressLine2" className="sr-only">
-                  상세 주소
-                </label>
-                <Input
-                  id="addressLine2"
-                  name="addressLine2"
-                  type="text"
-                  autoComplete="address-line2"
-                  placeholder="상세 주소"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-row items-center gap-2.5 text-[12px]">
-              <label htmlFor="deliveryMemo" className="shrink-0 lg:w-82.5">
-                배송메모
-              </label>
-              <span>|</span>
-              <select
-                id="deliveryMemo"
-                name="deliveryMemo"
-                defaultValue=""
-                className="w-full appearance-none rounded-[10px] border border-gray-500 bg-white bg-[url('/icons/dropdown-arrow.svg')] bg-size-[14px_14px] bg-position-[right_12px_center] bg-no-repeat py-2.5 pr-10 pl-3"
-              >
-                <option value="" disabled>
-                  배송메모를 선택해주세요
-                </option>
-                <option value="door">문 앞에 놓아주세요</option>
-                <option value="call">배송 전 연락 부탁드려요</option>
-                <option value="guard">경비실에 맡겨주세요</option>
-                <option value="custom">직접 입력</option>
-              </select>
-            </div>
-
-            {/* 직접 입력일 때만 노출 */}
-            <div hidden>
-              <label htmlFor="deliveryMemoCustom">배송메모 직접 입력</label>
-              <Input
-                id="deliveryMemoCustom"
-                name="deliveryMemoCustom"
-                type="text"
-              />
-            </div>
-          </fieldset>
-
-          <fieldset className="mt-7.5">
-            <legend className="text-body-sm mb-2.5">쿠폰</legend>
-
-            <div className="flex flex-row gap-2.5 text-[12px]">
-              <label htmlFor="couponId" className="shrink-0">
-                쿠폰선택
-              </label>
-              <span>|</span>
-              <select
-                id="couponId"
-                name="couponId"
-                defaultValue=""
-                className="w-full appearance-none rounded-[10px] border border-gray-500 bg-white bg-[url('/icons/dropdown-arrow.svg')] bg-size-[14px_14px] bg-position-[right_12px_center] bg-no-repeat py-2.5 pr-10 pl-3 lg:w-82.5"
-              >
-                <option value="" disabled>
-                  쿠폰을 선택해주세요
-                </option>
-                <option value="none">사용 안 함</option>
-                <option value="coupon_10">10% 할인 쿠폰</option>
-                <option value="coupon_ship">배송비 할인 쿠폰</option>
-              </select>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend className="text-body-sm mb-2.5">결제 수단</legend>
-
-            <div
-              role="radiogroup"
-              aria-label="결제 수단 선택"
-              className="flex gap-2 rounded-xl border border-gray-300 p-2"
-            >
-              {/* 무통장입금 */}
-              <div className="flex-1">
-                <input
-                  id="payDeposit"
-                  name="paymentMethod"
-                  type="radio"
-                  value="deposit"
-                  defaultChecked
-                  className="peer sr-only"
-                />
-                <label
-                  htmlFor="payDeposit"
-                  className="peer-checked:border-primary peer-checked:text-primary flex cursor-pointer items-center justify-center gap-2 rounded-[10px] border border-transparent py-3 text-sm font-medium text-gray-900"
-                >
-                  <Image
-                    width={15}
-                    height={15}
-                    src="/icons/deposit-icon.svg"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  무통장입금
-                </label>
-              </div>
-
-              {/* 카드 결제 */}
-              <div className="flex-1">
-                <input
-                  id="payCard"
-                  name="paymentMethod"
-                  type="radio"
-                  value="card"
-                  className="peer sr-only"
-                />
-                <label
-                  htmlFor="payCard"
-                  className="peer-checked:border-primary peer-checked:text-primary flex cursor-pointer items-center justify-center gap-2 rounded-[10px] border border-transparent py-3 text-sm font-medium text-gray-900"
-                >
-                  <span aria-hidden="true">$</span>
-                  카드 결제
-                </label>
-              </div>
-            </div>
-          </fieldset>
+          <UserInfo user={user} />
+          <AddressInfo user={user} onAddressChange={setAddressInfo} />
+          <PaymentMethod
+            payment={paymentMethod}
+            setPayment={setPaymentMethod}
+          />
         </form>
       </div>
       <section
@@ -295,21 +174,14 @@ export default function CheckoutPage() {
           <div className="flex items-center justify-between border-b border-gray-200 py-1">
             <dt className="text-[12px] font-medium text-gray-900">주문금액</dt>
             <dd className="text-[12px] text-gray-900">
-              <data value="218000">218,000</data>
-            </dd>
-          </div>
-
-          <div className="flex items-center justify-between border-b border-gray-200 py-1">
-            <dt className="text-[12px] font-medium text-gray-900">할인</dt>
-            <dd className="text-[12px] text-gray-400">
-              <data value="-1000">-1,000</data>
+              <data value="218000">{sumPrice}</data>
             </dd>
           </div>
 
           <div className="flex items-center justify-between py-1">
             <dt className="text-[12px] font-medium text-gray-900">배송비</dt>
             <dd className="text-[12px] text-gray-900">
-              <data value="3000">3,000</data>
+              <data value="3000">{shippingFees}</data>
             </dd>
           </div>
         </dl>
@@ -323,7 +195,7 @@ export default function CheckoutPage() {
             총 금액
           </strong>
           <strong className="text-primary text-body-sm font-extrabold">
-            <data value="220000">220,000원</data>
+            <data value="220000">{sumPrice + shippingFees}</data>
           </strong>
         </div>
 
@@ -331,12 +203,15 @@ export default function CheckoutPage() {
 
         {/* 동의 */}
         <div className="flex items-center gap-3">
-          {/* 체크박스는 Input 말고 기본 input 권장 */}
           <input
             id="agreePayment"
             name="agreePayment"
             type="checkbox"
             required
+            checked={agreePayment}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setAgreePayment(e.target.checked);
+            }}
             className="accent-primary h-3 w-3 shrink-0"
           />
           <label
@@ -348,31 +223,17 @@ export default function CheckoutPage() {
           </label>
         </div>
 
-        <ul className="mt-3 space-y-2 pl-6 text-[12px] text-gray-400">
-          <li>
-            <Link href="#" className="underline underline-offset-4">
-              개인정보 수집 및 이용 동의
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="underline underline-offset-4">
-              개인정보 제3자 정보 제공 동의
-            </Link>
-          </li>
-          <li>
-            <p className="mt-4 text-[12px] leading-relaxed text-gray-400">
-              유어스의 일부 상품은 개별 판매(파트너)사의 상품이 포함되어 있으며,
-              제공된 상품 정보 및 거래에 대한 책임은 판매자가 부담합니다.
-            </p>
-          </li>
-        </ul>
-
-        <button
-          type="submit"
-          className="bg-primary mt-6 w-full rounded-full py-4 text-lg font-bold text-white"
-        >
-          결제하기
-        </button>
+        <div className="mt-3 space-y-2 pl-6 text-[12px] text-gray-400">
+          <Link href="#" className="underline underline-offset-4">
+            개인정보 수집 및 이용 동의
+          </Link>
+        </div>
+        <PaymentButton
+          paymentMethod={paymentMethod}
+          agreePayment={agreePayment}
+          onOrder={handleOrder}
+          isLoading={isLoading}
+        />
       </section>
     </div>
   );
