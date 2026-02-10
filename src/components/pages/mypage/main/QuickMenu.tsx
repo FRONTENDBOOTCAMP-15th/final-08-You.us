@@ -19,7 +19,7 @@ export default function QuickMenu({ className }: QuickMenuProps) {
             alt="사용자 프로필 이미지"
             width={120}
             height={120}
-            className="border-primary h-30 w-30 rounded-(--radius) border-4"
+            className="border-primary h-30 w-30 rounded-(--radius) border-4 object-cover"
           />
           <figcaption className="text-caption font-bold text-gray-900">
             {user?.name}님
@@ -58,11 +58,11 @@ export default function QuickMenu({ className }: QuickMenuProps) {
                     내 주문 보기
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/mypage/delivery" className="hover:underline">
                     배송 조회
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </li>
             {/* <li>

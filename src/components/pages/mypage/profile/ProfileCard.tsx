@@ -11,7 +11,7 @@ export default function ProfileCard() {
         alt="사용자 프로필 이미지"
         width={70}
         height={70}
-        className="border-primary ml-2 rounded-(--radius) border-4 object-contain lg:hidden"
+        className="border-primary ml-2 h-17.5 w-17.5 shrink-0 rounded-(--radius) border-4 object-cover lg:hidden"
       />
       <div className="*lg:text-body-md *:text-body-sm flex flex-col gap-1 px-3 py-1 *:flex *:gap-4 lg:gap-3">
         <p>

@@ -24,24 +24,30 @@ export default function ReviewsPage() {
       {/* 나의 후기 */}
       <section className="flex flex-col gap-2">
         <MyPageSection title="나의 후기">
-          <ul className="flex flex-col gap-4">
-            {reviews.map((review) => (
-              <ReviewCard
-                key={review._id}
-                type="written"
-                reviewId={review._id}
-                productId={review.product._id}
-                imageSrc={review.product.image.path}
-                imageAlt={review.product.name}
-                name={review.product.name}
-                price=""
-                rating={review.rating}
-                createdAt={review.createdAt}
-                reviewContent={review.content}
-                reviewImages={review.extra?.images ?? []}
-              />
-            ))}
-          </ul>
+          {!reviews || reviews.length === 0 ? (
+            <li className="flex min-h-50 items-center justify-center text-gray-400">
+              작성하신 리뷰가 없습니다.
+            </li>
+          ) : (
+            <ul className="flex flex-col gap-4">
+              {reviews.map((review) => (
+                <ReviewCard
+                  key={review._id}
+                  type="written"
+                  reviewId={review._id}
+                  productId={review.product._id}
+                  imageSrc={review.product.image.path}
+                  imageAlt={review.product.name}
+                  name={review.product.name}
+                  price=""
+                  rating={review.rating}
+                  createdAt={review.createdAt}
+                  reviewContent={review.content}
+                  reviewImages={review.extra?.images ?? []}
+                />
+              ))}
+            </ul>
+          )}
         </MyPageSection>
       </section>
     </main>

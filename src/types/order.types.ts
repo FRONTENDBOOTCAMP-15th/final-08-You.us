@@ -1,28 +1,24 @@
 export interface Orders {
   ok: number;
-  item: [
-    {
-      _id: number;
-      user_id: number;
-      state: 'OS030' | 'OS035' | 'OS040';
-      products: OrderItem[];
-      cost: {
-        products: number;
-        shippingFees: number;
-        discount: {
-          products: number;
-          shippingFees: number;
-        };
-        total: number;
-      };
-      address: {
-        name: string;
-        value: string;
-      };
-      createdAt: string;
-      updatedAt: string;
-    },
-  ];
+  item: OrderList[];
+}
+
+export interface OrderList {
+  cost: {
+    discount: {
+      products: number;
+      shippingFees: number;
+    };
+    products: number;
+    shippingFees: number;
+    total: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+  products: OrderItem[];
+  state: 'OS035' | 'OS040';
+  user_id: number;
+  _id: number;
 }
 
 export interface OrderItem {
@@ -33,11 +29,17 @@ export interface OrderItem {
     name: string;
     image: string;
   };
-  state: 'OS030' | 'OS035' | 'OS040';
+  state: 'OS035' | 'OS040';
   name: string;
-  image: string;
+  image: {
+    path: string;
+    name: string;
+  };
   quantity: number;
   price: string;
+  extra?: {
+    category: string[];
+  };
   review_id: number;
   review: {
     rating: number;

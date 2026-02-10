@@ -1,11 +1,10 @@
-import ReviewInfo from '@/components/pages/mypage/main/ReviewInfo';
 import Image from 'next/image';
 
 type ProductSummaryProps = {
   imageSrc: string;
   imageAlt: string;
   name: string;
-  price: number | string;
+  total: number | string;
   scope: { rating: number } | null;
   deliveryStatus: 'SHIPPING' | 'DELIVERED';
   reviewStatus: 'NONE' | 'WRITTEN';
@@ -15,7 +14,7 @@ export default function ProductSummary({
   imageSrc,
   imageAlt,
   name,
-  price,
+  total,
   scope,
   deliveryStatus,
   reviewStatus,
@@ -31,12 +30,12 @@ export default function ProductSummary({
       />
       <div className="leading-8 *:line-clamp-1">
         <p className="text-body-md line-clamp-1">{name}</p>
-        <p className="text-body-md">{price}원</p>
-        <ReviewInfo
-          deliveryStatus={deliveryStatus}
-          reviewStatus={reviewStatus}
-          scope={scope}
-        />
+        <p className="text-body-md">{total}원</p>
+        {Option ? (
+          <p>
+            옵션:{item.cost.option} x{item.products.length()}
+          </p>
+        ) : null}
       </div>
     </div>
   );
