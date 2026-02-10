@@ -19,7 +19,7 @@ export default function CheckoutPage() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const cartItemIds = searchParams.get('cartItemIds');
+  const cartItemIds = searchParams.get('id');
   const ArrayCartItemIds = useMemo(() => {
     return cartItemIds?.split(',').map(Number) || [];
   }, [cartItemIds]);
