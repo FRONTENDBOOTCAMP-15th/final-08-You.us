@@ -296,11 +296,21 @@
         "tags": [
           "parent",
           "teacher",
+          "lover",
+          "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "30s",
+          "40s",
           "50s",
           "60plus",
+          "birthday",
+          "anniversary",
+          "celebration",
           "thanks",
           "emotional",
-          "premium"
+          "light"
         ],
         "options": {}
       }
@@ -336,7 +346,18 @@
       "extra": {
         "category": ["PC07", "PC0701"],
         "sort": 2,
-        "tags": ["friend", "child", "teen", "birthday", "cute", "light"],
+        "tags": [
+          "friend",
+          "sibling",
+          "child",
+          "female",
+          "unspecified",
+          "teen",
+          "birthday",
+          "celebration",
+          "cute",
+          "light"
+        ],
         "options": {
           "color": ["Pink", "Orange", "Blue", "Yellow"]
         }
@@ -373,12 +394,22 @@
           "parent",
           "teacher",
           "lover",
+          "female",
+          "unspecified",
+          "friend",
+          "coworker",
+          "sibling",
+          "20s",
           "30s",
           "40s",
+          "50s",
+          "60plus",
           "anniversary",
           "thanks",
-          "premium",
-          "emotional"
+          "birthday",
+          "celebration",
+          "emotional",
+          "light"
         ],
         "options": {
           "color": ["Yellow", "Mint", "Green", "Pink"]
@@ -412,7 +443,28 @@
       "extra": {
         "category": ["PC07", "PC0701"],
         "sort": 4,
-        "tags": ["friend", "coworker", "20s", "30s", "practical", "light"],
+        "tags": [
+          "friend",
+          "coworker",
+          "parent",
+          "teacher",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
+          "thanks",
+          "anniversary",
+          "celebration",
+          "practical",
+          "emotional",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -451,7 +503,28 @@
       "extra": {
         "category": ["PC07", "PC0701"],
         "sort": 5,
-        "tags": ["friend", "lover", "20s", "30s", "celebration", "emotional"],
+        "tags": [
+          "friend",
+          "lover",
+          "parent",
+          "teacher",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
+          "thanks",
+          "anniversary",
+          "celebration",
+          "emotional",
+          "light"
+        ],
         "options": {
           "color": ["Sky", "Bridge", "Sea", "Tower"]
         }
@@ -484,7 +557,20 @@
       "extra": {
         "category": ["PC07", "PC0702"],
         "sort": 1,
-        "tags": ["parent", "40s", "50s", "60plus", "thanks", "premium"],
+        "tags": [
+          "parent",
+          "male",
+          "female",
+          "unspecified",
+          "40s",
+          "50s",
+          "60plus",
+          "thanks",
+          "birthday",
+          "anniversary",
+          "celebration",
+          "practical"
+        ],
         "options": {}
       }
     },
@@ -515,7 +601,21 @@
       "extra": {
         "category": ["PC07", "PC0702"],
         "sort": 2,
-        "tags": ["child", "teen", "birthday", "holiday", "cute", "light"],
+        "tags": [
+          "child",
+          "teen",
+          "20s",
+          "male",
+          "female",
+          "unspecified",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "holiday",
+          "cute",
+          "light",
+          "practical"
+        ],
         "options": {}
       }
     },
@@ -553,11 +653,20 @@
         "tags": [
           "parent",
           "teacher",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "40s",
+          "50s",
           "60plus",
+          "birthday",
+          "thanks",
+          "anniversary",
+          "celebration",
           "holiday",
           "thanks",
-          "emotional",
-          "premium"
+          "practical"
         ],
         "options": {
           "color": ["Green", "Red", "Yellow", "White"]
@@ -593,13 +702,22 @@
         "sort": 4,
         "tags": [
           "lover",
+          "parent",
+          "sibling",
           "friend",
           "coworker",
+          "male",
+          "female",
+          "unspecified",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
           "birthday",
           "celebration",
-          "emotional"
+          "emotional",
+          "practical"
         ],
         "options": {}
       }
@@ -631,7 +749,22 @@
       "extra": {
         "category": ["PC07", "PC0702"],
         "sort": 5,
-        "tags": ["friend", "coworker", "teen", "20s", "practical", "light"],
+        "tags": [
+          "sibling",
+          "friend",
+          "coworker",
+          "teen",
+          "20s",
+          "30s",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
+          "thanks",
+          "anniversary",
+          "celebration",
+          "practical"
+        ],
         "options": {
           "color": ["White", "Brown"]
         }
@@ -664,7 +797,24 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 1,
-        "tags": ["lover", "30s", "anniversary", "premium", "emotional"],
+        "tags": [
+          "parent",
+          "lover",
+          "teacher",
+          "coworker",
+          "female",
+          "unspecified",
+          "30s",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
+          "thanks",
+          "celebration",
+          "anniversary",
+          "practical",
+          "emotional"
+        ],
         "options": {
           "color": ["Blue Rose", "Pink Rose"]
         }
@@ -697,7 +847,24 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 2,
-        "tags": ["friend", "20s", "housewarming", "practical", "light"],
+        "tags": [
+          "teacher",
+          "coworker",
+          "sibling",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "thanks",
+          "anniversary",
+          "celebration",
+          "housewarming",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["S", "M", "L"]
         }
@@ -731,12 +898,20 @@
         "category": ["PC07", "PC0703"],
         "sort": 3,
         "tags": [
+          "parent",
+          "teacher",
           "lover",
+          "female",
+          "unspecified",
           "30s",
           "40s",
+          "50s",
+          "60plus",
+          "thanks",
+          "birthday",
           "anniversary",
           "celebration",
-          "premium"
+          "practical"
         ],
         "options": {
           "color": ["Deep Green", "Black"]
@@ -770,7 +945,24 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 4,
-        "tags": ["child", "friend", "teen", "holiday", "cute", "light"],
+        "tags": [
+          "child",
+          "friend",
+          "lover",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "holiday",
+          "thanks",
+          "cute",
+          "light",
+          "practical"
+        ],
         "options": {}
       }
     },
@@ -801,7 +993,20 @@
       "extra": {
         "category": ["PC07", "PC0703"],
         "sort": 5,
-        "tags": ["coworker", "20s", "30s", "thanks", "practical", "emotional"],
+        "tags": [
+          "coworker",
+          "friend",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "thanks",
+          "practical",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -833,13 +1038,21 @@
         "category": ["PC07", "PC0704"],
         "sort": 1,
         "tags": [
+          "friend",
           "coworker",
           "teacher",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
           "30s",
           "40s",
+          "50s",
+          "celebration",
           "thanks",
-          "premium",
-          "practical"
+          "practical",
+          "light"
         ],
         "options": {}
       }
@@ -875,7 +1088,19 @@
       "extra": {
         "category": ["PC07", "PC0704"],
         "sort": 2,
-        "tags": ["child", "teen", "20s", "practical", "light"],
+        "tags": [
+          "friend",
+          "sibling",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["Black", "Gray", "Beige", "Pink"]
         }
@@ -908,7 +1133,17 @@
       "extra": {
         "category": ["PC07", "PC0704"],
         "sort": 3,
-        "tags": ["child", "teen", "birthday", "cute", "emotional"],
+        "tags": [
+          "child",
+          "teen",
+          "male",
+          "female",
+          "unspecified",
+          "birthday",
+          "celebration",
+          "cute",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -941,12 +1176,23 @@
         "sort": 4,
         "tags": [
           "friend",
+          "teacher",
+          "sibling",
+          "parent",
           "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
           "30s",
           "40s",
+          "50s",
+          "60plus",
+          "thanks",
+          "celebration",
           "anniversary",
-          "premium",
-          "emotional"
+          "practical",
+          "light"
         ],
         "options": {
           "color": ["Brown", "Navy"]
@@ -980,7 +1226,18 @@
       "extra": {
         "category": ["PC07", "PC0704"],
         "sort": 5,
-        "tags": ["child", "teen", "practical", "light", "cute"],
+        "tags": [
+          "child",
+          "teen",
+          "male",
+          "female",
+          "unspecified",
+          "celebration",
+          "birthday",
+          "practical",
+          "light",
+          "cute"
+        ],
         "options": {}
       }
     },
@@ -1013,12 +1270,19 @@
         "sort": 1,
         "tags": [
           "friend",
+          "child",
+          "sibling",
           "coworker",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
+          "40s",
+          "50s",
           "practical",
-          "premium"
+          "light"
         ],
         "options": {}
       }
@@ -1050,7 +1314,21 @@
       "extra": {
         "category": ["PC07", "PC0705"],
         "sort": 2,
-        "tags": ["friend", "child", "teen", "20s", "light", "practical"],
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "child",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "celebration",
+          "light",
+          "practical"
+        ],
         "options": {
           "color": ["Tree", "Orange"]
         }
@@ -1085,12 +1363,22 @@
         "sort": 3,
         "tags": [
           "lover",
+          "friend",
+          "sibling",
+          "child",
           "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
           "30s",
           "40s",
+          "thanks",
+          "celebration",
           "anniversary",
-          "premium",
-          "emotional"
+          "practical",
+          "light"
         ],
         "options": {}
       }
@@ -1122,7 +1410,20 @@
       "extra": {
         "category": ["PC07", "PC0705"],
         "sort": 4,
-        "tags": ["child", "teen", "20s", "birthday", "cute", "light"],
+        "tags": [
+          "child",
+          "teen",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "celebration",
+          "birthday",
+          "anniversary",
+          "cute",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["Boy", "Dog"]
         }
@@ -1155,7 +1456,20 @@
       "extra": {
         "category": ["PC07", "PC0705"],
         "sort": 5,
-        "tags": ["child", "teen", "20s", "practical", "emotional"],
+        "tags": [
+          "child",
+          "friend",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "practical",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -1186,7 +1500,20 @@
       "extra": {
         "category": ["PC08", "PC0802"],
         "sort": 1,
-        "tags": ["friend", "coworker", "20s", "30s", "practical", "light"],
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["White", "Space Black"]
         }
@@ -1219,7 +1546,25 @@
       "extra": {
         "category": ["PC08", "PC0802"],
         "sort": 2,
-        "tags": ["lover", "sibling", "20s", "30s", "birthday", "premium"],
+        "tags": [
+          "friend",
+          "coworker",
+          "child",
+          "lover",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "celebration",
+          "anniversary",
+          "birthday",
+          "premium",
+          "practical"
+        ],
         "options": {}
       }
     },
@@ -1250,7 +1595,21 @@
       "extra": {
         "category": ["PC08", "PC0802"],
         "sort": 3,
-        "tags": ["friend", "lover", "20s", "30s", "housewarming", "emotional"],
+        "tags": [
+          "sibling",
+          "friend",
+          "lover",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "birthday",
+          "housewarming",
+          "premium",
+          "practical"
+        ],
         "options": {}
       }
     },
@@ -1281,7 +1640,21 @@
       "extra": {
         "category": ["PC08", "PC0802"],
         "sort": 4,
-        "tags": ["friend", "coworker", "20s", "40s", "practical", "light"],
+        "tags": [
+          "friend",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "teen",
+          "20s",
+          "30s",
+          "40s",
+          "thanks",
+          "celebration",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["Black", "White"]
         }
@@ -1315,13 +1688,21 @@
         "category": ["PC08", "PC0802"],
         "sort": 5,
         "tags": [
+          "lover",
+          "sibling",
+          "child",
           "coworker",
           "friend",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
           "20s",
           "30s",
           "housewarming",
           "thanks",
-          "emotional"
+          "cute",
+          "practical"
         ],
         "options": {
           "color": ["Wood", "Marble"]
@@ -1355,7 +1736,20 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 1,
-        "tags": ["friend", "20s", "practical", "light"],
+        "tags": [
+          "friend",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "thanks",
+          "celebration",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["AirPods Pro", "AirPods 3"]
         }
@@ -1388,7 +1782,24 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 2,
-        "tags": ["teen", "20s", "birthday", "cute", "emotional"],
+        "tags": [
+          "friend",
+          "lover",
+          "coworker",
+          "sibling",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "celebration",
+          "birthday",
+          "cute",
+          "light"
+        ],
         "options": {
           "color": ["Sky Blue", "Lemon"]
         }
@@ -1421,7 +1832,19 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 3,
-        "tags": ["coworker", "practical", "light"],
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "thanks",
+          "practical",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -1452,7 +1875,19 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 4,
-        "tags": ["coworker", "30s", "practical", "premium"],
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "thanks",
+          "practical",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -1483,7 +1918,19 @@
       "extra": {
         "category": ["PC08", "PC0803"],
         "sort": 5,
-        "tags": ["friend", "20s", "30s", "practical", "light"],
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "thanks",
+          "practical",
+          "light"
+        ],
         "options": {}
       }
     },
@@ -1493,7 +1940,7 @@
       "shippingFees": 3000,
       "show": true,
       "active": true,
-      "name": "레트로 스퀘어 디지털 워치",
+      "name": "레트로 스퀘어 디지털 워치 - 카키",
       "quantity": 120,
       "buyQuantity": 45,
       "mainImages": [
@@ -1514,10 +1961,24 @@
       "extra": {
         "category": ["PC05", "PC0505"],
         "sort": 1,
-        "tags": ["friend", "teen", "20s", "cute", "light"],
-        "options": {
-          "color": ["Kaki"]
-        }
+        "tags": [
+          "friend",
+          "sibling",
+          "coworker",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "birthday",
+          "celebration",
+          "practical",
+          "light"
+        ],
+        "options": {}
       }
     },
     {
@@ -1547,7 +2008,24 @@
       "extra": {
         "category": ["PC05", "PC0505"],
         "sort": 2,
-        "tags": ["lover", "coworker", "30s", "40s", "anniversary", "premium"],
+        "tags": [
+          "lover",
+          "coworker",
+          "friend",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "birthday",
+          "thanks",
+          "celebration",
+          "anniversary",
+          "practical",
+          "premium"
+        ],
         "options": {
           "color": ["Brown Leather", "Kaki"]
         }
@@ -1580,7 +2058,24 @@
       "extra": {
         "category": ["PC05", "PC0505"],
         "sort": 3,
-        "tags": ["friend", "20s", "30s", "birthday", "practical", "light"],
+        "tags": [
+          "lover",
+          "coworker",
+          "friend",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "birthday",
+          "thanks",
+          "celebration",
+          "anniversary",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["Silver", "Black"]
         }
@@ -1613,7 +2108,23 @@
       "extra": {
         "category": ["PC05", "PC0505"],
         "sort": 4,
-        "tags": ["friend", "teen", "20s", "practical", "light"],
+        "tags": [
+          "lover",
+          "coworker",
+          "friend",
+          "sibling",
+          "male",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "birthday",
+          "thanks",
+          "celebration",
+          "anniversary",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["White", "Orange", "Khaki", "Navy", "Black"]
         }
@@ -1646,7 +2157,21 @@
       "extra": {
         "category": ["PC05", "PC0505"],
         "sort": 5,
-        "tags": ["lover", "20s", "30s", "anniversary", "premium", "emotional"],
+        "tags": [
+          "friend",
+          "sibling",
+          "lover",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "thanks",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "premium",
+          "practical"
+        ],
         "options": {
           "color": ["Rose Gold"]
         }
@@ -1679,7 +2204,19 @@
       "extra": {
         "category": ["PC05", "PC0506"],
         "sort": 1,
-        "tags": ["friend", "teen", "20s", "cute", "light"],
+        "tags": [
+          "friend",
+          "child",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "cute",
+          "light"
+        ],
         "options": {
           "color": ["Brown", "Cream", "Black"]
         }
@@ -1712,7 +2249,24 @@
       "extra": {
         "category": ["PC05", "PC0506"],
         "sort": 2,
-        "tags": ["coworker", "lover", "30s", "40s", "premium", "practical"],
+        "tags": [
+          "coworker",
+          "friend",
+          "sibling",
+          "lover",
+          "male",
+          "female",
+          "unspecified",
+          "20s",
+          "30s",
+          "40s",
+          "thanks",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "practical",
+          "light"
+        ],
         "options": {
           "color": ["Brown", "Black", "Green", "Red", "Salmon", "Indigo"]
         }
@@ -1745,7 +2299,20 @@
       "extra": {
         "category": ["PC05", "PC0506"],
         "sort": 3,
-        "tags": ["friend", "20s", "birthday", "emotional", "cute"],
+        "tags": [
+          "lover",
+          "friend",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "light",
+          "cute"
+        ],
         "options": {
           "color": ["White", "Black", "Gold", "Pink"]
         }
@@ -1778,7 +2345,24 @@
       "extra": {
         "category": ["PC05", "PC0506"],
         "sort": 4,
-        "tags": ["friend", "sibling", "teen", "20s", "thanks", "light"],
+        "tags": [
+          "lover",
+          "friend",
+          "coworker",
+          "sibling",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "birthday",
+          "celebration",
+          "anniversary",
+          "light",
+          "cute"
+        ],
         "options": {
           "color": [
             "Black",
@@ -1823,7 +2407,24 @@
       "extra": {
         "category": ["PC05", "PC0506"],
         "sort": 5,
-        "tags": ["friend", "20s", "30s", "emotional", "light"],
+        "tags": [
+          "coworker",
+          "sibling",
+          "friend",
+          "child",
+          "male",
+          "female",
+          "unspecified",
+          "teen",
+          "20s",
+          "30s",
+          "thanks",
+          "celebration",
+          "birthday",
+          "anniversary",
+          "emotional",
+          "light"
+        ],
         "options": {
           "color": ["Whale", "Dolphin", "MoonkillerWhale", "killerWhale"]
         }
@@ -1860,10 +2461,19 @@
           "coworker",
           "friend",
           "sibling",
+          "lover",
+          "parent",
+          "teacher",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
+          "40s",
+          "50s",
           "thanks",
+          "celebration",
           "birthday",
           "practical",
           "light"
@@ -1901,11 +2511,15 @@
         "tags": [
           "friend",
           "sibling",
+          "child",
           "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "thanks",
           "birthday",
+          "celebration",
           "practical",
           "light"
         ],
@@ -1940,10 +2554,14 @@
         "category": ["PC03", "PC0303"],
         "sort": 1,
         "tags": [
+          "parent",
+          "teacher",
           "friend",
           "sibling",
           "lover",
           "coworker",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -1986,17 +2604,24 @@
         "category": ["PC03", "PC0303"],
         "sort": 1,
         "tags": [
+          "parent",
           "teacher",
-          "lover",
           "friend",
+          "sibling",
+          "lover",
+          "coworker",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
-          "birthday",
+          "50s",
           "thanks",
+          "birthday",
           "celebration",
-          "practical",
-          "premium"
+          "holiday",
+          "premium",
+          "practical"
         ],
         "options": {}
       }
@@ -2032,6 +2657,9 @@
           "coworker",
           "sibling",
           "friend",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -2077,6 +2705,9 @@
           "sibling",
           "child",
           "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "anniversary",
@@ -2121,6 +2752,9 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2165,6 +2799,9 @@
           "friend",
           "sibling",
           "child",
+          "male",
+          "female",
+          "pcified",
           "teen",
           "20s",
           "birthday",
@@ -2207,13 +2844,18 @@
           "friend",
           "sibling",
           "lover",
+          "coworker",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
           "birthday",
+          "celebration",
           "anniversary",
           "housewarming",
-          "emotional",
+          "practical",
+          "premium",
           "cute"
         ],
         "options": {}
@@ -2251,6 +2893,9 @@
           "sibling",
           "coworker",
           "parent",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -2260,7 +2905,8 @@
           "housewarming",
           "thanks",
           "practical",
-          "cute"
+          "cute",
+          "light"
         ],
         "options": {
           "color": [
@@ -2301,6 +2947,8 @@
         "tags": [
           "parent",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -2343,6 +2991,8 @@
         "tags": [
           "lover",
           "friend",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -2385,6 +3035,8 @@
         "tags": [
           "lover",
           "friend",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2429,6 +3081,7 @@
           "lover",
           "friend",
           "sibling",
+          "female",
           "20s",
           "30s",
           "40s",
@@ -2437,8 +3090,7 @@
           "celebration",
           "cute",
           "premium",
-          "emotional",
-          "light"
+          "emotional"
         ],
         "options": {}
       }
@@ -2475,6 +3127,8 @@
           "friend",
           "sibling",
           "child",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2519,6 +3173,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "birthday",
@@ -2564,6 +3220,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2584,7 +3242,7 @@
       "shippingFees": 3000,
       "show": true,
       "active": true,
-      "name": "BLACK LOVE RNG 블랙 러브 링",
+      "name": "BLACK LOVE RNG 블랙 러브 링 반지",
       "quantity": 300,
       "buyQuantity": 200,
       "mainImages": [
@@ -2609,6 +3267,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2616,7 +3276,8 @@
           "anniversary",
           "celebration",
           "cute",
-          "emotional"
+          "emotional",
+          "premium"
         ],
         "options": {
           "color": ["S", "M", "L"]
@@ -2629,7 +3290,7 @@
       "shippingFees": 3000,
       "show": true,
       "active": true,
-      "name": "Tin tin ring 틴틴 링",
+      "name": "Tin tin ring 틴틴 링 반지",
       "quantity": 200,
       "buyQuantity": 160,
       "mainImages": [
@@ -2654,6 +3315,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2700,6 +3363,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -2721,7 +3386,7 @@
       "shippingFees": 3000,
       "show": true,
       "active": true,
-      "name": "Slim ballchain Bracelet _ 믹스체인 (silver)",
+      "name": "Slim ballchain Bracelet _ 믹스체인 (silver) 팔찌",
       "quantity": 400,
       "buyQuantity": 300,
       "mainImages": [
@@ -2747,6 +3412,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2756,6 +3423,7 @@
           "celebration",
           "thanks",
           "cute",
+          "premium",
           "emotional"
         ],
         "options": {
@@ -2782,7 +3450,7 @@
       "shippingFees": 3000,
       "show": true,
       "active": true,
-      "name": "앰브로스 silver925, luv bracelet",
+      "name": "앰브로스 silver925, luv bracelet 팔찌",
       "quantity": 300,
       "buyQuantity": 200,
       "mainImages": [
@@ -2808,6 +3476,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2817,7 +3487,7 @@
           "thanks",
           "cute",
           "emotional",
-          "light"
+          "premium"
         ],
         "options": {}
       }
@@ -2855,6 +3525,8 @@
           "sibling",
           "coworker",
           "child",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "birthday",
@@ -2900,6 +3572,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2909,7 +3583,7 @@
           "celebration",
           "thanks",
           "cute",
-          "light",
+          "premium",
           "emotional"
         ],
         "options": {}
@@ -2947,6 +3621,8 @@
           "friend",
           "sibling",
           "child",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -2991,6 +3667,8 @@
           "lover",
           "parent",
           "sibling",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3037,6 +3715,8 @@
           "lover",
           "parent",
           "sibling",
+          "female",
+          "unspecified",
           "30s",
           "40s",
           "50s",
@@ -3083,6 +3763,8 @@
           "friend",
           "sibling",
           "child",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3131,6 +3813,8 @@
           "sibling",
           "parent",
           "teacher",
+          "female",
+          "unspecified",
           "30s",
           "40s",
           "50s",
@@ -3140,8 +3824,7 @@
           "thanks",
           "anniversary",
           "emotional",
-          "premium",
-          "practical"
+          "premium"
         ],
         "options": {}
       }
@@ -3179,6 +3862,8 @@
           "sibling",
           "parent",
           "teacher",
+          "female",
+          "unspecified",
           "30s",
           "40s",
           "50s",
@@ -3188,8 +3873,7 @@
           "thanks",
           "anniversary",
           "emotional",
-          "premium",
-          "practical"
+          "premium"
         ],
         "options": {}
       }
@@ -3228,6 +3912,9 @@
           "coworker",
           "teacher",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3236,8 +3923,8 @@
           "celebration",
           "thanks",
           "emotional",
-          "cute",
-          "practical"
+          "practical",
+          "cute"
         ],
         "options": {}
       }
@@ -3274,6 +3961,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "child",
           "teen",
           "20s",
@@ -3282,8 +3971,8 @@
           "celebration",
           "thanks",
           "emotional",
-          "cute",
-          "practical"
+          "practical",
+          "cute"
         ],
         "options": {}
       }
@@ -3321,6 +4010,9 @@
           "sibling",
           "coworker",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3369,6 +4061,8 @@
           "sibling",
           "coworker",
           "child",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3417,6 +4111,9 @@
           "coworker",
           "parent",
           "teacher",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3464,6 +4161,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3510,6 +4209,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3557,6 +4258,8 @@
           "coworker",
           "parent",
           "teacher",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3603,6 +4306,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3650,6 +4356,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3698,6 +4407,9 @@
           "coworker",
           "child",
           "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "birthday",
@@ -3745,6 +4457,9 @@
           "coworker",
           "parent",
           "teacher",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3795,6 +4510,9 @@
           "coworker",
           "child",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -3842,6 +4560,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3888,6 +4609,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3934,6 +4658,8 @@
           "sibling",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -3981,6 +4707,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4079,6 +4808,9 @@
           "parent",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4087,7 +4819,6 @@
           "celebration",
           "thanks",
           "housewarming",
-          "emotional",
           "premium",
           "practical"
         ],
@@ -4127,6 +4858,9 @@
           "parent",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4135,7 +4869,6 @@
           "celebration",
           "thanks",
           "housewarming",
-          "emotional",
           "premium",
           "practical"
         ],
@@ -4175,6 +4908,9 @@
           "parent",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4183,7 +4919,6 @@
           "celebration",
           "thanks",
           "housewarming",
-          "emotional",
           "light",
           "cute",
           "practical"
@@ -4224,6 +4959,8 @@
           "parent",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4232,7 +4969,6 @@
           "celebration",
           "thanks",
           "housewarming",
-          "emotional",
           "premium",
           "cute",
           "practical"
@@ -4273,6 +5009,9 @@
           "parent",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -4281,7 +5020,6 @@
           "celebration",
           "thanks",
           "housewarming",
-          "emotional",
           "premium",
           "cute",
           "practical"
@@ -4329,18 +5067,24 @@
         "category": ["PC03", "PC0301"],
         "sort": 1,
         "tags": [
+          "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "parent",
+          "lover",
+          "teacher",
+          "female",
+          "unspecified",
           "20s",
           "30s",
+          "40s",
+          "50s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
-          "cute",
-          "light"
+          "practical",
+          "premium"
         ],
         "options": {
           "color": [
@@ -4385,16 +5129,21 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "lover",
+          "parent",
+          "teacher",
+          "female",
+          "unspecified",
           "20s",
           "30s",
+          "40s",
+          "50s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
-          "cute",
-          "light"
+          "practical",
+          "premium"
         ],
         "options": {}
       }
@@ -4427,19 +5176,25 @@
         "category": ["PC03", "PC0301"],
         "sort": 1,
         "tags": [
+          "parent",
+          "teacher",
           "friend",
+          "lover",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
-          "light"
+          "premium"
         ],
         "options": {}
       }
@@ -4475,15 +5230,20 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "parent",
+          "lover",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
+          "40s",
+          "50s",
           "anniversary",
-          "housewarming",
           "celebration",
           "thanks",
-          "cute",
+          "birthday",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4517,15 +5277,17 @@
         "category": ["PC03", "PC0301"],
         "sort": 1,
         "tags": [
+          "parent",
+          "teacher",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
@@ -4565,16 +5327,21 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "parent",
+          "teacher",
+          "male",
+          "female",
+          "unspecified",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "holiday",
           "celebration",
           "thanks",
-          "cute",
-          "light"
+          "premium",
+          "practical"
         ],
         "options": {}
       }
@@ -4610,16 +5377,20 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "parent",
+          "teacher",
+          "lover",
           "20s",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "holiday",
           "celebration",
           "thanks",
-          "cute",
-          "light"
+          "premium",
+          "practical"
         ],
         "options": {}
       }
@@ -4655,15 +5426,17 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "parent",
+          "teacher",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "holiday",
           "celebration",
           "thanks",
-          "cute",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4700,15 +5473,17 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "parent",
+          "teacher",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "holiday",
           "celebration",
           "thanks",
-          "cute",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4745,15 +5520,17 @@
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "parent",
+          "teacher",
           "30s",
+          "40s",
+          "50s",
+          "60plus",
           "anniversary",
-          "housewarming",
+          "holiday",
           "celebration",
           "thanks",
-          "cute",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4791,14 +5568,17 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
+          "celebration",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4836,14 +5616,17 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
+          "celebration",
+          "practical",
           "light"
         ],
         "options": {}
@@ -4881,15 +5664,17 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "celebration",
+          "practical"
         ],
         "options": {}
       }
@@ -4926,15 +5711,17 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "celebration",
+          "practical"
         ],
         "options": {}
       }
@@ -4971,15 +5758,17 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "celebration",
+          "practical"
         ],
         "options": {}
       }
@@ -5012,19 +5801,24 @@
         "category": ["PC02", "PC0201"],
         "sort": 1,
         "tags": [
+          "parent",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "celebration",
+          "practical",
+          "premium"
         ],
         "options": {}
       }
@@ -5057,19 +5851,24 @@
         "category": ["PC02", "PC0201"],
         "sort": 1,
         "tags": [
+          "parent",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "celebration",
+          "practical",
+          "premium"
         ],
         "options": {}
       }
@@ -5102,19 +5901,23 @@
         "category": ["PC02", "PC0201"],
         "sort": 1,
         "tags": [
+          "parent",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "celebration",
+          "practical"
         ],
         "options": {}
       }
@@ -5147,19 +5950,24 @@
         "category": ["PC02", "PC0201"],
         "sort": 1,
         "tags": [
+          "parent",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "celebration",
+          "practical",
+          "premium"
         ],
         "options": {}
       }
@@ -5192,19 +6000,24 @@
         "category": ["PC02", "PC0201"],
         "sort": 1,
         "tags": [
+          "parent",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "celebration",
+          "practical",
+          "premium"
         ],
         "options": {}
       }
@@ -5237,19 +6050,21 @@
         "category": ["PC03", "PC0302"],
         "sort": 1,
         "tags": [
+          "lover",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "anniversary",
+          "celebration",
+          "premium",
+          "emotional"
         ],
         "options": {}
       }
@@ -5282,19 +6097,21 @@
         "category": ["PC03", "PC0302"],
         "sort": 1,
         "tags": [
+          "lover",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "anniversary",
+          "celebration",
+          "premium",
+          "emotional"
         ],
         "options": {}
       }
@@ -5327,19 +6144,21 @@
         "category": ["PC03", "PC0302"],
         "sort": 1,
         "tags": [
+          "lover",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "anniversary",
+          "celebration",
+          "premium",
+          "emotional"
         ],
         "options": {}
       }
@@ -5372,19 +6191,21 @@
         "category": ["PC03", "PC0302"],
         "sort": 1,
         "tags": [
+          "lover",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "anniversary",
+          "celebration",
+          "premium",
+          "emotional"
         ],
         "options": {}
       }
@@ -5417,19 +6238,21 @@
         "category": ["PC03", "PC0302"],
         "sort": 1,
         "tags": [
+          "lover",
           "friend",
           "coworker",
           "sibling",
-          "child",
-          "teen",
+          "female",
+          "unspecified",
           "20s",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "birthday",
           "thanks",
-          "cute",
-          "light"
+          "anniversary",
+          "celebration",
+          "premium",
+          "emotional"
         ],
         "options": {}
       }
@@ -5462,19 +6285,20 @@
         "category": ["PC01", "PC0101"],
         "sort": 1,
         "tags": [
-          "friend",
+          "parent",
+          "teacher",
           "coworker",
-          "sibling",
-          "child",
-          "teen",
-          "20s",
+          "male",
+          "female",
+          "unspecified",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5507,19 +6331,22 @@
         "category": ["PC01", "PC0101"],
         "sort": 1,
         "tags": [
-          "friend",
+          "parent",
+          "teacher",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5552,19 +6379,22 @@
         "category": ["PC01", "PC0101"],
         "sort": 1,
         "tags": [
-          "friend",
+          "parent",
+          "teacher",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5597,19 +6427,22 @@
         "category": ["PC01", "PC0101"],
         "sort": 1,
         "tags": [
-          "friend",
+          "parent",
+          "teacher",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5642,19 +6475,22 @@
         "category": ["PC01", "PC0101"],
         "sort": 1,
         "tags": [
-          "friend",
+          "parent",
+          "teacher",
           "coworker",
           "sibling",
-          "child",
-          "teen",
-          "20s",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
           "30s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "40s",
+          "50s",
+          "60plus",
           "thanks",
-          "cute",
-          "light"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5691,6 +6527,10 @@
           "coworker",
           "sibling",
           "child",
+          "lover",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -5733,18 +6573,21 @@
         "sort": 1,
         "tags": [
           "parent",
-          "grandparent",
-          "friend",
+          "teacher",
           "coworker",
+          "sibling",
+          "friend",
+          "male",
+          "female",
+          "unspecified",
+          "30s",
           "40s",
           "50s",
-          "60s",
-          "anniversary",
-          "housewarming",
-          "celebration",
+          "60plus",
           "thanks",
-          "classic",
-          "warm"
+          "holiday",
+          "emotional",
+          "premium"
         ],
         "options": {}
       }
@@ -5781,13 +6624,19 @@
           "coworker",
           "sibling",
           "child",
+          "lover",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
+          "40s",
           "anniversary",
           "housewarming",
           "celebration",
           "thanks",
+          "birthday",
           "cute",
           "light"
         ],
@@ -5825,7 +6674,11 @@
           "friend",
           "coworker",
           "sibling",
+          "lover",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -5871,6 +6724,9 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -5917,13 +6773,17 @@
           "sibling",
           "child",
           "teen",
+          "male",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
+          "practical",
           "light"
         ],
         "options": {}
@@ -5961,15 +6821,19 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
-          "light"
+          "premium",
+          "practical"
         ],
         "options": {}
       }
@@ -6006,15 +6870,19 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
-          "light"
+          "premium",
+          "practical"
         ],
         "options": {}
       }
@@ -6051,15 +6919,19 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
-          "light"
+          "light",
+          "practical"
         ],
         "options": {}
       }
@@ -6096,15 +6968,19 @@
           "coworker",
           "sibling",
           "child",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
           "anniversary",
-          "housewarming",
+          "birthday",
           "celebration",
           "thanks",
           "cute",
-          "light"
+          "light",
+          "practical"
         ],
         "options": {}
       }
@@ -6141,6 +7017,8 @@
           "sibling",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -6186,6 +7064,8 @@
           "sibling",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -6229,6 +7109,8 @@
           "sibling",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -6272,6 +7154,9 @@
           "sibling",
           "coworker",
           "lover",
+          "male",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -6317,6 +7202,8 @@
           "sibling",
           "coworker",
           "lover",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -6361,6 +7248,8 @@
           "lover",
           "friend",
           "sibling",
+          "female",
+          "unspecified",
           "teen",
           "20s",
           "30s",
@@ -6408,6 +7297,8 @@
           "friend",
           "sibling",
           "coworker",
+          "female",
+          "unspecified",
           "20s",
           "30s",
           "40s",
@@ -6417,7 +7308,7 @@
           "thanks",
           "cute",
           "emotional",
-          "light"
+          "premium"
         ],
         "options": {}
       }
