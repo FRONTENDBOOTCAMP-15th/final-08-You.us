@@ -1,12 +1,14 @@
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { login } from '@/lib/api/users';
-import { getNaverLoginUrl } from '@/lib/auth/naver';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
+
+const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
+const NAVER_REDIRECT_URI = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI;
 
 export default function LoginForm() {
   const [autoLogin, setAutoLogin] = useState(false);
@@ -110,10 +112,17 @@ export default function LoginForm() {
   };
 
   const handleNaverLogin = () => {
-    const naverLoginUrl = getNaverLoginUrl();
-    window.location.href = naverLoginUrl;
-  };
+    const state = Math.random().toString(36).substring(2, 15);
+    sessionStorage.setItem('naver_state', state);
 
+    const searchParams = new URLSearchParams(window.location.search);
+    const redirectPath = searchParams.get('redirect') || '/';
+    sessionStorage.setItem('redirect_after_login', redirectPath);
+
+    const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${encodeURIComponent(NAVER_REDIRECT_URI!)}&state=${state}`;
+
+    window.location.href = naverAuthUrl;
+  };
   return (
     <form action={formAction} className="flex w-fit flex-col">
       <Input

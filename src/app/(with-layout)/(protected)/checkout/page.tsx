@@ -10,6 +10,7 @@ import useUserStore from '@/lib/zustand/auth/userStore';
 import { OrderItem } from '@/types/checkout.types';
 
 import Link from 'next/link';
+import Script from 'next/script';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -18,7 +19,7 @@ export default function CheckoutPage() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const cartItemIds = searchParams.get('cartItemIds');
+  const cartItemIds = searchParams.get('id');
   const ArrayCartItemIds = useMemo(() => {
     return cartItemIds?.split(',').map(Number) || [];
   }, [cartItemIds]);
@@ -35,6 +36,7 @@ export default function CheckoutPage() {
     postalCode: '',
     isDefault: true,
   });
+  const [isDefaultAddress, setIsDefaultAddress] = useState(true);
 
   useEffect(() => {
     if (!user) {
@@ -43,16 +45,31 @@ export default function CheckoutPage() {
     }
   }, [user, router]);
 
-  // user 정보 로드되면 addressInfo 초기값 설정
   useEffect(() => {
     if (user) {
-      setAddressInfo({
-        name: user.name,
-        phone: user.phone,
-        address: user.address.streetAddress,
-        postalCode: user.address.postalCode,
-        isDefault: true,
-      });
+      const hasAddress = !!(
+        user.address?.streetAddress && user.address?.postalCode
+      );
+
+      setIsDefaultAddress(hasAddress);
+
+      if (hasAddress) {
+        setAddressInfo({
+          name: user.name,
+          phone: user.phone || '',
+          address: user.address.streetAddress,
+          postalCode: user.address.postalCode,
+          isDefault: true,
+        });
+      } else {
+        setAddressInfo({
+          name: '',
+          phone: '',
+          address: '',
+          postalCode: '',
+          isDefault: false,
+        });
+      }
     }
   }, [user]);
 
@@ -115,13 +132,11 @@ export default function CheckoutPage() {
       const result = await createOrder(orderData);
 
       if (result.ok === 1) {
-        // 주문 성공 후 장바구니에서 삭제
         try {
           await deleteCartItems(ArrayCartItemIds);
           console.log('장바구니 삭제 완료');
         } catch (error) {
           console.error('장바구니 삭제 실패:', error);
-          // 장바구니 삭제 실패해도 주문은 완료되었으므로 계속 진행
         }
 
         router.push(`/checkout/result?orderId=${result.item._id}`);
@@ -136,6 +151,99 @@ export default function CheckoutPage() {
     }
   };
 
+  const handleCardPayment = async () => {
+    if (!user || !window.IMP) {
+      alert('결제 모듈을 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
+      return;
+    }
+
+    if (!addressInfo.name || !addressInfo.address || !addressInfo.postalCode) {
+      alert('배송지 정보를 입력해주세요.');
+      return;
+    }
+
+    if (orderItems.length === 0) {
+      alert('주문할 상품이 없습니다.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    // const totalAmount = sumPrice + shippingFees;
+    const totalAmount = 1000;
+    const merchantUid = `order_${Date.now()}`;
+    const productName =
+      orderItems.length > 1
+        ? `${orderItems[0]?.name || '상품'} 외 ${orderItems.length - 1}건`
+        : orderItems[0]?.name || '상품';
+
+    try {
+      window.IMP.request_pay(
+        {
+          channelKey: 'channel-key-bf43e218-5567-4875-96da-3270e1fba054',
+          pay_method: 'card',
+          merchant_uid: merchantUid,
+          name: productName,
+          amount: totalAmount,
+          buyer_email: user.email,
+          buyer_name: addressInfo.name,
+          buyer_tel: addressInfo.phone || user.phone || '',
+          buyer_addr: addressInfo.address,
+          buyer_postcode: addressInfo.postalCode,
+        },
+        async (response) => {
+          if (response.success) {
+            console.log('결제 성공:', response);
+
+            try {
+              const orderData = {
+                products: orderItems.map((item) => ({
+                  _id: item._id,
+                  quantity: item.quantity,
+                  ...(item.size && { size: item.size }),
+                  ...(item.color && { color: item.color }),
+                })),
+                address: {
+                  name: addressInfo.name,
+                  value: `${addressInfo.postalCode} ${addressInfo.address}`,
+                },
+                state: 'OS020',
+              };
+
+              const result = await createOrder(orderData);
+
+              if (result.ok === 1) {
+                try {
+                  await deleteCartItems(ArrayCartItemIds);
+                  console.log('장바구니 삭제 완료');
+                } catch (error) {
+                  console.error('장바구니 삭제 실패:', error);
+                }
+
+                router.push(`/checkout/result?orderId=${result.item._id}`);
+              } else {
+                alert('주문 생성에 실패했습니다.');
+                setIsLoading(false);
+              }
+            } catch (error) {
+              console.error('주문 생성 실패:', error);
+              alert('주문 처리 중 오류가 발생했습니다.');
+              setIsLoading(false);
+            }
+          } else {
+            console.error('결제 실패:', response);
+            alert(`결제에 실패했습니다: ${response.error_msg}`);
+            setIsLoading(false);
+          }
+        },
+      );
+    } catch (error) {
+      console.error('카드결제 오류:', error);
+      alert('결제 중 오류가 발생했습니다.');
+      setIsLoading(false);
+    }
+  };
+
   if (!user) {
     return null;
   }
@@ -143,98 +251,120 @@ export default function CheckoutPage() {
   if (orderItems.length === 0) {
     return <div>주문 상품을 불러오는 중...</div>;
   }
+
   return (
-    <div className="mx-auto max-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:gap-37.5">
-      <h1 className="sr-only">주문・결제 페이지</h1>
-      <div className="mb-15 lg:w-200">
-        <OrderItems items={orderItems} />
-        <form className="mt-7.5">
-          {/* 주문자 정보 */}
-          <UserInfo user={user} />
-          <AddressInfo user={user} onAddressChange={setAddressInfo} />
-          <PaymentMethod
-            payment={paymentMethod}
-            setPayment={setPaymentMethod}
-          />
-        </form>
-      </div>
-      <section
-        aria-labelledby="final-payment-title"
-        className="mt-7.5 mb-7.5 h-fit rounded-[14px] border border-gray-200 bg-white px-6 py-7 lg:w-115"
-      >
-        <h2
-          id="final-payment-title"
-          className="text-primary border-primary text-body-sm inline-block border-b-2 pb-1 font-bold"
-        >
-          최종 결제 금액
-        </h2>
+    <>
+      <Script
+        src="https://cdn.iamport.kr/v1/iamport.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          if (window.IMP) {
+            window.IMP.init('imp14397622');
+            console.log('Iamport 초기화 완료');
+          }
+        }}
+      />
 
-        {/* 금액 표 */}
-        <dl className="mt-6">
-          <div className="flex items-center justify-between border-b border-gray-200 py-1">
-            <dt className="text-[12px] font-medium text-gray-900">주문금액</dt>
-            <dd className="text-[12px] text-gray-900">
-              <data value="218000">{sumPrice}</data>
-            </dd>
-          </div>
-
-          <div className="flex items-center justify-between py-1">
-            <dt className="text-[12px] font-medium text-gray-900">배송비</dt>
-            <dd className="text-[12px] text-gray-900">
-              <data value="3000">{shippingFees}</data>
-            </dd>
-          </div>
-        </dl>
-
-        {/* 총액 */}
-        <div
-          aria-live="polite"
-          className="mt-5 flex items-baseline justify-end gap-6"
-        >
-          <strong className="text-body-sm font-bold text-gray-900">
-            총 금액
-          </strong>
-          <strong className="text-primary text-body-sm font-extrabold">
-            <data value="220000">{sumPrice + shippingFees}</data>
-          </strong>
+      <div className="mx-auto max-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:gap-37.5">
+        <h1 className="sr-only">주문・결제 페이지</h1>
+        <div className="mb-15 lg:w-200">
+          <OrderItems items={orderItems} />
+          <form className="mt-7.5">
+            <UserInfo user={user} />
+            <AddressInfo
+              user={user}
+              onAddressChange={setAddressInfo}
+              isDefaultAddress={isDefaultAddress}
+              setIsDefaultAddress={setIsDefaultAddress}
+            />
+            <PaymentMethod
+              payment={paymentMethod}
+              setPayment={setPaymentMethod}
+            />
+          </form>
         </div>
-
-        <hr className="my-6 border-gray-200" />
-
-        {/* 동의 */}
-        <div className="flex items-center gap-3">
-          <input
-            id="agreePayment"
-            name="agreePayment"
-            type="checkbox"
-            required
-            checked={agreePayment}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setAgreePayment(e.target.checked);
-            }}
-            className="accent-primary h-3 w-3 shrink-0"
-          />
-          <label
-            htmlFor="agreePayment"
-            className="text-[12px] font-medium text-gray-900"
+        <section
+          aria-labelledby="final-payment-title"
+          className="mt-7.5 mb-7.5 h-fit rounded-[14px] border border-gray-200 bg-white px-6 py-7 lg:w-115"
+        >
+          <h2
+            id="final-payment-title"
+            className="text-primary border-primary text-body-sm inline-block border-b-2 pb-1 font-bold"
           >
-            주문 내용 확인 및 결제 동의{' '}
-            <span className="text-gray-900">(필수)</span>
-          </label>
-        </div>
+            최종 결제 금액
+          </h2>
 
-        <div className="mt-3 space-y-2 pl-6 text-[12px] text-gray-400">
-          <Link href="#" className="underline underline-offset-4">
-            개인정보 수집 및 이용 동의
-          </Link>
-        </div>
-        <PaymentButton
-          paymentMethod={paymentMethod}
-          agreePayment={agreePayment}
-          onOrder={handleOrder}
-          isLoading={isLoading}
-        />
-      </section>
-    </div>
+          <dl className="mt-6">
+            <div className="flex items-center justify-between border-b border-gray-200 py-1">
+              <dt className="text-[12px] font-medium text-gray-900">
+                주문금액
+              </dt>
+              <dd className="text-[12px] text-gray-900">
+                <data value={sumPrice}>{sumPrice.toLocaleString()}원</data>
+              </dd>
+            </div>
+
+            <div className="flex items-center justify-between py-1">
+              <dt className="text-[12px] font-medium text-gray-900">배송비</dt>
+              <dd className="text-[12px] text-gray-900">
+                <data value={shippingFees}>
+                  {shippingFees.toLocaleString()}원
+                </data>
+              </dd>
+            </div>
+          </dl>
+
+          <div
+            aria-live="polite"
+            className="mt-5 flex items-baseline justify-end gap-6"
+          >
+            <strong className="text-body-sm font-bold text-gray-900">
+              총 금액
+            </strong>
+            <strong className="text-primary text-body-sm font-extrabold">
+              <data value={sumPrice + shippingFees}>
+                {(sumPrice + shippingFees).toLocaleString()}원
+              </data>
+            </strong>
+          </div>
+
+          <hr className="my-6 border-gray-200" />
+
+          <div className="flex items-center gap-3">
+            <input
+              id="agreePayment"
+              name="agreePayment"
+              type="checkbox"
+              required
+              checked={agreePayment}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setAgreePayment(e.target.checked);
+              }}
+              className="accent-primary h-3 w-3 shrink-0"
+            />
+            <label
+              htmlFor="agreePayment"
+              className="text-[12px] font-medium text-gray-900"
+            >
+              주문 내용 확인 및 결제 동의{' '}
+              <span className="text-gray-900">(필수)</span>
+            </label>
+          </div>
+
+          <div className="mt-3 space-y-2 pl-6 text-[12px] text-gray-400">
+            <Link href="#" className="underline underline-offset-4">
+              개인정보 수집 및 이용 동의
+            </Link>
+          </div>
+          <PaymentButton
+            paymentMethod={paymentMethod}
+            agreePayment={agreePayment}
+            onOrder={handleOrder}
+            onCardPayment={handleCardPayment}
+            isLoading={isLoading}
+          />
+        </section>
+      </div>
+    </>
   );
 }

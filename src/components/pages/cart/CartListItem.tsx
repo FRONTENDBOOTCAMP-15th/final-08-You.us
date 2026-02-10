@@ -5,11 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface CartListItem {
-  item: CartItemOnList;
-  updateItem: (_id: number, item: Partial<CartItemOnList>) => void;
-  items: CartItemOnList[];
-  setItems: (items: CartItemOnList[]) => void;
-  setModalItem: (item: ModalItem) => void;
+  item: CartItemOnList; // 표시할 상품 정보
+  updateItem: (_id: number, item: Partial<CartItemOnList>) => void; // 상품 업데이트 함수
+  items: CartItemOnList[]; // 전체 장바구니 상품 목록
+  setItems: (items: CartItemOnList[]) => void; // 전체 목록 변경 함수
+  setModalItem: (item: ModalItem) => void; // 모달 설정 함수
 }
 
 export default function CartListItem({
@@ -30,11 +30,11 @@ export default function CartListItem({
     const item = items.find((item) => item._id === _id);
     if (!item) return;
 
-    const newQuantity = Math.max(1, item.quantity + delta);
+    const newQuantity = Math.max(1, item.quantity + delta); // 최소 1개 보장
 
     try {
-      await updateCartItem(_id, { quantity: newQuantity });
-      updateItem(_id, { quantity: newQuantity });
+      await updateCartItem(_id, { quantity: newQuantity }); // API 호출
+      updateItem(_id, { quantity: newQuantity }); // 로컬 상태 업데이트
     } catch (error) {
       console.error('수량 변경 실패:', error);
     }
@@ -42,8 +42,8 @@ export default function CartListItem({
 
   const handleDelete = async (_id: number) => {
     try {
-      await deleteCartItem(_id);
-      setItems(items.filter((item) => item._id !== _id));
+      await deleteCartItem(_id); // API로 삭제
+      setItems(items.filter((item) => item._id !== _id)); // 목록에서 제거
     } catch (error) {
       console.error('삭제 실패:', error);
     }

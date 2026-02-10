@@ -19,21 +19,18 @@ export default function NaverCallbackPage() {
       const errorParam = searchParams.get('error');
       const errorDescription = searchParams.get('error_description');
 
-      // 에러 파라미터가 있는 경우
       if (errorParam) {
         setError(errorDescription || '로그인에 실패했습니다.');
         setTimeout(() => router.push('/login'), 2000);
         return;
       }
 
-      // code가 없는 경우
       if (!code) {
         setError('로그인에 실패했습니다.');
         setTimeout(() => router.push('/login'), 2000);
         return;
       }
 
-      // state 검증 (CSRF 방지)
       const savedState = sessionStorage.getItem('naver_state');
       if (state !== savedState) {
         setError('잘못된 요청입니다.');
@@ -42,22 +39,30 @@ export default function NaverCallbackPage() {
       }
 
       try {
-        // Server Action 호출하여 토큰 받기
+        console.log('콜백 페이지: getNaverToken 호출');
         const result = await getNaverToken(code);
 
+        console.log('콜백 페이지: result =', result);
+        console.log('result.ok =', result.ok);
+        console.log('result.user =', result.user);
+
         if (result.ok && result.user) {
-          // 우리 서버에서 받은 완전한 사용자 정보 저장
+          console.log('로그인 성공, 사용자 정보 저장');
           setUser(result.user);
 
-          // state 정리
           sessionStorage.removeItem('naver_state');
 
-          // 로컬 장바구니 서버에 병합
           await mergeLocalCartToServer();
 
+          // 저장된 경로로 이동 (없으면 홈으로)
+          const redirectPath =
+            sessionStorage.getItem('redirect_after_login') || '/';
+          sessionStorage.removeItem('redirect_after_login');
+
           alert(`${result.user.name}님 로그인 성공!`);
-          router.push('/');
+          router.push(redirectPath);
         } else {
+          console.error('로그인 실패:', result);
           setError(result.message || '로그인에 실패했습니다.');
           setTimeout(() => router.push('/login'), 2000);
         }

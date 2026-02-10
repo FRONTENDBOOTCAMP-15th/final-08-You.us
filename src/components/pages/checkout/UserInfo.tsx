@@ -32,8 +32,8 @@ export default function UserInfo({ user }: { user: User }) {
           type="tel"
           inputMode="tel"
           autoComplete="tel"
-          placeholder={user.phone}
-          defaultValue={user.phone}
+          placeholder={user.phone || '연락처를 입력해주세요'}
+          defaultValue={user.phone || ''}
           wrapperClassName="flex-1"
           className="lg:w-82.5"
           readOnly

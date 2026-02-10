@@ -2,8 +2,8 @@ import { deleteCartItem } from '@/lib/api/cart';
 import { CartItemOnList } from '@/types/cart.types';
 
 interface AllcheckProps {
-  items: CartItemOnList[];
-  setItems: (items: CartItemOnList[]) => void;
+  items: CartItemOnList[]; // 전체 장바구니 상품 목록
+  setItems: (items: CartItemOnList[]) => void; // 상품 목록 업데이트 함수
 }
 
 export default function Allcheck({ items, setItems }: AllcheckProps) {
@@ -15,10 +15,15 @@ export default function Allcheck({ items, setItems }: AllcheckProps) {
   };
   const handleDeleteSelected = async () => {
     try {
+      // 1. 체크된 상품들의 ID 추출
       const selectedIds = items
         .filter((item) => item.checked)
         .map((item) => item._id);
+
+      // 2. 모든 삭제 API를 병렬로 호출
       await Promise.all(selectedIds.map((id) => deleteCartItem(id)));
+
+      // 3. 체크되지 않은 상품만 남김
       setItems(items.filter((item) => !item.checked));
     } catch (error) {
       console.error('선택 삭제 실패:', error);

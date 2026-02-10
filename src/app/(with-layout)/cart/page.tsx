@@ -12,7 +12,7 @@ import Allcheck from '@/components/pages/cart/AllCheck';
 import { useRouter } from 'next/navigation';
 
 export interface ModalItem extends CartItemOnList {
-  type: 'edit' | 'add';
+  type: 'edit' | 'add'; // 모달 타입 추가
 }
 
 export default function CartPage() {
@@ -28,7 +28,7 @@ export default function CartPage() {
     const fetchCartItems = async () => {
       try {
         setIsLoading(true);
-        const response = await getCartItems();
+        const response = await getCartItems(); // API 호출
         console.log('장바구니 데이터', response);
 
         // API 응답을 CartItem 형식으로 변환
@@ -38,7 +38,7 @@ export default function CartPage() {
           name: item.product.name,
           price: item.product.price,
           quantity: item.quantity,
-          checked: false,
+          checked: false, // 초기값: 체크 안 됨
           option: item.color,
           options: item.product.extra.options,
           image: item.product.image?.path || '',
@@ -49,18 +49,20 @@ export default function CartPage() {
       } catch (error) {
         console.error('장바구니 불러오기 실패:', error);
       } finally {
-        setIsLoading(false);
+        setIsLoading(false); // 로딩 완료
       }
     };
 
-    fetchCartItems();
+    fetchCartItems(); // 컴포넌트 마운트 시 1회 실행
   }, []);
 
   const handleOrder = () => {
+    // 1. 체크된 상품들의 ID만 추출
     const idList = items
       .filter((item) => item.checked)
       .map((item) => item._id)
       .join(',');
+    // 2. 쿼리스트링으로 결제 페이지 이동
     const url = `/checkout?id=${idList}`;
     router.push(url);
   };
@@ -115,6 +117,7 @@ export default function CartPage() {
                   주문 예상 금액
                 </h2>
 
+                {/* 상품 금액 */}
                 <dl className="space-y-3">
                   <div className="flex justify-between">
                     <dt className="text-body-sm text-gray-900">총 상품금액</dt>
@@ -128,6 +131,7 @@ export default function CartPage() {
                   </div>
                 </dl>
 
+                {/* 총 주문 금액 */}
                 <dl className="mb-12">
                   <div className="flex items-center justify-between rounded-2xl">
                     <dt className="text-body-md">
@@ -139,6 +143,7 @@ export default function CartPage() {
                   </div>
                 </dl>
 
+                {/* 주문하기 버튼 */}
                 <Button
                   onClick={handleOrder}
                   variant="primary"

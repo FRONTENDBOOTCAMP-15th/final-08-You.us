@@ -7,12 +7,23 @@ export default function PaymentButton({
   paymentMethod,
   agreePayment,
   onOrder,
+  onCardPayment,
   isLoading,
 }: PaymentButtonProps) {
   const handleClick = async () => {
-    await onOrder();
-  };
+    if (!agreePayment) {
+      alert('주문 내용 확인 및 결제 동의를 체크해주세요.');
+      return;
+    }
 
+    if (paymentMethod === 'deposit') {
+      // 무통장입금
+      await onOrder();
+    } else if (paymentMethod === 'card') {
+      // 카드결제
+      await onCardPayment();
+    }
+  };
   return (
     <Button
       type="button"

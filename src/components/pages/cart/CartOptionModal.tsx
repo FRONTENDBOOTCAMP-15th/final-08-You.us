@@ -8,9 +8,9 @@ import { ModalItem } from '@/app/(with-layout)/cart/page';
 import { addToCart, updateCart } from '@/lib/api/cart';
 
 interface CartAddOptionProps {
-  modalItem: ModalItem;
-  setItems: (items: CartItemOnList[]) => void;
-  setModalItem: (item: ModalItem | null) => void;
+  modalItem: ModalItem; // 모달에 표시할 상품 정보
+  setItems: (items: CartItemOnList[]) => void; // 장바구니 목록 업데이트 함수
+  setModalItem: (item: ModalItem | null) => void; // 모달 닫기 함수
 }
 
 export default function CartOptionModal({
@@ -25,12 +25,16 @@ export default function CartOptionModal({
     modalItem.type === 'edit' ? modalItem.quantity : 1,
   );
   const handleAdd = async () => {
+    // 1. 새 장바구니 아이템 생성
     const newItem: CartItemForCreate = {
       product_id: modalItem.product_id,
       quantity: quantity,
       color: selectedOption,
     };
+    // 3. 성공 시 장바구니 목록 업데이트
     const res = await addToCart(newItem);
+    // 2. API 호출 - 장바구니에 추가
+
     if (res.ok) {
       const items: CartItemOnList[] = res.item.map((item) => ({
         _id: item._id,
@@ -38,25 +42,30 @@ export default function CartOptionModal({
         name: item.product.name,
         price: item.product.price,
         quantity: item.quantity,
-        checked: false,
+        checked: false, // 새로 추가된 상품은 체크 해제
         option: item.color,
         options: item.product.extra.options,
         image: item.product.image?.path || '',
         storeName: item.product.seller?.name || '',
       }));
-      setItems(items);
+      setItems(items); // 전체 장바구니 목록 갱신
     }
-    handleClose();
+    handleClose(); // 모달 닫기
   };
 
   const handleUpdate = async () => {
+    // 1. 수정할 아이템 정보
     const updateItem: CartItemForCreate = {
-      _id: modalItem._id,
+      _id: modalItem._id, // 기존 아이템 ID 포함
       product_id: modalItem.product_id,
       quantity: quantity,
       color: selectedOption,
     };
+
+    // 2. API 호출 - 장바구니 아이템 수정
     const res = await updateCart(updateItem);
+
+    // 3. 성공 시 장바구니 목록 업데이트 (handleAdd와 동일)
     if (res.ok) {
       const items: CartItemOnList[] = res.item.map((item) => ({
         _id: item._id,
@@ -76,7 +85,7 @@ export default function CartOptionModal({
   };
 
   const handleClose = () => {
-    setModalItem(null);
+    setModalItem(null); // 모달 아이템을 null로 설정 → 모달 사라짐
   };
   return (
     <>
