@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { getNaverToken } from '@/lib/api/auth';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
+import { toast } from 'react-toastify';
 
 export default function NaverCallbackPage() {
   const router = useRouter();
@@ -20,12 +21,14 @@ export default function NaverCallbackPage() {
       const errorDescription = searchParams.get('error_description');
 
       if (errorParam) {
+        toast.error(errorDescription || '로그인에 실패했습니다.');
         setError(errorDescription || '로그인에 실패했습니다.');
         setTimeout(() => router.push('/login'), 2000);
         return;
       }
 
       if (!code) {
+        toast.error('로그인에 실패했습니다.');
         setError('로그인에 실패했습니다.');
         setTimeout(() => router.push('/login'), 2000);
         return;
@@ -33,41 +36,37 @@ export default function NaverCallbackPage() {
 
       const savedState = sessionStorage.getItem('naver_state');
       if (state !== savedState) {
+        toast.error('잘못된 요청입니다.');
         setError('잘못된 요청입니다.');
         setTimeout(() => router.push('/login'), 2000);
         return;
       }
 
       try {
-        console.log('콜백 페이지: getNaverToken 호출');
         const result = await getNaverToken(code);
 
-        console.log('콜백 페이지: result =', result);
-        console.log('result.ok =', result.ok);
-        console.log('result.user =', result.user);
-
         if (result.ok && result.user) {
-          console.log('로그인 성공, 사용자 정보 저장');
           setUser(result.user);
 
           sessionStorage.removeItem('naver_state');
 
           await mergeLocalCartToServer();
 
-          // 저장된 경로로 이동 (없으면 홈으로)
           const redirectPath =
             sessionStorage.getItem('redirect_after_login') || '/';
           sessionStorage.removeItem('redirect_after_login');
 
-          alert(`${result.user.name}님 로그인 성공!`);
+          toast.success(`${result.user.name}님 로그인이 완료되었습니다.`);
           router.push(redirectPath);
         } else {
-          console.error('로그인 실패:', result);
-          setError(result.message || '로그인에 실패했습니다.');
+          const msg = result.message || '로그인에 실패했습니다.';
+          toast.error(msg);
+          setError(msg);
           setTimeout(() => router.push('/login'), 2000);
         }
       } catch (error) {
         console.error('네이버 로그인 오류:', error);
+        toast.error('로그인 중 오류가 발생했습니다.');
         setError('로그인 중 오류가 발생했습니다.');
         setTimeout(() => router.push('/login'), 2000);
       }

@@ -89,7 +89,7 @@ export default function ProductReviews() {
               aria-pressed={sortType === button.id}
               className={`text-body-sm cursor-pointer border-r border-r-gray-300 px-4 py-2 ${
                 index === array.length - 1 && 'border-none'
-              } ${sortType === button.id && 'font-bold text-gray-500'}`}
+              } ${sortType === button.id && 'text-primary font-bold'}`}
             >
               {button.label}
             </button>

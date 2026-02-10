@@ -8,6 +8,7 @@ import BookmarkButton from '@/components/pages/product-detail/BookmarkButton';
 import { ProductItem } from '@/types/product.types';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
+import { toast } from 'react-toastify';
 import fetchClient from '@/lib/api/fetchClient';
 import { CartResponse } from '@/types/cart.types';
 
@@ -138,6 +139,12 @@ export default function ProductDetailInfo({
 
   // 장바구니 api 전송 이벤트
   const selectOptionSubmit = async () => {
+    //옵션 있는지 여부
+    if (hasOptions && selectedOptions.length === 0) {
+      toast.error('옵션을 선택해주세요.');
+      return;
+    }
+
     setIsCartLoading(true);
 
     if (user) {
@@ -153,12 +160,12 @@ export default function ProductDetailInfo({
             }),
           });
         }
-        alert('장바구니에 담았습니다.');
-        resetOptions();
+        toast.success('장바구니에 담았습니다.');
         fetchServerCartCount();
+        resetOptions();
       } catch (error) {
         if (error instanceof Error) {
-          alert(error.message);
+          toast.error(error.message);
         }
       }
     } else {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { DaumPostcodeData } from '@/types/daum.types';
@@ -8,6 +8,7 @@ import useDaumPostcode from '@/hooks/auth/useDaumPostcode';
 import TermsModal from '@/components/modals/TermsModal';
 import { useActionState } from 'react';
 import { signup } from '@/lib/api/users';
+import { toast } from 'react-toastify';
 
 export default function SignupForm() {
   const [state, formAction, isPending] = useActionState(signup, {
@@ -22,14 +23,12 @@ export default function SignupForm() {
   });
   const [phone, setPhone] = useState('');
 
-  // 입력 필드 상태
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     name: '',
   });
 
-  // 모달 상태
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'terms' | 'privacy';
@@ -38,13 +37,11 @@ export default function SignupForm() {
     type: 'terms',
   });
 
-  // 약관 동의 상태
   const [agreements, setAgreements] = useState({
     terms: false,
     privacy: false,
   });
 
-  // 모든 필수 입력값 체크
   const isFormValid =
     formData.email.trim() !== '' &&
     formData.password.trim() !== '' &&
@@ -56,6 +53,16 @@ export default function SignupForm() {
     phone.replace(/-/g, '').length >= 10 &&
     agreements.terms &&
     agreements.privacy;
+
+  useEffect(() => {
+    if (!state) return;
+
+    if (state.ok === 1) {
+      toast.success('회원가입이 완료되었습니다!');
+    } else if (state.ok === 0 && state.message) {
+      toast.error(state.message);
+    }
+  }, [state]);
 
   const handleSearchAddress = () => {
     openPostcode((data: DaumPostcodeData) => {
@@ -271,10 +278,8 @@ export default function SignupForm() {
           <input type="hidden" name="phone" value={phoneNumbers} />
         </div>
 
-        {/* 약관 동의 */}
         <div className="mt-10 w-90 lg:w-112.5">
           <div className="rounded-sm border border-gray-900 p-4">
-            {/* 전체 동의 */}
             <label className="flex cursor-pointer items-center">
               <input
                 type="checkbox"
@@ -287,7 +292,6 @@ export default function SignupForm() {
 
             <div className="my-3 border-t"></div>
 
-            {/* 이용약관 */}
             <label className="flex cursor-pointer items-start">
               <input
                 type="checkbox"
@@ -312,7 +316,6 @@ export default function SignupForm() {
               </span>
             </label>
 
-            {/* 개인정보 처리방침 */}
             <label className="mt-3 flex cursor-pointer items-start">
               <input
                 type="checkbox"
@@ -339,9 +342,7 @@ export default function SignupForm() {
             </label>
           </div>
         </div>
-        {state && state.ok === 0 && state.message && (
-          <p className="text-error text-[14px]">{state.message}</p>
-        )}
+
         <Button
           type="submit"
           className="mt-10 mb-20 w-full"
@@ -351,7 +352,6 @@ export default function SignupForm() {
         </Button>
       </form>
 
-      {/* 모달 */}
       <TermsModal
         isOpen={modalState.isOpen}
         onClose={closeModal}

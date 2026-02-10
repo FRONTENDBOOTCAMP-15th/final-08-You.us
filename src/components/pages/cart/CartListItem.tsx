@@ -1,5 +1,6 @@
 import { ModalItem } from '@/app/(with-layout)/cart/page';
 import { deleteCartItem, updateCartItem } from '@/lib/api/cart';
+import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ interface CartListItem {
   items: CartItemOnList[]; // 전체 장바구니 상품 목록
   setItems: (items: CartItemOnList[]) => void; // 전체 목록 변경 함수
   setModalItem: (item: ModalItem) => void; // 모달 설정 함수
+  setIsLoading: (loading: boolean) => void; // 로딩 상태 변경 함수
 }
 
 export default function CartListItem({
@@ -18,6 +20,7 @@ export default function CartListItem({
   items,
   setItems,
   setModalItem,
+  setIsLoading,
 }: CartListItem) {
   const handleItemCheck = (_id: number) => {
     updateItem(_id, {
@@ -42,19 +45,15 @@ export default function CartListItem({
 
   const handleDelete = async (_id: number) => {
     try {
+      setIsLoading(true);
       await deleteCartItem(_id); // API로 삭제
       setItems(items.filter((item) => item._id !== _id)); // 목록에서 제거
+      await fetchServerCartCount(); // 헤더 장바구니 수량 갱신
     } catch (error) {
       console.error('삭제 실패:', error);
+    } finally {
+      setIsLoading(false);
     }
-  };
-
-  const handleOptionChange = (
-    _id: number,
-    option: string,
-    quantity: number,
-  ) => {
-    updateItem(_id, { option, quantity });
   };
 
   return (

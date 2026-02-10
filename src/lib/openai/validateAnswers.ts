@@ -4,7 +4,6 @@ function normalize(s: string) {
   return (s ?? '').toString().trim().toLowerCase();
 }
 
-// 숫자 나이 추출: "13살", "만 13세", "13" 등
 function extractAgeNumber(ageText: string): number | null {
   const t = normalize(ageText);
   const m = t.match(/(\d{1,3})\s*(살|세)?/);
@@ -18,7 +17,6 @@ function hasAny(text: string, keywords: string[]) {
   return keywords.some((k) => text.includes(k));
 }
 
-// 가격 텍스트에서 "만원대/만원 이하/3~5만원/50000" 같은 걸 대충 min/max로 파싱(보수적으로)
 function parsePriceRange(priceText: string): {
   min: number | null;
   max: number | null;
@@ -26,12 +24,10 @@ function parsePriceRange(priceText: string): {
 } {
   const t = normalize(priceText).replace(/\s/g, '');
 
-  // 1) "만원이하" / "1만원이하"
   if (t.includes('만원이하')) {
     return { min: 0, max: 10000, isSpecific: false };
   }
 
-  // 2) "n만원대"
   const manDae = t.match(/(\d+)만원대/);
   if (manDae) {
     const n = Number(manDae[1]);
@@ -42,7 +38,6 @@ function parsePriceRange(priceText: string): {
     }
   }
 
-  // 3) "n~m만원"
   const rangeMan = t.match(/(\d+)~(\d+)만원/);
   if (rangeMan) {
     const a = Number(rangeMan[1]);
@@ -52,7 +47,6 @@ function parsePriceRange(priceText: string): {
     }
   }
 
-  // 4) "n만원" 단일
   const singleMan = t.match(/(\d+)만원(?!대)/);
   if (singleMan) {
     const n = Number(singleMan[1]);
@@ -61,7 +55,6 @@ function parsePriceRange(priceText: string): {
     }
   }
 
-  // 5) 숫자만 있는 경우(원 단위로 입력했다고 가정)
   const onlyNum = t.match(/^(\d{4,9})$/);
   if (onlyNum) {
     const n = Number(onlyNum[1]);
@@ -75,12 +68,13 @@ function parsePriceRange(priceText: string): {
 
 export function validateAnswers(answerValues: string[]): Warning[] {
   const a1 = normalize(answerValues[0] ?? ''); // 대상
-  const a2Raw = answerValues[1] ?? ''; // 연령
+  // answerValues[1]은 성별 → 검증 불필요
+  const a2Raw = answerValues[2] ?? ''; // 연령
   const a2 = normalize(a2Raw);
-  const a3 = normalize(answerValues[2] ?? ''); // 용도
-  const a4Raw = answerValues[3] ?? ''; // 가격
+  const a3 = normalize(answerValues[3] ?? ''); // 용도
+  const a4Raw = answerValues[4] ?? ''; // 가격
   const a4 = normalize(a4Raw);
-  const a5 = normalize(answerValues[4] ?? ''); // 스타일/의도
+  const a5 = normalize(answerValues[5] ?? ''); // 스타일/의도
 
   const warnings: Warning[] = [];
 
@@ -124,11 +118,23 @@ export function validateAnswers(answerValues: string[]): Warning[] {
     '소소한',
   ].map((k) => k.toLowerCase());
 
-  // 연령 판정: 키워드 or 숫자나이
+  const childOccasionHints = ['어린이날', '어린이', '돌잔치', '돌'].map((k) =>
+    k.toLowerCase(),
+  );
+
+  // 연령 판정
   const ageNum = extractAgeNumber(a2Raw);
   const isYoungByKeyword = hasAny(a2, youngHints);
   const isYoungByNumber = ageNum !== null && ageNum <= 19;
   const isYoung = isYoungByKeyword || isYoungByNumber;
+
+  // 성인 연령 판정
+  const adultAgeHints = ['20대', '30대', '40대', '50대', '60대', '70대'].map(
+    (k) => k.toLowerCase(),
+  );
+  const isAdultByKeyword = hasAny(a2, adultAgeHints);
+  const isAdultByNumber = ageNum !== null && ageNum >= 20;
+  const isAdult = isAdultByKeyword || isAdultByNumber;
 
   // 연령이 모호/누락인지
   const vagueAgeHints = [
@@ -148,6 +154,25 @@ export function validateAnswers(answerValues: string[]): Warning[] {
 
   const hasElderTarget = hasAny(a1, elderHints);
   const isMarriageOccasion = hasAny(a3, marriageHints);
+  const isChildOccasion = hasAny(a3, childOccasionHints);
+
+  // 비어린이 대상 판정
+  const nonChildTargetHints = [
+    '선생님',
+    '교수님',
+    '강사',
+    '코치',
+    '동료',
+    '팀장',
+    '상사',
+    '사장님',
+    '거래처',
+    '고객',
+    '대표',
+    ...elderHints,
+  ].map((k) => k.toLowerCase());
+
+  const isNonChildTarget = hasAny(a1, nonChildTargetHints);
 
   const price = parsePriceRange(a4Raw);
   const min = price.min;
@@ -175,7 +200,7 @@ export function validateAnswers(answerValues: string[]): Warning[] {
       level: 'hard',
       title:
         '선물 대상과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
-      detail: `1번 답변은 "${answerValues[0] ?? ''}"인데, 2번 답변은 "${answerValues[1] ?? ''}"로 입력됐어.`,
+      detail: `1번 답변은 "${answerValues[0] ?? ''}"인데, 3번 답변은 "${answerValues[2] ?? ''}"로 입력됐어요.`,
     });
   }
 
@@ -185,7 +210,7 @@ export function validateAnswers(answerValues: string[]): Warning[] {
       level: 'hard',
       title:
         '연령대와 선물 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
-      detail: `2번 답변은 "${answerValues[1] ?? ''}"인데, 3번 답변은 "${answerValues[2] ?? ''}"로 입력됐어요.`,
+      detail: `3번 답변은 "${answerValues[2] ?? ''}"인데, 4번 답변은 "${answerValues[3] ?? ''}"로 입력됐어요.`,
     });
   }
 
@@ -195,7 +220,7 @@ export function validateAnswers(answerValues: string[]): Warning[] {
       level: 'hard',
       title:
         '결혼·신혼/집들이 선물로는 가격대가 너무 낮아 보여요. 테스트를 다시 진행해주세요.',
-      detail: `3번 답변은 "${answerValues[2] ?? ''}"인데, 4번 가격대가 "${answerValues[3] ?? ''}"로 입력됐어요.`,
+      detail: `4번 답변은 "${answerValues[3] ?? ''}"인데, 5번 가격대가 "${answerValues[4] ?? ''}"로 입력됐어요.`,
     });
   }
 
@@ -205,17 +230,37 @@ export function validateAnswers(answerValues: string[]): Warning[] {
       level: 'soft',
       title:
         '가벼운 선물 의도와 가격대가 서로 어긋나는 것 같아요. 테스트를 다시 진행해주세요.',
-      detail: `5번 답변은 "${answerValues[4] ?? ''}"인데, 4번 가격대가 "${answerValues[3] ?? ''}"로 입력됐어요.`,
+      detail: `6번 답변은 "${answerValues[5] ?? ''}"인데, 5번 가격대가 "${answerValues[4] ?? ''}"로 입력됐어요.`,
     });
   }
 
-  // 6) 연령대 누락/모호 × 매우 구체적 가격대
+  // 5) 어린이 관련 용도 × 성인 연령
+  if (isChildOccasion && isAdult) {
+    warnings.push({
+      level: 'hard',
+      title:
+        '선물 목적과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      detail: `3번 답변은 "${answerValues[2] ?? ''}"인데, 4번 답변은 "${answerValues[3] ?? ''}"로 입력됐어요.`,
+    });
+  }
+
+  // 6) 비어린이 대상 × 어린이 관련 용도
+  if (isNonChildTarget && isChildOccasion) {
+    warnings.push({
+      level: 'hard',
+      title:
+        '선물 대상과 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      detail: `1번 답변은 "${answerValues[0] ?? ''}"인데, 4번 답변은 "${answerValues[3] ?? ''}"로 입력됐어요.`,
+    });
+  }
+
+  // 7) 연령대 누락/모호 × 매우 구체적 가격대
   if (isAgeVague && isPriceVerySpecific) {
     warnings.push({
       level: 'soft',
       title:
         '연령대는 모호한데 가격대만 너무 구체적이에요. 테스트를 다시 진행해주세요.',
-      detail: `2번 답변은 "${answerValues[1] ?? ''}"인데, 4번 가격대가 "${answerValues[3] ?? ''}"로 입력됐어요.`,
+      detail: `3번 답변은 "${answerValues[2] ?? ''}"인데, 5번 가격대가 "${answerValues[4] ?? ''}"로 입력됐어요.`,
     });
   }
 

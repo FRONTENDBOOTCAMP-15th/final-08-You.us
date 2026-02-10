@@ -194,6 +194,64 @@ export default function MyPage() {
               ))}
             </ul>
           )}
+          <ul className="flex flex-col gap-2">
+            {(!review || review.length === 0) && (
+              <li className="flex min-h-50 items-center justify-center text-gray-400">
+                작성하신 리뷰가 없습니다.
+              </li>
+            )}
+            {review?.slice(0, 2)?.map((item) => (
+              <li key={item._id}>
+                <div className="border-primary ml-3 flex flex-col items-stretch justify-between gap-2 border-y bg-white lg:flex-row lg:items-center">
+                  <div className="flex flex-1 flex-row items-center">
+                    <Image
+                      src={item.product.image.path}
+                      alt="상품이미지"
+                      width={100}
+                      height={100}
+                      className="border-primary m-3 h-25 w-25 shrink-0 rounded-lg border-2 object-cover sm:m-5"
+                    />
+                    <div className="flex flex-col gap-2 pr-4 *:line-clamp-1 *:shrink-0 sm:mr-auto sm:p-0">
+                      <p className="text-body-md line-clamp-1">
+                        {item.extra.title}
+                      </p>
+                      <p className="text-body-md">{}</p>
+                      <p className="flex">
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <span
+                            key={i}
+                            className={`inline-block ${i < item.rating ? 'text-amber-300' : 'text-gray-300'}`}
+                          >
+                            ★
+                          </span>
+                        ))}
+                        <span className="px-1.5">{`${item.rating}/5`}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <time
+                    dateTime="2026-01-01"
+                    className="text-body-sm hidden shrink-0 place-self-end pr-3 pb-6.5 text-gray-300 lg:flex"
+                  >
+                    작성일 : {item.createdAt}
+                  </time>
+                  <div className="flex w-full shrink-0 flex-col gap-2 p-4 sm:w-auto sm:p-2">
+                    <Link
+                      href={`/mypage/reviews/${item._id}/edit`}
+                      className="w-full sm:w-auto"
+                    >
+                      <Button
+                        aria-label="내 후기 보기"
+                        className="text-body-sm w-full py-3.5 whitespace-nowrap lg:w-auto"
+                      >
+                        내 후기 보기
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </MyPageSection>
       </section>
 

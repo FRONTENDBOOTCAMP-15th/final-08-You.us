@@ -77,7 +77,7 @@ function TermsContent() {
 
       <h3 className="mt-6 text-lg font-bold">제1조 (목적)</h3>
       <p>
-        본 약관은 You.Us(이하 &apos;회사&apos;)가 제공하는 선물 추천 서비스(이하
+        본 약관은 You,Us(이하 &apos;회사&apos;)가 제공하는 선물 추천 서비스(이하
         &apos;서비스&apos;)의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및
         책임사항, 서비스 이용조건 및 절차 등 기본적인 사항을 규정함을 목적으로
         합니다.

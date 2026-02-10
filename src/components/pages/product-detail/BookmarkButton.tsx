@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import fetchClient from '@/lib/api/fetchClient';
 import { BookmarkResponse } from '@/types/bookmark.types';
+import { toast } from 'react-toastify';
 
 export default function BookmarkButton({ productId }: { productId: number }) {
   //하트색상 상태변경
@@ -35,6 +36,7 @@ export default function BookmarkButton({ productId }: { productId: number }) {
         await fetchClient(`/bookmarks/${bookmarkId}`, { method: 'DELETE' });
         setIsBookmarked(false);
         setBookmarkId(null);
+        toast.success('찜 목록에서 삭제되었습니다.');
       } else {
         const data = await fetchClient<BookmarkResponse>('/bookmarks/product', {
           method: 'POST',
@@ -42,10 +44,11 @@ export default function BookmarkButton({ productId }: { productId: number }) {
         });
         setIsBookmarked(true);
         setBookmarkId(data.item._id);
+        toast.success('찜 목록에 추가되었습니다.');
       }
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.error(error.message);
       }
     } finally {
       setIsLoading(false);
