@@ -95,7 +95,7 @@ export default function ReviewCard({
               <>
                 <Link href={`/mypage/reviews/${reviewId}/edit`}>
                   <Button className="text-body-sm w-full lg:w-[162px]">
-                    리뷰 보기
+                    수정하기
                   </Button>
                 </Link>
                 {createdAt && (
@@ -144,7 +144,7 @@ export default function ReviewCard({
                   alt={`리뷰 이미지 ${idx + 1}`}
                   width={80}
                   height={80}
-                  className="h-20 w-20 rounded border border-gray-200 object-cover"
+                  className="h-15 w-15 rounded border border-gray-200 object-cover"
                 />
               </button>
             ))}

@@ -1,10 +1,9 @@
 import ProductSummary from '@/components/pages/mypage/main/ProductSummary';
-import OrderButtons from '@/components/pages/mypage/orders/OrderButtons';
 import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader';
 import Button from '@/components/common/Button';
 import EmptyState from '@/components/common/EmptyState';
 import Link from 'next/link';
-import { order } from '@/components/pages/mypage/orders/OrderList';
+// import { order } from '@/components/pages/mypage/orders/OrderList';
 
 export default function OrderItem({
   id,
@@ -56,10 +55,6 @@ export default function OrderItem({
           name={name}
           price={price}
           scope={scope}
-          deliveryStatus={deliveryStatus}
-          reviewStatus={reviewStatus}
-        />
-        <OrderButtons
           deliveryStatus={deliveryStatus}
           reviewStatus={reviewStatus}
         />

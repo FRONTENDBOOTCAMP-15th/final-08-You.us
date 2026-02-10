@@ -68,7 +68,11 @@ export interface OrderDetailResponse {
       image?: {
         path: string;
       };
+      extra?: {
+        category: string[];
+      };
     }>;
+    createdAt: string;
     cost: {
       products: number;
       shippingFees: number;

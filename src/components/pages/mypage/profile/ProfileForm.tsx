@@ -266,7 +266,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
     <div className="lg:pl-6">
       {/* 프로필 이미지 */}
       <div className="border-primary py-button-y px-button-y flex flex-row items-center gap-3 border-y bg-white lg:w-104.5 lg:gap-[40px] lg:px-11.25 lg:py-[40px]">
-        <div className="h-12.5 w-12.5 overflow-hidden rounded-lg border-2 border-gray-500 lg:h-34.25 lg:w-34.25 lg:rounded-[100px] lg:border-4">
+        <div className="h-12.5 w-12.5 shrink-0 overflow-hidden rounded-lg border-2 border-gray-500 lg:h-34.25 lg:w-34.25 lg:rounded-[100px] lg:border-4">
           <Image
             width={137}
             height={137}

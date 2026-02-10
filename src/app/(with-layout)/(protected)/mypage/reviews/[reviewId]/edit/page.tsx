@@ -3,6 +3,7 @@
 import ReviewForm from '@/components/pages/mypage/reviews/ReviewForm';
 import { getReviewById } from '@/lib/api/mypage';
 import { ReviewItem } from '@/types/review.types';
+import Loading from '@/components/common/Loading';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -18,7 +19,7 @@ export default function ReviewEditPage() {
     fetchReview();
   }, [reviewId]);
 
-  if (!review) return null;
+  if (!review) return <Loading />;
 
   return (
     <main className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 md:px-8 lg:px-12">

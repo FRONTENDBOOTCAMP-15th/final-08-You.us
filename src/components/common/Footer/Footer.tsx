@@ -109,11 +109,19 @@ export default function Footer() {
             <Button className="h-12.5">우체국 조회하기</Button>
           </Link>
         </div>
-        <div className="mb-6 border-gray-200 pt-4 pb-1 text-center lg:mb-0">
-          <p className="text-xs text-gray-500">
-            Copyright © 2026{' '}
-            <span className="font-semibold text-gray-700">you,Us</span> All
-            rights reserved.
+        <div className="mb-6 border-t border-gray-200 pt-4 pb-1 text-center lg:mb-0">
+          <p className="text-body-sm text-gray-500">
+            본 프로젝트는 프론트엔드 개발 역량 향상을 위한 학습 목적으로
+            제작되었습니다.
+          </p>
+          <p className="mt-1 text-xs text-gray-500">
+            &copy; 2026.{' '}
+            <span className="font-semibold text-gray-700">
+              멋쟁이사자처럼 프론트엔드 부트캠프 15기 선물상자팀
+            </span>
+          </p>
+          <p className="mt-0.5 text-xs text-gray-400">
+            (소혜림, 이승규, 한정아, 김여경)
           </p>
         </div>
       </div>
