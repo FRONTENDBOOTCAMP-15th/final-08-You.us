@@ -85,26 +85,22 @@ export default function DesktopCategoryDropdown({
             ) : (
               <>
                 <li>
-                  <div>
-                    <Image
-                      src="/icons/User.svg"
-                      alt="마이페이지 비활성화"
-                      width={120}
-                      height={32}
-                      className="h-10 w-auto"
-                    />
-                  </div>
+                  <Image
+                    src="/icons/User.svg"
+                    alt="마이페이지 비활성화"
+                    width={120}
+                    height={32}
+                    className="h-10 w-auto"
+                  />
                 </li>
                 <li>
-                  <div>
-                    <Image
-                      src="/icons/disabled-basket.svg"
-                      alt="장바구니"
-                      width={120}
-                      height={32}
-                      className="h-10 w-auto"
-                    />
-                  </div>
+                  <Image
+                    src="/icons/disabled-basket.svg"
+                    alt="장바구니"
+                    width={120}
+                    height={32}
+                    className="h-10 w-auto"
+                  />
                 </li>
               </>
             ))}
