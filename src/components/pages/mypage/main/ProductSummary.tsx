@@ -33,7 +33,7 @@ export default function ProductSummary({
         <p className="text-body-md">{total}원</p>
         {Option ? (
           <p>
-            옵션:{item.cost.option} x{item.products.length()}
+            옵션:{item.cost.option} x {item.products.length()}
           </p>
         ) : null}
       </div>

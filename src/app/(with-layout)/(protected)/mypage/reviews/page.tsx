@@ -7,17 +7,24 @@ import { getMyReviews } from '@/lib/api/mypage';
 import { ReviewItem } from '@/types/review.types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Loading from '@/components/common/Loading';
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchReviews = async () => {
       const data = await getMyReviews();
       setReviews(data.item ?? []);
+      setIsLoading(false);
     };
     fetchReviews();
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <main className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 *:text-gray-900 md:px-8 lg:px-12">

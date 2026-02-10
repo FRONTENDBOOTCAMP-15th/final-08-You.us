@@ -37,7 +37,11 @@ export default function ProductCategorySection({
             name={product.name}
             price={`${product.price.toLocaleString()}`}
             rating={product.rating ?? 0}
-            replies={product.replies ?? 0}
+            replies={
+              typeof product.replies === 'number'
+                ? product.replies
+                : product.replies.length
+            }
             mainCategory={product.extra.category[0] ?? ''}
             subCategory={product.extra.category[1] ?? ''}
           />
@@ -63,7 +67,11 @@ export default function ProductCategorySection({
                 name={product.name}
                 price={`${product.price.toLocaleString()}`}
                 rating={product.rating ?? 0}
-                replies={product.replies ?? 0}
+                replies={
+                  typeof product.replies === 'number'
+                    ? product.replies
+                    : product.replies.length
+                }
                 mainCategory={product.extra.category[0] ?? ''}
                 subCategory={product.extra.category[1] ?? ''}
               />

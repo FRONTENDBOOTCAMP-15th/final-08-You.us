@@ -67,7 +67,9 @@ export default function ProductTabs({
               }`}
             >
               {tab.label}
-              {<span className="ml-1 text-sm">({tab.count ?? '0'})</span>}
+              {tab.count != null && (
+                <span className="ml-1 text-sm">({tab.count})</span>
+              )}
             </button>
           ))}
         </div>

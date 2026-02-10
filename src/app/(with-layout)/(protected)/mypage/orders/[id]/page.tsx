@@ -8,6 +8,7 @@ import { getOrderDetail } from '@/lib/api/checkout';
 import { OrderDetailResponse } from '@/types/checkout.types';
 import Link from 'next/link';
 import Image from 'next/image';
+import Loading from '@/components/common/Loading';
 
 interface OrderDetailPageProps {
   params: Promise<{ id: string }>;
@@ -41,11 +42,7 @@ export default function OrderDetailPage({ params }: OrderDetailPageProps) {
   }
 
   if (!order) {
-    return (
-      <div className="min-h-[500px]">
-        <p className="text-body-md ml-2 text-gray-500">주문 정보 로딩중...</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
