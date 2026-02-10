@@ -8,19 +8,25 @@ import { getMyorder } from '@/lib/api/mypage';
 import { Orders, OrderList } from '@/types/order.types';
 import Image from 'next/image';
 import Link from 'next/link';
+import Loading from '@/components/common/Loading';
 import { useEffect, useState } from 'react';
 
 export default function OrdersPage() {
   const [order, setOrder] = useState<Orders>();
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     // 주문 목록 불러오기
     const fetchOrders = async () => {
       const data = await getMyorder();
       setOrder(data);
+      setIsLoading(false);
     };
 
     fetchOrders();
   }, []);
+
+  if (isLoading) return <Loading />;
+
   return (
     <main className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 *:text-gray-900 md:px-8 lg:px-12">
       <h1 className="sr-only">주문 내역</h1>
@@ -30,11 +36,7 @@ export default function OrdersPage() {
         <MyPageSection title={'주문/배송내역'}>
           {/* 주문 내역 카드 컴포넌트 */}
           <ul>
-            {order === undefined || order === null ? (
-              <p className="text-body-md ml-2 text-gray-500">
-                주문 목록 로딩중...
-              </p>
-            ) : order.item.length > 0 ? (
+            {order && order.item.length > 0 ? (
               <>
                 {order.item.map((orderItem: OrderList) => (
                   <li key={orderItem._id} className="mb-2">
@@ -88,6 +90,11 @@ export default function OrdersPage() {
                     </div>
                   </li>
                 ))}
+                <Link href="/mypage" className="w-75 lg:w-full">
+                  <Button variant="update" className="text-body-sm w-full">
+                    마이페이지로 돌아가기
+                  </Button>
+                </Link>
               </>
             ) : (
               <EmptyState

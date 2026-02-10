@@ -93,6 +93,18 @@ export default function OrderDetailPage({ params }: OrderDetailPageProps) {
                     </p>
                   </div>
                 </div>
+                {order.state === 'OS040' && (
+                  <div className="flex w-full shrink-0 flex-col gap-2 p-2 sm:w-auto lg:p-4">
+                    <Link href={`/mypage/reviews/create/${id}/${product._id}`}>
+                      <Button
+                        aria-label={`${product.name} 후기 쓰기`}
+                        className="text-body-sm py-button-y w-full shrink-0"
+                      >
+                        후기쓰기
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </li>
             ))}
           </ul>

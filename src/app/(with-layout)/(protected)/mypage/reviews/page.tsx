@@ -1,9 +1,11 @@
 'use client';
 
+import Button from '@/components/common/Button';
 import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
 import ReviewCard from '@/components/pages/mypage/reviews/ReviewCard';
 import { getMyReviews } from '@/lib/api/mypage';
 import { ReviewItem } from '@/types/review.types';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function ReviewsPage() {
@@ -49,6 +51,11 @@ export default function ReviewsPage() {
             </ul>
           )}
         </MyPageSection>
+        <Link href="/mypage" className="w-75 lg:w-full">
+          <Button variant="update" className="text-body-sm w-full">
+            마이페이지로 돌아가기
+          </Button>
+        </Link>
       </section>
     </main>
   );

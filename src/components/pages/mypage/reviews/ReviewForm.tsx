@@ -127,187 +127,196 @@ export default function ReviewForm({
   };
 
   return (
-    <div>
-      <div className="border-primary border-b p-4">
-        <h2 className="text-body-lg font-bold">{title}</h2>
-      </div>
-      <div className="rounded border border-gray-200 bg-white">
-        {/* 상품 정보 */}
-        <div className="border-primary flex items-end justify-between border-b p-4">
-          <div className="flex items-center gap-4">
-            <Image
-              src={productInfo.imageSrc}
-              alt={productInfo.imageAlt}
-              width={60}
-              height={60}
-              className="h-15 w-15 shrink-0 rounded border border-gray-200 object-cover"
-            />
-            <div className="flex flex-col gap-1">
-              <p className="text-body-md line-clamp-1 font-medium">
-                {productInfo.name}
-              </p>
-              {renderStars()}
+    <>
+      <div>
+        <div className="border-primary border-b p-4">
+          <h2 className="text-body-lg font-bold">{title}</h2>
+        </div>
+        <div className="rounded border border-gray-200 bg-white">
+          {/* 상품 정보 */}
+          <div className="border-primary flex items-end justify-between border-b p-4">
+            <div className="flex items-center gap-4">
+              <Image
+                src={productInfo.imageSrc}
+                alt={productInfo.imageAlt}
+                width={60}
+                height={60}
+                className="h-15 w-15 shrink-0 rounded border border-gray-200 object-cover"
+              />
+              <div className="flex flex-col gap-1">
+                <p className="text-body-md line-clamp-1 font-medium">
+                  {productInfo.name}
+                </p>
+                {renderStars()}
+              </div>
             </div>
+            {createdAt && (
+              <span className="text-body-sm text-gray-500">
+                작성일 : {createdAt}
+              </span>
+            )}
           </div>
-          {createdAt && (
-            <span className="text-body-sm text-gray-500">
-              작성일 : {createdAt}
-            </span>
-          )}
-        </div>
 
-        {/* 이미지 업로드 영역 */}
-        <div className="border-primary flex gap-2 border-b p-4">
-          {/* 업로드 버튼 */}
-          <button
-            type="button"
-            disabled={!isEditing}
-            onClick={handleImageUpload}
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded border border-gray-300 bg-gray-50 hover:not-disabled:bg-gray-100 disabled:cursor-default disabled:opacity-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 text-gray-400"
+          {/* 이미지 업로드 영역 */}
+          <div className="border-primary flex gap-2 border-b p-4">
+            {/* 업로드 버튼 */}
+            <button
+              type="button"
+              disabled={!isEditing}
+              onClick={handleImageUpload}
+              className="flex h-16 w-16 shrink-0 items-center justify-center rounded border border-gray-300 bg-gray-50 hover:not-disabled:bg-gray-100 disabled:cursor-default disabled:opacity-50"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
-              />
-            </svg>
-          </button>
-          <input
-            type="file"
-            hidden
-            accept="image/*"
-            ref={fileImage}
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-              const preview = URL.createObjectURL(file);
-              setNewFiles((prev) => [...prev, { file, preview }]);
-            }}
-          ></input>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6 text-gray-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
+                />
+              </svg>
+            </button>
+            <input
+              type="file"
+              hidden
+              accept="image/*"
+              ref={fileImage}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                const preview = URL.createObjectURL(file);
+                setNewFiles((prev) => [...prev, { file, preview }]);
+              }}
+            ></input>
 
-          {/* 기존 이미지 미리보기 */}
-          {images.map((img, idx) => (
-            <div
-              key={`existing-${idx}`}
-              className="relative h-16 w-16 shrink-0"
-            >
-              <Image
-                src={img}
-                alt={`리뷰 이미지 ${idx + 1}`}
-                fill
-                unoptimized
-                className="rounded border border-gray-200 object-cover"
-              />
-              {isEditing && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setImages((prev) => prev.filter((_, i) => i !== idx))
-                  }
-                  className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
-                >
-                  X
-                </button>
-              )}
-            </div>
-          ))}
-          {/* 새로 추가한 이미지 미리보기 */}
-          {newFiles.map((item, idx) => (
-            <div key={`new-${idx}`} className="relative h-16 w-16 shrink-0">
-              <Image
-                src={item.preview}
-                alt={`새 이미지 ${idx + 1}`}
-                fill
-                unoptimized
-                className="rounded border border-gray-200 object-cover"
-              />
-              {isEditing && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setNewFiles((prev) => prev.filter((_, i) => i !== idx))
-                  }
-                  className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
-                >
-                  X
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
+            {/* 기존 이미지 미리보기 */}
+            {images.map((img, idx) => (
+              <div
+                key={`existing-${idx}`}
+                className="relative h-16 w-16 shrink-0"
+              >
+                <Image
+                  src={img}
+                  alt={`리뷰 이미지 ${idx + 1}`}
+                  fill
+                  unoptimized
+                  className="rounded border border-gray-200 object-cover"
+                />
+                {isEditing && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setImages((prev) => prev.filter((_, i) => i !== idx))
+                    }
+                    className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
+                  >
+                    X
+                  </button>
+                )}
+              </div>
+            ))}
+            {/* 새로 추가한 이미지 미리보기 */}
+            {newFiles.map((item, idx) => (
+              <div key={`new-${idx}`} className="relative h-16 w-16 shrink-0">
+                <Image
+                  src={item.preview}
+                  alt={`새 이미지 ${idx + 1}`}
+                  fill
+                  unoptimized
+                  className="rounded border border-gray-200 object-cover"
+                />
+                {isEditing && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setNewFiles((prev) => prev.filter((_, i) => i !== idx))
+                    }
+                    className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
+                  >
+                    X
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
 
-        {/* 리뷰 텍스트 */}
-        <div className="p-4">
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            readOnly={!isEditing}
-            placeholder="&gt; 후기를 작성해주세요."
-            className={`text-body-md h-32 w-full resize-none p-3 focus:outline-none ${
-              isEditing
-                ? 'focus:border-primary'
-                : 'cursor-default bg-gray-50 text-gray-700'
-            }`}
-          />
-        </div>
+          {/* 리뷰 텍스트 */}
+          <div className="p-4">
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              readOnly={!isEditing}
+              placeholder="&gt; 후기를 작성해주세요."
+              className={`text-body-md h-32 w-full resize-none p-3 focus:outline-none ${
+                isEditing
+                  ? 'focus:border-primary'
+                  : 'cursor-default bg-gray-50 text-gray-700'
+              }`}
+            />
+          </div>
 
-        {/* 하단 버튼 */}
-        <div className="flex justify-end gap-2 p-4">
-          {isEditing ? (
-            <>
-              {mode === 'edit' ? (
-                <Button
-                  variant="update"
-                  className="text-body-sm w-75 lg:w-40.5"
-                  onClick={handleCancel}
-                  disabled={isLoading}
-                >
-                  취소
-                </Button>
-              ) : (
-                <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
-                  <Button variant="update" className="text-body-sm w-full">
+          {/* 하단 버튼 */}
+          <div className="flex justify-end gap-2 p-4">
+            {isEditing ? (
+              <>
+                {mode === 'edit' ? (
+                  <Button
+                    variant="update"
+                    className="text-body-sm w-75 lg:w-40.5"
+                    onClick={handleCancel}
+                    disabled={isLoading}
+                  >
                     취소
                   </Button>
-                </Link>
-              )}
+                ) : (
+                  <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
+                    <Button variant="update" className="text-body-sm w-full">
+                      취소
+                    </Button>
+                  </Link>
+                )}
+                <Button
+                  className="text-body-sm w-75 lg:w-40.5"
+                  onClick={handleSubmit}
+                  disabled={isLoading} // 로딩 중 클릭 방지
+                >
+                  {isLoading
+                    ? mode === 'create'
+                      ? '등록 중...'
+                      : '저장 중...'
+                    : mode === 'create'
+                      ? '등록하기'
+                      : '저장'}
+                </Button>
+              </>
+            ) : (
               <Button
                 className="text-body-sm w-75 lg:w-40.5"
-                onClick={handleSubmit}
-                disabled={isLoading} // 로딩 중 클릭 방지
+                onClick={() => setIsEditing(true)}
               >
-                {isLoading
-                  ? mode === 'create'
-                    ? '등록 중...'
-                    : '저장 중...'
-                  : mode === 'create'
-                    ? '등록하기'
-                    : '저장'}
+                수정하기
               </Button>
-            </>
-          ) : (
-            <Button
-              className="text-body-sm w-75 lg:w-40.5"
-              onClick={() => setIsEditing(true)}
-            >
-              수정하기
-            </Button>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <Button
+        variant="update"
+        className="text-body-sm w-75 lg:w-full"
+        onClick={() => router.back()}
+      >
+        뒤로가기
+      </Button>
+    </>
   );
 }
