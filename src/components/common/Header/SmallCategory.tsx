@@ -10,7 +10,7 @@ export default function SmallCategory({ categories }: SmallCategoryProps) {
     <div
       role="menu"
       aria-label="상세 카테고리"
-      className="absolute top-full left-0 z-50 hidden w-full bg-gray-100 shadow-lg group-hover:block "
+      className="absolute top-full left-0 z-50 hidden w-full bg-gray-100 shadow-lg group-hover:block"
     >
       <div className="px-4 py-3">
         <div className="grid grid-cols-4 gap-4">

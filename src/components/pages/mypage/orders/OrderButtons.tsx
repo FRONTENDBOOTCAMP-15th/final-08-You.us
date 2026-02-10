@@ -35,10 +35,7 @@ export default function OrderButtons({
         </Link>
       ) : reviewStatus === 'NONE' ? (
         <Link href="/mypage/reviews/create">
-          <Button
-            aria-label="내 후기 쓰기"
-            className="text-body-sm bg-primary-hover hover:bg-primary w-full"
-          >
+          <Button aria-label="내 후기 쓰기" className="text-body-sm bg-primary">
             후기쓰기
           </Button>
         </Link>

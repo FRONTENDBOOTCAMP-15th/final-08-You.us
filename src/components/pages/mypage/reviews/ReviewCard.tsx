@@ -1,6 +1,15 @@
+'use client';
+
+import { useReducer } from 'react';
 import Button from '@/components/common/Button';
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageModal from '@/components/pages/product-detail/ProductTap/ProductReviews/ImageModal';
+
+import {
+  modalReducer,
+  initialModalState,
+} from '@/components/pages/product-detail/ProductTap/ProductReviews/modalReducer';
 
 export type ReviewCardProps = {
   type: 'written' | 'pending';
@@ -33,6 +42,15 @@ export default function ReviewCard({
   reviewImages = [],
   orderItemId,
 }: ReviewCardProps) {
+  const [modal, dispatch] = useReducer(modalReducer, initialModalState);
+
+  const handleImageClick = (index: number) => {
+    dispatch({ type: 'OPEN', images: reviewImages, index });
+  };
+  const handleCloseModal = () => dispatch({ type: 'CLOSE' });
+  const handlePrev = () => dispatch({ type: 'PREV' });
+  const handleNext = () => dispatch({ type: 'NEXT' });
+
   // 별점 렌더링
   const renderStars = () => {
     if (type === 'pending') {
@@ -75,17 +93,9 @@ export default function ReviewCard({
           <div className="flex flex-col gap-2">
             {type === 'written' ? (
               <>
-                <Link href={`/mypage/reviews/${reviewId}`}>
-                  <Button className="text-body-sm w-full lg:w-[162px]">
-                    보기
-                  </Button>
-                </Link>
                 <Link href={`/mypage/reviews/${reviewId}/edit`}>
-                  <Button
-                    variant="update"
-                    className="text-body-sm w-full lg:w-[162px]"
-                  >
-                    수정하기
+                  <Button className="text-body-sm w-full lg:w-[162px]">
+                    리뷰 보기
                   </Button>
                 </Link>
                 {createdAt && (
@@ -101,7 +111,9 @@ export default function ReviewCard({
                     주문 상세
                   </Button>
                 </Link>
-                <Link href={`/mypage/reviews/create`}>
+                <Link
+                  href={`/mypage/reviews/create/${orderItemId}/${productId}`}
+                >
                   <Button
                     variant="update"
                     className="text-body-sm w-full lg:w-[162px]"
@@ -119,24 +131,41 @@ export default function ReviewCard({
       {type === 'written' && reviewContent && (
         <div className="border-primary border-t-2 p-4">
           {/* 리뷰 이미지 */}
-          {reviewImages.length > 0 && (
-            <div className="mb-4 w-fit">
-              <Image
-                src={reviewImages[0] as string}
-                alt="리뷰 이미지"
-                width={80}
-                height={80}
-                className="rounded border border-gray-200 object-cover"
-              />
-            </div>
-          )}
+          <div className="mb-4 flex min-h-[40px] gap-2">
+            {reviewImages.map((img, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => handleImageClick(idx)}
+                className="cursor-pointer"
+              >
+                <Image
+                  src={img}
+                  alt={`리뷰 이미지 ${idx + 1}`}
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 rounded border border-gray-200 object-cover"
+                />
+              </button>
+            ))}
+          </div>
           {/* 리뷰 텍스트 */}
-          <div className="border-primary border-t-2 pt-4">
+          <div className="border-primary min-h-[150px] border-t-2 pt-4">
             <p className="text-body-md leading-relaxed text-gray-900">
               &gt; {reviewContent}
             </p>
           </div>
         </div>
+      )}
+      {/* 이미지 확대 모달 */}
+      {modal.images && (
+        <ImageModal
+          images={modal.images}
+          currentIndex={modal.currentIndex}
+          onClose={handleCloseModal}
+          onPrev={handlePrev}
+          onNext={handleNext}
+        />
       )}
     </li>
   );
