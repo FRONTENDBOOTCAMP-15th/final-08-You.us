@@ -15,7 +15,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function CheckoutPage() {
-  const { user } = useUserStore();
+  const { user, _hasHydrated } = useUserStore();
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -39,6 +39,8 @@ export default function CheckoutPage() {
   const [isDefaultAddress, setIsDefaultAddress] = useState(true);
 
   useEffect(() => {
+    if (!_hasHydrated) return;
+
     if (!user) {
       const currentPath = window.location.pathname;
       router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
