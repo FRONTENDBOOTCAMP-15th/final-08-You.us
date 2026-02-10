@@ -1,17 +1,22 @@
 'use client';
 
 import Button from '@/components/common/Button';
+import { uploadFile } from '@/lib/api/files';
+import { createReview, updateReview } from '@/lib/api/mypage';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 
 type ReviewFormProps = {
   mode: 'create' | 'edit';
+  reviewId?: string;
   productInfo: {
     imageSrc: string;
+    orderId?: number;
+    productId?: number;
     imageAlt: string;
     name: string;
-    price: string;
   };
   createdAt?: string;
   initialData?: {
@@ -23,17 +28,24 @@ type ReviewFormProps = {
 
 export default function ReviewForm({
   mode,
+  reviewId,
   productInfo,
   createdAt,
   initialData,
 }: ReviewFormProps) {
+  const router = useRouter();
+  const [isEditing, setIsEditing] = useState(mode === 'create');
   const [rating, setRating] = useState(initialData?.rating || 0);
   const [content, setContent] = useState(initialData?.content || '');
   const [images, setImages] = useState<string[]>(initialData?.images || []);
+  const [newFiles, setNewFiles] = useState<{ file: File; preview: string }[]>(
+    [],
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const fileImage = useRef<HTMLInputElement>(null);
 
   const title = mode === 'create' ? '후기 작성' : '후기 수정';
-  const submitText = mode === 'create' ? '등록하기' : '수정하기';
-
+  console.log('product정보테스트', productInfo);
   // 별점 렌더링
   const renderStars = () => {
     return (
@@ -42,8 +54,8 @@ export default function ReviewForm({
           <button
             key={star}
             type="button"
-            onClick={() => setRating(star)}
-            className="text-xl"
+            onClick={() => isEditing && setRating(star)}
+            className={`text-xl ${isEditing ? 'cursor-pointer' : 'cursor-default'}`}
           >
             <span className={star <= rating ? 'text-primary' : 'text-gray-300'}>
               ★
@@ -55,14 +67,63 @@ export default function ReviewForm({
     );
   };
 
-  // 이미지 업로드 핸들러 (UI만)
+  // 이미지 업로드 핸들러
   const handleImageUpload = () => {
-    // TODO: 실제 이미지 업로드 로직
+    fileImage.current?.click();
   };
 
-  // 폼 제출 핸들러 (UI만)
-  const handleSubmit = () => {
-    console.log({ rating, content, images });
+  // 폼 제출 핸들러
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    try {
+      const uploadedPaths = await Promise.all(
+        newFiles.map((item) => uploadFile(item.file)),
+      );
+      const allImages = [...images, ...uploadedPaths];
+
+      // create 모드일 때
+      if (mode === 'create') {
+        const body = {
+          order_id: productInfo.orderId,
+          product_id: productInfo.productId,
+          rating,
+          content,
+          extra: { title: productInfo.name, images: allImages },
+        };
+        await createReview(body);
+        alert('후기가 등록되었습니다.');
+        router.push('/mypage');
+      }
+
+      // edit 모드일 때
+      else if (mode === 'edit' && reviewId) {
+        const body = {
+          rating,
+          content,
+          extra: { title: productInfo.name, images: allImages },
+        };
+        await updateReview(reviewId, body);
+        alert('후기가 수정되었습니다.');
+        router.push('/mypage');
+      }
+    } catch (error) {
+      alert(
+        mode === 'edit'
+          ? '후기 수정에 실패했습니다.'
+          : '후기 등록에 실패했습니다.',
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // 취소 시 원래 데이터로 복원
+  const handleCancel = () => {
+    setRating(initialData?.rating || 0);
+    setContent(initialData?.content || '');
+    setImages(initialData?.images || []);
+    setNewFiles([]);
+    setIsEditing(false);
   };
 
   return (
@@ -71,8 +132,6 @@ export default function ReviewForm({
         <h2 className="text-body-lg font-bold">{title}</h2>
       </div>
       <div className="rounded border border-gray-200 bg-white">
-        {/* 타이틀 */}
-
         {/* 상품 정보 */}
         <div className="border-primary flex items-end justify-between border-b p-4">
           <div className="flex items-center gap-4">
@@ -87,7 +146,6 @@ export default function ReviewForm({
               <p className="text-body-md line-clamp-1 font-medium">
                 {productInfo.name}
               </p>
-              <p className="text-body-sm text-gray-600">{productInfo.price}</p>
               {renderStars()}
             </div>
           </div>
@@ -103,8 +161,9 @@ export default function ReviewForm({
           {/* 업로드 버튼 */}
           <button
             type="button"
+            disabled={!isEditing}
             onClick={handleImageUpload}
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded border border-gray-300 bg-gray-50 hover:bg-gray-100"
+            className="flex h-16 w-16 shrink-0 items-center justify-center rounded border border-gray-300 bg-gray-50 hover:not-disabled:bg-gray-100 disabled:cursor-default disabled:opacity-50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -126,42 +185,127 @@ export default function ReviewForm({
               />
             </svg>
           </button>
+          <input
+            type="file"
+            hidden
+            accept="image/*"
+            ref={fileImage}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
+              const preview = URL.createObjectURL(file);
+              setNewFiles((prev) => [...prev, { file, preview }]);
+            }}
+          ></input>
 
-          {/* 업로드된 이미지 미리보기 */}
+          {/* 기존 이미지 미리보기 */}
           {images.map((img, idx) => (
-            <div key={idx} className="relative h-16 w-16 shrink-0">
+            <div
+              key={`existing-${idx}`}
+              className="relative h-16 w-16 shrink-0"
+            >
               <Image
                 src={img}
                 alt={`리뷰 이미지 ${idx + 1}`}
                 fill
+                unoptimized
                 className="rounded border border-gray-200 object-cover"
               />
+              {isEditing && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setImages((prev) => prev.filter((_, i) => i !== idx))
+                  }
+                  className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
+                >
+                  X
+                </button>
+              )}
+            </div>
+          ))}
+          {/* 새로 추가한 이미지 미리보기 */}
+          {newFiles.map((item, idx) => (
+            <div key={`new-${idx}`} className="relative h-16 w-16 shrink-0">
+              <Image
+                src={item.preview}
+                alt={`새 이미지 ${idx + 1}`}
+                fill
+                unoptimized
+                className="rounded border border-gray-200 object-cover"
+              />
+              {isEditing && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setNewFiles((prev) => prev.filter((_, i) => i !== idx))
+                  }
+                  className="bg-primary absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
+                >
+                  X
+                </button>
+              )}
             </div>
           ))}
         </div>
 
-        {/* 리뷰 텍스트 입력 */}
+        {/* 리뷰 텍스트 */}
         <div className="p-4">
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            readOnly={!isEditing}
             placeholder="&gt; 후기를 작성해주세요."
-            className="text-body-md focus:border-primary h-32 w-full resize-none p-3 focus:outline-none"
+            className={`text-body-md h-32 w-full resize-none p-3 focus:outline-none ${
+              isEditing
+                ? 'focus:border-primary'
+                : 'cursor-default bg-gray-50 text-gray-700'
+            }`}
           />
         </div>
 
         {/* 하단 버튼 */}
         <div className="flex justify-end gap-2 p-4">
-          <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
-            <Button variant="update" className="text-body-sm w-full">
-              취소
+          {isEditing ? (
+            <>
+              {mode === 'edit' ? (
+                <Button
+                  variant="update"
+                  className="text-body-sm w-75 lg:w-40.5"
+                  onClick={handleCancel}
+                  disabled={isLoading}
+                >
+                  취소
+                </Button>
+              ) : (
+                <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
+                  <Button variant="update" className="text-body-sm w-full">
+                    취소
+                  </Button>
+                </Link>
+              )}
+              <Button
+                className="text-body-sm w-75 lg:w-40.5"
+                onClick={handleSubmit}
+                disabled={isLoading} // 로딩 중 클릭 방지
+              >
+                {isLoading
+                  ? mode === 'create'
+                    ? '등록 중...'
+                    : '저장 중...'
+                  : mode === 'create'
+                    ? '등록하기'
+                    : '저장'}
+              </Button>
+            </>
+          ) : (
+            <Button
+              className="text-body-sm w-75 lg:w-40.5"
+              onClick={() => setIsEditing(true)}
+            >
+              수정하기
             </Button>
-          </Link>
-          <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
-            <Button className="text-body-sm w-full" onClick={handleSubmit}>
-              {submitText}
-            </Button>
-          </Link>
+          )}
         </div>
       </div>
     </div>

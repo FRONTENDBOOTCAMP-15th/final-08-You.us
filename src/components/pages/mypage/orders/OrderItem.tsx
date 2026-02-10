@@ -1,6 +1,10 @@
 import ProductSummary from '@/components/pages/mypage/main/ProductSummary';
 import OrderButtons from '@/components/pages/mypage/orders/OrderButtons';
 import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader';
+import Button from '@/components/common/Button';
+import EmptyState from '@/components/common/EmptyState';
+import Link from 'next/link';
+import { order } from '@/components/pages/mypage/orders/OrderList';
 
 export default function OrderItem({
   id,
@@ -29,10 +33,22 @@ export default function OrderItem({
     scope: { rating: number } | null;
   };
 }) {
+  if (order.length === 0) {
+    return (
+      <EmptyState
+        message="주문한 상품이 없습니다."
+        action={
+          <Link href="/products">
+            <Button className="text-body-sm">상품 보러가기</Button>
+          </Link>
+        }
+      />
+    );
+  }
   return (
-    <li>
+    <li className="mb-2">
       <OrderStatusHeader status={status} date={date} />
-      <div className="border-primary ml-3 flex flex-col lg:flex-row lg:justify-between">
+      <div className="border-primary ml-3 flex flex-col border-b bg-white lg:flex-row lg:items-center lg:justify-between">
         <ProductSummary
           key={id}
           imageAlt={imageAlt}

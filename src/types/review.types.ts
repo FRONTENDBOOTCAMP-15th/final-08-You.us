@@ -18,6 +18,7 @@ export interface ReviewItem {
     _id: number;
     image: ProductImage;
     name: string;
+    price: number;
   };
 }
 
