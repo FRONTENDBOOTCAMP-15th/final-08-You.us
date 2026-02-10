@@ -43,7 +43,7 @@ export default function DesktopHeader() {
               alt="You,Us 로고"
               width={120}
               height={32}
-              className="h-10 w-auto"
+              className="h-17.5 w-auto"
             />
           </Link>
 

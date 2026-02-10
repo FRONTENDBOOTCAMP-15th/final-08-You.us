@@ -27,11 +27,11 @@ export default function ReviewsComponent({
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200">
           {review.user.image ? (
             <Image
-              src="/images/products/Beauty/01.png"
+              src={review.user.image}
               alt="리뷰 사용자 이미지"
               width={40}
               height={40}
-              className="rounded-full"
+              className="h-full w-full rounded-full object-cover"
             />
           ) : (
             <span className="text-lg text-gray-500">👤</span>
