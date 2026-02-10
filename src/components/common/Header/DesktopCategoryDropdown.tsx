@@ -52,9 +52,9 @@ export default function DesktopCategoryDropdown({
 
         <ul className="flex gap-6" aria-label="빠른 메뉴">
           <li>
-            {isHydrated && (
-              <Link href="/mypage" className="block">
-                {user ? (
+            {isHydrated &&
+              (user ? (
+                <Link href="/mypage" className="block">
                   <Image
                     src="/icons/MyPage.svg"
                     alt="마이페이지"
@@ -62,7 +62,9 @@ export default function DesktopCategoryDropdown({
                     height={32}
                     className="h-10 w-auto"
                   />
-                ) : (
+                </Link>
+              ) : (
+                <div>
                   <Image
                     src="/icons/User.svg"
                     alt="마이페이지 비활성화"
@@ -70,9 +72,8 @@ export default function DesktopCategoryDropdown({
                     height={32}
                     className="h-10 w-auto"
                   />
-                )}
-              </Link>
-            )}
+                </div>
+              ))}
           </li>
           <li>
             <Link href="/cart" className="relative block">

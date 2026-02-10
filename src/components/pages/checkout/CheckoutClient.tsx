@@ -13,6 +13,8 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
+import Loading from '@/components/common/Loading';
+import { toast } from 'react-toastify';
 
 export default function CheckoutClient() {
   const { user } = useUserStore();
@@ -125,7 +127,7 @@ export default function CheckoutClient() {
     if (!user) return;
 
     if (!isAddressValid) {
-      alert('배송지 정보를 모두 입력해주세요.');
+      toast.warn('배송지 정보를 모두 입력해주세요.');
       return;
     }
 
@@ -159,11 +161,11 @@ export default function CheckoutClient() {
 
         router.push(`/checkout/result?orderId=${result.item._id}`);
       } else {
-        alert('주문에 실패했습니다.');
+        toast.error('주문에 실패했습니다.');
       }
     } catch (error) {
       console.error('주문 실패:', error);
-      alert('주문 중 오류가 발생했습니다.');
+      toast.error('주문 중 오류가 발생했습니다.');
     } finally {
       setIsLoading(false);
     }
@@ -171,17 +173,17 @@ export default function CheckoutClient() {
 
   const handleCardPayment = async () => {
     if (!user || !window.IMP) {
-      alert('결제 모듈을 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
+      toast.warn('결제 모듈을 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
       return;
     }
 
     if (!isAddressValid) {
-      alert('배송지 정보를 모두 입력해주세요.');
+      toast.warn('배송지 정보를 모두 입력해주세요.');
       return;
     }
 
     if (orderItems.length === 0) {
-      alert('주문할 상품이 없습니다.');
+      toast.warn('주문할 상품이 없습니다.');
       return;
     }
 
@@ -240,24 +242,24 @@ export default function CheckoutClient() {
 
                 router.push(`/checkout/result?orderId=${result.item._id}`);
               } else {
-                alert('주문 생성에 실패했습니다.');
+                toast.error('주문 생성에 실패했습니다.');
                 setIsLoading(false);
               }
             } catch (error) {
               console.error('주문 생성 실패:', error);
-              alert('주문 처리 중 오류가 발생했습니다.');
+              toast.error('주문 처리 중 오류가 발생했습니다.');
               setIsLoading(false);
             }
           } else {
             console.error('결제 실패:', response);
-            alert(`결제에 실패했습니다: ${response.error_msg}`);
+            toast.error(`결제에 실패했습니다: ${response.error_msg}`);
             setIsLoading(false);
           }
         },
       );
     } catch (error) {
       console.error('카드결제 오류:', error);
-      alert('결제 중 오류가 발생했습니다.');
+      toast.error('결제 중 오류가 발생했습니다.');
       setIsLoading(false);
     }
   };
@@ -267,7 +269,7 @@ export default function CheckoutClient() {
   }
 
   if (orderItems.length === 0) {
-    return <div>주문 상품을 불러오는 중...</div>;
+    return <Loading />;
   }
 
   return (

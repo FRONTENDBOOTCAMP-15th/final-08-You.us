@@ -12,6 +12,8 @@ import type {
   RecommendResult as RecommendResultType,
 } from '@/types/aitest.types';
 import { Product } from '@/types/recommend.types';
+import Loading from '@/components/common/Loading';
+import { toast } from 'react-toastify';
 
 export default function RecommendResultClient() {
   const router = useRouter();
@@ -85,11 +87,11 @@ export default function RecommendResultClient() {
         if (productResult.ok) {
           setProducts(productResult.items);
         } else {
-          alert(productResult.message);
+          toast.error(productResult.message);
         }
       } catch (error) {
         console.error('상품 조회 오류:', error);
-        alert('상품을 불러오는데 실패했습니다.');
+        toast.error('상품을 불러오는데 실패했습니다.');
       } finally {
         setIsLoading(false);
       }
@@ -104,11 +106,7 @@ export default function RecommendResultClient() {
   };
 
   if (!data) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-lg">로딩중...</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (!isAllFilled) return null;
