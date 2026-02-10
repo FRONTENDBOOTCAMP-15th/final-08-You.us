@@ -31,6 +31,8 @@ export default function ProductList({ products }: ProductListProps) {
           price={product.price}
           rating={product.rating ?? 0}
           reviewCount={product.replies ?? 0}
+          mainCategory={product.extra?.category?.[0] || ''}
+          subCategory={product.extra?.category?.[1] || ''}
         />
       ))}
     </ul>

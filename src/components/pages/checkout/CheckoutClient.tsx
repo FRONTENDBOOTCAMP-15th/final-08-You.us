@@ -33,10 +33,21 @@ export default function CheckoutClient() {
     name: '',
     phone: '',
     address: '',
+    detailAddress: '',
     postalCode: '',
     isDefault: true,
   });
   const [isDefaultAddress, setIsDefaultAddress] = useState(true);
+
+  const isAddressValid =
+    isDefaultAddress ||
+    !!(
+      addressInfo.name &&
+      addressInfo.phone &&
+      addressInfo.address &&
+      addressInfo.detailAddress &&
+      addressInfo.postalCode
+    );
 
   useEffect(() => {
     if (!user) {
@@ -58,6 +69,7 @@ export default function CheckoutClient() {
           name: user.name,
           phone: user.phone || '',
           address: user.address.streetAddress,
+          detailAddress: user.address.streetAddress.split(',')[1] || '',
           postalCode: user.address.postalCode,
           isDefault: true,
         });
@@ -66,6 +78,7 @@ export default function CheckoutClient() {
           name: '',
           phone: '',
           address: '',
+          detailAddress: '',
           postalCode: '',
           isDefault: false,
         });
@@ -111,6 +124,11 @@ export default function CheckoutClient() {
   const handleOrder = async () => {
     if (!user) return;
 
+    if (!isAddressValid) {
+      alert('배송지 정보를 모두 입력해주세요.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       const orderData = {
@@ -122,7 +140,7 @@ export default function CheckoutClient() {
         })),
         address: {
           name: addressInfo.name,
-          value: `${addressInfo.postalCode} ${addressInfo.address}`,
+          value: `${addressInfo.postalCode} ${addressInfo.address}, ${addressInfo.detailAddress}`,
         },
         state: 'OS010',
       };
@@ -157,8 +175,8 @@ export default function CheckoutClient() {
       return;
     }
 
-    if (!addressInfo.name || !addressInfo.address || !addressInfo.postalCode) {
-      alert('배송지 정보를 입력해주세요.');
+    if (!isAddressValid) {
+      alert('배송지 정보를 모두 입력해주세요.');
       return;
     }
 
@@ -188,7 +206,7 @@ export default function CheckoutClient() {
           buyer_email: user.email,
           buyer_name: addressInfo.name,
           buyer_tel: addressInfo.phone || user.phone || '',
-          buyer_addr: addressInfo.address,
+          buyer_addr: `${addressInfo.address}, ${addressInfo.detailAddress}`,
           buyer_postcode: addressInfo.postalCode,
         },
         async (response) => {
@@ -205,7 +223,7 @@ export default function CheckoutClient() {
                 })),
                 address: {
                   name: addressInfo.name,
-                  value: `${addressInfo.postalCode} ${addressInfo.address}`,
+                  value: `${addressInfo.postalCode} ${addressInfo.address}, ${addressInfo.detailAddress}`,
                 },
                 state: 'OS020',
               };
@@ -358,7 +376,7 @@ export default function CheckoutClient() {
           </div>
           <PaymentButton
             paymentMethod={paymentMethod}
-            agreePayment={agreePayment}
+            agreePayment={agreePayment && isAddressValid}
             onOrder={handleOrder}
             onCardPayment={handleCardPayment}
             isLoading={isLoading}
