@@ -1,5 +1,27 @@
 import { ProductImage, ProductExtra } from './product.types';
 
+export interface CartItemForCreate {
+  _id?: number;
+  product_id: number;
+  quantity: number;
+  color?: string;
+}
+export interface CartItemOnList {
+  _id: number;
+  product_id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  checked: boolean;
+  option?: string;
+  options: {
+    color?: string[];
+    size?: string[];
+  };
+  image: string;
+  storeName: string;
+}
+
 export interface CartItem {
   _id: number;
   product_id: number;
