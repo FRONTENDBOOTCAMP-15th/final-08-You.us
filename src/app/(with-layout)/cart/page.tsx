@@ -84,7 +84,11 @@ export default function CartPage() {
   };
 
   if (isLoading) {
-    return <div className="py-20 text-center">로딩 중...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="border-primary h-8 w-8 animate-spin rounded-full border-b-2" />
+      </div>
+    );
   }
 
   if (items.length === 0) return <CartEmpty />;
@@ -105,6 +109,7 @@ export default function CartPage() {
               setItems={setItems}
               updateItem={updateItem}
               setModalItem={setModalItem}
+              setIsLoading={setIsLoading}
             />
 
             <aside

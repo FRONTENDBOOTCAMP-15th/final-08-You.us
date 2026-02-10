@@ -25,6 +25,11 @@ export default function ReviewsPage() {
       <section className="flex flex-col gap-2">
         <MyPageSection title="나의 후기">
           <ul className="flex flex-col gap-4">
+            {reviews.length === 0 && (
+              <li className="flex min-h-50 items-center justify-center text-gray-400">
+                작성하신 리뷰가 없습니다.
+              </li>
+            )}
             {reviews.map((review) => (
               <ReviewCard
                 key={review._id}

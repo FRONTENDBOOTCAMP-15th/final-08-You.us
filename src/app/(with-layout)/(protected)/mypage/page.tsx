@@ -60,6 +60,11 @@ export default function MyPage() {
       <section className="flex flex-col gap-2">
         <MyPageSection title={'나의 후기'} moreHref="/mypage/reviews">
           <ul className="flex flex-col gap-2">
+            {(!review || review.length === 0) && (
+              <li className="flex min-h-50 items-center justify-center text-gray-400">
+                작성하신 리뷰가 없습니다.
+              </li>
+            )}
             {review?.slice(0, 2)?.map((item) => (
               <li key={item._id}>
                 <div className="border-primary ml-3 flex flex-col items-stretch justify-between gap-2 border-y bg-white lg:flex-row lg:items-center">
