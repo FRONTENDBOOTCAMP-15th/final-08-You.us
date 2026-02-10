@@ -88,9 +88,11 @@ export interface DeleteCartRequest {
 export interface DeleteCartResponse {
   ok: 1 | 0;
 }
+
 export interface PaymentButtonProps {
   paymentMethod: string;
   agreePayment: boolean;
   onOrder: () => Promise<void>;
+  onCardPayment: () => Promise<void>; // 카드결제 함수 추가
   isLoading: boolean;
 }

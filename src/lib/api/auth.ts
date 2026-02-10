@@ -1,9 +1,29 @@
 'use server';
 
-const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
+const NAVER_CLIENT_ID =
+  process.env.NEXT_PUBLIC_NAVER_CLIENT_ID || process.env.NAVER_CLIENT_ID;
 const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET;
-const NAVER_REDIRECT_URI = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI;
-const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
+const NAVER_REDIRECT_URI =
+  process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI || process.env.NAVER_REDIRECT_URI;
+const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
+
+// 환경변수 체크
+if (
+  !NAVER_CLIENT_ID ||
+  !NAVER_CLIENT_SECRET ||
+  !NAVER_REDIRECT_URI ||
+  !API_SERVER ||
+  !CLIENT_ID
+) {
+  console.error('필수 환경변수가 설정되지 않았습니다:', {
+    NAVER_CLIENT_ID: !!NAVER_CLIENT_ID,
+    NAVER_CLIENT_SECRET: !!NAVER_CLIENT_SECRET,
+    NAVER_REDIRECT_URI: !!NAVER_REDIRECT_URI,
+    API_SERVER: !!API_SERVER,
+    CLIENT_ID: !!CLIENT_ID,
+  });
+}
 
 interface NaverTokenResponse {
   access_token: string;
@@ -29,7 +49,9 @@ interface NaverUserResponse {
  */
 export async function getNaverToken(code: string) {
   try {
-    // 1. code로 액세스 토큰 받기
+    console.log('[NAVER] 로그인 시작');
+
+    // 1. 네이버 액세스 토큰 받기
     const tokenResponse = await fetch('https://nid.naver.com/oauth2.0/token', {
       method: 'POST',
       headers: {
@@ -45,12 +67,15 @@ export async function getNaverToken(code: string) {
     });
 
     if (!tokenResponse.ok) {
+      const errorText = await tokenResponse.text();
+      console.error('NAVER 토큰 응답 실패:', errorText);
       throw new Error('토큰 발급 실패');
     }
 
     const tokenData: NaverTokenResponse = await tokenResponse.json();
+    console.log('NAVER 토큰 받기 성공');
 
-    // 2. 액세스 토큰으로 사용자 정보 가져오기
+    // 2. 네이버 사용자 정보 가져오기
     const userResponse = await fetch('https://openapi.naver.com/v1/nid/me', {
       headers: {
         Authorization: `Bearer ${tokenData.access_token}`,
@@ -58,36 +83,84 @@ export async function getNaverToken(code: string) {
     });
 
     if (!userResponse.ok) {
+      const errorText = await userResponse.text();
+      console.error('NAVER 사용자 정보 응답 실패:', errorText);
       throw new Error('사용자 정보 조회 실패');
     }
 
     const userData: NaverUserResponse = await userResponse.json();
+    console.log('NAVER 사용자 정보:', userData.response);
+    // 3. 우리 서버에 OAuth 회원가입/로그인 요청
+    const signupBody = {
+      type: 'user',
+      loginType: 'naver',
+      name: userData.response.name,
+      email: userData.response.email,
+      image: userData.response.profile_image || '',
+      extra: {
+        providerAccountId: userData.response.id,
+      },
+    };
 
-    // 3. 우리 서버에 네이버 로그인 정보 전달하여 회원가입/로그인 처리
-    const loginResponse = await fetch(`${API_SERVER}/login/oauth/naver`, {
+    console.log('SERVER 회원가입 요청 데이터:', signupBody);
+
+    const signupResponse = await fetch(`${API_SERVER}/users/signup/oauth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Client-Id': CLIENT_ID,
       },
-      body: JSON.stringify({
-        email: userData.response.email,
-        name: userData.response.name,
-        image: userData.response.profile_image || '',
-      }),
+      body: JSON.stringify(signupBody),
     });
 
-    if (!loginResponse.ok) {
-      throw new Error('서버 로그인 실패');
+    const signupData = await signupResponse.json();
+    console.log('SERVER 회원가입 응답:', signupData);
+
+    // 이미 가입된 회원이면 로그인 시도
+    if (signupData.ok === 0 && signupData.message?.includes('이미 가입')) {
+      console.log('SERVER 이미 가입된 회원 - 로그인 시도');
+
+      const loginResponse = await fetch(`${API_SERVER}/users/login/with`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Client-Id': CLIENT_ID,
+        },
+        body: JSON.stringify({
+          providerAccountId: userData.response.id,
+        }),
+      });
+
+      const loginData = await loginResponse.json();
+      console.log('SERVER 로그인 응답:', loginData);
+
+      if (!loginResponse.ok || loginData.ok === 0) {
+        console.error('SERVER 로그인 실패:', loginData);
+        throw new Error('로그인에 실패했습니다.');
+      }
+
+      console.log('SERVER 최종 사용자 정보:', loginData.item);
+
+      return {
+        ok: 1,
+        user: loginData.item,
+      };
     }
 
-    const loginData = await loginResponse.json();
+    // 회원가입 성공
+    if (!signupResponse.ok || signupData.ok === 0) {
+      console.error('SERVER 회원가입 실패:', signupData);
+      throw new Error('서버 회원가입/로그인 실패');
+    }
+
+    console.log('SERVER 최종 사용자 정보:', signupData.item);
 
     return {
       ok: 1,
-      user: loginData.item, // 우리 서버에서 받은 사용자 정보 (accessToken, refreshToken 포함)
+      user: signupData.item,
     };
   } catch (error) {
-    console.error('네이버 로그인 오류:', error);
+    console.error('NAVER 로그인 오류:', error);
     return {
       ok: 0,
       message: '네이버 로그인에 실패했습니다.',
