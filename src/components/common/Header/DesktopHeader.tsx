@@ -50,6 +50,7 @@ export default function DesktopHeader() {
           <Link href="/recommend" className="shrink-0">
             <Button
               variant="primary"
+              tabIndex={-1}
               className="flex h-10 items-center gap-2 px-4 text-sm leading-none whitespace-nowrap"
             >
               <Image src="/icons/AiButton.svg" width={9} height={15} alt="" />
