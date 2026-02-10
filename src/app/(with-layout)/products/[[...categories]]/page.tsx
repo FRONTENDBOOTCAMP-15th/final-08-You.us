@@ -327,7 +327,7 @@ export default function ProductsPage({
                   id={product._id}
                   image={product.mainImages[0]!.path}
                   name={product.name}
-                  price={String(product.price)}
+                  price={product.price.toLocaleString()}
                   rating={product.rating || 0}
                   replies={
                     typeof product.replies === 'number'
