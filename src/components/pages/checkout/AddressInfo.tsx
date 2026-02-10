@@ -13,6 +13,7 @@ interface AddressInfoProps {
     name: string;
     phone: string;
     address: string;
+    detailAddress: string;
     postalCode: string;
     isDefault: boolean;
   }) => void;
@@ -47,27 +48,22 @@ export default function AddressInfo({
     phone: '',
   });
 
-  // 주소 정보 변경 시 부모 컴포넌트에 전달
   useEffect(() => {
     if (isDefaultAddress && hasUserAddress) {
-      // 기본 배송지 사용
       onAddressChange({
         name: user.name,
         phone: user.phone,
         address: user.address.streetAddress,
+        detailAddress: addressLine2,
         postalCode: user.address.postalCode,
         isDefault: true,
       });
     } else {
-      // 새 배송지 사용
-      const fullAddress = addressData.detailAddress
-        ? `${addressData.address}, ${addressData.detailAddress}`
-        : addressData.address;
-
       onAddressChange({
         name: receiverInfo.name,
         phone: receiverInfo.phone,
-        address: fullAddress,
+        address: addressData.address,
+        detailAddress: addressData.detailAddress,
         postalCode: addressData.postalCode,
         isDefault: false,
       });
