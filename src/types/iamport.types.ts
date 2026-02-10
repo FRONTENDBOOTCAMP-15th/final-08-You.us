@@ -1,4 +1,3 @@
-// types/iamport.d.ts
 interface IMP {
   init: (userCode: string) => void;
   request_pay: (

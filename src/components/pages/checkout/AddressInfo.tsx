@@ -16,15 +16,24 @@ interface AddressInfoProps {
     postalCode: string;
     isDefault: boolean;
   }) => void;
+  isDefaultAddress: boolean;
+  setIsDefaultAddress: (value: boolean) => void;
 }
 
 export default function AddressInfo({
   user,
   onAddressChange,
+  isDefaultAddress,
+  setIsDefaultAddress,
 }: AddressInfoProps) {
-  const [checked, setChecked] = useState(true);
-  const addressLine1 = user.address.streetAddress.split(',')[0];
-  const addressLine2 = user.address.streetAddress.split(',')[1] || '';
+  const hasUserAddress =
+    user.address?.streetAddress && user.address?.postalCode;
+  const addressLine1 = hasUserAddress
+    ? user.address.streetAddress.split(',')[0]
+    : '';
+  const addressLine2 = hasUserAddress
+    ? user.address.streetAddress.split(',')[1] || ''
+    : '';
   const { openPostcode } = useDaumPostcode();
 
   const [addressData, setAddressData] = useState({
@@ -38,9 +47,9 @@ export default function AddressInfo({
     phone: '',
   });
 
-  // 기본 배송지 체크 상태 변경 시
+  // 주소 정보 변경 시 부모 컴포넌트에 전달
   useEffect(() => {
-    if (checked) {
+    if (isDefaultAddress && hasUserAddress) {
       // 기본 배송지 사용
       onAddressChange({
         name: user.name,
@@ -63,7 +72,14 @@ export default function AddressInfo({
         isDefault: false,
       });
     }
-  }, [checked, addressData, receiverInfo, user, onAddressChange]);
+  }, [
+    isDefaultAddress,
+    addressData,
+    receiverInfo,
+    user,
+    onAddressChange,
+    hasUserAddress,
+  ]);
 
   const handleSearchAddress = () => {
     openPostcode((data: DaumPostcodeData) => {
@@ -128,20 +144,22 @@ export default function AddressInfo({
     <fieldset className="mb-7.5 flex flex-col gap-2.5">
       <div className="flex flex-row items-center gap-2.5">
         <legend className="text-body-sm">배송지 정보</legend>
-        <div className="flex flex-row items-center gap-1 text-[12px]">
-          <Input
-            id="isDefaultAddress"
-            name="isDefaultAddress"
-            type="checkbox"
-            checked={checked}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setChecked(e.target.checked)
-            }
-          />
-          <label htmlFor="isDefaultAddress">기본 배송지</label>
-        </div>
+        {hasUserAddress && (
+          <div className="flex flex-row items-center gap-1 text-[12px]">
+            <Input
+              id="isDefaultAddress"
+              name="isDefaultAddress"
+              type="checkbox"
+              checked={isDefaultAddress}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setIsDefaultAddress(e.target.checked)
+              }
+            />
+            <label htmlFor="isDefaultAddress">기본 배송지</label>
+          </div>
+        )}
       </div>
-      {checked ? (
+      {isDefaultAddress && hasUserAddress ? (
         <div key="default" className="flex flex-col gap-2.5">
           <div className="flex flex-row items-center gap-2.5 text-[12px]">
             <label htmlFor="receiverName">수령인</label>
@@ -190,11 +208,9 @@ export default function AddressInfo({
                 >
                   우편번호 찾기
                 </Button>
-
                 <label htmlFor="postalCode" className="sr-only">
                   우편번호
                 </label>
-
                 <Input
                   id="postalCode"
                   name="postalCode"
@@ -208,7 +224,6 @@ export default function AddressInfo({
                 />
               </div>
             </div>
-
             <div>
               <label htmlFor="addressLine1" className="sr-only">
                 기본 주소
@@ -223,7 +238,6 @@ export default function AddressInfo({
                 readOnly
               />
             </div>
-
             <div>
               <label htmlFor="addressLine2" className="sr-only">
                 상세 주소
@@ -285,15 +299,13 @@ export default function AddressInfo({
                 <Button
                   type="button"
                   onClick={handleSearchAddress}
-                  className="text-primary border-primary shrink-0 border bg-white focus:text-white"
+                  className="text-primary border-primary focus:bg-primary shrink-0 border bg-white focus:border focus:border-gray-900 focus:text-white focus:outline-0"
                 >
                   우편번호 찾기
                 </Button>
-
                 <label htmlFor="postalCode" className="sr-only">
                   우편번호
                 </label>
-
                 <Input
                   id="postalCode"
                   name="postalCode"
@@ -307,7 +319,6 @@ export default function AddressInfo({
                 />
               </div>
             </div>
-
             <div>
               <label htmlFor="addressLine1" className="sr-only">
                 기본 주소
@@ -322,7 +333,6 @@ export default function AddressInfo({
                 readOnly
               />
             </div>
-
             <div>
               <label htmlFor="addressLine2" className="sr-only">
                 상세 주소
@@ -340,31 +350,6 @@ export default function AddressInfo({
           </div>
         </div>
       )}
-      <div className="flex flex-row items-center gap-2.5 text-[12px]">
-        <label htmlFor="deliveryMemo" className="shrink-0">
-          배송메모
-        </label>
-        <span>|</span>
-        <select
-          id="deliveryMemo"
-          name="deliveryMemo"
-          defaultValue=""
-          className="w-fill appearance-none rounded-[10px] border border-gray-500 bg-white bg-[url('/icons/dropdown-arrow.svg')] bg-size-[14px_14px] bg-position-[right_12px_center] bg-no-repeat py-2.5 pr-10 pl-3"
-        >
-          <option value="" disabled>
-            배송메모를 선택해주세요
-          </option>
-          <option value="door">문 앞에 놓아주세요</option>
-          <option value="call">배송 전 연락 부탁드려요</option>
-          <option value="guard">경비실에 맡겨주세요</option>
-          <option value="custom">직접 입력</option>
-        </select>
-      </div>
-      {/* 직접 입력일 때만 노출 */}
-      <div hidden>
-        <label htmlFor="deliveryMemoCustom">배송메모 직접 입력</label>
-        <Input id="deliveryMemoCustom" name="deliveryMemoCustom" type="text" />
-      </div>
     </fieldset>
   );
 }
