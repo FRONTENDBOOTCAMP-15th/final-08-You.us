@@ -1,3 +1,4 @@
+'use client';
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { login } from '@/lib/api/users';
@@ -6,6 +7,7 @@ import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
 const NAVER_REDIRECT_URI = process.env.NEXT_PUBLIC_NAVER_REDIRECT_URI;
@@ -30,38 +32,42 @@ export default function LoginForm() {
   const router = useRouter();
   const redirect = useSearchParams().get('redirect');
 
-  console.log(autoLogin);
-
   useEffect(() => {
-    const handleLoginSuccess = async () => {
-      if (!userState?.ok) return;
+    if (!userState) return;
 
-      setUser({
-        _id: userState.item._id,
-        email: userState.item.email,
-        name: userState.item.name,
-        image: userState.item.image,
-        phone: userState.item.phone,
-        address: userState.item.address,
-        token: {
-          accessToken: userState.item.token?.accessToken || '',
-          refreshToken: userState.item.token?.refreshToken || '',
-        },
-      });
-      setAutoLoginStore(autoLogin);
+    if (userState.ok) {
+      const handleLoginSuccess = async () => {
+        setUser({
+          _id: userState.item._id,
+          email: userState.item.email,
+          name: userState.item.name,
+          image: userState.item.image,
+          phone: userState.item.phone,
+          address: userState.item.address,
+          token: {
+            accessToken: userState.item.token?.accessToken || '',
+            refreshToken: userState.item.token?.refreshToken || '',
+          },
+        });
+        setAutoLoginStore(autoLogin);
 
-      if (autoLogin && userState.item.token?.refreshToken) {
-        localStorage.setItem('refreshToken', userState.item.token.refreshToken);
-      }
+        if (autoLogin && userState.item.token?.refreshToken) {
+          localStorage.setItem(
+            'refreshToken',
+            userState.item.token.refreshToken,
+          );
+        }
 
-      // 로컬 장바구니 서버에 병합
-      await mergeLocalCartToServer();
+        await mergeLocalCartToServer();
 
-      alert(`${userState.item.name}님 로그인이 완료되었습니다.`);
-      router.replace(redirect || '/');
-    };
+        toast.success(`${userState.item.name}님 로그인이 완료되었습니다.`);
+        router.replace(redirect || '/');
+      };
 
-    handleLoginSuccess();
+      handleLoginSuccess();
+    } else {
+      toast.error('로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.');
+    }
   }, [userState, router, redirect, setUser, setAutoLoginStore, autoLogin]);
 
   const validateEmail = (email: string) => {
@@ -123,6 +129,7 @@ export default function LoginForm() {
 
     window.location.href = naverAuthUrl;
   };
+
   return (
     <form action={formAction} className="flex w-fit flex-col">
       <Input

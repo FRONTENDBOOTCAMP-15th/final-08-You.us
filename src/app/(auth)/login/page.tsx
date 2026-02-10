@@ -1,8 +1,12 @@
-'use client';
-
 import LoginForm from '@/app/(auth)/login/LoginForm';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: '로그인',
+  description: 'You,Us 계정에 로그인하세요.',
+};
 
 export default function LoginPage() {
   return (
