@@ -5,6 +5,7 @@ import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import useHasHydrated from '@/hooks/auth/useHasHydrated';
 
 interface MobileHeaderProps {
   onMenuOpen: () => void;
@@ -15,6 +16,8 @@ export default function MobileHeader({
   onMenuOpen,
   isOpen,
 }: MobileHeaderProps) {
+  // persist 스토어 hydration 완료 여부 (SSR/클라이언트 불일치 방지)
+  const isHydrated = useHasHydrated();
   const { user } = useUserStore();
   const localCartCount = useCartStore((state) => state.items.length);
   const serverCartCount = useCartStore((state) => state.serverCartCount);
@@ -25,7 +28,8 @@ export default function MobileHeader({
     }
   }, [user]);
 
-  const cartCount = user ? serverCartCount : localCartCount;
+  // hydration 전에는 0 (SSR과 동일), hydration 후 실제 값
+  const cartCount = isHydrated ? (user ? serverCartCount : localCartCount) : 0;
   return (
     <div className="relative flex h-20 min-w-90 items-center justify-between bg-gray-50 px-7">
       <button
@@ -61,25 +65,27 @@ export default function MobileHeader({
       <nav aria-label="빠른 메뉴">
         <ul className="flex gap-4">
           <li>
-            <Link href="/mypage">
-              {user ? (
-                <Image
-                  src="/icons/MyPage.svg"
-                  alt="마이페이지"
-                  width={120}
-                  height={32}
-                  className="h-8 w-auto"
-                />
-              ) : (
-                <Image
-                  src="/icons/User.svg"
-                  alt="마이페이지"
-                  width={120}
-                  height={32}
-                  className="h-8 w-auto"
-                />
-              )}
-            </Link>
+            {isHydrated && (
+              <Link href="/mypage">
+                {user ? (
+                  <Image
+                    src="/icons/MyPage.svg"
+                    alt="마이페이지"
+                    width={120}
+                    height={32}
+                    className="h-8 w-auto"
+                  />
+                ) : (
+                  <Image
+                    src="/icons/User.svg"
+                    alt="마이페이지"
+                    width={120}
+                    height={32}
+                    className="h-8 w-auto"
+                  />
+                )}
+              </Link>
+            )}
           </li>
           <li>
             <Link href="/cart" className="relative">
