@@ -5,10 +5,10 @@ import CartListItem from '@/components/pages/cart/CartListItem';
 import { CartItemOnList } from '@/types/cart.types';
 
 interface CartListProps {
-  items: CartItemOnList[];
-  updateItem: (_id: number, item: Partial<CartItemOnList>) => void;
-  setItems: (item: CartItemOnList[]) => void;
-  setModalItem: (item: ModalItem) => void;
+  items: CartItemOnList[]; // 장바구니 상품 배열
+  updateItem: (_id: number, item: Partial<CartItemOnList>) => void; // 특정 상품 업데이트 함수
+  setItems: (item: CartItemOnList[]) => void; // 전체 상품 목록 변경 함수
+  setModalItem: (item: ModalItem) => void; // 모달에 표시할 상품 설정 함수
 }
 
 export default function CartList({
