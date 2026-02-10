@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getOrderDetail } from '@/lib/api/checkout';
 import { OrderDetailResponse } from '@/types/checkout.types';
+import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 
 export default function CheckoutResultPage() {
   const searchParams = useSearchParams();
@@ -24,6 +25,7 @@ export default function CheckoutResultPage() {
         const result = await getOrderDetail(orderId);
         if (result.ok === 1) {
           setOrderData(result.item);
+          await fetchServerCartCount();
         }
       } catch (error) {
         console.error('주문 조회 실패:', error);
@@ -147,7 +149,7 @@ export default function CheckoutResultPage() {
               </div>
               <div className="text-right">
                 <p className="font-semibold text-gray-900">
-                  {product.price.toLocaleString()}원
+                  {(product.price / product.quantity).toLocaleString()}원
                 </p>
               </div>
             </div>

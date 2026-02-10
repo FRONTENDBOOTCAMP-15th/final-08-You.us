@@ -47,6 +47,7 @@ export type PriceRange = {
 
 export type RecommendTags = {
   recipient: Recipient;
+  gender: 'male' | 'female' | 'unspecified';
   ageGroup: AgeGroup;
   occasion: Occasion;
   priceRange: PriceRange;
@@ -68,6 +69,7 @@ export type RecommendResponseBody = {
 export type RecommendResult = {
   tags: {
     recipient: string;
+    gender: string;
     ageGroup: string;
     occasion: string;
     priceRange: {

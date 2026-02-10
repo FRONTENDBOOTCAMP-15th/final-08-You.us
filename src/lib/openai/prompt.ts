@@ -15,6 +15,7 @@ ${joined}
 [출력 스키마]
 {
   "recipient": "parent|teacher|lover|friend|coworker|sibling|child",
+  "gender": "male|female|unspecified",
   "ageGroup": "child|teen|20s|30s|40s|50s|60plus",
   "occasion": "birthday|thanks|anniversary|holiday|housewarming|celebration",
   "priceRange": { "min": number, "max": number | null },
@@ -43,6 +44,13 @@ ${joined}
 - friend: 친구/절친/동창/지인(친구 맥락) +
 친구의 남자친구/친구 남자친구/친구의 여자친구/친구 여자친구
 (제3자의 연인은 모두 friend로 분류)
+
+[gender 매핑 규칙]
+- male: 남성/남자/아들/아빠/할아버지/형/오빠/남동생/남편/남자친구/남친
+- female: 여성/여자/딸/엄마/할머니/누나/언니/여동생/아내/여자친구/여친
+- unspecified: 상관없음/모름/비밀/무관/성별 무관/안 정함
+- 1번(recipient) 답변에서 성별이 유추 가능하더라도, 반드시 2번(gender) 답변을 기준으로 매핑해라.
+- 애매하면 unspecified로 설정
 
 [ageGroup 매핑 규칙]
 - child: 유아/어린이/아이/조카/초등 이하
@@ -115,6 +123,7 @@ ${joined}
 // 타입 체크용(선택)
 export const _promptContractExample: RecommendTags = {
   recipient: 'child',
+  gender: 'female',
   ageGroup: 'teen',
   occasion: 'birthday',
   priceRange: { min: 30000, max: 39999 },
