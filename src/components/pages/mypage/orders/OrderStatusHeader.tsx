@@ -20,7 +20,9 @@ export default function OrderStatusHeader({
       >
         {isDelivered ? '배송완료' : '배송중'}
       </p>
-      <time className="text-body-sm ml-7.5 text-gray-500">{date}</time>
+      <time className="text-body-sm ml-7.5 text-gray-500">
+        {date.slice(0, 10)}
+      </time>
     </div>
   );
 }

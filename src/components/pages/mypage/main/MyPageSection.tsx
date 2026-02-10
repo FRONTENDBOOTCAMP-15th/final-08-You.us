@@ -15,7 +15,9 @@ export default function MyPageSection({
   return (
     <section>
       <div className="flex items-center justify-between pb-1">
-        <h2 className="lg:text-caption text-body-lg font-bold">{title}</h2>
+        <h2 className="text-title-sm font-pretendard mb-3 font-bold text-gray-900 lg:mb-3">
+          {title}
+        </h2>
 
         {moreHref && (
           <Link href={moreHref} className="text-body-sm text-gray-500">
