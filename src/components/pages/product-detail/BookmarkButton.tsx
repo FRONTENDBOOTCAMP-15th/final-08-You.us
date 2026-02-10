@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import fetchClient from '@/lib/api/fetchClient';
-import { BookmarkResponse } from '@/types/bookmark.types';
+import { SingleBookmarkResponse } from '@/types/bookmark.types';
 import { toast } from 'react-toastify';
 
 export default function BookmarkButton({ productId }: { productId: number }) {
@@ -17,7 +17,7 @@ export default function BookmarkButton({ productId }: { productId: number }) {
     const token = useUserStore.getState().user?.token?.accessToken;
     if (!token) return;
 
-    fetchClient<BookmarkResponse>(`/bookmarks/product/${productId}`)
+    fetchClient<SingleBookmarkResponse>(`/bookmarks/product/${productId}`)
       .then((data) => {
         if (data.ok) {
           setIsBookmarked(true);
@@ -38,10 +38,13 @@ export default function BookmarkButton({ productId }: { productId: number }) {
         setBookmarkId(null);
         toast.success('찜 목록에서 삭제되었습니다.');
       } else {
-        const data = await fetchClient<BookmarkResponse>('/bookmarks/product', {
-          method: 'POST',
-          body: JSON.stringify({ target_id: productId }),
-        });
+        const data = await fetchClient<SingleBookmarkResponse>(
+          '/bookmarks/product',
+          {
+            method: 'POST',
+            body: JSON.stringify({ target_id: productId }),
+          },
+        );
         setIsBookmarked(true);
         setBookmarkId(data.item._id);
         toast.success('찜 목록에 추가되었습니다.');

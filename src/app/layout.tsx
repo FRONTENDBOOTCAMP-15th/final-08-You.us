@@ -6,6 +6,9 @@ import ToastProvider from '@/components/common/ToastProvider';
 export const metadata: Metadata = {
   title: 'Gift Shop',
   description: 'Find the perfect gift for your loved ones',
+  icons: {
+    icon: '/icons/favicon.ico.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

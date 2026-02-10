@@ -28,6 +28,11 @@ export interface BookmarkItem {
   };
 }
 
+export interface SingleBookmarkResponse {
+  ok: number;
+  item: BookmarkItem;
+}
+
 export interface BookmarkResponse {
   ok: number;
   item: BookmarkItem[];

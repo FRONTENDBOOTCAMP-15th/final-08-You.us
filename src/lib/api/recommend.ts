@@ -44,7 +44,8 @@ export async function getRecommendProducts({
       console.error('API 응답 에러:', response);
       return {
         ok: 0,
-        message: response.message || '상품을 불러오는데 실패했습니다.',
+        message:
+          (response.message as string) || '상품을 불러오는데 실패했습니다.',
         items: [],
         total: 0,
       };

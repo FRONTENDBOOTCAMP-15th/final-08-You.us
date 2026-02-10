@@ -1,5 +1,7 @@
 import CheckoutClient from '@/components/pages/checkout/CheckoutClient';
+import Loading from '@/components/common/Loading';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: '주문/결제',
@@ -8,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function CheckoutPage() {
-  return <CheckoutClient />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <CheckoutClient />
+    </Suspense>
+  );
 }
