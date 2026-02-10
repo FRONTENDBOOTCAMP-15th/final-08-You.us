@@ -28,7 +28,7 @@ export default async function ProductDetailPage({
   const product = (res as SingleProductResponse).item;
 
   return (
-    <main className="overflow-hidden px-5 lg:px-[100px] lg:py-20">
+    <main className="overflow-x-clip px-5 lg:px-25 lg:py-20">
       <div className="min-w-0 lg:flex lg:gap-[3vw]">
         <div className="w-full py-5 lg:w-2/5 lg:max-w-125 lg:shrink-0 lg:py-[2vw]">
           <ImageGallery images={product.mainImages} />

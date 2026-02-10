@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ProductDetailContent from '@/components/pages/product-detail/ProductTap/ProductDetailContent';
 import ProductReviews from '@/components/pages/product-detail/ProductTap/ProductReviews/ProductReviews';
 import ProductInquiry from '@/components/pages/product-detail/ProductTap/ProductInquiry';
@@ -14,6 +14,11 @@ export default function ProductTabs({
   replies: number;
 }) {
   const [activeTab, setActiveTab] = useState('detail');
+  const tabRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTab = () => {
+    tabRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const tabs = [
     { id: 'detail', label: '상세정보' },
@@ -39,7 +44,8 @@ export default function ProductTabs({
 
   return (
     <>
-      <div className="mt-20 flex gap-2">
+      <div ref={tabRef} className="mt-20" />
+      <div className="sticky top-0 z-10 flex gap-2 bg-white">
         <div
           role="tablist"
           className="flex h-[70px] w-full items-center justify-around gap-6 border-b p-0 lg:justify-between lg:gap-1.5 lg:rounded lg:border-b-0 lg:bg-gray-300 lg:p-3"
@@ -50,7 +56,10 @@ export default function ProductTabs({
               role="tab"
               aria-selected={activeTab === tab.id}
               aria-controls={`tabpanel-${tab.id}`}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                scrollToTab();
+              }}
               className={`cursor-pointer pb-3 text-sm font-medium transition-colors lg:flex-1 lg:rounded lg:px-6 lg:py-4 lg:pb-4 lg:text-base ${
                 activeTab === tab.id
                   ? 'border-primary text-primary border-b-3 lg:border-b-0 lg:bg-gray-50'

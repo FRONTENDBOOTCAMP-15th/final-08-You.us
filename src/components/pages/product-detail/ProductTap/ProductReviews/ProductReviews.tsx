@@ -33,12 +33,19 @@ export default function ProductReviews() {
         url += `&sort={"rating":-1}`;
         break;
       case 'photo':
-        url += `&custom={"extra.image":true}`;
+        url += `&sort={"createdAt":-1}`;
         break;
     }
 
     fetchClient<ReviewResponse>(url).then((data) => {
-      setReviews(data);
+      if (sortType === 'photo') {
+        const filtered = data.item?.filter(
+          (r) => r.extra?.images && r.extra.images.length > 0,
+        );
+        setReviews({ ...data, item: filtered });
+      } else {
+        setReviews(data);
+      }
       setIsLoading(false);
     });
   }, [id, page, sortType]);
@@ -97,7 +104,7 @@ export default function ProductReviews() {
             <p className="text-gray-400">등록된 후기가 없습니다.</p>
           </div>
         ) : (
-          <div className="min-h-[700px] space-y-6">
+          <div className="min-h-[500px] space-y-6">
             {reviews.item?.map((review) => (
               <ReviewsComponent
                 key={review._id}

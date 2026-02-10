@@ -41,11 +41,9 @@ export default function ProductCard({
         <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">{name}</h3>
         <p className="text-body-md text-primary font-bold">{price}원</p>
         <div className="flex shrink-0 items-center justify-between">
-          {rating && replies && (
-            <p className="text-gray-500">
-              ★ {rating?.toFixed(2)}({replies})
-            </p>
-          )}
+          <p className="text-gray-500">
+            ★ {(rating ?? 0).toFixed(2)}({replies ?? 0})
+          </p>
           <Link
             href={`/products/${mainCategory}/${subCategory}/${id}`} // 동적 라우팅
             className="text-body-md text-primary hover:text-primary-hover shrink-0 cursor-pointer transition-colors duration-300 ease-in-out"
