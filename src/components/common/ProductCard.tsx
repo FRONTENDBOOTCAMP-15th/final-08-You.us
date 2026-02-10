@@ -26,34 +26,35 @@ export default function ProductCard({
   subCategory,
 }: ProductCardProps) {
   return (
-    <div className="flex h-full flex-col rounded border border-gray-200 bg-white p-4">
-      <div className="relative mb-4 aspect-square">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-contain"
-        />
-      </div>
+    <Link
+      href={`/products/${mainCategory}/${subCategory}/${id}`} // 동적 라우팅
+      className="text-body-md text-primary hover:text-primary-hover shrink-0 cursor-pointer transition-colors duration-300 ease-in-out"
+    >
+      <div className="flex h-full flex-col rounded border border-gray-200 bg-white p-4">
+        <div className="relative mb-4 aspect-square">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-contain"
+          />
+        </div>
 
-      <div className="flex flex-1 flex-col gap-2">
-        <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">{name}</h3>
-        <p className="text-body-md text-primary font-bold">{price}원</p>
-        <div className="flex shrink-0 items-center justify-between">
-          {rating && replies && (
-            <p className="text-gray-500">
-              ★ {rating?.toFixed(2)}({replies})
-            </p>
-          )}
-          <Link
-            href={`/products/${mainCategory}/${subCategory}/${id}`} // 동적 라우팅
-            className="text-body-md text-primary hover:text-primary-hover shrink-0 cursor-pointer transition-colors duration-300 ease-in-out"
-          >
+        <div className="flex flex-1 flex-col gap-2">
+          <h3 className="line-clamp-1 flex-1 text-sm text-gray-700">{name}</h3>
+          <p className="text-body-md text-primary font-bold">{price}원</p>
+          <div className="flex shrink-0 items-center justify-between">
+            {rating && replies && (
+              <p className="text-gray-500">
+                ★ {rating.toFixed(2)}({replies})
+              </p>
+            )}
+
             {detailLinkText}
-          </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
