@@ -1,9 +1,8 @@
-import { ModalItem } from '@/app/(with-layout)/cart/page';
+import { ModalItem } from '@/components/pages/cart/CartPageClient';
 import { deleteCartItem, updateCartItem } from '@/lib/api/cart';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface CartListItem {
   item: CartItemOnList; // 표시할 상품 정보
