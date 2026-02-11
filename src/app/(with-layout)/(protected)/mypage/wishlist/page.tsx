@@ -60,14 +60,14 @@ export default function WishlistPage() {
               message="주문한 상품이 없습니다."
               action={
                 <Link href="/products">
-                  <Button className="text-body-sm">상품 보러가기</Button>
+                  <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
                 </Link>
               }
             />
           )}
           {/* 마이페이지로 돌아가는 버튼 */}
           <Link href="/mypage" className="w-75 lg:w-full">
-            <Button variant="update" className="text-body-sm mb-5 w-full">
+            <Button tabIndex={-1} variant="update" className="text-body-sm mb-5 w-full">
               마이페이지로 돌아가기
             </Button>
           </Link>

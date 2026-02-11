@@ -280,7 +280,7 @@ export default function ReviewForm({
                   </Button>
                 ) : (
                   <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
-                    <Button variant="update" className="text-body-sm w-full">
+                    <Button tabIndex={-1} variant="update" className="text-body-sm w-full">
                       취소
                     </Button>
                   </Link>

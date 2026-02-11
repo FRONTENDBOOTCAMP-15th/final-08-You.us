@@ -80,6 +80,7 @@ export default function OrdersPage() {
                       <div className="flex w-full shrink-0 flex-col gap-2 p-2 sm:w-auto lg:p-4">
                         <Link href={`/mypage/orders/${orderItem._id}`}>
                           <Button
+                            tabIndex={-1}
                             aria-label="주문 상세 보기"
                             className="text-body-sm py-button-y w-full shrink-0"
                           >
@@ -96,13 +97,13 @@ export default function OrdersPage() {
                 message="주문한 상품이 없습니다."
                 action={
                   <Link href="/products">
-                    <Button className="text-body-sm">상품 보러가기</Button>
+                    <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
                   </Link>
                 }
               />
             )}
             <Link href="/mypage" className="w-75 lg:w-full">
-              <Button variant="update" className="text-body-sm mb-5 w-full">
+              <Button tabIndex={-1} variant="update" className="text-body-sm mb-5 w-full">
                 마이페이지로 돌아가기
               </Button>
             </Link>

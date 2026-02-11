@@ -109,6 +109,7 @@ export default function MyPage() {
                       <div className="flex w-full shrink-0 flex-col gap-2 p-2 sm:w-auto lg:p-4">
                         <Link href={`/mypage/orders/${orderItem._id}`}>
                           <Button
+                            tabIndex={-1}
                             aria-label="주문 상세 보기"
                             className="text-body-sm py-button-y w-full shrink-0"
                           >
@@ -125,7 +126,7 @@ export default function MyPage() {
                 message="주문한 상품이 없습니다."
                 action={
                   <Link href="/products">
-                    <Button className="text-body-sm">상품 보러가기</Button>
+                    <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
                   </Link>
                 }
               />
@@ -184,6 +185,7 @@ export default function MyPage() {
                         className="w-full sm:w-auto"
                       >
                         <Button
+                          tabIndex={-1}
                           aria-label="내 후기 보기"
                           className="text-body-sm w-full py-3.5 whitespace-nowrap lg:w-auto"
                         >
@@ -238,7 +240,7 @@ export default function MyPage() {
               message="찜한 상품이 없습니다."
               action={
                 <Link href="/products">
-                  <Button className="text-body-sm">상품 보러가기</Button>
+                  <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
                 </Link>
               }
             />
