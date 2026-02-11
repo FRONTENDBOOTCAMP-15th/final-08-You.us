@@ -1,4 +1,5 @@
 import { deleteCartItem } from '@/lib/api/cart';
+import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
 
 interface AllcheckProps {
@@ -25,6 +26,7 @@ export default function Allcheck({ items, setItems }: AllcheckProps) {
 
       // 3. 체크되지 않은 상품만 남김
       setItems(items.filter((item) => !item.checked));
+      fetchServerCartCount();
     } catch (error) {
       console.error('선택 삭제 실패:', error);
     }

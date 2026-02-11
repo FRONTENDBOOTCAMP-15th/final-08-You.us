@@ -156,7 +156,7 @@ export default function MyPage() {
                       />
                       <div className="flex flex-col gap-2 pr-4 *:line-clamp-1 *:shrink-0 sm:mr-auto sm:p-0">
                         <p className="text-body-md line-clamp-1">
-                          {item.extra.title}
+                          {item.product.name}
                         </p>
                         <p className="text-body-md">{}</p>
                         <p className="flex">
