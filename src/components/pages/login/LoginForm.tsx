@@ -4,6 +4,7 @@ import Input from '@/components/common/Input';
 import { login } from '@/lib/api/users';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { mergeLocalCartToServer } from '@/lib/zustand/cartStore';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
@@ -209,8 +210,22 @@ export default function LoginForm() {
       <Button
         onClick={handleNaverLogin}
         disabled={isPending}
-        className="mt-button-y px-button-x py-button-y w-full cursor-pointer rounded-lg border border-[#03C75A] bg-white text-center font-bold text-[#02B350] transition-colors outline-none hover:bg-[#03C75A] hover:text-[white] focus:border-gray-900"
+        className="mt-button-y px-button-x py-button-y group flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#03C75A] bg-white text-center font-bold text-[#02B350] transition-colors outline-none hover:bg-[#03C75A] hover:text-white focus:border-gray-900"
       >
+        <Image
+          src="/icons/Naver.png"
+          width={14}
+          height={14}
+          alt=""
+          className="block group-hover:hidden"
+        />
+        <Image
+          src="/icons/Naver-hover.png"
+          width={14}
+          height={14}
+          alt=""
+          className="hidden group-hover:block"
+        />
         네이버 로그인
       </Button>
     </form>

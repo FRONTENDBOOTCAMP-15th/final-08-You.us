@@ -89,9 +89,7 @@ export default function MyPage() {
                           />
                         </Link>
                         <div className="leading-8 *:line-clamp-1">
-                          <Link
-                            href={`/products/${orderItem.products[0]?.extra?.category[0] ?? ''}/${orderItem.products[0]?.extra?.category[1] ?? ''}/${orderItem.products[0]?._id}`}
-                          >
+                          <Link href={`/mypage/orders/${orderItem._id}`}>
                             <p className="text-body-md line-clamp-1">
                               {orderItem.products[0]?.name}
                             </p>
