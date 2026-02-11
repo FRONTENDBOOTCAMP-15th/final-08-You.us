@@ -124,7 +124,9 @@ export default function MyPage() {
                 message="주문한 상품이 없습니다."
                 action={
                   <Link href="/products">
-                    <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
+                    <Button tabIndex={-1} className="text-body-sm">
+                      상품 보러가기
+                    </Button>
                   </Link>
                 }
               />
@@ -238,7 +240,9 @@ export default function MyPage() {
               message="찜한 상품이 없습니다."
               action={
                 <Link href="/products">
-                  <Button tabIndex={-1} className="text-body-sm">상품 보러가기</Button>
+                  <Button tabIndex={-1} className="text-body-sm">
+                    상품 보러가기
+                  </Button>
                 </Link>
               }
             />

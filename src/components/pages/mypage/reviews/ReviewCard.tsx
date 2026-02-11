@@ -94,7 +94,10 @@ export default function ReviewCard({
             {type === 'written' ? (
               <>
                 <Link href={`/mypage/reviews/${reviewId}/edit`}>
-                  <Button tabIndex={-1} className="text-body-sm w-full lg:w-[162px]">
+                  <Button
+                    tabIndex={-1}
+                    className="text-body-sm w-full lg:w-[162px]"
+                  >
                     수정하기
                   </Button>
                 </Link>
@@ -107,7 +110,10 @@ export default function ReviewCard({
             ) : (
               <>
                 <Link href={`/mypage/orders/1`}>
-                  <Button tabIndex={-1} className="text-body-sm w-full lg:w-[162px]">
+                  <Button
+                    tabIndex={-1}
+                    className="text-body-sm w-full lg:w-[162px]"
+                  >
                     주문 상세
                   </Button>
                 </Link>

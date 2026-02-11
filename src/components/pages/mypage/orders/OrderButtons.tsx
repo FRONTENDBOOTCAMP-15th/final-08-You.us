@@ -37,7 +37,11 @@ export default function OrderButtons({
         </Link>
       ) : reviewStatus === 'NONE' ? (
         <Link href="/mypage/reviews/create">
-          <Button tabIndex={-1} aria-label="내 후기 쓰기" className="text-body-sm bg-primary">
+          <Button
+            tabIndex={-1}
+            aria-label="내 후기 쓰기"
+            className="text-body-sm bg-primary"
+          >
             후기쓰기
           </Button>
         </Link>

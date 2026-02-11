@@ -93,7 +93,6 @@ export default function ReviewForm({
         };
         await createReview(body);
         toast.success('후기가 등록되었습니다.');
-        // alert('후기가 등록되었습니다.');
         router.push('/mypage/reviews');
       }
 
@@ -106,11 +105,10 @@ export default function ReviewForm({
         };
         await updateReview(reviewId, body);
         toast.success('후기가 수정되었습니다.');
-        // alert('후기가 수정되었습니다.');
         router.push('/mypage/reviews');
       }
     } catch (error) {
-      alert(
+      toast.error(
         mode === 'edit'
           ? '후기 수정에 실패했습니다.'
           : '후기 등록에 실패했습니다.',
@@ -283,7 +281,11 @@ export default function ReviewForm({
                   </Button>
                 ) : (
                   <Link href="/mypage/reviews" className="w-75 lg:w-40.5">
-                    <Button tabIndex={-1} variant="update" className="text-body-sm w-full">
+                    <Button
+                      tabIndex={-1}
+                      variant="update"
+                      className="text-body-sm w-full"
+                    >
                       취소
                     </Button>
                   </Link>

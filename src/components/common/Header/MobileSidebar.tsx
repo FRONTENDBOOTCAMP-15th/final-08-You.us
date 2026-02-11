@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import useHasHydrated from '@/hooks/auth/useHasHydrated';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
+import { toast } from 'react-toastify';
 
 interface MobileSidebarProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
     resetUser();
     localStorage.removeItem('refreshToken');
     sessionStorage.removeItem('naver_state');
-    alert('로그아웃 되었습니다.');
+    toast.success('로그아웃 되었습니다.');
   };
 
   const toggleCategory = (code: string) => {
