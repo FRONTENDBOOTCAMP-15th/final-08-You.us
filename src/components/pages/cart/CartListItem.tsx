@@ -1,4 +1,4 @@
-import { ModalItem } from '@/app/(with-layout)/cart/page';
+import { ModalItem } from '@/components/pages/cart/CartPageClient';
 import { deleteCartItem, updateCartItem } from '@/lib/api/cart';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
