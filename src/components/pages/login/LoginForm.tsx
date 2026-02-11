@@ -140,7 +140,7 @@ export default function LoginForm() {
         type="email"
         autoComplete="email"
         name="email"
-        defaultValue="youus@likelion.com@market.com"
+        defaultValue="youus@likelion.com"
         labelClassName="sr-only"
         onBlur={handleEmailBlur}
         onChange={handleEmailChange}

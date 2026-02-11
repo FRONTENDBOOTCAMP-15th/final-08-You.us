@@ -285,7 +285,7 @@ export default function CheckoutClient() {
         }}
       />
 
-      <div className="mx-auto max-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:gap-37.5">
+      <div className="mx-auto max-w-375 min-w-5xl bg-gray-50 px-6.25 pt-6.25 lg:flex lg:flex-row lg:justify-center lg:gap-15">
         <h1 className="sr-only">주문・결제 페이지</h1>
         <div className="mb-15 lg:w-200">
           <OrderItems items={orderItems} />
@@ -309,24 +309,24 @@ export default function CheckoutClient() {
         >
           <h2
             id="final-payment-title"
-            className="text-primary border-primary text-body-sm inline-block border-b-2 pb-1 font-bold"
+            className="text-primary border-primary text-body-md inline-block border-b-2 pb-1 font-bold"
           >
             최종 결제 금액
           </h2>
 
           <dl className="mt-6">
             <div className="flex items-center justify-between border-b border-gray-200 py-1">
-              <dt className="text-[12px] font-medium text-gray-900">
+              <dt className="text-body-sm font-medium text-gray-900">
                 주문금액
               </dt>
-              <dd className="text-[12px] text-gray-900">
+              <dd className="text-body-sm text-gray-900">
                 <data value={sumPrice}>{sumPrice.toLocaleString()}원</data>
               </dd>
             </div>
 
             <div className="flex items-center justify-between py-1">
-              <dt className="text-[12px] font-medium text-gray-900">배송비</dt>
-              <dd className="text-[12px] text-gray-900">
+              <dt className="text-body-sm font-medium text-gray-900">배송비</dt>
+              <dd className="text-body-sm text-gray-900">
                 <data value={shippingFees}>
                   {shippingFees.toLocaleString()}원
                 </data>
@@ -338,10 +338,10 @@ export default function CheckoutClient() {
             aria-live="polite"
             className="mt-5 flex items-baseline justify-end gap-6"
           >
-            <strong className="text-body-sm font-bold text-gray-900">
+            <strong className="text-body-md font-bold text-gray-900">
               총 금액
             </strong>
-            <strong className="text-primary text-body-sm font-extrabold">
+            <strong className="text-primary text-body-md font-extrabold">
               <data value={sumPrice + shippingFees}>
                 {(sumPrice + shippingFees).toLocaleString()}원
               </data>
@@ -364,14 +364,14 @@ export default function CheckoutClient() {
             />
             <label
               htmlFor="agreePayment"
-              className="text-[12px] font-medium text-gray-900"
+              className="text-body-sm font-medium text-gray-900"
             >
               주문 내용 확인 및 결제 동의{' '}
               <span className="text-gray-900">(필수)</span>
             </label>
           </div>
 
-          <div className="mt-3 space-y-2 pl-6 text-[12px] text-gray-400">
+          <div className="text-body-sm mt-3 space-y-2 pl-6 text-gray-400">
             <Link href="#" className="underline underline-offset-4">
               개인정보 수집 및 이용 동의
             </Link>
