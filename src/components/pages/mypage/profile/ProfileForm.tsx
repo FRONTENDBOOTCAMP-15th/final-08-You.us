@@ -10,6 +10,7 @@ import { uploadFile } from '@/lib/api/files';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import useDaumPostcode from '@/hooks/auth/useDaumPostcode';
 import { DaumPostcodeData } from '@/types/daum.types';
+import { toast } from 'react-toastify';
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
 
@@ -99,6 +100,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
     setError(null);
 
     const result = await updateProfile(user._id, { name: editValues.name });
+    toast.success(`이름이 수정되었습니다.`);
 
     if (result.ok === 1) {
       setUser({ ...user, name: editValues.name });
@@ -122,6 +124,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
     setError(null);
 
     const result = await updateProfile(user._id, { phone: phoneNumbers });
+    toast.success(`연락처가 수정되었습니다.`);
 
     if (result.ok === 1) {
       setUser({ ...user, phone: phoneNumbers });
@@ -182,6 +185,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
         postalCode: editValues.postalCode,
       },
     });
+    toast.success(`주소가 수정되었습니다.`);
 
     if (result.ok === 1) {
       setUser({
@@ -236,6 +240,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
       // 프로필에 이미지 경로 저장
       const result = await updateProfile(user._id, { image: imagePath });
       console.log('응답: ', result);
+      toast.success(`프로필 이미지가 수정되었습니다.`);
 
       if (result.ok === 1 && 'item' in result) {
         setUser({ ...user, image: result.item.image });
