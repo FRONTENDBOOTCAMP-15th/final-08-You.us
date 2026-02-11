@@ -81,8 +81,8 @@ export default function MyPage() {
                           className="shrink-0"
                         >
                           <Image
-                            src={orderItem.products[0]?.image.path ?? ''}
-                            alt={orderItem.products[0]?.image.name ?? ''}
+                            src={orderItem.products[0]?.image.path || ''}
+                            alt={orderItem.products[0]?.image.name || ''}
                             width={100}
                             height={100}
                             className="border-primary m-5 h-25 w-25 shrink-0 rounded-lg border-2 object-cover"
@@ -202,34 +202,47 @@ export default function MyPage() {
       {/* 찜한 선물 */}
       <section className="flex flex-col gap-2">
         <MyPageSection title={'찜한 선물'} moreHref="/mypage/wishlist">
-          {/* 모바일 */}
-          <div className="grid grid-cols-2 grid-rows-1 gap-4 lg:hidden">
-            {products?.slice(0, 2).map((bookmark) => (
-              <ProductCard
-                key={bookmark.product._id}
-                id={bookmark.product._id}
-                image={bookmark.product.mainImages[0]?.path || ''}
-                name={bookmark.product.name}
-                price={`${bookmark.product.price.toLocaleString()}`}
-                mainCategory={bookmark.product.extra.category[0] ?? ''}
-                subCategory={bookmark.product.extra.category[1] ?? ''}
-              />
-            ))}
-          </div>
-          {/* 데스크탑 */}
-          <div className="hidden lg:grid lg:grid-cols-4 lg:grid-rows-1 lg:gap-4">
-            {products?.slice(0, 4).map((bookmark) => (
-              <ProductCard
-                key={bookmark.product._id}
-                id={bookmark.product._id}
-                image={bookmark.product.mainImages[0]?.path || ''}
-                name={bookmark.product.name}
-                price={`${bookmark.product.price.toLocaleString()}`}
-                mainCategory={bookmark.product.extra.category[0] ?? ''}
-                subCategory={bookmark.product.extra.category[1] ?? ''}
-              />
-            ))}
-          </div>
+          {products && products.length > 0 ? (
+            <div>
+              {/* 모바일 */}
+              <div className="grid grid-cols-2 grid-rows-1 gap-4 lg:hidden">
+                {products?.slice(0, 2).map((bookmark) => (
+                  <ProductCard
+                    key={bookmark.product._id}
+                    id={bookmark.product._id}
+                    image={bookmark.product.mainImages[0]?.path || ''}
+                    name={bookmark.product.name}
+                    price={`${bookmark.product.price.toLocaleString()}`}
+                    mainCategory={bookmark.product.extra.category[0] ?? ''}
+                    subCategory={bookmark.product.extra.category[1] ?? ''}
+                  />
+                ))}
+              </div>
+              {/* 데스크탑 */}
+              <div className="hidden lg:grid lg:grid-cols-4 lg:grid-rows-1 lg:gap-4">
+                {products?.slice(0, 4).map((bookmark) => (
+                  <ProductCard
+                    key={bookmark.product._id}
+                    id={bookmark.product._id}
+                    image={bookmark.product.mainImages[0]?.path || ''}
+                    name={bookmark.product.name}
+                    price={`${bookmark.product.price.toLocaleString()}`}
+                    mainCategory={bookmark.product.extra.category[0] ?? ''}
+                    subCategory={bookmark.product.extra.category[1] ?? ''}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <EmptyState
+              message="찜한 상품이 없습니다."
+              action={
+                <Link href="/products">
+                  <Button className="text-body-sm">상품 보러가기</Button>
+                </Link>
+              }
+            />
+          )}
         </MyPageSection>
       </section>
 

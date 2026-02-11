@@ -90,11 +90,6 @@ export default function OrdersPage() {
                     </div>
                   </li>
                 ))}
-                <Link href="/mypage" className="w-75 lg:w-full">
-                  <Button variant="update" className="text-body-sm w-full">
-                    마이페이지로 돌아가기
-                  </Button>
-                </Link>
               </>
             ) : (
               <EmptyState
@@ -106,6 +101,11 @@ export default function OrdersPage() {
                 }
               />
             )}
+            <Link href="/mypage" className="w-75 lg:w-full">
+              <Button variant="update" className="text-body-sm mb-5 w-full">
+                마이페이지로 돌아가기
+              </Button>
+            </Link>
           </ul>
         </MyPageSection>
       </section>
