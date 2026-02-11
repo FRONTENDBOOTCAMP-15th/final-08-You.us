@@ -38,7 +38,11 @@ export default function DesktopCategoryDropdown({
             {categories?.map((category) => (
               <li key={category.code}>
                 <Link
-                  href={`/products/${category.code}`}
+                  href={
+                    category.code === 'PC00'
+                      ? '/products'
+                      : `/products/${category.code}`
+                  }
                   className="hover:text-primary text-body-sm font-medium text-gray-700 transition-colors"
                 >
                   {category.value}
