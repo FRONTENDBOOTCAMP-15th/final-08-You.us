@@ -118,21 +118,17 @@ export default function CartPageClient() {
               <div className="rounded border border-gray-300 bg-white p-6 lg:px-8 lg:pt-12">
                 <h2
                   id="order-summary-title"
-                  className="text-body-lg mb-4 border-b border-gray-900 pb-4 font-bold"
+                  className="text-body-lg mb-5 border-b border-gray-900 pb-4 font-bold"
                 >
                   주문 예상 금액
                 </h2>
 
-                <dl className="space-y-3">
+                <dl className="mb-2 space-y-3">
                   <div className="flex justify-between">
                     <dt className="text-body-sm text-gray-900">총 상품금액</dt>
                     <dd className="text-body-sm font-bold text-gray-900">
                       {totalPrice.toLocaleString()}원
                     </dd>
-                  </div>
-                  <div className="mb-8 flex justify-between">
-                    <dt className="text-body-sm text-gray-900">배송비</dt>
-                    <dd>0원</dd>
                   </div>
                 </dl>
 
