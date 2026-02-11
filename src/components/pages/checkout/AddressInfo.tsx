@@ -75,6 +75,7 @@ export default function AddressInfo({
     user,
     onAddressChange,
     hasUserAddress,
+    addressLine2,
   ]);
 
   const handleSearchAddress = () => {

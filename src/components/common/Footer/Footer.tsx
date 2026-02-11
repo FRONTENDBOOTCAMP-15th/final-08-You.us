@@ -91,7 +91,10 @@ export default function Footer() {
             href={'https://m.epost.go.kr/'}
             className="ml-2 hidden shrink-0 lg:block"
           >
-            <Button className="flex h-12.5 items-center justify-center">
+            <Button
+              tabIndex={-1}
+              className="flex h-12.5 items-center justify-center"
+            >
               우체국 조회하기
             </Button>
           </Link>
