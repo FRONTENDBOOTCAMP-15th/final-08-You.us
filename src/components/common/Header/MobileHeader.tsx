@@ -98,22 +98,26 @@ export default function MobileHeader({
             ) : (
               <>
                 <li>
-                  <Image
-                    src="/icons/User.svg"
-                    alt="마이페이지 비활성화"
-                    width={120}
-                    height={32}
-                    className="h-10 w-auto"
-                  />
+                  <Link href="/mypage" className="block">
+                    <Image
+                      src="/icons/User.svg"
+                      alt="마이페이지"
+                      width={120}
+                      height={32}
+                      className="h-10 w-auto"
+                    />
+                  </Link>
                 </li>
                 <li>
-                  <Image
-                    src="/icons/disabled-basket.svg"
-                    alt="장바구니"
-                    width={120}
-                    height={32}
-                    className="h-10 w-auto"
-                  />
+                  <Link href="/cart" className="relative block">
+                    <Image
+                      src="/icons/disabled-basket.svg"
+                      alt="장바구니"
+                      width={120}
+                      height={32}
+                      className="h-10 w-auto"
+                    />
+                  </Link>
                 </li>
               </>
             ))}
