@@ -140,6 +140,7 @@ export default function LoginForm() {
         type="email"
         autoComplete="email"
         name="email"
+        defaultValue="youus@likelion.com@market.com"
         labelClassName="sr-only"
         onBlur={handleEmailBlur}
         onChange={handleEmailChange}
@@ -154,6 +155,7 @@ export default function LoginForm() {
         type="password"
         name="password"
         autoComplete="current-password"
+        defaultValue="12341234"
         placeholder="패스워드"
         className="mt-button-y w-75 lg:w-82.5"
         labelClassName="sr-only"
