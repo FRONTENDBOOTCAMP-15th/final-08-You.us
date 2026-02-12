@@ -1,6 +1,6 @@
 # 8조 선물상자 - 유어스(You,Us)
 
-![title-image](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/title-image.png)
+![title-image](/public/docs/images/title-image.png)
 
 ## 🎁 프로젝트 소개
 
@@ -14,19 +14,14 @@
 >
 > 또한 AI를 단순한 마케팅 요소가 아니라 설계 단계부터 핵심 기능으로 포함하여, 사용자의 자연어 답변을 구조화·태그화함으로써 단순 필터링을 넘어 **맥락 기반 선물 추천 경험을 구현한 프로젝트**입니다.
 >
-> ------
+> ---
 >
 > ### ➡ 우리가 지향하는 가치
 >
 > - 관계 중심의 커머스
->
 > - 고민을 줄여주는 경험 설계
->
 > - 직관적이고 감성적인 UI
->
 > - 명확한 사용자 흐름과 안정적인 주문 처리
-
-
 
 ## 🎁 핵심 기능
 
@@ -36,37 +31,33 @@
 - 장바구니 및 주문 / 결제
 - 마이페이지에서 주문 & 관심 상품 & 후기 관리
 
-
-
 ## 🎁 프로젝트 기간
 
 - **2026.1.14 ~ 2026.2.13** (총 30일)
 
-
-
 ## 🎁 팀원 역할 및 소개
 
-|                                                              |                                      |                                                              |                                           |
-| :----------------------------------------------------------: | :----------------------------------: | :----------------------------------------------------------: | :---------------------------------------: |
-|                            소혜림                            |                이승규                |                            한정아                            |                  김여경                   |
-|                            **PM**                            |                **PL**                |                           **발표**                           |                 **서기**                  |
+|                                                                                                                               |                                      |                                                                                                                           |                                           |
+| :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :---------------------------------------: |
+|                                                            소혜림                                                             |                이승규                |                                                          한정아                                                           |                  김여경                   |
+|                                                            **PM**                                                             |                **PL**                |                                                         **발표**                                                          |                 **서기**                  |
 | **인트로 페이지<br />선물 테스트 페이지<br />상품 추천 페이지<br />로그인 페이지<br />회원가입 페이지<br />주문/결제 페이지** | **메인 페이지<br />상품 상세페이지** | **마이페이지<br />내 정보 보기 / 수정<br />내 주문 보기 / 배송 조회<br />내 후기 보기 / 작성 / 수정<br />찜한 상품 보기** | **상품 목록 페이지<br />장바구니 페이지** |
 
 ## 🎁 기술 스택
 
-|         항목          |                             내용                             |
-| :-------------------: | :----------------------------------------------------------: |
-| **프레임워크 & 코어** | ![nextjs](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/nextjs.svg)![react](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/react.svg) |
-|       **언어**        | ![typescript](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/typescript.svg) |
-|     **스타일링**      | ![tailwind](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/tailwind.svg) |
-|     **상태 관리**     | ![zustand](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/zustand.svg) |
-|        **툴**         | ![eslint](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/eslint.svg)![prettier](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/prettier.svg) |
-|       **배포**        | ![vercel](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/vercel.svg) |
-|      **팀 협업**      | ![discord](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/discord.svg)![notion](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/notion.svg) |
+|         항목          |                                          내용                                          |
+| :-------------------: | :------------------------------------------------------------------------------------: |
+| **프레임워크 & 코어** |    ![nextjs](/public/docs/images/nextjs.svg)![react](/public/docs/images/react.svg)    |
+|       **언어**        |                   ![typescript](/public/docs/images/typescript.svg)                    |
+|     **스타일링**      |                     ![tailwind](/public/docs/images/tailwind.svg)                      |
+|     **상태 관리**     |                      ![zustand](/public/docs/images/zustand.svg)                       |
+|        **툴**         | ![eslint](/public/docs/images/eslint.svg)![prettier](/public/docs/images/prettier.svg) |
+|       **배포**        |                       ![vercel](/public/docs/images/vercel.svg)                        |
+|      **팀 협업**      |  ![discord](/public/docs/images/discord.svg)![notion](/public/docs/images/notion.svg)  |
 
 ## 🎁 페이지 구조
 
-![페이지 구조](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/페이지 구조.png)
+![페이지 구조](/public/docs/images/페이지 구조.png)
 
 ## 🎁 페이지 및 기능 소개
 
@@ -75,26 +66,26 @@
 - 첫 방문시에만 노출
 - AI 테스트 유도
 
-<video src="/Users/sohyerim/team-project/final-08-you.us/public/docs/images/2.mov" controls=""></video>
+<video src="/public/docs/images/2.mov" controls=""></video>
 
-<video src="/Users/sohyerim/team-project/final-08-you.us/public/docs/images/8.mov" controls=""></video>
+<video src="/public/docs/images/8.mov" controls=""></video>
 
 ### 2. 선물 추천 테스트 페이지
 
 - 텍스트 입력 방식의 설문 테스트
 - 답변 완료 후 OpenAI API 호출하여 답변 분석 및 태그 반환
 
-<video src="/Users/sohyerim/team-project/final-08-you.us/public/docs/images/1.mov" controls=""></video>
+<video src="/public/docs/images/1.mov" controls=""></video>
 
-![9](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/9.png)
+![9](/public/docs/images/9.png)
 
 ### 3. 선물 추천 결과 페이지
 
 - AI가 분석한 태그 기반 조건에 맞는 상품 목록 노출
 
-![3](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/3.png)
+![3](/public/docs/images/3.png)
 
-![10](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/10.png)
+![10](/public/docs/images/10.png)
 
 ### 4. 메인 페이지
 
@@ -102,17 +93,17 @@
 
 - 식품 / 뷰티 / 쥬얼리 카테고리 인기 상품 목록
 
-  ![13](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/13.png)
+  ![13](/public/docs/images/13.png)
 
-![4](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/4.png)
+![4](/public/docs/images/4.png)
 
 ### 5. 회원가입 페이지
 
 - 필수 항목 및 약관 동의 시에만 회원가입 가능
 
-  ![5](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/5.png)
+  ![5](/public/docs/images/5.png)
 
-![11](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/11.png)
+![11](/public/docs/images/11.png)
 
 ### 6. 로그인 페이지
 
@@ -122,7 +113,7 @@
 
 ![image-20260212232317469](/Users/sohyerim/Library/Application Support/typora-user-images/image-20260212232317469.png)
 
-![12](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/12.png)
+![12](/public/docs/images/12.png)
 
 ### 7. 상품 목록 페이지
 
@@ -130,9 +121,9 @@
 - 조건에 따라 정렬하기 (최신순, 찜 많은 순, 높은 가격순, 낮은 가격순)
 - 검색 기능 사용 시 결과 상품 리스트 보기
 
-![6](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/6.png)
+![6](/public/docs/images/6.png)
 
-![7](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/7.png)
+![7](/public/docs/images/7.png)
 
 ### 8. 상품 상세 페이지
 
@@ -140,38 +131,38 @@
 - 상품 기능 (옵션 선택, 수량 변경, 찜하기, 장바구니 담기)
 - 후기 보기 (최신순, 별점순, 사진 리뷰만 보기)
 
-![14](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/14.png)
+![14](/public/docs/images/14.png)
 
-![15](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/15.png)
+![15](/public/docs/images/15.png)
 
 ### 9. 장바구니 페이지
 
 - 상품 선택 및 삭제
 - 옵션 / 수량 변경
 
-![16](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/16.png)
+![16](/public/docs/images/16.png)
 
-![17](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/17.png)
+![17](/public/docs/images/17.png)
 
 ### 10. 주문/결제 페이지
 
 - 수령인 정보 및 배송지 입력
 - 결제 수단 선택 및 결제
 
-![18](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/18.png)
+![18](/public/docs/images/18.png)
 
-![19](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/19.png)
+![19](/public/docs/images/19.png)
 
 ### 11. 마이페이지
 
 - 내 정보 열람 및 수정
-- 주문  / 배송 내역 조회
+- 주문 / 배송 내역 조회
 - 후기 작성 및 수정
 - 후기 목록 보기
 - 찜한 선물 보기
 
-![20](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/20.png)
+![20](/public/docs/images/20.png)
 
-![21](/Users/sohyerim/team-project/final-08-you.us/public/docs/images/21.png)
+![21](/public/docs/images/21.png)
 
 ## 🎁 트러블 슈팅 및 회고
