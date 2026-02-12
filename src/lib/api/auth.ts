@@ -90,6 +90,7 @@ export async function getNaverToken(code: string) {
 
     const userData: NaverUserResponse = await userResponse.json();
     console.log('NAVER 사용자 정보:', userData.response);
+
     // 3. 우리 서버에 OAuth 회원가입/로그인 요청
     const signupBody = {
       type: 'user',
@@ -116,9 +117,21 @@ export async function getNaverToken(code: string) {
     const signupData = await signupResponse.json();
     console.log('SERVER 회원가입 응답:', signupData);
 
-    // 이미 가입된 회원이면 로그인 시도
-    // if (signupData.ok === 0 && signupData.message?.includes('이미 가입')) {
-    console.log('SERVER 이미 가입된 회원 - 로그인 시도');
+    // 4. 회원가입 결과 확인
+    const isNewUser = signupData.ok === 1;
+    const isExistingUser =
+      signupData.ok === 0 && signupData.message?.includes('이미 가입');
+
+    // 회원가입이 진짜 실패한 경우 (서버 오류 등)
+    if (!isNewUser && !isExistingUser) {
+      console.error('SERVER 회원가입 실패:', signupData);
+      throw new Error(signupData.message || '서버 회원가입 실패');
+    }
+
+    // 5. 신규/기존 회원 모두 로그인 시도
+    console.log(
+      `SERVER ${isNewUser ? '신규 회원' : '기존 회원'} - 로그인 시도`,
+    );
 
     const loginResponse = await fetch(`${API_SERVER}/users/login/with`, {
       method: 'POST',
@@ -145,20 +158,6 @@ export async function getNaverToken(code: string) {
       ok: 1,
       user: loginData.item,
     };
-    // }
-
-    // 회원가입 성공
-    // if (!signupResponse.ok || signupData.ok === 0) {
-    //   console.error('SERVER 회원가입 실패:', signupData);
-    //   throw new Error('서버 회원가입/로그인 실패');
-    // }
-
-    // console.log('SERVER 최종 사용자 정보:', signupData.item);
-
-    // return {
-    //   ok: 1,
-    //   user: signupData.item,
-    // };
   } catch (error) {
     console.error('NAVER 로그인 오류:', error);
     return {
