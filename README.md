@@ -42,6 +42,7 @@
 |                                                    소혜림                                                    |                 이승규                  |                                                                          한정아                                                                          |                  김여경                   |
 |                                                    **PM**                                                    |                 **PL**                  |                                                                         **발표**                                                                         |                 **서기**                  |
 | **인트로 페이지<br />선물 추천 테스트 페이지<br />로그인 페이지<br />회원가입 페이지<br />주문/결제 페이지** |  **메인 페이지<br />상품 상세페이지**   | <details><summary>**마이페이지**</summary>내 정보 보기 / 수정<br />내 주문 보기 / 배송 조회<br />내 후기 보기 / 작성 / 수정<br />찜한 상품 보기</detail> | **상품 목록 페이지<br />장바구니 페이지** |
+| https://github.com/sohyerim-dev | https://github.com/SG-Develope | https://github.com/kyk9412 | https://github.com/hanon-a |
 
 ## 🎁 기술 스택
 
@@ -152,5 +153,9 @@
 
 | ![20](/public/docs/images/20.png) | ![21](/public/docs/images/21.png) |
 | :-------------------------------: | :-------------------------------: |
+
+## 🎁 프로젝트 시연
+- https://final-08-you-us-release.vercel.app/intro
+
 
 ## 🎁 트러블 슈팅 및 회고
