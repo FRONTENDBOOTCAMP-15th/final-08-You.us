@@ -7334,7 +7334,7 @@
       "active": true,
       "name": "제주 은갈치 선물세트",
       "quantity": 300,
-      "buyQuantity": 200,
+      "buyQuantity": 100,
       "mainImages": [
         {
           "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1770925329/febc15-final08-ecad/KtlB7Pv7L.png",
@@ -7675,7 +7675,7 @@
       "active": true,
       "name": "토종 발효 도라지즙 진액 선물세트",
       "quantity": 300,
-      "buyQuantity": 200,
+      "buyQuantity": 100,
       "mainImages": [
         {
           "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1770925329/febc15-final08-ecad/O-mygCzXr5.png",
