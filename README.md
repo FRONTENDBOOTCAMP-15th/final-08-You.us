@@ -39,7 +39,7 @@
 
 |                                  ![소혜림](/public/docs/images/red.png)                                  | ![이승규](/public/docs/images/pink.png)  |              ![한정아](/public/docs/images/green.png)              | ![김여경](/public/docs/images/blue.png) |
 | :------------------------------------------------------------------------------------------------------: | :--------------------------------------: | :----------------------------------------------------------------: | :-------------------------------------: |
-|                                [소혜림](https://github.com/sohyerim-dev)                                 | [이승규](https://github.com/SG-Develope) |                [한정아](https://github.com/kyk9412)                |  [김여경](https://github.com/hanon-a)   |
+|                                [소혜림](https://github.com/sohyerim-dev)                                 | [이승규](https://github.com/SG-Develope) |                [한정아](https://github.com/hanon-a)                |  [김여경](https://github.com/kyk9412)   |
 |                                                  **PM**                                                  |                  **PL**                  |                              **발표**                              |                **서기**                 |
 | 인트로 페이지<br />선물 추천 테스트 페이지<br />로그인 페이지<br />회원가입 페이지<br />주문/결제 페이지 |    메인 페이지<br />상품 상세 페이지     | 마이페이지<br />(내 정보 / 주문 내역 /<br />관심 상품 / 후기 관리) |  상품 목록 페이지<br />장바구니 페이지  |
 
