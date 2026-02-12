@@ -45,15 +45,15 @@
 
 ## 🎁 기술 스택
 
-|         항목          |                                          내용                                          |
-| :-------------------: | :------------------------------------------------------------------------------------: |
-| **프레임워크 & 코어** |    ![nextjs](/public/docs/images/nextjs.svg)![react](/public/docs/images/react.svg)    |
-|       **언어**        |                   ![typescript](/public/docs/images/typescript.svg)                    |
-|     **스타일링**      |                     ![tailwind](/public/docs/images/tailwind.svg)                      |
-|     **상태 관리**     |                      ![zustand](/public/docs/images/zustand.svg)                       |
-|        **툴**         | ![eslint](/public/docs/images/eslint.svg)![prettier](/public/docs/images/prettier.svg) |
-|       **배포**        |                       ![vercel](/public/docs/images/vercel.svg)                        |
-|      **팀 협업**      |  ![discord](/public/docs/images/discord.svg)![notion](/public/docs/images/notion.svg)  |
+|         항목          |                                          내용                                           |
+| :-------------------: | :-------------------------------------------------------------------------------------: |
+| **프레임워크 & 코어** |    ![nextjs](/public/docs/images/nextjs.svg) ![react](/public/docs/images/react.svg)    |
+|       **언어**        |                    ![typescript](/public/docs/images/typescript.svg)                    |
+|     **스타일링**      |                      ![tailwind](/public/docs/images/tailwind.svg)                      |
+|     **상태 관리**     |                       ![zustand](/public/docs/images/zustand.svg)                       |
+|        **툴**         | ![eslint](/public/docs/images/eslint.svg) ![prettier](/public/docs/images/prettier.svg) |
+|       **배포**        |                        ![vercel](/public/docs/images/vercel.svg)                        |
+|      **팀 협업**      |  ![discord](/public/docs/images/discord.svg) ![notion](/public/docs/images/notion.svg)  |
 
 ## 🎁 페이지 구조
 
@@ -66,9 +66,7 @@
 - 첫 방문시에만 노출
 - AI 테스트 유도
 
-<video src="/public/docs/images/2.mov" controls=""></video>
-
-<video src="/public/docs/images/8.mov" controls=""></video>
+<video src="/public/docs/images/2.mov" controls=""></video> <video src="/public/docs/images/8.mov" controls=""></video>
 
 ### 2. 선물 추천 테스트 페이지
 
@@ -83,9 +81,7 @@
 
 - AI가 분석한 태그 기반 조건에 맞는 상품 목록 노출
 
-![3](/public/docs/images/3.png)
-
-![10](/public/docs/images/10.png)
+![3](/public/docs/images/3.png) ![10](/public/docs/images/10.png)
 
 ### 4. 메인 페이지
 
@@ -93,17 +89,13 @@
 
 - 식품 / 뷰티 / 쥬얼리 카테고리 인기 상품 목록
 
-  ![13](/public/docs/images/13.png)
-
-![4](/public/docs/images/4.png)
+  ![13](/public/docs/images/13.png) ![4](/public/docs/images/4.png)
 
 ### 5. 회원가입 페이지
 
 - 필수 항목 및 약관 동의 시에만 회원가입 가능
 
-  ![5](/public/docs/images/5.png)
-
-![11](/public/docs/images/11.png)
+  ![5](/public/docs/images/5.png) ![11](/public/docs/images/11.png)
 
 ### 6. 로그인 페이지
 
@@ -121,9 +113,7 @@
 - 조건에 따라 정렬하기 (최신순, 찜 많은 순, 높은 가격순, 낮은 가격순)
 - 검색 기능 사용 시 결과 상품 리스트 보기
 
-![6](/public/docs/images/6.png)
-
-![7](/public/docs/images/7.png)
+![6](/public/docs/images/6.png) ![7](/public/docs/images/7.png)
 
 ### 8. 상품 상세 페이지
 
@@ -131,27 +121,21 @@
 - 상품 기능 (옵션 선택, 수량 변경, 찜하기, 장바구니 담기)
 - 후기 보기 (최신순, 별점순, 사진 리뷰만 보기)
 
-![14](/public/docs/images/14.png)
-
-![15](/public/docs/images/15.png)
+![14](/public/docs/images/14.png) ![15](/public/docs/images/15.png)
 
 ### 9. 장바구니 페이지
 
 - 상품 선택 및 삭제
 - 옵션 / 수량 변경
 
-![16](/public/docs/images/16.png)
-
-![17](/public/docs/images/17.png)
+![16](/public/docs/images/16.png) ![17](/public/docs/images/17.png)
 
 ### 10. 주문/결제 페이지
 
 - 수령인 정보 및 배송지 입력
 - 결제 수단 선택 및 결제
 
-![18](/public/docs/images/18.png)
-
-![19](/public/docs/images/19.png)
+![18](/public/docs/images/18.png) ![19](/public/docs/images/19.png)
 
 ### 11. 마이페이지
 
@@ -161,8 +145,6 @@
 - 후기 목록 보기
 - 찜한 선물 보기
 
-![20](/public/docs/images/20.png)
-
-![21](/public/docs/images/21.png)
+![20](/public/docs/images/20.png) ![21](/public/docs/images/21.png)
 
 ## 🎁 트러블 슈팅 및 회고
