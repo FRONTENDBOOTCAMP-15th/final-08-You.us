@@ -75,13 +75,15 @@
 
 <video src="/public/docs/images/1.mov" controls=""></video>
 
-![9](/public/docs/images/9.png)
+|![9](/public/docs/images/9.png)|
+:--------------------------------:
 
 ### 3. 선물 추천 결과 페이지
 
 - AI가 분석한 태그 기반 조건에 맞는 상품 목록 노출
 
-![3](/public/docs/images/3.png) ![10](/public/docs/images/10.png)
+|![3](/public/docs/images/3.png) ![10](/public/docs/images/10.png)|
+:----------------------------------------------------------------:
 
 ### 4. 메인 페이지
 
