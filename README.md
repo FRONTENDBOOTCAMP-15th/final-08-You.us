@@ -51,7 +51,7 @@
 |       **언어**        |                    ![typescript](/public/docs/images/typescript.svg)                    |
 |     **스타일링**      |                      ![tailwind](/public/docs/images/tailwind.svg)                      |
 |     **상태 관리**     |                       ![zustand](/public/docs/images/zustand.svg)                       |
-|        **툴**         | ![eslint](/public/docs/images/eslint.svg) ![prettier](/public/docs/images/prettier.svg) |
+|    **코드 포맷터**    | ![eslint](/public/docs/images/eslint.svg) ![prettier](/public/docs/images/prettier.svg) |
 |       **배포**        |                        ![vercel](/public/docs/images/vercel.svg)                        |
 |      **팀 협업**      |  ![discord](/public/docs/images/discord.svg) ![notion](/public/docs/images/notion.svg)  |
 
