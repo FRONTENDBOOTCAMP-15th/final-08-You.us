@@ -4,6 +4,7 @@ import './globals.css';
 import ToastProvider from '@/components/common/ToastProvider';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://you-us.vercel.app'),
   title: 'Gift Shop',
   description: 'Find the perfect gift for your loved ones',
   icons: {
