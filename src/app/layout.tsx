@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import './globals.css';
-import ToastProvider from '@/components/common/ToastProvider';
-import RouterProvider from '@/components/common/RouterProvider';
+import ToastProvider from '@/components/ui/ToastProvider';
+import RouterProvider from '@/components/layout/RouterProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://you-us.vercel.app'),

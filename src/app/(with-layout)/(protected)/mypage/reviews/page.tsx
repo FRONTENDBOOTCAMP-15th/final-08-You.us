@@ -1,13 +1,13 @@
 'use client';
 
-import Button from '@/components/common/Button';
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
-import ReviewCard from '@/components/pages/mypage/reviews/ReviewCard';
+import Button from '@/components/ui/Button';
+import MyPageSection from '@/app/(with-layout)/(protected)/mypage/_components/main/MyPageSection';
+import ReviewCard from '@/app/(with-layout)/(protected)/mypage/_components/reviews/ReviewCard';
 import { getMyReviews } from '@/lib/api/mypage';
 import { ReviewItem } from '@/types/review.types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/ui/Loading';
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<ReviewItem[]>([]);

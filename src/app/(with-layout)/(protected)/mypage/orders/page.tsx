@@ -1,14 +1,14 @@
 'use client';
 
-import Button from '@/components/common/Button';
-import EmptyState from '@/components/common/EmptyState';
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
-import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader';
+import Button from '@/components/ui/Button';
+import EmptyState from '@/components/ui/EmptyState';
+import MyPageSection from '@/app/(with-layout)/(protected)/mypage/_components/main/MyPageSection';
+import OrderStatusHeader from '@/app/(with-layout)/(protected)/mypage/_components/orders/OrderStatusHeader';
 import { getMyorder } from '@/lib/api/mypage';
 import { Orders, OrderList } from '@/types/order.types';
 import Image from 'next/image';
 import Link from 'next/link';
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/ui/Loading';
 import { useEffect, useState } from 'react';
 
 export default function OrdersPage() {

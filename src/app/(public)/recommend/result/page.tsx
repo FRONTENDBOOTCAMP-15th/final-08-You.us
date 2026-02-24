@@ -1,4 +1,4 @@
-import RecommendResultClient from '@/components/pages/recommend/RecommendResultClient';
+import RecommendResultClient from '@/app/(public)/recommend/_components/RecommendResultClient';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

@@ -1,9 +1,9 @@
 'use client';
 
-import ReviewForm from '@/components/pages/mypage/reviews/ReviewForm';
+import ReviewForm from '@/app/(with-layout)/(protected)/mypage/_components/reviews/ReviewForm';
 import { getReviewById } from '@/lib/api/mypage';
 import { ReviewItem } from '@/types/review.types';
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/ui/Loading';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

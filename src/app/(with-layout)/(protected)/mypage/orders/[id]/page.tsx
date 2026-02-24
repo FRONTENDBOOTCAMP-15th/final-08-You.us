@@ -1,14 +1,14 @@
 'use client';
 
 import { use, useState, useEffect } from 'react';
-import Button from '@/components/common/Button';
-import MyPageSection from '@/components/pages/mypage/main/MyPageSection';
-import OrderStatusHeader from '@/components/pages/mypage/orders/OrderStatusHeader';
+import Button from '@/components/ui/Button';
+import MyPageSection from '@/app/(with-layout)/(protected)/mypage/_components/main/MyPageSection';
+import OrderStatusHeader from '@/app/(with-layout)/(protected)/mypage/_components/orders/OrderStatusHeader';
 import { getOrderDetail } from '@/lib/api/checkout';
 import { OrderDetailResponse } from '@/types/checkout.types';
 import Link from 'next/link';
 import Image from 'next/image';
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/ui/Loading';
 
 interface OrderDetailPageProps {
   params: Promise<{ id: string }>;

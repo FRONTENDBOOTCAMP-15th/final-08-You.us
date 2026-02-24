@@ -79,22 +79,63 @@ function parsePriceRange(priceText: string): {
 // Keyword sets
 // ──────────────────────────────────────────────────────
 const ELDER_HINTS = [
-  '부모', '부모님', '엄마', '아빠', '어머니', '아버지',
-  '할머니', '할아버지', '어르신', '어른',
-  '친구부모', '친구부모님', '지인부모', '지인부모님',
-  '친구의부모', '친구의부모님',
-  '선생님', '교수님', '강사', '튜터', '코치',
+  '부모',
+  '부모님',
+  '엄마',
+  '아빠',
+  '어머니',
+  '아버지',
+  '할머니',
+  '할아버지',
+  '어르신',
+  '어른',
+  '친구부모',
+  '친구부모님',
+  '지인부모',
+  '지인부모님',
+  '친구의부모',
+  '친구의부모님',
+  '선생님',
+  '교수님',
+  '강사',
+  '튜터',
+  '코치',
 ];
 
-const YOUNG_HINTS = ['유아', '어린이', '초등', '10대', '십대', '중학생', '고등학생'];
+const YOUNG_HINTS = [
+  '유아',
+  '어린이',
+  '초등',
+  '10대',
+  '십대',
+  '중학생',
+  '고등학생',
+];
 const ADULT_AGE_HINTS = ['20대', '30대', '40대', '50대', '60대', '70대'];
-const VAGUE_AGE_HINTS = ['모르', '미정', '상관없', '아무나', '어른', '성인', '대충'];
+const VAGUE_AGE_HINTS = [
+  '모르',
+  '미정',
+  '상관없',
+  '아무나',
+  '어른',
+  '성인',
+  '대충',
+];
 const MARRIAGE_HINTS = ['결혼', '신혼', '집들이'];
 const CHILD_OCCASION_HINTS = ['어린이날', '어린이', '돌잔치', '돌'];
 const LIGHT_HINTS = ['가벼운', '부담없는', '부담 없는', '간단한', '소소한'];
 const NON_CHILD_TARGET_HINTS = [
-  '선생님', '교수님', '강사', '코치', '동료', '팀장',
-  '상사', '사장님', '거래처', '고객', '대표',
+  '선생님',
+  '교수님',
+  '강사',
+  '코치',
+  '동료',
+  '팀장',
+  '상사',
+  '사장님',
+  '거래처',
+  '고객',
+  '대표',
   ...ELDER_HINTS,
 ];
 
@@ -166,7 +207,8 @@ const RULES: Rule[] = [
     test: ({ hasElderTarget, isYoung }) => hasElderTarget && isYoung,
     warning: (raw) => ({
       level: 'hard',
-      title: '선물 대상과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      title:
+        '선물 대상과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
       detail: `1번 답변은 "${raw[0]}"인데, 3번 답변은 "${raw[2]}"로 입력됐어요.`,
     }),
   },
@@ -174,7 +216,8 @@ const RULES: Rule[] = [
     test: ({ isYoung, isMarriageOccasion }) => isYoung && isMarriageOccasion,
     warning: (raw) => ({
       level: 'hard',
-      title: '연령대와 선물 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      title:
+        '연령대와 선물 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
       detail: `3번 답변은 "${raw[2]}"인데, 4번 답변은 "${raw[3]}"로 입력됐어요.`,
     }),
   },
@@ -183,15 +226,18 @@ const RULES: Rule[] = [
       isMarriageOccasion && isVeryLowPrice,
     warning: (raw) => ({
       level: 'hard',
-      title: '결혼·신혼/집들이 선물로는 가격대가 너무 낮아 보여요. 테스트를 다시 진행해주세요.',
+      title:
+        '결혼·신혼/집들이 선물로는 가격대가 너무 낮아 보여요. 테스트를 다시 진행해주세요.',
       detail: `4번 답변은 "${raw[3]}"인데, 5번 가격대가 "${raw[4]}"로 입력됐어요.`,
     }),
   },
   {
-    test: ({ isVeryHighPrice, isLightIntent }) => isVeryHighPrice && isLightIntent,
+    test: ({ isVeryHighPrice, isLightIntent }) =>
+      isVeryHighPrice && isLightIntent,
     warning: (raw) => ({
       level: 'soft',
-      title: '가벼운 선물 의도와 가격대가 서로 어긋나는 것 같아요. 테스트를 다시 진행해주세요.',
+      title:
+        '가벼운 선물 의도와 가격대가 서로 어긋나는 것 같아요. 테스트를 다시 진행해주세요.',
       detail: `6번 답변은 "${raw[5]}"인데, 5번 가격대가 "${raw[4]}"로 입력됐어요.`,
     }),
   },
@@ -199,7 +245,8 @@ const RULES: Rule[] = [
     test: ({ isChildOccasion, isAdult }) => isChildOccasion && isAdult,
     warning: (raw) => ({
       level: 'hard',
-      title: '선물 목적과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      title:
+        '선물 목적과 연령대가 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
       detail: `3번 답변은 "${raw[2]}"인데, 4번 답변은 "${raw[3]}"로 입력됐어요.`,
     }),
   },
@@ -208,7 +255,8 @@ const RULES: Rule[] = [
       isNonChildTarget && isChildOccasion,
     warning: (raw) => ({
       level: 'hard',
-      title: '선물 대상과 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
+      title:
+        '선물 대상과 목적이 서로 맞지 않아 보여요. 테스트를 다시 진행해주세요.',
       detail: `1번 답변은 "${raw[0]}"인데, 4번 답변은 "${raw[3]}"로 입력됐어요.`,
     }),
   },
@@ -217,7 +265,8 @@ const RULES: Rule[] = [
       isAgeVague && isPriceVerySpecific,
     warning: (raw) => ({
       level: 'soft',
-      title: '연령대는 모호한데 가격대만 너무 구체적이에요. 테스트를 다시 진행해주세요.',
+      title:
+        '연령대는 모호한데 가격대만 너무 구체적이에요. 테스트를 다시 진행해주세요.',
       detail: `3번 답변은 "${raw[2]}"인데, 5번 가격대가 "${raw[4]}"로 입력됐어요.`,
     }),
   },

@@ -1,7 +1,7 @@
 'use client';
 
-import Button from '@/components/common/Button';
-import ProfileForm from '@/components/pages/mypage/profile/ProfileForm';
+import Button from '@/components/ui/Button';
+import ProfileForm from '@/app/(with-layout)/(protected)/mypage/_components/profile/ProfileForm';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import Link from 'next/link';
 

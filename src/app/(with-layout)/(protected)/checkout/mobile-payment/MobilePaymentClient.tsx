@@ -1,6 +1,6 @@
 'use client';
 
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/ui/Loading';
 import { createOrder, deleteCartItems } from '@/lib/api/checkout';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -58,7 +58,10 @@ export default function MobilePaymentClient() {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 p-6 text-center">
         <p className="text-body-md font-semibold text-gray-900">{error}</p>
-        <a href="/checkout" className="text-primary text-body-sm underline underline-offset-4">
+        <a
+          href="/checkout"
+          className="text-primary text-body-sm underline underline-offset-4"
+        >
           결제 페이지로 돌아가기
         </a>
       </div>

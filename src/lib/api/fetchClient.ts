@@ -31,6 +31,7 @@ export class ApiError extends Error {
 // params는 쿼리 파라미터 (?page=1&limit=10 같은 거)
 interface FetchOptions extends RequestInit {
   params?: Record<string, string>; // { page: '1', limit: '10' } 형태
+  requireAuth?: boolean; // 로그인 여부 검사 (기본값: true, false면 인증 로직 스킵)
 }
 
 // T는 제네릭 타입 - 호출할 때 응답 타입을 지정할 수 있음
@@ -45,9 +46,9 @@ export async function fetchClient<T>(
   // getState()는 컴포넌트 밖에서도 스토어 값을 읽을 수 있게 해줌
   const { user, setUser, resetUser } = useUserStore.getState();
 
-  // options에서 params를 분리하고 나머지는 fetchOptions에 담기
-  // ...fetchOptions는 method, body 같은 나머지 옵션들
-  const { params, ...fetchOptions } = options;
+  // options에서 params, requireAuth를 분리하고 나머지는 fetchOptions에 담기
+  // ...fetchOptions는 method, body, cache, next 같은 나머지 옵션들
+  const { params, requireAuth = true, ...fetchOptions } = options;
 
   // URL이 '/api/'로 시작하면 Next.js 내부 API라고 판단
   // 예: '/api/recommend' → 내부 API, '/products' → 외부 API
@@ -78,9 +79,9 @@ export async function fetchClient<T>(
     headers.set('Client-Id', CLIENT_ID);
   }
 
-  // 로그인한 사용자가 있고, 토큰 갱신 요청이 아니면
+  // 로그인한 사용자가 있고, 토큰 갱신 요청이 아니고, requireAuth가 true면
   // Authorization 헤더에 accessToken 추가
-  if (user && url !== REFRESH_URL) {
+  if (requireAuth && user && url !== REFRESH_URL) {
     headers.set('Authorization', `Bearer ${user.token?.accessToken}`);
     // Bearer는 토큰 방식을 나타내는 키워드
   }
@@ -100,9 +101,9 @@ export async function fetchClient<T>(
     throw new ApiError('네트워크 요청에 실패했습니다.', 500);
   }
 
-  // 401 에러 처리 (인증 만료) - 내부 API는 건너뛰기
+  // 401 에러 처리 (인증 만료) - 내부 API이거나 requireAuth가 false면 건너뛰기
   // 401 = Unauthorized (권한 없음, 토큰 만료)
-  if (response.status === 401 && !isInternalApi) {
+  if (response.status === 401 && !isInternalApi && requireAuth) {
     // 토큰 갱신 요청 자체가 401이면 완전히 로그아웃
     // (refresh token도 만료된 상황)
     if (url === REFRESH_URL) {

@@ -1,6 +1,6 @@
 'use client';
 
-import QuickMenu from '@/components/pages/mypage/main/QuickMenu';
+import QuickMenu from '@/app/(with-layout)/(protected)/mypage/_components/main/QuickMenu';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import useHasHydrated from '@/hooks/auth/useHasHydrated';
 import { useRouter } from 'next/navigation';

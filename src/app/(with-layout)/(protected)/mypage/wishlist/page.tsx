@@ -1,9 +1,9 @@
 'use client';
 
-import Button from '@/components/common/Button';
-import EmptyState from '@/components/common/EmptyState';
-import Loading from '@/components/common/Loading';
-import ProductCard from '@/components/common/ProductCard';
+import Button from '@/components/ui/Button';
+import EmptyState from '@/components/ui/EmptyState';
+import Loading from '@/components/ui/Loading';
+import ProductCard from '@/features/product/ProductCard';
 import { getMyproduct } from '@/lib/api/mypage';
 import { BookmarkItem } from '@/types/bookmark.types';
 import Link from 'next/link';

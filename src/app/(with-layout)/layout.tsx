@@ -1,6 +1,6 @@
 import CategoryInit from '@/app/CategoryInit';
-import Footer from '@/components/common/Footer/Footer';
-import Header from '@/components/common/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
+import Header from '@/components/layout/Header/Header';
 import getCategoryCode from '@/lib/api/cods';
 
 export default async function WithLayoutLayout({
