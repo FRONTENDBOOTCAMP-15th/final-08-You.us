@@ -14,27 +14,27 @@ import fetchClient from '@/lib/api/fetchClient';
 const QUESTIONS = [
   {
     question: '누구를 위한 선물인가요?',
-    example: '(예시: 선생님, 친구의 부모님)',
+    options: ['부모님', '선생님/교수님', '연인/배우자', '친구', '직장 동료/상사', '자녀/조카', '기타'],
   },
   {
     question: '선물하는 상대의 성별은 무엇인가요?',
-    example: '(예시: 남성, 여성, 상관없음)',
+    options: ['남성', '여성', '상관없음'],
   },
   {
     question: '선물 상대의 연령대는?',
-    example: '(예시: 50대, 6살)',
+    options: ['10대 이하', '20대', '30대', '40대', '50대', '60대 이상', '기타'],
   },
   {
     question: '무엇을 위한 선물인가요?',
-    example: '(예시: 생일, 스승의날, 감사 선물)',
+    options: ['생일', '감사 선물', '명절', '집들이/이사', '결혼/기념일', '기타'],
   },
   {
     question: '원하는 가격대는?',
-    example: '(예시: 3만원 ~ 5만원, 10만원대)',
+    options: ['1만원 이하', '1~3만원', '3~5만원', '5~10만원', '10만원대', '20만원 이상', '기타'],
   },
   {
     question: '어떤 선물을 하고 싶나요?',
-    example: '(예시: 마음이 담긴 선물, 실용적인 선물, 가벼운 선물 등)',
+    options: ['실용적인 선물', '감동적인 선물', '가벼운 선물', '고급스러운 선물', '귀여운 선물', '기타'],
   },
 ] as const;
 
@@ -134,11 +134,19 @@ export default function RecommendClient() {
     setStep(isLast ? null : step + 1);
   };
 
+  const handleBack = () => {
+    if (step === null) {
+      setStep(QUESTIONS.length - 1);
+    } else if (step > 0) {
+      setStep(step - 1);
+    }
+  };
+
   if (step === null) {
     return (
       <LogoLayout>
         {warnings.length > 0 && !proceedAnyway && (
-          <RecommendWarning warnings={warnings} onReset={resetAll} />
+          <RecommendWarning warnings={warnings} onReset={resetAll} onBack={handleBack} />
         )}
 
         {(warnings.length === 0 || proceedAnyway) && isLoading && (
@@ -154,7 +162,13 @@ export default function RecommendClient() {
 
   return (
     <LogoLayout>
-      <RecommendTest step={step} questions={QUESTIONS} onDone={handleDone} />
+      <RecommendTest
+        step={step}
+        questions={QUESTIONS}
+        onDone={handleDone}
+        onBack={handleBack}
+        currentAnswer={answers[step]?.value}
+      />
     </LogoLayout>
   );
 }

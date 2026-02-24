@@ -151,8 +151,9 @@ export default function AddressInfo({
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setIsDefaultAddress(e.target.checked)
               }
+              className="cursor-pointer"
             />
-            <label htmlFor="isDefaultAddress">기본 배송지</label>
+            <label htmlFor="isDefaultAddress" className="cursor-pointer">기본 배송지</label>
           </div>
         )}
       </div>

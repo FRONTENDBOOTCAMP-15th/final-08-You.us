@@ -5,18 +5,33 @@ import { useEffect, useRef, useState } from 'react';
 
 type Props = {
   question: string;
-  example?: string;
   autoFocus?: boolean;
+  options?: readonly string[];
+  initialValue?: string;
   onDone: (value: string) => void;
 };
 
+const OTHER = '기타';
+
 export default function QuestionBox({
   question,
-  example,
   autoFocus,
+  options,
+  initialValue,
   onDone,
 }: Props) {
-  const [value, setValue] = useState('');
+  const hasOptions = !!options && options.length > 0;
+
+  // initialValue가 선택지 중 하나면 선택형 유지, 아니면(기타 직접입력) 텍스트 입력 상태로
+  const isInitialOther =
+    initialValue !== undefined &&
+    hasOptions &&
+    !options.includes(initialValue as string);
+
+  const [showInput, setShowInput] = useState(!hasOptions || isInitialOther);
+  const [value, setValue] = useState(
+    isInitialOther ? (initialValue ?? '') : '',
+  );
   const [enter, setEnter] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,8 +41,24 @@ export default function QuestionBox({
   }, []);
 
   useEffect(() => {
-    if (autoFocus) inputRef.current?.focus();
-  }, [autoFocus]);
+    if (autoFocus && showInput) inputRef.current?.focus();
+  }, [autoFocus, showInput]);
+
+  const handleOptionClick = (option: string) => {
+    if (option === OTHER) {
+      setShowInput(true);
+    } else {
+      onDone(option);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = value.trim();
+    if (!trimmed) return;
+    onDone(trimmed);
+    setValue('');
+  };
 
   return (
     <div
@@ -37,57 +68,119 @@ export default function QuestionBox({
         enter ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
       ].join(' ')}
     >
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onDone(value);
-          setValue('');
-        }}
-        autoComplete="off"
-        className="flex flex-col items-center gap-5 lg:gap-0"
-      >
-        <fieldset className="lg:card lg:border-primary flex w-full flex-col items-center gap-5 lg:gap-0 lg:overflow-hidden lg:rounded-[40px] lg:border lg:bg-gray-50">
-          <legend className="sr-only">선물 추천 질문</legend>
+      <fieldset className="card border-primary flex w-full flex-col items-center gap-0 overflow-hidden rounded-[40px] border bg-gray-50">
+        <legend className="sr-only">선물 추천 질문</legend>
 
-          <div className="bg-primary flex w-full flex-col items-center justify-center rounded-2xl px-6 py-5 sm:rounded-3xl sm:px-8 sm:py-6 lg:h-32 lg:rounded-none lg:py-0">
-            <h2 className="text-body-lg text-center font-bold text-gray-50">
-              {question}
-            </h2>
-            {example && (
-              <h3 className="text-body-sm mt-2 text-center font-normal text-gray-50 lg:hidden">
-                {example}
-              </h3>
-            )}
+        {/* 질문 헤더 */}
+        <div className="bg-primary flex w-full flex-col items-center justify-center h-32 rounded-none px-6 py-0">
+          <h2 className="text-body-lg text-center font-bold text-gray-50">
+            {question}
+          </h2>
+        </div>
+
+        {/* 선택형 UI */}
+        {hasOptions && !showInput ? (
+          <div className="grid w-full grid-cols-2 gap-3 px-6 py-6">
+            {options.map((option) => {
+              const isSelected = initialValue === option;
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => handleOptionClick(option)}
+                  className={[
+                    'flex items-center gap-2 rounded-xl border-2 px-3 py-3 text-sm font-medium transition',
+                    option === OTHER ? 'col-span-2 justify-center' : 'justify-start',
+                    isSelected
+                      ? 'bg-primary border-primary text-white'
+                      : 'border-primary/40 text-primary hover:bg-primary/10',
+                  ].join(' ')}
+                >
+                  {/* 체크박스 아이콘 */}
+                  <span className={[
+                    'flex h-4 w-4 shrink-0 items-center justify-center rounded border-2',
+                    isSelected
+                      ? 'border-white bg-white'
+                      : 'border-primary/60 bg-transparent',
+                  ].join(' ')}>
+                    {isSelected && (
+                      <svg
+                        className="text-primary h-2.5 w-2.5"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  {option}
+                </button>
+              );
+            })}
           </div>
-
-          {example && (
-            <h3 className="text-body-md text-gray-90 hidden px-4 text-center font-bold lg:my-8.75 lg:block">
-              {example}
-            </h3>
-          )}
-
-          <label htmlFor="answer" className="sr-only">
-            답변
-          </label>
-          <input
-            ref={inputRef}
-            id="answer"
-            name="answer"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="질문에 대한 답을 적어주세요."
-            className="border-primary text-primary w-full rounded-xl border-2 bg-gray-50 p-4 outline-0 lg:w-82.5 lg:rounded-[10px] lg:p-2.5"
+        ) : (
+          /* 텍스트 입력 UI */
+          <form
+            onSubmit={handleSubmit}
             autoComplete="off"
-          />
-
-          <Button
-            type="submit"
-            className="w-full leading-4 lg:mt-7.5 lg:mb-10 lg:w-auto"
+            className="flex w-full flex-col items-center gap-0 px-0 pb-10"
           >
-            입력
-          </Button>
-        </fieldset>
-      </form>
+            {hasOptions && (
+              <button
+                type="button"
+                onClick={() => {
+                  setShowInput(false);
+                  setValue('');
+                }}
+                className="mb-5 flex items-center gap-1.5 rounded-full border border-primary/40 px-3 py-1.5 text-sm font-medium text-primary transition hover:bg-primary/10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+                선택지로 돌아가기
+              </button>
+            )}
+
+            <label htmlFor="answer" className="sr-only">
+              답변
+            </label>
+            <input
+              ref={inputRef}
+              id="answer"
+              name="answer"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder="직접 입력해 주세요."
+              className="border-primary text-primary w-full rounded-xl border-2 bg-gray-50 p-4 outline-0 lg:w-82.5 lg:rounded-[10px] lg:p-2.5"
+              autoComplete="off"
+            />
+            <Button
+              type="submit"
+              className="w-full leading-4 lg:mt-7.5 lg:w-auto"
+            >
+              입력
+            </Button>
+          </form>
+        )}
+      </fieldset>
     </div>
   );
 }
