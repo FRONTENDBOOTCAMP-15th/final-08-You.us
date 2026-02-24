@@ -11,9 +11,10 @@ type Warning = {
 type Props = {
   warnings: Warning[];
   onReset: () => void;
+  onBack: () => void;
 };
 
-export default function RecommendWarning({ warnings, onReset }: Props) {
+export default function RecommendWarning({ warnings, onReset, onBack }: Props) {
   if (warnings.length === 0) return null;
 
   return (
@@ -74,9 +75,18 @@ export default function RecommendWarning({ warnings, onReset }: Props) {
         ))}
       </div>
 
-      <Button type="button" onClick={onReset} className="w-full leading-4">
-        다시 하기
-      </Button>
+      <div className="flex flex-col gap-3">
+        <Button type="button" onClick={onBack} className="w-full leading-4">
+          이전 질문으로 돌아가기
+        </Button>
+        <button
+          type="button"
+          onClick={onReset}
+          className="text-body-sm text-gray-500 underline underline-offset-2 transition hover:text-gray-800"
+        >
+          처음부터 다시 하기
+        </button>
+      </div>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function TermsModal({ isOpen, onClose, type }: TermsModalProps) {
 
   return (
     <div
-      className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
       onClick={onClose}
     >
       <div

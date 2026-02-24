@@ -1,6 +1,6 @@
-export interface ProductImage {
-  path: string;
-}
+import { ProductImage, ProductExtra } from '@/types/product.types';
+
+export type { ProductImage };
 
 export interface CheckoutItem {
   _id: number;
@@ -13,8 +13,12 @@ export interface CheckoutItem {
     name: string;
     price: number;
     image: ProductImage;
-    // 나머지는 나중에 필요할 때 추가
-    [key: string]: any;
+    extra: ProductExtra;
+    seller?: {
+      _id: number;
+      name: string;
+      image: string;
+    };
   };
 }
 
@@ -43,6 +47,11 @@ export interface OrderProduct {
 
 export interface CreateOrderRequest {
   products: OrderProduct[];
+  address?: {
+    name: string;
+    value: string;
+  };
+  state?: string;
 }
 
 export interface CreateOrderResponse {

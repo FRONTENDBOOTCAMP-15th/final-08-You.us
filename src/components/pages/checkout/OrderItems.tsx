@@ -6,8 +6,6 @@ interface OrderItemsProps {
 }
 
 export default function OrderItems({ items }: OrderItemsProps) {
-  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-
   return (
     <section aria-labelledby="order-products-title">
       <header className="mb-3 flex items-center justify-between">
@@ -16,8 +14,8 @@ export default function OrderItems({ items }: OrderItemsProps) {
           className="text-body-lg flex items-baseline gap-1 font-medium"
         >
           <span>주문상품</span>
-          <span className="sr-only">총 수량 {totalQuantity}개</span>
-          <span aria-hidden="true">({totalQuantity})</span>
+          <span className="sr-only">총 {items.length}개 상품</span>
+          <span aria-hidden="true">({items.length})</span>
         </h2>
       </header>
 

@@ -25,10 +25,8 @@ export default function PaymentMethod({
             name="paymentMethod"
             type="radio"
             value="deposit"
-            onChange={() =>
-              setPayment(payment === 'deposit' ? 'card' : 'deposit')
-            }
-            defaultChecked
+            checked={payment === 'deposit'}
+            onChange={() => setPayment('deposit')}
             className="peer sr-only"
           />
           <label
@@ -57,8 +55,9 @@ export default function PaymentMethod({
             name="paymentMethod"
             type="radio"
             value="card"
+            checked={payment === 'card'}
+            onChange={() => setPayment('card')}
             className="peer sr-only"
-            onChange={() => setPayment(payment === 'card' ? 'deposit' : 'card')}
           />
           <label
             htmlFor="payCard"
@@ -69,6 +68,12 @@ export default function PaymentMethod({
           </label>
         </div>
       </div>
+
+      {payment === 'card' && (
+        <p className="text-body-sm mt-2 text-gray-400">
+          카드 결제는 테스트 결제로 진행되며, 자정 무렵 자동 환불됩니다.
+        </p>
+      )}
     </fieldset>
   );
 }

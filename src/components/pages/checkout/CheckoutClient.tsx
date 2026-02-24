@@ -9,7 +9,7 @@ import getCartItems, { createOrder, deleteCartItems } from '@/lib/api/checkout';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { OrderItem } from '@/types/checkout.types';
 
-import Link from 'next/link';
+import TermsModal from '@/components/modals/TermsModal';
 import Script from 'next/script';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
@@ -27,7 +27,7 @@ export default function CheckoutClient() {
   }, [cartItemIds]);
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [shippingFees, setShippingFees] = useState(3000);
-  const [paymentMethod, setPaymentMethod] = useState('deposit');
+  const [paymentMethod, setPaymentMethod] = useState('');
   const [sumPrice, setSumPrice] = useState(0);
   const [agreePayment, setAgreePayment] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +40,7 @@ export default function CheckoutClient() {
     isDefault: true,
   });
   const [isDefaultAddress, setIsDefaultAddress] = useState(true);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const isAddressValid =
     isDefaultAddress ||
@@ -101,15 +102,28 @@ export default function CheckoutClient() {
         console.log('아이디 배열:', ArrayCartItemIds);
         console.log('필터링된 아이템:', item);
         if (item && item.length > 0) {
-          const orders = item.map((item) => ({
-            _id: item.product._id,
-            image: item.product.image,
-            name: item.product.name,
-            price: item.product.price,
-            quantity: item.quantity,
-            ...(item.size && { size: item.size }),
-            ...(item.color && { color: item.color }),
-          }));
+          const orders = item.reduce<OrderItem[]>((acc, cartItem) => {
+            const existing = acc.find(
+              (o) =>
+                o._id === cartItem.product._id &&
+                (o.size ?? '') === (cartItem.size ?? '') &&
+                (o.color ?? '') === (cartItem.color ?? ''),
+            );
+            if (existing) {
+              existing.quantity += cartItem.quantity;
+            } else {
+              acc.push({
+                _id: cartItem.product._id,
+                image: cartItem.product.image,
+                name: cartItem.product.name,
+                price: cartItem.product.price,
+                quantity: cartItem.quantity,
+                ...(cartItem.size && { size: cartItem.size }),
+                ...(cartItem.color && { color: cartItem.color }),
+              });
+            }
+            return acc;
+          }, []);
 
           setOrderItems(orders);
           console.log('주문 아이템:', orders);
@@ -197,6 +211,24 @@ export default function CheckoutClient() {
         ? `${orderItems[0]?.name || '상품'} 외 ${orderItems.length - 1}건`
         : orderItems[0]?.name || '상품';
 
+    // 모바일 결제 리다이렉트 후 주문 생성에 필요한 데이터 저장
+    sessionStorage.setItem(
+      'pending_order',
+      JSON.stringify({
+        products: orderItems.map((item) => ({
+          _id: item._id,
+          quantity: item.quantity,
+          ...(item.size && { size: item.size }),
+          ...(item.color && { color: item.color }),
+        })),
+        address: {
+          name: addressInfo.name,
+          value: `${addressInfo.postalCode} ${addressInfo.address}, ${addressInfo.detailAddress}`,
+        },
+        cartItemIds: ArrayCartItemIds,
+      }),
+    );
+
     try {
       window.IMP.request_pay(
         {
@@ -210,6 +242,7 @@ export default function CheckoutClient() {
           buyer_tel: addressInfo.phone || user.phone || '',
           buyer_addr: `${addressInfo.address}, ${addressInfo.detailAddress}`,
           buyer_postcode: addressInfo.postalCode,
+          m_redirect_url: `${window.location.origin}/checkout/mobile-payment`,
         },
         async (response) => {
           if (response.success) {
@@ -274,6 +307,11 @@ export default function CheckoutClient() {
 
   return (
     <>
+      <TermsModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+        type="privacy"
+      />
       <Script
         src="https://cdn.iamport.kr/v1/iamport.js"
         strategy="lazyOnload"
@@ -285,8 +323,11 @@ export default function CheckoutClient() {
         }}
       />
 
-      <div className="mx-auto w-full bg-gray-50 px-4 pt-6.25 lg:flex lg:max-w-375 lg:min-w-5xl lg:flex-row lg:justify-center lg:gap-15 lg:px-6.25">
-        <h1 className="sr-only">주문・결제 페이지</h1>
+      <div className="mx-auto w-full bg-gray-50 px-4 pt-6.25 lg:max-w-375 lg:min-w-5xl lg:px-6.25">
+        <h1 className="text-title-sm color-gray-900 font-pretendard mt-13.75 mb-12.5 ml-6.25 lg:mt-12.5 lg:mb-14.25">
+          주문・결제
+        </h1>
+        <div className="lg:flex lg:flex-row lg:justify-center lg:gap-15">
         <div className="mb-15 lg:w-200">
           <OrderItems items={orderItems} />
           <form className="mt-7.5">
@@ -305,7 +346,7 @@ export default function CheckoutClient() {
         </div>
         <section
           aria-labelledby="final-payment-title"
-          className="mt-7.5 mb-7.5 h-fit rounded-[14px] border border-gray-200 bg-white px-4 py-7 lg:w-115 lg:px-6"
+          className="mt-7.5 mb-7.5 h-fit rounded-[14px] border border-gray-200 bg-white px-4 py-7 lg:sticky lg:top-32.5 lg:w-115 lg:self-start lg:px-6"
         >
           <h2
             id="final-payment-title"
@@ -372,9 +413,13 @@ export default function CheckoutClient() {
           </div>
 
           <div className="text-body-sm mt-3 space-y-2 pl-6 text-gray-400">
-            <Link href="#" className="underline underline-offset-4">
+            <button
+              type="button"
+              onClick={() => setIsPrivacyModalOpen(true)}
+              className="underline underline-offset-4"
+            >
               개인정보 수집 및 이용 동의
-            </Link>
+            </button>
           </div>
           <PaymentButton
             paymentMethod={paymentMethod}
@@ -384,6 +429,7 @@ export default function CheckoutClient() {
             isLoading={isLoading}
           />
         </section>
+        </div>
       </div>
     </>
   );

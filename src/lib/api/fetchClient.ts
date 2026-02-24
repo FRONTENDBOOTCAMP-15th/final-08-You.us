@@ -1,5 +1,6 @@
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { ServerValidationError } from '@/types/api.types';
+import { navigateTo } from '@/lib/router';
 
 const API_SERVER = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || '';
@@ -210,8 +211,12 @@ function navigateLogin() {
   isNavigating = true;
 
   const currentPath = window.location.pathname;
-  // 바로 로그인 페이지로 이동 + redirect 파라미터에 현재 경로 저장
-  window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;
+  navigateTo(`/login?redirect=${encodeURIComponent(currentPath)}`);
+
+  // 다음 navigateLogin 호출을 위해 플래그 초기화
+  setTimeout(() => {
+    isNavigating = false;
+  }, 1000);
 }
 
 // 다른 파일에서 import 할 수 있게 export
