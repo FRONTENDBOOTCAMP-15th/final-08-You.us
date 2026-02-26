@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { CategoryCode } from '@/types/categoryCode.type';
+import type { CategoryCode } from '@/types/categoryCode.types';
 
 interface SmallCategoryProps {
   categories: CategoryCode[];

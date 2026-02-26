@@ -1,7 +1,7 @@
 import type {
   CategoryCodeResponse,
   CategoryCodeError,
-} from '@/types/categoryCode.type';
+} from '@/types/categoryCode.types';
 import fetchClient from '@/lib/api/fetchClient';
 
 export default async function getCategoryCode(): Promise<

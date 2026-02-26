@@ -13,7 +13,7 @@ export default async function getMainCategorySeller(
         cache: 'force-cache',
         next: {
           //   tags: ['posts'],
-          revalidate: 1800, // 5분마다 자동 갱신
+          revalidate: 1800, // 30분마다 자동 갱신
         },
       },
     );

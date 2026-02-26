@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import localFont from 'next/font/local';
 import './globals.css';
 import ToastProvider from '@/components/ui/ToastProvider';
 import RouterProvider from '@/components/layout/RouterProvider';
+
+const pretendard = localFont({
+  src: '../../public/fonts/Pretendard-Medium.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://you-us.vercel.app'),
@@ -16,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body className="bg-gray-50">
+      <body className={`bg-gray-50 ${pretendard.className}`}>
         <RouterProvider />
         {children}
         <ToastProvider />
