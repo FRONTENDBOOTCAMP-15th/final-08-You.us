@@ -14,6 +14,39 @@ import type { ProductItem } from '@/types/product.types';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
 import Loading from '@/components/ui/Loading';
 
+// 태그 매핑
+const TAG_LABELS: Record<string, string> = {
+  friend: '친구',
+  coworker: '직장동료',
+  parent: '부모님',
+  teacher: '선생님',
+  sibling: '형제자매',
+  male: '남성',
+  female: '여성',
+  unspecified: '성별무관',
+  '20s': '20대',
+  '30s': '30대',
+  '40s': '40대',
+  '50s': '50대',
+  '60plus': '60대이상',
+  birthday: '생일',
+  thanks: '감사',
+  anniversary: '기념일',
+  celebration: '축하',
+  practical: '실용적',
+  emotional: '감성적',
+  light: '가벼운선물',
+};
+
+// 태그 그룹
+const TAG_GROUPS: Record<string, string[]> = {
+  관계: ['friend', 'coworker', 'parent', 'teacher', 'sibling'],
+  성별: ['male', 'female', 'unspecified'],
+  연령대: ['20s', '30s', '40s', '50s', '60plus'],
+  상황: ['birthday', 'thanks', 'anniversary', 'celebration'],
+  스타일: ['practical', 'emotional', 'light'],
+};
+
 export default function ProductListClient({
   params,
 }: {
@@ -33,13 +66,19 @@ export default function ProductListClient({
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
+  // 선택된 태그 상태
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  // 태그 필터 열림/닫힘 상태
+  const [isTagFilterOpen, setIsTagFilterOpen] = useState(false);
+
   const category = categories[0];
   const subCategory = categories[1];
 
   //카테고리 목록 가져오기
   const categoryList = useCategoryStore((state) => state.categories);
 
-  // 카테고리 코드 → 이름 변환
+  // 카테고리 코드(이름 변환)
   const breadcrumbData = useMemo(() => {
     if (!category) {
       return { mainName: null, subName: null };
@@ -127,6 +166,14 @@ export default function ProductListClient({
     fetchProducts();
   }, [sortOption, category, subCategory, keyword]);
 
+  // 태그 필터링된 상품
+  const filteredProducts = useMemo(() => {
+    if (selectedTags.length === 0) return products;
+    return products.filter((product) =>
+      selectedTags.every((tag) => product.extra.tags?.includes(tag)),
+    );
+  }, [products, selectedTags]);
+
   // 더보기 버튼 클릭
   const handleLoadMore = async () => {
     try {
@@ -164,6 +211,13 @@ export default function ProductListClient({
     setActiveSort(option);
   };
 
+  // 태그 토글
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+    );
+  };
+
   // 초기 데이터 로딩 전에는 빈 화면 (깜빡임 방지)
   if (!isInitialized) {
     return (
@@ -184,7 +238,7 @@ export default function ProductListClient({
                 &quot;{keyword}&quot; 검색 결과
               </h1>
               <p className="text-body-md mt-2 text-gray-600">
-                총 {products.length}개의 상품
+                총 {filteredProducts.length}개의 상품
               </p>
             </div>
           ) : (
@@ -263,13 +317,13 @@ export default function ProductListClient({
             </nav>
           )}
 
-          {/* 정렬 버튼 */}
-          <div className="mb-6 flex items-center gap-1 pb-4 lg:mb-[45px]">
+          {/* 정렬 버튼 + 태그 필터 */}
+          <div className="mb-4 flex items-center gap-1 pb-4 lg:mb-6">
             <button
               onClick={() => handleSort('latest')}
               className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
                 activeSort === 'latest'
-                  ? 'bg-gray-900 text-white'
+                  ? 'bg-gray-900 text-gray-50'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -279,7 +333,7 @@ export default function ProductListClient({
               onClick={() => handleSort('bookmarks')}
               className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
                 activeSort === 'bookmarks'
-                  ? 'bg-gray-900 text-white'
+                  ? 'bg-gray-900 text-gray-50'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -289,7 +343,7 @@ export default function ProductListClient({
               onClick={() => handleSort('price_high')}
               className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
                 activeSort === 'price_high'
-                  ? 'bg-gray-900 text-white'
+                  ? 'bg-gray-900 text-gray-50'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -299,12 +353,87 @@ export default function ProductListClient({
               onClick={() => handleSort('price_low')}
               className={`text-body-md cursor-pointer rounded px-3 py-1.5 ${
                 activeSort === 'price_low'
-                  ? 'bg-gray-900 text-white'
+                  ? 'bg-gray-900 text-gray-50'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
               낮은가격순
             </button>
+
+            {/* 태그 필터 토글 버튼 - 낮은가격순 옆 */}
+            <button
+              onClick={() => setIsTagFilterOpen((prev) => !prev)}
+              className="text-body-md flex cursor-pointer items-center gap-1 rounded border border-gray-300 bg-gray-50 px-2 py-1.5 text-gray-500 hover:border-gray-900 hover:text-gray-900"
+            >
+              태그 필터
+              <span
+                className={`transition-transform ${isTagFilterOpen ? 'rotate-180' : ''}`}
+              >
+                ▼
+              </span>
+            </button>
+          </div>
+          {/* 태그 필터 드롭다운 박스 */}
+          <div className="mb-6">
+            {isTagFilterOpen && (
+              <>
+                {/* 바탕 클릭 시 닫히는 오버레이 */}
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setIsTagFilterOpen(false)}
+                />
+                <div className="relative z-20 mt-2 rounded-lg border border-gray-100 bg-gray-50 p-4 shadow-md">
+                  {Object.entries(TAG_GROUPS).map(([groupName, tags]) => (
+                    <div key={groupName} className="mb-3 last:mb-0">
+                      <span className="text-body-sm mb-1.5 block font-semibold text-gray-500">
+                        {groupName}
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {tags.map((tag) => (
+                          <button
+                            key={tag}
+                            onClick={() => handleTagToggle(tag)}
+                            className={`text-body-sm rounded-full border px-3 py-1 transition-colors ${
+                              selectedTags.includes(tag)
+                                ? 'bg-gray-300 text-gray-900'
+                                : 'border-gray-300 bg-gray-50 text-gray-900 hover:border-gray-500'
+                            }`}
+                          >
+                            {TAG_LABELS[tag]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* 선택된 태그 칩 표시 */}
+            {selectedTags.length > 0 && (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                {selectedTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-body-sm flex items-center gap-1 rounded-full bg-gray-300 px-3 py-1 text-gray-900"
+                  >
+                    {TAG_LABELS[tag]}
+                    <button
+                      onClick={() => handleTagToggle(tag)}
+                      className="ml-0.5 text-gray-900 hover:text-gray-50"
+                    >
+                      ✕
+                    </button>
+                  </span>
+                ))}
+                <button
+                  onClick={() => setSelectedTags([])}
+                  className="text-body-sm text-gray-500 underline"
+                >
+                  전체 초기화
+                </button>
+              </div>
+            )}
           </div>
 
           {/* 카테고리 제목 (검색이 아닐 때만) */}
@@ -315,13 +444,18 @@ export default function ProductListClient({
           )}
 
           {/* 상품 그리드 */}
-          {products.length > 0 ? (
+          {isLoading ? (
+            // 정렬 변경 시 로딩
+            <div className="flex items-center justify-center py-20">
+              <div className="border-primary h-8 w-8 animate-spin rounded-full border-b-2" />
+            </div>
+          ) : filteredProducts.length > 0 ? (
             <div
               className="mb-[100px] grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
               role="list"
               aria-label={keyword ? '검색 결과' : '상품 목록'}
             >
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <ProductCard
                   key={product._id}
                   id={product._id}
@@ -351,7 +485,6 @@ export default function ProductListClient({
               )}
             </div>
           )}
-
           <ProductSort
             hasMore={hasMore}
             isLoading={isLoading}
