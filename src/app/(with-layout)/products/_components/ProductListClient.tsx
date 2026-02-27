@@ -363,7 +363,7 @@ export default function ProductListClient({
                             onClick={() => handleTagToggle(tag)}
                             className={`text-body-sm rounded-full border px-3 py-1 transition-colors ${
                               selectedTags.includes(tag)
-                                ? 'bg-gray-300 text-gray-900'
+                                ? 'bg-primary text-gray-50'
                                 : 'border-gray-300 bg-gray-50 text-gray-900 hover:border-gray-500'
                             }`}
                           >
@@ -379,16 +379,16 @@ export default function ProductListClient({
 
             {/* 선택된 태그 칩 표시 */}
             {selectedTags.length > 0 && (
-              <div className="mt-3 flex flex-wrap items-center gap-2">
+              <div className="mt-3 flex cursor-pointer flex-wrap items-center gap-2">
                 {selectedTags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-body-sm flex items-center gap-1 rounded-full bg-gray-300 px-3 py-1 text-gray-900"
+                    className="text-body-sm bg-primary flex cursor-pointer items-center gap-1 rounded-full px-3 py-1 text-gray-50"
                   >
-                    {tagTranslations[tag as TagKey] ?? tag}
+                    # {tagTranslations[tag as TagKey] ?? tag}
                     <button
                       onClick={() => handleTagToggle(tag)}
-                      className="ml-0.5 text-gray-900 hover:text-gray-50"
+                      className="ml-0.5 cursor-pointer text-gray-50"
                     >
                       ✕
                     </button>
@@ -396,7 +396,7 @@ export default function ProductListClient({
                 ))}
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="text-body-sm text-gray-500 underline"
+                  className="text-body-sm cursor-pointer text-gray-500 underline"
                 >
                   전체 초기화
                 </button>
