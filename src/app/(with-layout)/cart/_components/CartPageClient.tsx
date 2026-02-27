@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import CartList from '@/app/(with-layout)/cart/_components/CartList';
-import CartEmpty from '@/app/(with-layout)/cart/_components/CartEmpty';
+import CartList from './CartList';
+import CartEmpty from './CartEmpty';
 import { getCartItems } from '@/lib/api/cart';
 import { CartItemOnList } from '@/types/cart.types';
 import Button from '@/components/ui/Button';
-import CartOptionModal from '@/app/(with-layout)/cart/_components/CartOptionModal';
-import Allcheck from '@/app/(with-layout)/cart/_components/AllCheck';
+import CartOptionModal from './CartOptionModal';
+import Allcheck from './AllCheck';
 import { useRouter } from 'next/navigation';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import useHasHydrated from '@/hooks/auth/useHasHydrated';
@@ -113,7 +113,7 @@ export default function CartPageClient() {
 
         <Allcheck items={items} setItems={setItems} />
 
-        <section className="w-full bg-gray-100 pt-[45px] pb-[60px] lg:pb-[80px]">
+        <section className="w-full pb-[60px] lg:pb-[80px]">
           <div className="mx-auto max-w-[1500px] px-4 py-4 lg:flex lg:gap-11">
             <CartList
               items={items}
@@ -124,13 +124,13 @@ export default function CartPageClient() {
             />
 
             <aside
-              className="w-full shrink-0 lg:w-105"
+              className="w-full shrink-0 lg:w-115"
               aria-labelledby="order-summary-title"
             >
-              <div className="rounded border border-gray-300 bg-white p-6 lg:px-8 lg:pt-12">
+              <div className="border-primary rounded border bg-white p-12 lg:px-8 lg:pt-12">
                 <h2
                   id="order-summary-title"
-                  className="text-body-lg mb-5 border-b border-gray-900 pb-4 font-bold"
+                  className="text-body-lg mb-7 border-b border-gray-300 pb-4 font-bold"
                 >
                   주문 예상 금액
                 </h2>
@@ -160,7 +160,7 @@ export default function CartPageClient() {
                   onClick={handleOrder}
                   variant="primary"
                   disabled={!hasCheckedItems} // 비활성화
-                  className="w-full px-16 py-2 tracking-tighter disabled:cursor-not-allowed disabled:opacity-50 lg:py-4"
+                  className="w-full px-16 py-3 tracking-tighter disabled:cursor-not-allowed disabled:opacity-50 lg:py-4"
                 >
                   주문하기
                 </Button>

@@ -7,6 +7,7 @@ import Image from 'next/image';
 interface CartListItem {
   item: CartItemOnList; // 표시할 상품 정보
   updateItem: (_id: number, item: Partial<CartItemOnList>) => void; // 상품 업데이트 함수
+
   items: CartItemOnList[]; // 전체 장바구니 상품 목록
   setItems: (items: CartItemOnList[]) => void; // 전체 목록 변경 함수
   setModalItem: (item: ModalItem) => void; // 모달 설정 함수
@@ -32,13 +33,18 @@ export default function CartListItem({
     const item = items.find((item) => item._id === _id);
     if (!item) return;
 
+    const prevQuantity = item.quantity;
     const newQuantity = Math.max(1, item.quantity + delta); // 최소 1개 보장
+
+    // UI 즉시 반영 (Optimistic Update)
+    updateItem(_id, { quantity: newQuantity });
 
     try {
       await updateCartItem(_id, { quantity: newQuantity }); // API 호출
-      updateItem(_id, { quantity: newQuantity }); // 로컬 상태 업데이트
     } catch (error) {
       console.error('수량 변경 실패:', error);
+      // 실패 시 롤백
+      updateItem(_id, { quantity: newQuantity }); // 로컬 상태 업데이트
     }
   };
 
@@ -59,10 +65,10 @@ export default function CartListItem({
     <>
       <article
         key={item._id}
-        className="relative mb-4 rounded border border-gray-300 bg-white px-[24px] pt-[24px] lg:px-[36px] lg:pt-[36px]"
+        className="border-primary relative mb-4 rounded border bg-white px-[24px] pt-[24px] lg:pt-[20px]"
       >
         {/* 상품 상세 */}
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col gap-4 px-7 sm:flex-row">
           <input
             type="checkbox"
             className="h-4 w-4"
@@ -73,20 +79,21 @@ export default function CartListItem({
           />
 
           {/* 상품 이미지 */}
-          <figure className="relative h-24 w-24 shrink-0">
+          <figure className="relative mx-6 mx-auto mr-2 h-27 w-27 shrink-0 max-[639px]:mx-0">
             <Image
               src={item.image}
               alt={item.name}
               fill
-              sizes="96px"
+              sizes="108px"
               className="object-cover"
               aria-hidden="true"
             />
           </figure>
+
           {/* 상품 정보 */}
-          <div className="flex flex-1 flex-col justify-between gap-4">
+          <div className="flex flex-1 flex-col justify-between gap-2">
             <div className="flex flex-col">
-              <div className="mb-2">
+              <div className="mb-4">
                 <h3 className="text-body-md mb-1">상품명:{item.name}</h3>
                 <p className="text-body-md text-gray-900">
                   옵션: {item.option || '없음'}
@@ -95,7 +102,7 @@ export default function CartListItem({
               {(item.options?.color || item.options?.size) && (
                 <button
                   type="button"
-                  className="text-body-sm cursor-pointer rounded-sm border border-gray-300 px-[50px] py-2 text-gray-900 max-[639px]:w-full max-[639px]:px-4 sm:self-start"
+                  className="text-body-sm cursor-pointer rounded-lg border border-gray-300 py-2 text-gray-900 max-[639px]:w-full max-[639px]:px-4 sm:self-start sm:px-[50px]"
                   aria-label="상품 옵션 추가"
                   onClick={() => setModalItem({ ...item, type: 'add' })}
                 >
@@ -103,12 +110,13 @@ export default function CartListItem({
                 </button>
               )}
             </div>
+
             {/* 수량 및 가격 */}
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 {(item.options?.color || item.options?.size) && (
                   <button
-                    className="text-body-sm mt-4 cursor-pointer rounded-sm border border-gray-300 px-3 py-1 text-gray-900"
+                    className="text-body-sm mt-4 cursor-pointer rounded border border-gray-300 px-5 py-1 whitespace-nowrap text-gray-900"
                     aria-label="옵션 변경"
                     onClick={() => setModalItem({ ...item, type: 'edit' })}
                   >
@@ -122,7 +130,7 @@ export default function CartListItem({
                   aria-label="수량 조절"
                 >
                   <button
-                    className="text-body-sm mt-4 cursor-pointer rounded-sm border border-gray-300 px-2 py-1 text-gray-900"
+                    className="text-body-sm mt-4 ml-2 cursor-pointer rounded border border-gray-300 px-2 py-1 text-gray-900"
                     aria-label="수량 감소"
                     onClick={() => handleQuantityChange(item._id, -1)}
                   >
@@ -136,11 +144,11 @@ export default function CartListItem({
                     type="text"
                     value={item.quantity}
                     readOnly
-                    className="text-body-sm mt-4 w-15 rounded-sm border border-gray-300 px-2 py-1 text-center text-gray-900"
+                    className="text-body-sm mt-4 w-10 rounded border border-gray-300 px-2 py-1 text-center text-gray-900"
                     aria-label="현재 수량"
                   />
                   <button
-                    className="text-body-sm mt-4 cursor-pointer rounded-sm border border-gray-300 px-2 py-1 text-gray-900"
+                    className="text-body-sm mt-4 cursor-pointer rounded border border-gray-300 px-2 py-1 text-gray-900"
                     aria-label="수량 증가"
                     onClick={() => handleQuantityChange(item._id, 1)}
                   >
@@ -152,7 +160,7 @@ export default function CartListItem({
               {/* 가격 및 삭제 */}
               <div className="flex items-center justify-end gap-2">
                 <span
-                  className="text-body-md mt-4 font-bold text-gray-900"
+                  className="text-body-md mt-4 font-bold whitespace-nowrap text-gray-900"
                   aria-label="상품 가격"
                 >
                   {(item.price * item.quantity).toLocaleString()}원
@@ -162,7 +170,7 @@ export default function CartListItem({
                   aria-label="상품 삭제"
                   title="상품 삭제"
                   onClick={() => handleDelete(item._id)}
-                  className="absolute top-4 right-4 cursor-pointer text-2xl text-gray-500 hover:text-gray-900 lg:top-6 lg:right-6"
+                  className="absolute top-6 right-6 cursor-pointer text-2xl text-gray-500 hover:text-gray-900 lg:top-6 lg:right-8"
                 >
                   ×
                 </button>
@@ -170,15 +178,13 @@ export default function CartListItem({
             </div>
           </div>
         </div>
+
         {/* 주문 금액 */}
-        <div className="mt-[35px] flex items-center justify-end gap-2 border-t border-gray-300 pt-9">
-          <span className="text-body-md mb-[98px] tracking-tighter text-gray-900">
+        <div className="mt-[20px] mb-[50px] flex items-center justify-end gap-3 border-t border-gray-300 pt-5 pr-[24px]">
+          <span className="text-body-md tracking-tighter text-gray-900">
             주문 금액
           </span>
-          <output
-            className="mb-[98px] text-lg font-bold"
-            aria-label="총 주문 금액"
-          >
+          <output className="text-lg font-bold" aria-label="총 주문 금액">
             {(item.price * item.quantity).toLocaleString()}원
           </output>
         </div>
