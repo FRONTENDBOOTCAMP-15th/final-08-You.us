@@ -5,7 +5,7 @@ import SmallCategory from './SmallCategory';
 import Image from 'next/image';
 import useUserStore from '@/lib/zustand/auth/userStore';
 import { fetchServerCartCount, useCartStore } from '@/lib/zustand/cartStore';
-import type { CategoryCode } from '@/types/categoryCode.type';
+import type { CategoryCode } from '@/types/categoryCode.types';
 import { useEffect } from 'react';
 import useHasHydrated from '@/hooks/auth/useHasHydrated';
 

@@ -33,7 +33,7 @@ export default function CartListItem({
     const item = items.find((item) => item._id === _id);
     if (!item) return;
 
-    const prevQuantity = item.quantity;
+    // const prevQuantity = item.quantity;
     const newQuantity = Math.max(1, item.quantity + delta); // 최소 1개 보장
 
     // UI 즉시 반영 (Optimistic Update)

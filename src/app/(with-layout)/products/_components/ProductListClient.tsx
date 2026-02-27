@@ -13,39 +13,7 @@ import Link from 'next/link';
 import type { ProductItem } from '@/types/product.types';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
 import Loading from '@/components/ui/Loading';
-
-// 태그 매핑
-const TAG_LABELS: Record<string, string> = {
-  friend: '친구',
-  coworker: '직장동료',
-  parent: '부모님',
-  teacher: '선생님',
-  sibling: '형제자매',
-  male: '남성',
-  female: '여성',
-  unspecified: '성별무관',
-  '20s': '20대',
-  '30s': '30대',
-  '40s': '40대',
-  '50s': '50대',
-  '60plus': '60대이상',
-  birthday: '생일',
-  thanks: '감사',
-  anniversary: '기념일',
-  celebration: '축하',
-  practical: '실용적',
-  emotional: '감성적',
-  light: '가벼운선물',
-};
-
-// 태그 그룹
-const TAG_GROUPS: Record<string, string[]> = {
-  관계: ['friend', 'coworker', 'parent', 'teacher', 'sibling'],
-  성별: ['male', 'female', 'unspecified'],
-  연령대: ['20s', '30s', '40s', '50s', '60plus'],
-  상황: ['birthday', 'thanks', 'anniversary', 'celebration'],
-  스타일: ['practical', 'emotional', 'light'],
-};
+import { tagTranslations, TagKey, TAG_GROUPS } from '@/lib/constants/tags';
 
 export default function ProductListClient({
   params,
@@ -399,7 +367,7 @@ export default function ProductListClient({
                                 : 'border-gray-300 bg-gray-50 text-gray-900 hover:border-gray-500'
                             }`}
                           >
-                            {TAG_LABELS[tag]}
+                            {tagTranslations[tag as TagKey] ?? tag}
                           </button>
                         ))}
                       </div>
@@ -417,7 +385,7 @@ export default function ProductListClient({
                     key={tag}
                     className="text-body-sm flex items-center gap-1 rounded-full bg-gray-300 px-3 py-1 text-gray-900"
                   >
-                    {TAG_LABELS[tag]}
+                    {tagTranslations[tag as TagKey] ?? tag}
                     <button
                       onClick={() => handleTagToggle(tag)}
                       className="ml-0.5 text-gray-900 hover:text-gray-50"

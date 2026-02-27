@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import fetchClient from '@/lib/api/fetchClient';
 import { CartResponse } from '@/types/cart.types';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
+import { tagTranslations, TagKey } from '@/lib/constants/tags';
 
 interface SelectedOption {
   id: string;
@@ -55,6 +56,7 @@ export default function ProductDetailInfo({
 
   //카테고리 value찾기
   const [parentCode, subCode] = extra.category;
+  console.log('product', product);
 
   const parentCategory = category.find((cat) => cat.code === parentCode);
   const subCategory = parentCategory?.sub?.find((sub) => sub.code === subCode);
@@ -157,22 +159,20 @@ export default function ProductDetailInfo({
     setIsCartLoading(true);
 
     try {
-      const results = await Promise.all(
-        selectedOptions.map((opt) =>
-          fetchClient<CartResponse>('/carts', {
-            method: 'POST',
-            body: JSON.stringify({
-              product_id: product._id,
-              quantity: opt.quantity,
-              ...(opt.color && { color: opt.color }),
-              // ...(opt.size && { size: opt.size }),
-            }),
+      for (const opt of selectedOptions) {
+        const res = await fetchClient<CartResponse>('/carts', {
+          method: 'POST',
+          body: JSON.stringify({
+            product_id: product._id,
+            quantity: opt.quantity,
+            ...(opt.color && { color: opt.color }),
+            // ...(opt.size && { size: opt.size }),
           }),
-        ),
-      );
+        });
 
-      if (results.some((res) => !res.ok)) {
-        throw new Error('장바구니 담기에 실패했습니다.');
+        if (!res.ok) {
+          throw new Error('장바구니 담기에 실패했습니다.');
+        }
       }
       toast.success('장바구니에 담았습니다.');
       fetchServerCartCount();
@@ -192,6 +192,19 @@ export default function ProductDetailInfo({
         <p className="bg-category text-primary w-fit rounded-2xl p-1 text-sm">
           {categoryString}
         </p>
+
+        <div className="flex flex-wrap gap-1.5">
+          {product.extra.tags.map((item, index) => {
+            return (
+              <p
+                className="bg-primary w-fit min-w-20.5 rounded-2xl p-1 text-center text-sm text-white"
+                key={index}
+              >
+                # {tagTranslations[item as TagKey] ?? item}
+              </p>
+            );
+          })}
+        </div>
 
         <h1 className="sr-only">상품 상세 페이지</h1>
 
