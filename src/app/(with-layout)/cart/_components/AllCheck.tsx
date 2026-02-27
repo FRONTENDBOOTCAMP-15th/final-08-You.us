@@ -54,7 +54,7 @@ export default function Allcheck({ items, setItems }: AllcheckProps) {
         </label>
 
         <Button
-          className="text-primary hover:bg-primary text-body-sm bg-white px-3 py-2 hover:text-white lg:mr-[465px]"
+          className="text-primary hover:bg-primary text-body-sm bg-white px-3 py-2 hover:text-white lg:mr-[510px]"
           aria-label="선택한 상품 삭제"
           onClick={handleDeleteSelected}
         >
