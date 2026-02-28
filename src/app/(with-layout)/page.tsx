@@ -1,5 +1,5 @@
-import MainBannerSwiper from '@/components/pages/main/MainBannerSwiper';
-import ProductCategorySection from '@/components/pages/main/ProductCategorySection';
+import MainBannerSwiper from '@/app/(with-layout)/_components/main/MainBannerSwiper';
+import ProductCategorySection from '@/app/(with-layout)/_components/main/ProductCategorySection';
 import getMainCategorySeller from '@/lib/api/main/getProductsList';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
