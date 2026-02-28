@@ -49,7 +49,7 @@ export default function MyPage() {
   if (isLoading) return <Loading />;
 
   return (
-    <main className="mx-auto mt-10 flex max-w-[1500PX] flex-col gap-8.5 px-4 pb-8.5 text-gray-900 md:px-8 lg:min-w-[52rem] lg:px-12">
+    <div className="mx-auto mt-10 flex max-w-[1500PX] flex-col gap-8.5 px-4 pb-8.5 text-gray-900 md:px-8 lg:min-w-[52rem] lg:px-12">
       <h1 className="sr-only">마이페이지</h1>
       {/* 주문 내역, 포인트, 쿠폰 등 */}
       {/* 사용자 정보 요약 (이름, 이메일 등) */}
@@ -306,6 +306,6 @@ export default function MyPage() {
           </li>
         </ul>
       </section> */}
-    </main>
+    </div>
   );
 }

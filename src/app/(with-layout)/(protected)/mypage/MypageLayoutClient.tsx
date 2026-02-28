@@ -29,12 +29,12 @@ export default function MypageLayoutClient({
     isHydrated &&
     user && (
       <div className="mx-auto bg-gray-50">
-        <main className="mx-auto w-full px-7.5 lg:flex lg:max-w-375 lg:min-w-5xl lg:gap-32.5">
-          <QuickMenu className="hidden lg:block lg:shrink-0" />
+        <div className="mx-auto w-full px-7.5 lg:flex lg:max-w-375 lg:min-w-5xl lg:gap-32.5">
+          <QuickMenu className="hidden lg:sticky lg:top-10 lg:block lg:h-fit lg:shrink-0 lg:self-start" />
           <div className="w-full lg:max-w-255 lg:min-w-0 lg:flex-1">
             {children}
           </div>
-        </main>
+        </div>
       </div>
     )
   );

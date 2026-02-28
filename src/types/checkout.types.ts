@@ -74,6 +74,7 @@ export interface OrderDetailResponse {
       color?: string;
       name: string;
       price: number;
+      review_id?: number;
       image?: {
         path: string;
       };
