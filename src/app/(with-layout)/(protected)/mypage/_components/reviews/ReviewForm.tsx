@@ -260,8 +260,8 @@ export default function ReviewForm({
               placeholder="&gt; 후기를 작성해주세요."
               className={`text-body-md h-32 w-full resize-none p-3 focus:outline-none ${
                 isEditing
-                  ? 'focus:border-primary'
-                  : 'cursor-default bg-gray-50 text-gray-700'
+                  ? 'focus:border-primary bg-gray-50'
+                  : 'cursor-default text-gray-700'
               }`}
             />
           </div>
