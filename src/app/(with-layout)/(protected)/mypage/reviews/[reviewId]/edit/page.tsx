@@ -22,8 +22,8 @@ export default function ReviewEditPage() {
   if (!review) return <Loading />;
 
   return (
-    <main className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 md:px-8 lg:px-12">
-      <h1 className="sr-only">후기 수정</h1>
+    <div className="mt-10 flex w-full flex-col gap-8.5 px-4 pb-8.5 md:px-8 lg:px-12">
+      <h2 className="sr-only">후기 수정</h2>
       <ReviewForm
         mode="edit"
         reviewId={reviewId}
@@ -39,6 +39,6 @@ export default function ReviewEditPage() {
           images: review.extra.images,
         }}
       />
-    </main>
+    </div>
   );
 }
