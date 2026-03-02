@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export default function Loading() {
+export default function Loading({ height }: { height?: number }) {
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
@@ -11,7 +11,11 @@ export default function Loading() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-4">
+    <div
+      className={`flex flex-col items-center justify-center gap-4 p-4 ${
+        height ? `h-[${height}px]` : 'min-h-screen'
+      }`}
+    >
       <div className="border-primary h-8 w-8 animate-spin rounded-full border-b-2" />
       <p
         className={`text-sm text-gray-400 transition-opacity duration-700 ${
