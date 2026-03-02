@@ -8,9 +8,7 @@ import { getOrderDetail } from '@/lib/api/checkout';
 import { OrderDetailResponse } from '@/types/checkout.types';
 import Link from 'next/link';
 import Image from 'next/image';
-import Loading from '@/components/common/Loading';
-import { ReviewItem } from '@/types/review.types';
-import { getMyReview, getMyReviews, getReviewById } from '@/lib/api/mypage';
+import Loading from '@/components/ui/Loading';
 
 interface OrderDetailPageProps {
   params: Promise<{ id: string }>;
