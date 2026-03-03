@@ -38,6 +38,7 @@ export default function WishlistPage() {
   }
 
   const handleDeleteBookmark = async (bookmarkId: number) => {
+    setProducts((prev) => prev?.filter((p) => p._id !== bookmarkId));
     const response = await deleteBookmarkItems(bookmarkId);
     if (response.ok) {
       toast.success('찜한 상품이 삭제되었습니다.');
@@ -68,6 +69,7 @@ export default function WishlistPage() {
               >
                 {products.slice(0, visibleCount).map((bookmark) => (
                   <div key={bookmark.product._id} className="group relative">
+                    {/* // 삭제 버튼 (X 아이콘) */}
                     <svg
                       width="12"
                       height="12"

@@ -55,7 +55,7 @@ export default function ImageModal({
           alt={`이미지 ${currentIndex + 1}`}
           width={600}
           height={600}
-          className="h-[30vh] w-auto max-w-[90vw] rounded object-contain"
+          className="h-[70vh] w-auto max-w-[90vw] rounded object-contain"
         />
         {/* 인덱스 표시 */}
         {images.length > 1 && (

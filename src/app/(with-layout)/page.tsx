@@ -59,6 +59,7 @@ export default async function MainPage() {
 
   return (
     <main>
+      <h1 className="sr-only">You,Us - 선물 추천 플랫폼 - 메인페이지 </h1>
       <MainBannerSwiper />
 
       <div className="mx-auto px-4 py-8 lg:mb-15">
