@@ -143,14 +143,12 @@ export default function AddressInfo({
         <legend className="text-body-md">배송지 정보</legend>
         {hasUserAddress && (
           <div className="text-body-sm flex flex-row items-center gap-1">
-            <Input
+            <input
               id="isDefaultAddress"
               name="isDefaultAddress"
               type="checkbox"
               checked={isDefaultAddress}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setIsDefaultAddress(e.target.checked)
-              }
+              onChange={(e) => setIsDefaultAddress(e.target.checked)}
               className="cursor-pointer"
             />
             <label htmlFor="isDefaultAddress" className="cursor-pointer">
