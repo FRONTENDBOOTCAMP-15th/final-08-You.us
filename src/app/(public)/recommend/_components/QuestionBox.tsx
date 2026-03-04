@@ -143,7 +143,7 @@ export default function QuestionBox({
                   setShowInput(false);
                   setValue('');
                 }}
-                className="border-primary/40 text-primary hover:bg-primary/10 mb-5 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition"
+                className="border-primary/40 text-primary hover:bg-primary/10 mt-5 mb-5 flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
