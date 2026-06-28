@@ -1,8 +1,9 @@
 import MainBannerSwiper from '@/app/(with-layout)/_components/main/MainBannerSwiper';
-import ProductCategorySection from '@/app/(with-layout)/_components/main/ProductCategorySection';
-import getMainCategorySeller from '@/lib/api/main/getProductsList';
+import CategorySectionFetcher from '@/app/(with-layout)/_components/main/CategorySectionFetcher';
+import ProductCategorySectionSkeleton from '@/app/(with-layout)/_components/main/ProductCategorySectionSkeleton';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -46,29 +47,19 @@ export default async function MainPage() {
     redirect('/intro');
   }
 
-  const responses = await Promise.all(
-    CATEGORIES.map(async (cat) => {
-      const res = await getMainCategorySeller(cat.code);
-
-      return {
-        title: cat.title,
-        items: 'item' in res ? res.item : [],
-      };
-    }),
-  );
-
   return (
     <main>
       <h1 className="sr-only">You,Us - 선물 추천 플랫폼 - 메인페이지 </h1>
       <MainBannerSwiper />
 
       <div className="mx-auto px-4 py-8 lg:mb-15">
-        {responses.map((category) => (
-          <ProductCategorySection
-            key={category.title}
-            categoryName={category.title}
-            products={category.items}
-          />
+        {CATEGORIES.map((cat) => (
+          <Suspense
+            key={cat.code}
+            fallback={<ProductCategorySectionSkeleton />}
+          >
+            <CategorySectionFetcher code={cat.code} title={cat.title} />
+          </Suspense>
         ))}
       </div>
     </main>
