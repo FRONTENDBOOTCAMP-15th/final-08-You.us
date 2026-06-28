@@ -20,6 +20,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
   const router = useRouter();
 
   const categories = useCategoryStore((state) => state.categories);
+  const categoryError = useCategoryStore((state) => state.categoryError);
   const handleLogout = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     resetUser();
@@ -129,6 +130,11 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
         </form>
 
         <nav aria-label="카테고리 메뉴">
+          {categoryError ? (
+            <p className="px-4 py-6 text-sm text-gray-400">
+              메뉴 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.
+            </p>
+          ) : (
           <ul className="py-2">
             {categories.map((category) => (
               <li key={category.code}>
@@ -203,6 +209,7 @@ export default function MobileSidebar({ isOpen, onClose }: MobileSidebarProps) {
               </li>
             ))}
           </ul>
+          )}
         </nav>
 
         {isHydrated &&

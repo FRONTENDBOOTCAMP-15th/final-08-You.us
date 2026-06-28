@@ -9,11 +9,13 @@ export default async function WithLayoutLayout({
   children: React.ReactNode;
 }) {
   const categoryRes = await getCategoryCode();
-  const categories =
-    'item' in categoryRes ? categoryRes.item.nested.productCategory.codes : [];
+  const categoryError = !('item' in categoryRes);
+  const categories = categoryError
+    ? []
+    : categoryRes.item.nested.productCategory.codes;
   return (
     <div className="mx-auto max-w-375 min-w-90">
-      <CategoryInit categories={categories} />
+      <CategoryInit categories={categories} categoryError={categoryError} />
       <Header />
       <div>{children}</div>
       <Footer />

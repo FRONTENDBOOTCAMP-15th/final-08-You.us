@@ -6,23 +6,19 @@ import { useEffect, useRef } from 'react';
 
 export default function CategoryInit({
   categories,
+  categoryError,
 }: {
   categories: CategoryCode[];
+  categoryError: boolean;
 }) {
-  // const initialized = useRef(false);
-  // if (!initialized.current) {
-  //   useCategoryStore.setState({ categories });
-  //   initialized.current = false;
-  // }
-  // return null;
   const initialized = useRef(false);
 
   useEffect(() => {
     if (!initialized.current) {
-      useCategoryStore.setState({ categories });
+      useCategoryStore.setState({ categories, categoryError });
       initialized.current = true;
     }
-  }, [categories]);
+  }, [categories, categoryError]);
 
   return null;
 }

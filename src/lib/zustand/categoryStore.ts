@@ -3,9 +3,10 @@ import { create } from 'zustand';
 
 interface CategoryStoreState {
   categories: CategoryCode[];
+  categoryError: boolean;
 }
 
-export const useCategoryStore = create<CategoryStoreState>((set) => ({
+export const useCategoryStore = create<CategoryStoreState>(() => ({
   categories: [],
-  setCategories: (categories: CategoryCode[]) => set({ categories }),
+  categoryError: false,
 }));
