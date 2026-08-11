@@ -8,6 +8,7 @@ import { CartItemForCreate, CartItemOnList } from '@/types/cart.types';
 import { addToCart, updateCart } from '@/lib/api/cart';
 import { ModalItem } from '@/app/(with-layout)/cart/_components/CartPageClient';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
+import { toast } from 'react-toastify';
 
 interface CartAddOptionProps {
   modalItem: ModalItem; // 모달에 표시할 상품 정보
@@ -28,6 +29,8 @@ export default function CartOptionModal({
   const [quantity, setQuantity] = useState(
     modalItem.type === 'edit' ? modalItem.quantity : 1,
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleAdd = async () => {
     // 1. 새 장바구니 아이템 생성
     const newItem: CartItemForCreate = {
@@ -35,30 +38,39 @@ export default function CartOptionModal({
       quantity: quantity,
       color: selectedOption,
     };
-    // 3. 성공 시 장바구니 목록 업데이트
-    const res = await addToCart(newItem);
-    // 2. API 호출 - 장바구니에 추가
 
-    if (res.ok) {
-      const items: CartItemOnList[] = res.item.map((item) => {
-        const prev = prevItems.find((p) => p._id === item._id);
-        return {
-          _id: item._id,
-          product_id: item.product_id,
-          name: item.product.name,
-          price: item.product.price,
-          quantity: item.quantity,
-          checked: prev ? prev.checked : true, // 새로 추가된 상품은 체크, 기존 상품은 상태 유지
-          option: item.color,
-          options: item.product.extra.options,
-          image: item.product.image?.path || '',
-          storeName: item.product.seller?.name || '',
-        };
-      });
-      setItems(items); // 전체 장바구니 목록 갱신
-      fetchServerCartCount();
+    setIsSubmitting(true);
+    try {
+      // 2. API 호출 - 장바구니에 추가
+      const res = await addToCart(newItem);
+
+      // 3. 성공 시 장바구니 목록 업데이트
+      if (res.ok) {
+        const items: CartItemOnList[] = res.item.map((item) => {
+          const prev = prevItems.find((p) => p._id === item._id);
+          return {
+            _id: item._id,
+            product_id: item.product_id,
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+            checked: prev ? prev.checked : true, // 새로 추가된 상품은 체크, 기존 상품은 상태 유지
+            option: item.color,
+            options: item.product.extra.options,
+            image: item.product.image?.path || '',
+            storeName: item.product.seller?.name || '',
+          };
+        });
+        setItems(items); // 전체 장바구니 목록 갱신
+        fetchServerCartCount();
+      }
+      handleClose(); // 모달 닫기
+    } catch (error) {
+      console.error('옵션 추가 실패:', error);
+      toast.error('상품 추가에 실패했습니다.');
+    } finally {
+      setIsSubmitting(false);
     }
-    handleClose(); // 모달 닫기
   };
 
   const handleUpdate = async () => {
@@ -70,29 +82,37 @@ export default function CartOptionModal({
       color: selectedOption,
     };
 
-    // 2. API 호출 - 장바구니 아이템 수정
-    const res = await updateCart(updateItem);
+    setIsSubmitting(true);
+    try {
+      // 2. API 호출 - 장바구니 아이템 수정
+      const res = await updateCart(updateItem);
 
-    // 3. 성공 시 장바구니 목록 업데이트 (handleAdd와 동일)
-    if (res.ok) {
-      const items: CartItemOnList[] = res.item.map((item) => {
-        const prev = prevItems.find((p) => p._id === item._id);
-        return {
-          _id: item._id,
-          product_id: item.product_id,
-          name: item.product.name,
-          price: item.product.price,
-          quantity: item.quantity,
-          checked: prev ? prev.checked : true,
-          option: item.color,
-          options: item.product.extra.options,
-          image: item.product.image?.path || '',
-          storeName: item.product.seller?.name || '',
-        };
-      });
-      setItems(items);
+      // 3. 성공 시 장바구니 목록 업데이트 (handleAdd와 동일)
+      if (res.ok) {
+        const items: CartItemOnList[] = res.item.map((item) => {
+          const prev = prevItems.find((p) => p._id === item._id);
+          return {
+            _id: item._id,
+            product_id: item.product_id,
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+            checked: prev ? prev.checked : true,
+            option: item.color,
+            options: item.product.extra.options,
+            image: item.product.image?.path || '',
+            storeName: item.product.seller?.name || '',
+          };
+        });
+        setItems(items);
+      }
+      handleClose();
+    } catch (error) {
+      console.error('옵션 변경 실패:', error);
+      toast.error('옵션 변경에 실패했습니다.');
+    } finally {
+      setIsSubmitting(false);
     }
-    handleClose();
   };
 
   const handleClose = () => {
@@ -168,9 +188,14 @@ export default function CartOptionModal({
             onClick={() =>
               modalItem.type === 'edit' ? handleUpdate() : handleAdd()
             }
-            className="flex-1 py-3 text-gray-50"
+            disabled={isSubmitting}
+            className="flex-1 py-3 text-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {modalItem.type === 'edit' ? '수정' : '추가'}
+            {isSubmitting
+              ? '처리 중...'
+              : modalItem.type === 'edit'
+                ? '수정'
+                : '추가'}
           </Button>
         </div>
       </div>

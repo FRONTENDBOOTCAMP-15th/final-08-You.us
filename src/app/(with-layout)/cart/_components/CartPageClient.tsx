@@ -39,7 +39,6 @@ export default function CartPageClient() {
       try {
         setIsLoading(true);
         const response = await getCartItems();
-        console.log('장바구니 데이터', response);
 
         const cartItems: CartItemOnList[] = response.item.map((item) => ({
           _id: item._id,
