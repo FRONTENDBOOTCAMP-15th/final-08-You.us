@@ -4,11 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/features/product/ProductCard';
 import ProductSort from '@/app/(with-layout)/products/_components/ProductSort';
-import {
-  getProducts,
-  getFilteredProducts,
-  searchProducts,
-} from '@/lib/api/products';
+import { getFilteredProducts, searchProducts } from '@/lib/api/products';
 import Link from 'next/link';
 import type { ProductItem } from '@/types/product.types';
 import { useCategoryStore } from '@/lib/zustand/categoryStore';
@@ -52,7 +48,6 @@ export default function ProductListClient({
       return { mainName: null, subName: null };
     }
 
-    console.log('categoryList', categoryList);
     // 대분류 찾기
     const mainCategory = categoryList.find((cat) => cat.code === category);
     const mainName = mainCategory?.value || null;
@@ -67,28 +62,23 @@ export default function ProductListClient({
     return { mainName, subName };
   }, [category, subCategory, categoryList]);
 
+  // 카테고리 파라미터 resolve
   useEffect(() => {
-    const loadInitialData = async () => {
-      const resolvedParams = await params;
-      const cats = resolvedParams.categories || ['PC00'];
-      setCategories(cats);
-
-      // 검색어가 있으면 검색
-      if (keyword) {
-        const res = await searchProducts(keyword);
-        setProducts(res.item);
-        setIsInitialized(true);
-      } else {
-        const res = await getProducts(cats[0], cats[1]);
-        setProducts(res.item);
-        setIsInitialized(true);
+    const resolveCategories = async () => {
+      try {
+        const resolvedParams = await params;
+        setCategories(resolvedParams.categories || ['PC00']);
+      } catch (error) {
+        console.error('카테고리 파라미터 로딩 실패:', error);
+        // 실패해도 기본 카테고리로 진행
+        setCategories(['PC00']);
       }
     };
 
-    loadInitialData();
-  }, [params, keyword]);
+    resolveCategories();
+  }, [params]);
 
-  // 정렬 옵션 변경 시
+  // 상품 목록 조회
   useEffect(() => {
     // 검색 모드
     if (keyword) {
@@ -103,13 +93,14 @@ export default function ProductListClient({
           console.error('검색 실패:', error);
         } finally {
           setIsLoading(false);
+          setIsInitialized(true);
         }
       };
       fetchSearchProducts();
       return;
     }
 
-    // 카테고리 모드
+    // 카테고리 모드 - 카테고리 resolve 전이면 대기
     if (!category) return;
 
     const fetchProducts = async () => {
@@ -128,6 +119,7 @@ export default function ProductListClient({
         console.error('상품 불러오기 실패:', error);
       } finally {
         setIsLoading(false);
+        setIsInitialized(true);
       }
     };
 
@@ -427,7 +419,7 @@ export default function ProductListClient({
                 <ProductCard
                   key={product._id}
                   id={product._id}
-                  image={product.mainImages[0]!.path}
+                  image={product.mainImages[0]?.path || ''}
                   name={product.name}
                   price={product.price.toLocaleString()}
                   rating={product.rating || 0}
@@ -436,8 +428,8 @@ export default function ProductListClient({
                       ? product.replies
                       : product.replies.length
                   }
-                  mainCategory={product.extra.category[0]!}
-                  subCategory={product.extra.category[1]!}
+                  mainCategory={product.extra.category[0] ?? ''}
+                  subCategory={product.extra.category[1] ?? ''}
                 />
               ))}
             </div>
