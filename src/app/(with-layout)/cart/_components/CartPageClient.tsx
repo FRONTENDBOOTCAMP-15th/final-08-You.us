@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import CartList from './CartList';
 import CartEmpty from './CartEmpty';
 import { getCartItems } from '@/lib/api/cart';
@@ -65,34 +65,37 @@ export default function CartPageClient() {
     fetchCartItems();
   }, []);
 
-  const handleOrder = () => {
-    const idList = items
-      .filter((item) => item.checked)
-      .map((item) => item._id)
-      .join(',');
-    const url = `/checkout?id=${idList}`;
-    router.push(url);
-  };
-
   // 체크된 상품만 계산
-  const checkedItems = items.filter((item) => item.checked);
-  const totalPrice = checkedItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
+  const checkedItems = useMemo(
+    () => items.filter((item) => item.checked),
+    [items],
   );
-  const totalQuantity = checkedItems.reduce(
-    (sum, item) => sum + item.quantity,
-    0,
+  const totalPrice = useMemo(
+    () =>
+      checkedItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [checkedItems],
+  );
+  const totalQuantity = useMemo(
+    () => checkedItems.reduce((sum, item) => sum + item.quantity, 0),
+    [checkedItems],
   );
 
   // 체크된 상품이 있는지 확인
   const hasCheckedItems = checkedItems.length > 0;
 
-  const updateItem = (_id: number, updates: Partial<CartItemOnList>) => {
-    setItems(
-      items.map((item) => (item._id === _id ? { ...item, ...updates } : item)),
-    );
-  };
+  const handleOrder = useCallback(() => {
+    const idList = checkedItems.map((item) => item._id).join(',');
+    router.push(`/checkout?id=${idList}`);
+  }, [checkedItems, router]);
+
+  const updateItem = useCallback(
+    (_id: number, updates: Partial<CartItemOnList>) => {
+      setItems((prev) =>
+        prev.map((item) => (item._id === _id ? { ...item, ...updates } : item)),
+      );
+    },
+    [],
+  );
 
   if (isLoading) {
     return (
@@ -173,6 +176,7 @@ export default function CartPageClient() {
       {modalItem && (
         <CartOptionModal
           modalItem={modalItem}
+          items={items}
           setModalItem={setModalItem}
           setItems={setItems}
         />

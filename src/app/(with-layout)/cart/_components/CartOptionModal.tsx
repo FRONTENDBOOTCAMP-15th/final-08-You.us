@@ -11,6 +11,7 @@ import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 
 interface CartAddOptionProps {
   modalItem: ModalItem; // 모달에 표시할 상품 정보
+  items: CartItemOnList[]; // 기존 장바구니 목록 (체크 상태 보존용)
   setItems: (items: CartItemOnList[]) => void; // 장바구니 목록 업데이트 함수
   setModalItem: (item: ModalItem | null) => void; // 모달 닫기 함수
 }
@@ -18,6 +19,7 @@ interface CartAddOptionProps {
 export default function CartOptionModal({
   modalItem,
   setModalItem,
+  items: prevItems,
   setItems,
 }: CartAddOptionProps) {
   const [selectedOption, setSelectedOption] = useState(
@@ -38,18 +40,21 @@ export default function CartOptionModal({
     // 2. API 호출 - 장바구니에 추가
 
     if (res.ok) {
-      const items: CartItemOnList[] = res.item.map((item) => ({
-        _id: item._id,
-        product_id: item.product_id,
-        name: item.product.name,
-        price: item.product.price,
-        quantity: item.quantity,
-        checked: false, // 새로 추가된 상품은 체크 해제
-        option: item.color,
-        options: item.product.extra.options,
-        image: item.product.image?.path || '',
-        storeName: item.product.seller?.name || '',
-      }));
+      const items: CartItemOnList[] = res.item.map((item) => {
+        const prev = prevItems.find((p) => p._id === item._id);
+        return {
+          _id: item._id,
+          product_id: item.product_id,
+          name: item.product.name,
+          price: item.product.price,
+          quantity: item.quantity,
+          checked: prev ? prev.checked : true, // 새로 추가된 상품은 체크, 기존 상품은 상태 유지
+          option: item.color,
+          options: item.product.extra.options,
+          image: item.product.image?.path || '',
+          storeName: item.product.seller?.name || '',
+        };
+      });
       setItems(items); // 전체 장바구니 목록 갱신
       fetchServerCartCount();
     }
@@ -70,18 +75,21 @@ export default function CartOptionModal({
 
     // 3. 성공 시 장바구니 목록 업데이트 (handleAdd와 동일)
     if (res.ok) {
-      const items: CartItemOnList[] = res.item.map((item) => ({
-        _id: item._id,
-        product_id: item.product_id,
-        name: item.product.name,
-        price: item.product.price,
-        quantity: item.quantity,
-        checked: false,
-        option: item.color,
-        options: item.product.extra.options,
-        image: item.product.image?.path || '',
-        storeName: item.product.seller?.name || '',
-      }));
+      const items: CartItemOnList[] = res.item.map((item) => {
+        const prev = prevItems.find((p) => p._id === item._id);
+        return {
+          _id: item._id,
+          product_id: item.product_id,
+          name: item.product.name,
+          price: item.product.price,
+          quantity: item.quantity,
+          checked: prev ? prev.checked : true,
+          option: item.color,
+          options: item.product.extra.options,
+          image: item.product.image?.path || '',
+          storeName: item.product.seller?.name || '',
+        };
+      });
       setItems(items);
     }
     handleClose();

@@ -2,6 +2,7 @@ import Button from '@/components/ui/Button';
 import { deleteCartItem } from '@/lib/api/cart';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
+import { toast } from 'react-toastify';
 
 interface AllcheckProps {
   items: CartItemOnList[]; // 전체 장바구니 상품 목록
@@ -16,20 +17,32 @@ export default function Allcheck({ items, setItems }: AllcheckProps) {
     setItems(items.map((item) => ({ ...item, checked })));
   };
   const handleDeleteSelected = async () => {
-    try {
-      // 1. 체크된 상품들의 ID 추출
-      const selectedIds = items
-        .filter((item) => item.checked)
-        .map((item) => item._id);
+    // 1. 체크된 상품들의 ID 추출
+    const selectedIds = items
+      .filter((item) => item.checked)
+      .map((item) => item._id);
 
-      // 2. 모든 삭제 API를 병렬로 호출
-      await Promise.all(selectedIds.map((id) => deleteCartItem(id)));
+    if (selectedIds.length === 0) return;
 
-      // 3. 체크되지 않은 상품만 남김
-      setItems(items.filter((item) => !item.checked));
+    // 2. 모든 삭제 API를 병렬로 호출 (일부 실패해도 나머지 결과는 그대로 확인)
+    const results = await Promise.allSettled(
+      selectedIds.map((id) => deleteCartItem(id)),
+    );
+
+    // 3. 실제로 삭제에 성공한 상품만 화면에서 제거
+    const deletedIds = new Set(
+      selectedIds.filter((_, index) => results[index]?.status === 'fulfilled'),
+    );
+    const failedCount = results.length - deletedIds.size;
+
+    if (deletedIds.size > 0) {
+      setItems(items.filter((item) => !deletedIds.has(item._id)));
       fetchServerCartCount();
-    } catch (error) {
-      console.error('선택 삭제 실패:', error);
+    }
+
+    if (failedCount > 0) {
+      console.error('선택 삭제 일부 실패:', results);
+      toast.error(`${failedCount}개 상품 삭제에 실패했습니다.`);
     }
   };
 

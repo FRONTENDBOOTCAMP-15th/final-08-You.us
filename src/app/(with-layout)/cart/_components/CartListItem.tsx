@@ -1,58 +1,54 @@
+import { Dispatch, memo, SetStateAction } from 'react';
 import { ModalItem } from '@/app/(with-layout)/cart/_components/CartPageClient';
 import { deleteCartItem, updateCartItem } from '@/lib/api/cart';
 import { fetchServerCartCount } from '@/lib/zustand/cartStore';
 import { CartItemOnList } from '@/types/cart.types';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 interface CartListItem {
   item: CartItemOnList; // 표시할 상품 정보
   updateItem: (_id: number, item: Partial<CartItemOnList>) => void; // 상품 업데이트 함수
 
-  items: CartItemOnList[]; // 전체 장바구니 상품 목록
-  setItems: (items: CartItemOnList[]) => void; // 전체 목록 변경 함수
+  setItems: Dispatch<SetStateAction<CartItemOnList[]>>; // 전체 목록 변경 함수
   setModalItem: (item: ModalItem) => void; // 모달 설정 함수
   setIsLoading: (loading: boolean) => void; // 로딩 상태 변경 함수
 }
 
-export default function CartListItem({
+function CartListItem({
   item,
   updateItem,
-  items,
   setItems,
   setModalItem,
   setIsLoading,
 }: CartListItem) {
-  const handleItemCheck = (_id: number) => {
-    updateItem(_id, {
-      checked: !items.find((item) => item._id === _id)?.checked,
-    });
+  const handleItemCheck = () => {
+    updateItem(item._id, { checked: !item.checked });
   };
 
   // 장바구니 상품 수량 변경
-  const handleQuantityChange = async (_id: number, delta: number) => {
-    const item = items.find((item) => item._id === _id);
-    if (!item) return;
-
-    // const prevQuantity = item.quantity;
+  const handleQuantityChange = async (delta: number) => {
+    const prevQuantity = item.quantity;
     const newQuantity = Math.max(1, item.quantity + delta); // 최소 1개 보장
 
-    // UI 즉시 반영 (Optimistic Update)
-    updateItem(_id, { quantity: newQuantity });
+    // UI 즉시 반영
+    updateItem(item._id, { quantity: newQuantity });
 
     try {
-      await updateCartItem(_id, { quantity: newQuantity }); // API 호출
+      await updateCartItem(item._id, { quantity: newQuantity }); // API 호출
     } catch (error) {
       console.error('수량 변경 실패:', error);
       // 실패 시 롤백
-      updateItem(_id, { quantity: newQuantity }); // 로컬 상태 업데이트
+      updateItem(item._id, { quantity: prevQuantity });
+      toast.error('수량 변경에 실패했습니다.');
     }
   };
 
-  const handleDelete = async (_id: number) => {
+  const handleDelete = async () => {
     try {
       setIsLoading(true);
-      await deleteCartItem(_id); // API로 삭제
-      setItems(items.filter((item) => item._id !== _id)); // 목록에서 제거
+      await deleteCartItem(item._id); // API로 삭제
+      setItems((prev) => prev.filter((i) => i._id !== item._id)); // 목록에서 제거
       await fetchServerCartCount(); // 헤더 장바구니 수량 갱신
     } catch (error) {
       console.error('삭제 실패:', error);
@@ -75,7 +71,7 @@ export default function CartListItem({
             id={`product-${item._id}`}
             aria-label={`${item.name} 상품 선택`}
             checked={item.checked}
-            onChange={() => handleItemCheck(item._id)}
+            onChange={handleItemCheck}
           />
 
           {/* 상품 이미지 */}
@@ -132,7 +128,7 @@ export default function CartListItem({
                   <button
                     className="text-body-sm mt-4 ml-2 cursor-pointer rounded border border-gray-300 px-2 py-1 text-gray-900"
                     aria-label="수량 감소"
-                    onClick={() => handleQuantityChange(item._id, -1)}
+                    onClick={() => handleQuantityChange(-1)}
                   >
                     -
                   </button>
@@ -150,7 +146,7 @@ export default function CartListItem({
                   <button
                     className="text-body-sm mt-4 cursor-pointer rounded border border-gray-300 px-2 py-1 text-gray-900"
                     aria-label="수량 증가"
-                    onClick={() => handleQuantityChange(item._id, 1)}
+                    onClick={() => handleQuantityChange(1)}
                   >
                     +
                   </button>
@@ -169,7 +165,7 @@ export default function CartListItem({
                   type="button"
                   aria-label="상품 삭제"
                   title="상품 삭제"
-                  onClick={() => handleDelete(item._id)}
+                  onClick={handleDelete}
                   className="absolute top-6 right-6 cursor-pointer text-2xl text-gray-500 hover:text-gray-900 lg:top-6 lg:right-8"
                 >
                   ×
@@ -192,3 +188,5 @@ export default function CartListItem({
     </>
   );
 }
+
+export default memo(CartListItem);

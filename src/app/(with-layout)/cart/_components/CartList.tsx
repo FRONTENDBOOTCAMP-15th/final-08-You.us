@@ -1,5 +1,6 @@
 'use client';
 
+import { Dispatch, SetStateAction } from 'react';
 import CartListItem from '@/app/(with-layout)/cart/_components/CartListItem';
 import { ModalItem } from '@/app/(with-layout)/cart/_components/CartPageClient';
 import { CartItemOnList } from '@/types/cart.types';
@@ -7,7 +8,7 @@ import { CartItemOnList } from '@/types/cart.types';
 interface CartListProps {
   items: CartItemOnList[]; // 장바구니 상품 배열
   updateItem: (_id: number, item: Partial<CartItemOnList>) => void; // 특정 상품 업데이트 함수
-  setItems: (item: CartItemOnList[]) => void; // 전체 상품 목록 변경 함수
+  setItems: Dispatch<SetStateAction<CartItemOnList[]>>; // 전체 상품 목록 변경 함수
   setModalItem: (item: ModalItem) => void; // 모달에 표시할 상품 설정 함수
   setIsLoading: (loading: boolean) => void; // 로딩 상태 변경 함수
 }
@@ -29,7 +30,6 @@ export default function CartList({
         <CartListItem
           key={item._id}
           item={item}
-          items={items}
           setItems={setItems}
           updateItem={updateItem}
           setModalItem={setModalItem}
