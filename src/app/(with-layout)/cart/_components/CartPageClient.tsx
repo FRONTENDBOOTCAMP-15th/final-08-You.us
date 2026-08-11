@@ -24,17 +24,16 @@ export default function CartPageClient() {
   const [modalItem, setModalItem] = useState<ModalItem | null>(null);
   const isHydrated = useHasHydrated();
 
-  // hydration 완료 후에만 인증 체크
+  // hydration 완료 후 인증 확인 → 로그인된 경우에만 장바구니 데이터 fetch
   useEffect(() => {
     if (!isHydrated) return;
+
     if (!user) {
       const currentPath = window.location.pathname;
       router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+      return;
     }
-  }, [isHydrated, user, router]);
 
-  // 장바구니 데이터 불러오기
-  useEffect(() => {
     const fetchCartItems = async () => {
       try {
         setIsLoading(true);
@@ -62,7 +61,7 @@ export default function CartPageClient() {
     };
 
     fetchCartItems();
-  }, []);
+  }, [isHydrated, user, router]);
 
   // 체크된 상품만 계산
   const checkedItems = useMemo(
