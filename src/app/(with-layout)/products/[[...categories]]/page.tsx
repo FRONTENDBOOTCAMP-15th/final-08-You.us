@@ -19,13 +19,28 @@ const CATEGORY_NAMES: Record<string, string> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { categories } = await params;
 
-  console.log('category', categories);
   const category = categories?.[0];
   const categoryName = category ? CATEGORY_NAMES[category] || category : '전체';
+  const title = `${categoryName} 상품 목록 | You,Us`;
+  const description = `You,Us의 ${categoryName} 카테고리 상품을 둘러보세요.`;
+  const path = categories?.length
+    ? `/products/${categories.join('/')}`
+    : '/products';
 
   return {
-    title: `${categoryName} 상품 목록 | You,Us`,
-    description: `You,Us의 ${categoryName} 카테고리 상품을 둘러보세요.`,
+    title,
+    description,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      siteName: 'You,Us',
+      locale: 'ko_KR',
+      type: 'website',
+    },
   };
 }
 

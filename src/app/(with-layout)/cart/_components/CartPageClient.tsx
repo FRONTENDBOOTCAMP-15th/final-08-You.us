@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import CartList from './CartList';
 import CartEmpty from './CartEmpty';
 import { getCartItems } from '@/lib/api/cart';
@@ -24,22 +24,20 @@ export default function CartPageClient() {
   const [modalItem, setModalItem] = useState<ModalItem | null>(null);
   const isHydrated = useHasHydrated();
 
-  // hydration 완료 후에만 인증 체크
+  // hydration 완료 후 인증 확인 → 로그인된 경우에만 장바구니 데이터 fetch
   useEffect(() => {
     if (!isHydrated) return;
+
     if (!user) {
       const currentPath = window.location.pathname;
       router.push(`/login?redirect=${encodeURIComponent(currentPath)}`);
+      return;
     }
-  }, [isHydrated, user, router]);
 
-  // 장바구니 데이터 불러오기
-  useEffect(() => {
     const fetchCartItems = async () => {
       try {
         setIsLoading(true);
         const response = await getCartItems();
-        console.log('장바구니 데이터', response);
 
         const cartItems: CartItemOnList[] = response.item.map((item) => ({
           _id: item._id,
@@ -63,36 +61,39 @@ export default function CartPageClient() {
     };
 
     fetchCartItems();
-  }, []);
-
-  const handleOrder = () => {
-    const idList = items
-      .filter((item) => item.checked)
-      .map((item) => item._id)
-      .join(',');
-    const url = `/checkout?id=${idList}`;
-    router.push(url);
-  };
+  }, [isHydrated, user, router]);
 
   // 체크된 상품만 계산
-  const checkedItems = items.filter((item) => item.checked);
-  const totalPrice = checkedItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
+  const checkedItems = useMemo(
+    () => items.filter((item) => item.checked),
+    [items],
   );
-  const totalQuantity = checkedItems.reduce(
-    (sum, item) => sum + item.quantity,
-    0,
+  const totalPrice = useMemo(
+    () =>
+      checkedItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [checkedItems],
+  );
+  const totalQuantity = useMemo(
+    () => checkedItems.reduce((sum, item) => sum + item.quantity, 0),
+    [checkedItems],
   );
 
   // 체크된 상품이 있는지 확인
   const hasCheckedItems = checkedItems.length > 0;
 
-  const updateItem = (_id: number, updates: Partial<CartItemOnList>) => {
-    setItems(
-      items.map((item) => (item._id === _id ? { ...item, ...updates } : item)),
-    );
-  };
+  const handleOrder = useCallback(() => {
+    const idList = checkedItems.map((item) => item._id).join(',');
+    router.push(`/checkout?id=${idList}`);
+  }, [checkedItems, router]);
+
+  const updateItem = useCallback(
+    (_id: number, updates: Partial<CartItemOnList>) => {
+      setItems((prev) =>
+        prev.map((item) => (item._id === _id ? { ...item, ...updates } : item)),
+      );
+    },
+    [],
+  );
 
   if (isLoading) {
     return (
@@ -173,6 +174,7 @@ export default function CartPageClient() {
       {modalItem && (
         <CartOptionModal
           modalItem={modalItem}
+          items={items}
           setModalItem={setModalItem}
           setItems={setItems}
         />
